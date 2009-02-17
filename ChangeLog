@@ -1,0 +1,21 @@
+-------------------------------------------------------------------------------
+0.2.2:
+Added initXML(), XMLFromSet() and closeXML() methods to auto-generate training
+XML.
+
+train() method can now get XML both from a file and from a simple string.
+-------------------------------------------------------------------------------
+0.2.1:
+Added `train()` method to NeuralNet class, that allows you to train a neural
+network using an XML containing pre-saved training sets (input values,
+expected output). See examples/adder.xml for an example of such XML.
+-------------------------------------------------------------------------------
+0.2:
+Added `save()` method to NeuralNet class, that allows you to save a trained
+neural network to a binary file, to load anytime you need using
+NeuralNet(const char *fname) constructor.
+-------------------------------------------------------------------------------
+0.01b:
+First release ^^
+-------------------------------------------------------------------------------
+

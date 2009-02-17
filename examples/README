@@ -1,0 +1,10 @@
+This directory contains some sources to illustrate LibNeural++ usage.
+learnAdd is a source training a neural network to do simple sums
+between two integer positive numbers. The network is then saved to a
+binary file called "adder.net". This file can then be used by "doAdd".
+In this program you're asked input numbers to the network, and then
+the output is given. If executable files would not be present, type
+`make` to create them.
+
+Of course, you must have Neural++ already installed before typing `make`
+
