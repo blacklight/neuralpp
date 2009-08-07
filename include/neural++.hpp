@@ -11,18 +11,21 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.                                      *
  **************************************************************************************************/
 
-#ifdef __cplusplus
+#ifndef __cplusplus
+#error "This is a C++ library, you know, so you'd better use a C++ compiler to compile it"
+#else
 
 #ifndef __NEURALPP
 #define __NEURALPP
 
 #include <vector>
 #include <string>
-#include <exception>
 
 #include <cmath>
 #include <ctime>
 #include <cstdio>
+
+#include "neural++_exception.hpp"
 using namespace std;
 
 namespace neuralpp  {
@@ -35,26 +38,6 @@ namespace neuralpp  {
 	class NeuralNet;
 	class NetworkFileNotFoundException;
 	class InvalidXMLException;
-
-	/**
-	 * @class NetworkFileNotFoundException
-	 * @brief Exception thrown when doing an attempt to load a network from an invalid file
-	 */
-	class NetworkFileNotFoundException : public exception  {
-	public:
-		NetworkFileNotFoundException()  {}
-		const char* what() const throw() { return strdup("Attempt to load a neural network from an invalid network file\n"); }
-	};
-
-	/**
-	 * @class InvalidXMLException
-	 * @brief Exception thrown when trying parsing an invalid XML
-	 */
-	class InvalidXMLException : public exception  {
-	public:
-		InvalidXMLException()  {}
-		const char* what() const throw() { return strdup("Attempt to load an invalid XML file\n"); }
-	};
 
 	/**
 	 * @class NeuralNet

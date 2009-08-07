@@ -6,7 +6,7 @@
  */
 
 #include <iostream>
-#include <neural++.h>
+#include <neural++.hpp>
 using namespace neuralpp;
 
 #define	NETFILE	"adder.net"

@@ -11,7 +11,8 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.                                      *
  **************************************************************************************************/
 
-#include "neural++.h"
+#include <cstdlib>
+#include "neural++.hpp"
 using namespace neuralpp;
 
 /**

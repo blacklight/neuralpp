@@ -130,7 +130,7 @@ bool CMarkup::SetDoc( MCD_PCSZ pDoc )
 
 	MCD_STRCLEAR(m_strError);
 	return x_ParseDoc();
-};
+}
 
 bool CMarkup::SetDoc( const MCD_STR& strDoc )
 {
@@ -1386,7 +1386,7 @@ bool CMarkup::x_ParseDoc()
 	}
 
 	return IsWellFormed();
-};
+}
 
 int CMarkup::x_ParseElem( int iPosParent, TokenPos& token )
 {
@@ -1675,7 +1675,7 @@ int CMarkup::x_ParseNode( CMarkup::TokenPos& token, CMarkup::NodePos& node )
 		PD_DOCTYPE = 32,
 		PD_INQUOTE_S = 64,
 		PD_INQUOTE_D = 128,
-		PD_EQUALS = 256,
+		PD_EQUALS = 256
 	};
 	int nParseFlags = 0;
 
