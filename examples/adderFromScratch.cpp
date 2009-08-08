@@ -10,9 +10,9 @@
 using namespace neuralpp;
 
 int main()  {
-	NeuralNet *net = new NeuralNet(2, 2, 1, -0.005, 10000);
+	NeuralNet net(2, 2, 1, 0.005, 10000);
 	string xml;
-	float tmp;
+	double tmp;
 
 	// XML initialization. Then, I say XML that 2+3=5, 3+3=6, 5+4=9
 	// Strings' format is "input1,input2,...,inputn;output1,output2,...,outputm
@@ -22,8 +22,8 @@ int main()  {
 	xml += NeuralNet::XMLFromSet(2, "5,4;9");
 	NeuralNet::closeXML(xml);
 	
-	net->train(xml, NeuralNet::str);
-	vector<float> v;
+	net.train(xml, NeuralNet::str);
+	vector<double> v;
 	cout << "Network status: trained\n\n";
 
 	cout << "First number to add: ";
@@ -34,9 +34,9 @@ int main()  {
 	cin >> tmp;
 	v.push_back(tmp);
 
-	net->setInput(v);
-	net->propagate();
-	cout << "Output: " << net->getOutput() << endl;
+	net.setInput(v);
+	net.propagate();
+	cout << "Output: " << net.getOutput() << endl;
 	return 0;
 }
 

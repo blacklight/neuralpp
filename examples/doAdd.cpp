@@ -12,11 +12,11 @@ using namespace neuralpp;
 #define	NETFILE	"adder.net"
 
 int main()  {
-	float a,b;
-	NeuralNet *net = NULL;
+	double a,b;
+	NeuralNet net;
 
 	try  {
-		net = new NeuralNet(NETFILE);
+		net = NeuralNet(NETFILE);
 	}
 
 	catch (NetworkFileNotFoundException e)  {
@@ -30,13 +30,13 @@ int main()  {
 	cout << "Second number to add: ";
 	cin >> b;
 
-	vector<float> v;
+	vector<double> v;
 	v.push_back(a);
 	v.push_back(b);
 
-	net->setInput(v);
-	net->propagate();
-	cout << "Neural net output: " << net->getOutput() << endl;
+	net.setInput(v);
+	net.propagate();
+	cout << "Neural net output: " << net.getOutput() << endl;
 
 	return 0;
 }

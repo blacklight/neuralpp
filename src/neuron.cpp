@@ -19,7 +19,7 @@ using namespace neuralpp;
  * @param a Activation function
  * @param d Its derivate
  */
-Neuron::Neuron (float (*a)(float), float (*d)(float))  {
+Neuron::Neuron (double (*a)(double), double (*d)(double))  {
 	actv_f=a;
 	deriv=d;
 }
@@ -27,7 +27,7 @@ Neuron::Neuron (float (*a)(float), float (*d)(float))  {
 /**
  * @brief Alternative constructor, that gets also the synapsis linked to the neuron
  */
-Neuron::Neuron (vector< Synapsis > i, vector< Synapsis > o, float (*a)(float), float(*d)(float))  {
+Neuron::Neuron (vector< Synapsis > i, vector< Synapsis > o, double (*a)(double), double(*d)(double))  {
 	in=i;
 	out=o;
 
@@ -58,12 +58,12 @@ void Neuron::push_out (Synapsis& s)  { out.push_back(s); }
 /**
  * @brief Change the propagation value of the neuron
  */
-void Neuron::setProp (float val)  { prop_val=val; }
+void Neuron::setProp (double val)  { prop_val=val; }
 
 /**
  * @brief Change the activation value of the neuron
  */
-void Neuron::setActv (float val)  { actv_val=actv_f(val); }
+void Neuron::setActv (double val)  { actv_val=actv_f(val); }
 
 /**
  * @return Number of input synapsis
@@ -78,18 +78,18 @@ size_t Neuron::nOut()  { return out.size(); }
 /**
  * @brief It gets the propagation value of the neuron
  */
-float Neuron::getProp()  { return prop_val; }
+double Neuron::getProp()  { return prop_val; }
 
 /**
  * @brief It gets the activation value of the neuron
  */
-float Neuron::getActv()  { return actv_val; }
+double Neuron::getActv()  { return actv_val; }
 
 /**
  * @brief Propagate a neuron's activation value to the connected neurons
  */
-float Neuron::propagate()  {
-	float aux=0;
+double Neuron::propagate()  {
+	double aux=0;
 
 	for (size_t i=0; i<nIn(); i++)
 		aux += (in[i].getWeight() * in[i].getIn()->actv_val);

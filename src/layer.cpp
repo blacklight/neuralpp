@@ -21,7 +21,7 @@ using namespace neuralpp;
  * @param a Activation function
  * @param d Its derivate
  */
-Layer::Layer (size_t sz, float(*a)(float), float(*d)(float))  {
+Layer::Layer (size_t sz, double(*a)(double), double(*d)(double))  {
 	for (size_t i=0; i<sz; i++)  {
 		Neuron n(a,d);
 		elements.push_back(n);
@@ -35,7 +35,7 @@ Layer::Layer (size_t sz, float(*a)(float), float(*d)(float))  {
  * @brief Alternative constructor. It directly gets a vector of neurons to build
  *  the layer
  */
-Layer::Layer (vector< Neuron > &el, float (*a)(float), float(*d)(float))  {
+Layer::Layer (vector< Neuron > &el, double (*a)(double), double(*d)(double))  {
 	elements=el;
 	actv_f=a;
 	deriv=d;
@@ -75,7 +75,7 @@ void Layer::link (Layer& l)  {
  * @brief It sets a vector of propagation values to all its neurons
  * @param v Vector of values to write as propagation values
  */
-void Layer::setProp (vector<float> &v)  {
+void Layer::setProp (vector<double> &v)  {
 	for (size_t i=0; i<size(); i++)
 		elements[i].setProp(v[i]);
 }
@@ -84,7 +84,7 @@ void Layer::setProp (vector<float> &v)  {
  * @brief It sets a vector of activation values to all its neurons
  * @param v Vector of values to write as activation values
  */
-void Layer::setActv (vector<float> &v)  {
+void Layer::setActv (vector<double> &v)  {
 	for (size_t i=0; i<size(); i++)
 		elements[i].setActv(v[i]);
 }

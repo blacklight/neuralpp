@@ -19,12 +19,12 @@ using namespace neuralpp;
 /**
  * @brief Built-in function. The default activation function: f(x)=x
  */
-float __actv(float prop)  { return prop; }
+double __actv(double prop)  { return prop; }
 
 /**
  * @brief Default derivate for default activation function: f'(x)=1
  */
-float __deriv(float prop) { return 1; }
+double __deriv(double prop) { return 1; }
 
 /**
  * @brief Constructor
@@ -36,7 +36,7 @@ float __deriv(float prop) { return 1; }
  * @param e Epochs (cycles) to execute (the most you execute, the most the network
  *   can be accurate for its purpose)
  */
-NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size, float l, int e)  {
+NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size, double l, int e)  {
 	epochs=e;
 	ref_epochs=epochs;
 	l_rate=l;
@@ -62,7 +62,7 @@ NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size, float
  *   can be accurate for its purpose)
  */
 NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size,
-		float(*a)(float), float(*d)(float), float l, int e)  {
+		double(*a)(double), double(*d)(double), double l, int e)  {
 	epochs=e;
 	ref_epochs=epochs;
 	l_rate=l;
@@ -80,13 +80,13 @@ NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size,
  * @brief It gets the output of the network (note: the layer output should contain
  *   an only neuron)
  */
-float NeuralNet::getOutput()  { return (*output)[0].getActv(); }
+double NeuralNet::getOutput()  { return (*output)[0].getActv(); }
 
 /**
  * @brief It gets the output of the network in case the output layer contains more neurons
  */
-vector<float> NeuralNet::getVectorOutput()  {
-	vector<float> v;
+vector<double> NeuralNet::getVectorOutput()  {
+	vector<double> v;
 
 	for (size_t i=0; i<output->size(); i++)
 		v.push_back( (*output)[i].getActv() );
@@ -98,7 +98,7 @@ vector<float> NeuralNet::getVectorOutput()  {
  * @param Expected value
  * @return Mean error
  */
-float NeuralNet::error(float expected)  {
+double NeuralNet::error(double expected)  {
 	return abs( (getOutput() - expected*
 		deriv(getOutput())) / (abs(expected)) );
 }
@@ -114,9 +114,9 @@ void NeuralNet::propagate()  {
 
 /**
  * @brief It sets the input for the network
- * @param v Vector of floats, containing the values to give to your network
+ * @param v Vector of doubles, containing the values to give to your network
  */
-void NeuralNet::setInput(vector<float>& v)  {
+void NeuralNet::setInput(vector<double>& v)  {
 	input->setProp(v);
 	input->setActv(v);
 }
@@ -133,38 +133,38 @@ void NeuralNet::link()  {
 /**
  * @brief It sets the value you expect from your network
  */
-void NeuralNet::setExpected(float e)  { ex=e; }
+void NeuralNet::setExpected(double e)  { ex=e; }
 
 /**
  * @brief It gets the value expected. Of course you should specify this when you
  *   build your network by using setExpected.
  */
-float NeuralNet::expected()  { return ex; }
+double NeuralNet::expected()  { return ex; }
 
 /**
  * @brief It updates the weights of the net's synapsis through back-propagation.
  *   In-class use only
  */
 void NeuralNet::updateWeights()  {
-	float out_delta;
+	double out_delta;
 
 	for (size_t i=0; i<output->size(); i++)  {
 		Neuron *n = &(*output)[i];
 
 		for (size_t j=0; j<n->nIn(); j++)  {
 			Synapsis *s = &(n->synIn(j));
-			out_delta = s->getIn()->getActv() * error(ex) * l_rate;
+			out_delta = s->getIn()->getActv() * error(ex) * (-l_rate);
 			s->setDelta(out_delta);
 		}
 	}
 
 	for (size_t i=0; i<hidden->size(); i++)  {
 		Neuron *n = &(*hidden)[i];
-		float d = deriv(n->getProp()) * n->synOut(0).getWeight() * out_delta;
+		double d = deriv(n->getProp()) * n->synOut(0).getWeight() * out_delta;
 
 		for (size_t j=0; j<n->nIn(); j++)  {
 			Synapsis *s = &(n->synIn(j));
-			s->setDelta(l_rate * d * s->getIn()->getActv());
+			s->setDelta((-l_rate) * d * s->getIn()->getActv());
 		}
 	}
 }
@@ -420,7 +420,7 @@ NeuralNet::NeuralNet (const char *fname) throw() {
  * @throw InvalidXMLException
  */
 void NeuralNet::train (string xmlsrc, NeuralNet::source src = file) throw()  {
-	float out;
+	double out;
 	CMarkup xml;
 
 	if (src == file)
@@ -435,8 +435,8 @@ void NeuralNet::train (string xmlsrc, NeuralNet::source src = file) throw()  {
 
 	if (xml.FindElem("NETWORK"))  {
 		while (xml.FindChildElem("TRAINING"))  {
-			vector<float> input;
-			float output;
+			vector<double> input;
+			double output;
 			bool valid = false;
 
 			xml.IntoElem();
@@ -489,14 +489,14 @@ void NeuralNet::initXML (string& xml)  {
 }
 
 /**
- * @brief Splits a string into a vector of floats, given a delimitator
+ * @brief Splits a string into a vector of doubles, given a delimitator
  * @param delim Delimitator
  * @param str String to be splitted
- * @return Vector of floats containing splitted values
+ * @return Vector of doubles containing splitted values
  */
-vector<float> NeuralNet::split (char delim, string str)  {
+vector<double> NeuralNet::split (char delim, string str)  {
 	char tmp[1024];
-	vector<float> v;
+	vector<double> v;
 	memset (tmp, 0x0, sizeof(tmp));
 
 	for (unsigned int i=0, j=0; i <= str.length(); i++)  {
@@ -525,7 +525,7 @@ vector<float> NeuralNet::split (char delim, string str)  {
  */
 string NeuralNet::XMLFromSet (int id, string set)  {
 	string xml;
-	vector<float> in, out;
+	vector<double> in, out;
 	unsigned int delimPos = -1;
 	char delim=';';
 	char tmp[1024];

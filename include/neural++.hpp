@@ -30,7 +30,7 @@ using namespace std;
 
 namespace neuralpp  {
 	//! Default rand value: |sin(rand)|, always >= 0 and <= 1
-	#define	RAND		( (float) abs( sinf((float) rand()) ) )
+	#define	RAND		( (double) abs( sinf((double) rand()) ) )
 	
 	class Synapsis;
 	class Neuron;
@@ -46,8 +46,8 @@ namespace neuralpp  {
 	class NeuralNet  {
 		int epochs;
 		int ref_epochs;
-		float l_rate;
-		float ex;
+		double l_rate;
+		double ex;
 
 		Layer* input;
 		Layer* hidden;
@@ -71,10 +71,10 @@ namespace neuralpp  {
 		 * @param Expected value
 		 * @return Mean error
 		 */
-		float error(float);
+		double error(double);
 		
-		float (*actv_f)(float);
-		float (*deriv)(float);
+		double (*actv_f)(double);
+		double (*deriv)(double);
 
 	public:
 		/**
@@ -94,7 +94,7 @@ namespace neuralpp  {
 		 * @param e Epochs (cycles) to execute (the most you execute, the most the network
 		 *   can be accurate for its purpose)
 		 */
-		NeuralNet (size_t, size_t, size_t, float, int);
+		NeuralNet (size_t, size_t, size_t, double, int);
 
 		/**
 		 * @brief Constructor
@@ -116,29 +116,29 @@ namespace neuralpp  {
 		 * @param e Epochs (cycles) to execute (the most you execute, the most the network
 		 *   can be accurate for its purpose)
 		 */
-		NeuralNet (size_t, size_t, size_t, float(*)(float), float(*)(float), float, int);
+		NeuralNet (size_t, size_t, size_t, double(*)(double), double(*)(double), double, int);
 
 		/**
 		 * @brief It gets the output of the network (note: the layer output should contain
 		 *   an only neuron)
 		 */
-		float getOutput();
+		double getOutput();
 
 		/**
 		 * @brief It gets the output of the network in case the output layer contains more neurons
 		 */
-		vector<float> getVectorOutput();
+		vector<double> getVectorOutput();
 
 		/**
 		 * @brief It gets the value expected. Of course you should specify this when you
 		 *   build your network by using setExpected.
 		 */
-		float expected();
+		double expected();
 
 		/**
 		 * @brief It sets the value you expect from your network
 		 */
-		void setExpected(float);
+		void setExpected(double);
 
 		/**
 		 * @brief It updates through back-propagation the weights of the synapsis and
@@ -155,9 +155,9 @@ namespace neuralpp  {
 
 		/**
 		 * @brief It sets the input for the network
-		 * @param v Vector of floats, containing the values to give to your network
+		 * @param v Vector of doubles, containing the values to give to your network
 		 */
-		void setInput (vector<float>&);
+		void setInput (vector<double>&);
 
 		/**
 		 * @brief It links the layers of the network (input, hidden, output). Don't use unless
@@ -186,12 +186,12 @@ namespace neuralpp  {
 		static void initXML (string&);
 
 		/**
-		 * @brief Splits a string into a vector of floats, given a delimitator
+		 * @brief Splits a string into a vector of doubles, given a delimitator
 		 * @param delim Delimitator
 		 * @param str String to be splitted
-		 * @return Vector of floats containing splitted values
+		 * @return Vector of doubles containing splitted values
 		 */
-		static vector<float> split (char, string);
+		static vector<double> split (char, string);
 
 		/**
 		 * @brief Get a training set from a string and copies it to an XML
@@ -220,17 +220,17 @@ namespace neuralpp  {
 	 *  you're doing, use NeuralNet instead
 	 */
 	class Synapsis  {
-		float delta;
-		float weight;
+		double delta;
+		double weight;
 
 		Neuron *in;
 		Neuron *out;
 		
-		float (*actv_f)(float);
-		float (*deriv)(float);
+		double (*actv_f)(double);
+		double (*deriv)(double);
 
 	public:
-		Synapsis(Neuron* i, Neuron* o, float w, float d)  {
+		Synapsis(Neuron* i, Neuron* o, double w, double d)  {
 			in=i; out=o;
 			weight=w; delta=d;
 		}
@@ -242,7 +242,7 @@ namespace neuralpp  {
 		 * @param a Activation function
 		 * @param d Derivate for activation function
 		 */
-		Synapsis (Neuron* i, Neuron* o, float(*)(float), float(*)(float));
+		Synapsis (Neuron* i, Neuron* o, double(*)(double), double(*)(double));
 		
 		/**
 		 * @brief Constructor
@@ -252,7 +252,7 @@ namespace neuralpp  {
 		 * @param a Activation function
 		 * @param d Derivate for activation function
 		 */
-		Synapsis (Neuron* i, Neuron* o, float w, float(*)(float), float(*)(float));
+		Synapsis (Neuron* i, Neuron* o, double w, double(*)(double), double(*)(double));
 	
 		/**
 		 * @return Reference to input neuron of the synapsis
@@ -267,23 +267,23 @@ namespace neuralpp  {
 		/**
 		 * @brief It sets the weight of the synapsis
 		 */
-		void setWeight(float);
+		void setWeight(double);
 		
 		/**
 		 * @brief It sets the delta (how much to change the weight after an update) 
 		 *  of the synapsis
 		 */
-		void setDelta(float);
+		void setDelta(double);
 
 		/**
 		 * @return Weight of the synapsis
 		 */
-		float getWeight();
+		double getWeight();
 		
 		/**
 		 * @return Delta of the synapsis
 		 */
-		float getDelta();
+		double getDelta();
 	};
 
 	/**
@@ -292,26 +292,26 @@ namespace neuralpp  {
 	 *  you're doing, use NeuralNet instead
 	 */
 	class Neuron  {
-		float actv_val;
-		float prop_val;
+		double actv_val;
+		double prop_val;
 
 		vector< Synapsis > in;
 		vector< Synapsis > out;
 
-		float (*actv_f)(float);
-		float (*deriv)(float);
+		double (*actv_f)(double);
+		double (*deriv)(double);
 	public:
 		/**
 		 * @brief Constructor
 		 * @param a Activation function
 		 * @param d Its derivate
 		 */
-		Neuron (float (*)(float), float(*)(float));
+		Neuron (double (*)(double), double(*)(double));
 
 		/**
 		 * @brief Alternative constructor, that gets also the synapsis linked to the neuron
 		 */
-		Neuron (vector< Synapsis >, vector< Synapsis >, float (*)(float), float(*)(float));
+		Neuron (vector< Synapsis >, vector< Synapsis >, double (*)(double), double(*)(double));
 
 		/**
 		 * @brief Gets the i-th synapsis connected on the input of the neuron
@@ -336,27 +336,27 @@ namespace neuralpp  {
 		/**
 		 * @brief Change the activation value of the neuron
 		 */
-		void setActv (float);
+		void setActv (double);
 
 		/**
 		 * @brief Change the propagation value of the neuron
 		 */
-		void setProp (float);
+		void setProp (double);
 
 		/**
 		 * @brief It gets the activation value of the neuron
 		 */
-		float getActv();
+		double getActv();
 		
 		/**
 		 * @brief It gets the propagation value of the neuron
 		 */
-		float getProp();
+		double getProp();
 
 		/**
 		 * @brief It propagates its activation value to the connected neurons
 		 */
-		float propagate();
+		double propagate();
 
 		/**
 		 * @return Number of input synapsis
@@ -383,8 +383,8 @@ namespace neuralpp  {
 		vector< Neuron > elements;
 		void (*update_weights)();
 
-		float (*actv_f)(float);
-		float (*deriv)(float);
+		double (*actv_f)(double);
+		double (*deriv)(double);
 
 	public:
 		/**
@@ -393,13 +393,13 @@ namespace neuralpp  {
 		 * @param a Activation function
 		 * @param d Its derivate
 		 */
-		Layer (size_t sz, float (*)(float), float(*)(float));
+		Layer (size_t sz, double (*)(double), double(*)(double));
 
 		/**
 		 * @brief Alternative constructor. It directly gets a vector of neurons to build
 		 *  the layer
 		 */
-		Layer (vector< Neuron >&, float(*)(float), float(*)(float));
+		Layer (vector< Neuron >&, double(*)(double), double(*)(double));
 
 		/**
 		 * @brief Redefinition for operator []. It gets the neuron at <i>i</i>
@@ -416,13 +416,13 @@ namespace neuralpp  {
 		 * @brief It sets a vector of propagation values to all its neurons
 		 * @param v Vector of values to write as propagation values
 		 */
-		void setProp (vector<float>&);
+		void setProp (vector<double>&);
 		 
 		/** 
 		 * @brief It sets a vector of activation values to all its neurons
 		 * @param v Vector of values to write as activation values
 		 */
-		void setActv (vector<float>&);
+		void setActv (vector<double>&);
 
 		/**
 		 * @brief It propagates its activation values to the output layers
@@ -441,18 +441,18 @@ namespace neuralpp  {
 		int output_size;
 
 		int epochs;
-		float l_rate;
-		float ex;
+		double l_rate;
+		double ex;
 	};
 
 	struct neuronrecord  {
-		float prop;
-		float actv;
+		double prop;
+		double actv;
 	};
 
 	struct synrecord  {
-		float w;
-		float d;
+		double w;
+		double d;
 	};
 }
 
