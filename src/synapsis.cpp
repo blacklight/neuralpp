@@ -15,14 +15,7 @@
 #include "neural++.hpp"
 using namespace neuralpp;
 
-/**
- * @brief Constructor
- * @param i Input neuron
- * @param o Output neuron
- * @param a Activation function
- * @param d Derivate for activation function
- */
-Synapsis::Synapsis (Neuron* i, Neuron* o, double(*a)(double), double(*d)(double))  {
+Synapsis::Synapsis (Neuron* i, Neuron* o, NeuralNet* n, double(*a)(double), double(*d)(double))  {
 	srand((unsigned) time(NULL));
 
 	delta=0;
@@ -32,6 +25,7 @@ Synapsis::Synapsis (Neuron* i, Neuron* o, double(*a)(double), double(*d)(double)
 
 	actv_f=a;
 	deriv=d;
+	net=n;
 }
 
 /**
@@ -42,7 +36,8 @@ Synapsis::Synapsis (Neuron* i, Neuron* o, double(*a)(double), double(*d)(double)
  * @param a Activation function
  * @param d Derivate for activation function
  */
-Synapsis::Synapsis (Neuron* i, Neuron* o, double w, double(*a)(double), double(*d)(double))  {
+Synapsis::Synapsis (Neuron* i, Neuron* o, NeuralNet* n,
+		double w, double(*a)(double), double(*d)(double))  {
 	delta=0;
 	weight=w;
 	in=i;
@@ -50,6 +45,7 @@ Synapsis::Synapsis (Neuron* i, Neuron* o, double w, double(*a)(double), double(*
 	
 	actv_f=a;
 	deriv=d;
+	net=n;
 }
 
 /**

@@ -43,9 +43,9 @@ NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size, doubl
 	actv_f=__actv;
 	deriv=__deriv;
 
-	input  = new Layer(in_size, __actv, __deriv);
-	hidden = new Layer(hidden_size, __actv, __deriv);
-	output = new Layer(out_size, __actv, __deriv);
+	input  = new Layer(in_size, this, __actv, __deriv);
+	hidden = new Layer(hidden_size, this, __actv, __deriv);
+	output = new Layer(out_size, this, __actv, __deriv);
 	link();
 }
 
@@ -70,9 +70,9 @@ NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size,
 	actv_f=a;
 	deriv=d;
 
-	input  = new Layer(in_size,a,d);
-	hidden = new Layer(hidden_size,a,d);
-	output = new Layer(out_size,a,d);
+	input  = new Layer(in_size, this, a, d);
+	hidden = new Layer(hidden_size, this, a, d);
+	output = new Layer(out_size, this, a, d);
 	link();
 }
 

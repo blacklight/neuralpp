@@ -225,34 +225,39 @@ namespace neuralpp  {
 
 		Neuron *in;
 		Neuron *out;
+		NeuralNet *net;
 		
 		double (*actv_f)(double);
 		double (*deriv)(double);
 
 	public:
-		Synapsis(Neuron* i, Neuron* o, double w, double d)  {
+		Synapsis(Neuron* i, Neuron* o, NeuralNet* n, double w, double d)  {
 			in=i; out=o;
 			weight=w; delta=d;
+			net=n;
 		}
 
 		/**
 		 * @brief Constructor
 		 * @param i Input neuron
 		 * @param o Output neuron
+		 * @param n Reference to the neural network
 		 * @param a Activation function
 		 * @param d Derivate for activation function
 		 */
-		Synapsis (Neuron* i, Neuron* o, double(*)(double), double(*)(double));
+		Synapsis (Neuron* i, Neuron* o, NeuralNet* n, double(*a)(double), double(*d)(double));
 		
 		/**
 		 * @brief Constructor
 		 * @param i Input neuron
 		 * @param o Output neuron
+		 * @param n Reference to the neural network
 		 * @param w Weight for the synapsis (default: random)
 		 * @param a Activation function
 		 * @param d Derivate for activation function
 		 */
-		Synapsis (Neuron* i, Neuron* o, double w, double(*)(double), double(*)(double));
+		Synapsis (Neuron* i, Neuron* o, NeuralNet* n,
+				double w, double(*a)(double), double(*d)(double));
 	
 		/**
 		 * @return Reference to input neuron of the synapsis
@@ -381,8 +386,9 @@ namespace neuralpp  {
 	 */
 	class Layer  {
 		vector< Neuron > elements;
-		void (*update_weights)();
+		NeuralNet *net;
 
+		void (*update_weights)();
 		double (*actv_f)(double);
 		double (*deriv)(double);
 
@@ -390,16 +396,17 @@ namespace neuralpp  {
 		/**
 		 * @brief Constructor
 		 * @param sz Size of the layer
+		 * @param n Reference to the neural network
 		 * @param a Activation function
 		 * @param d Its derivate
 		 */
-		Layer (size_t sz, double (*)(double), double(*)(double));
+		Layer (size_t sz, NeuralNet* n, double (*a)(double), double(*d)(double));
 
 		/**
 		 * @brief Alternative constructor. It directly gets a vector of neurons to build
 		 *  the layer
 		 */
-		Layer (vector< Neuron >&, double(*)(double), double(*)(double));
+		Layer (vector< Neuron >&, NeuralNet* net, double(*a)(double), double(*d)(double));
 
 		/**
 		 * @brief Redefinition for operator []. It gets the neuron at <i>i</i>
