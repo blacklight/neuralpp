@@ -28,13 +28,13 @@
 #include "neural++_exception.hpp"
 using namespace std;
 
-namespace neuralpp  {
-	//! Default rand value: |sin(rand)|, always >= 0 and <= 1
-	#define	RAND		( (double) abs( sinf((double) rand()) ) )
+//! Default rand value: |sin(rand)|, always >= 0 and <= 1
+#define	RAND		( abs( sin(rand()) ) )
 
-	//! Initial value for the inertial momentum of the synapses
-	#define 	BETA0 	0.7
+//! Initial value for the inertial momentum of the synapses
+#define 	BETA0 	0.7
 	
+namespace neuralpp  {
 	class Synapsis;
 	class Neuron;
 	class Layer;

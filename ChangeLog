@@ -6,7 +6,8 @@
 	* neural++.hpp: Changed header name, added BETA0 macro
 	* synapsis.cpp: Added momentum() method to compute the inertial momentum
 	of a synapsis
-	* everything: Data type changed from float to double for everything
+	* everything: Data type changed from float to double for everything,
+	fixing neuralpp namespace
 
 --- Release 0.2.2 ---
 

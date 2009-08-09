@@ -15,6 +15,8 @@
 #include "neural++.hpp"
 using namespace neuralpp;
 
+namespace neuralpp  {
+
 Synapsis::Synapsis(Neuron* i, Neuron* o, double w, double d)  {
 	in=i; out=o;
 	weight=w;
@@ -65,5 +67,6 @@ void Synapsis::setDelta(double d)  {
 
 double Synapsis::momentum(int N, int x)  {
 	return (BETA0*N)/(20*x + N);
+}
 }
 

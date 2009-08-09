@@ -14,28 +14,13 @@
 #include "neural++.hpp"
 #include "Markup.h"
 #include <iostream>
-using namespace neuralpp;
 
-/**
- * @brief Built-in function. The default activation function: f(x)=x
- */
+namespace neuralpp  {
+
 double __actv(double prop)  { return prop; }
 
-/**
- * @brief Default derivate for default activation function: f'(x)=1
- */
 double __deriv(double prop) { return 1; }
 
-/**
- * @brief Constructor
- * @param in_size Size of the input layer
- * @param hidden_size Size of the hidden layer
- * @param out_size Size of the output layer
- * @param l learn rate (get it after doing some experiments, but generally try to
- *   keep its value quite low to be more accurate)
- * @param e Epochs (cycles) to execute (the most you execute, the most the network
- *   can be accurate for its purpose)
- */
 NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size, double l, int e)  {
 	epochs=e;
 	ref_epochs=epochs;
@@ -49,18 +34,6 @@ NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size, doubl
 	link();
 }
 
-/**
- * @brief Constructor
- * @param in_size Size of the input layer
- * @param hidden_size Size of the hidden layer
- * @param out_size Size of the output layer
- * @param actv Activation function to use (default: f(x)=x)
- * @param deriv Derivate for the activation function to use (default: f'(x)=1)
- * @param l learn rate (get it after doing some experiments, but generally try to
- *   keep its value quite low to be more accurate)
- * @param e Epochs (cycles) to execute (the most you execute, the most the network
- *   can be accurate for its purpose)
- */
 NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size,
 		double(*a)(double), double(*d)(double), double l, int e)  {
 	epochs=e;
@@ -76,15 +49,8 @@ NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size,
 	link();
 }
 
-/**
- * @brief It gets the output of the network (note: the layer output should contain
- *   an only neuron)
- */
 double NeuralNet::getOutput()  { return (*output)[0].getActv(); }
 
-/**
- * @brief It gets the output of the network in case the output layer contains more neurons
- */
 vector<double> NeuralNet::getVectorOutput()  {
 	vector<double> v;
 
@@ -93,58 +59,30 @@ vector<double> NeuralNet::getVectorOutput()  {
 	return v;
 }
 
-/**
- * @brief It get the error made on the expected result as |v-v'|/v
- * @param Expected value
- * @return Mean error
- */
 double NeuralNet::error(double expected)  {
 	return abs( (getOutput() - expected*
 		deriv(getOutput())) / (abs(expected)) );
 }
 
-/**
- * @brief It propagates values through the network. Use this when you want to give
- *  an already trained network some new values the get to the output
- */
 void NeuralNet::propagate()  {
 	hidden->propagate();
 	output->propagate();
 }
 
-/**
- * @brief It sets the input for the network
- * @param v Vector of doubles, containing the values to give to your network
- */
 void NeuralNet::setInput(vector<double>& v)  {
 	input->setProp(v);
 	input->setActv(v);
 }
 
-/**
- * @brief It links the layers of the network (input, hidden, output). Don't use unless
- *  you exactly know what you're doing, it is already called by the constructor
- */
 void NeuralNet::link()  {
 	hidden->link(*input);
 	output->link(*hidden);
 }
 
-/**
- * @brief It sets the value you expect from your network
- */
 void NeuralNet::setExpected(double e)  { ex=e; }
 
-/**
- * @brief It gets the value expected. Of course you should specify this when you
- *   build your network by using setExpected.
- */
 double NeuralNet::expected()  { return ex; }
 
-/**
- * @brief It updates the weights of the net's synapsis through back-propagation.
- *   In-class use only
- */
 void NeuralNet::updateWeights()  {
 	double out_delta;
 
@@ -180,11 +118,6 @@ void NeuralNet::updateWeights()  {
 	}
 }
 
-/**
- * @brief It commits the changes made by updateWeights() to the layer l.
- *   In-class use only
- * @param l Layer to commit the changes
- */
 void NeuralNet::commitChanges (Layer *l)  {
 	for (size_t i=0; i<l->size(); i++)  {
 		Neuron *n = &(*l)[i];
@@ -197,11 +130,6 @@ void NeuralNet::commitChanges (Layer *l)  {
 	}
 }
 
-/**
- * @brief It updates through back-propagation the weights of the synapsis and
- *  computes again the output value for <i>epochs</i> times, calling back
- *  updateWeights and commitChanges functions
- */
 void NeuralNet::update()  {
 	while ((epochs--)>0)  {
 		updateWeights();
@@ -211,11 +139,6 @@ void NeuralNet::update()  {
 	}
 }
 
-/**
- * @brief Save an already trained neural network to a binary file
- * @param fname Name of the file to write
- * @return true in case of success, false otherwise
- */
 bool NeuralNet::save(const char *fname)  {
 	FILE *fp;
 	struct netrecord record;
@@ -309,12 +232,6 @@ bool NeuralNet::save(const char *fname)  {
 	return true;
 }
 
-/**
- * @brief Constructs a neural network from a previously saved file
- *   (saved using 'save()' method)
- * @param fname File name to load the network from
- * @throw NetworkFileNotFoundException
- */
 NeuralNet::NeuralNet (const char *fname) throw() {
 	struct netrecord record;
 	FILE *fp;
@@ -423,13 +340,6 @@ NeuralNet::NeuralNet (const char *fname) throw() {
 	fclose(fp);
 }
 
-/**
- * @brief Train a network using a training set loaded from an XML file. A sample XML file
- *   is available in examples/adder.xml
- * @param xml XML file containing our training set
- * @param src Source type from which the XML will be loaded (from a file [default] or from a string)
- * @throw InvalidXMLException
- */
 void NeuralNet::train (string xmlsrc, NeuralNet::source src = file) throw()  {
 	double out;
 	CMarkup xml;
@@ -487,10 +397,6 @@ void NeuralNet::train (string xmlsrc, NeuralNet::source src = file) throw()  {
 	return;
 }
 
-/**
- * @brief Initialize the training XML for the neural network
- * @param xml String that will contain the XML
- */
 void NeuralNet::initXML (string& xml)  {
 	xml.append("<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n"
 			"<!DOCTYPE NETWORK SYSTEM \"http://blacklight.gotdns.org/prog/neuralpp/trainer.dtd\">\n"
@@ -499,12 +405,6 @@ void NeuralNet::initXML (string& xml)  {
 	);
 }
 
-/**
- * @brief Splits a string into a vector of doubles, given a delimitator
- * @param delim Delimitator
- * @param str String to be splitted
- * @return Vector of doubles containing splitted values
- */
 vector<double> NeuralNet::split (char delim, string str)  {
 	char tmp[1024];
 	vector<double> v;
@@ -522,18 +422,6 @@ vector<double> NeuralNet::split (char delim, string str)  {
 	return v;
 }
 
-/**
- * @brief Get a training set from a string and copies it to an XML
- *   For example, these strings could be training sets for making sums:
- *     "2,3;5" - "5,6;11" - "2,2;4" - "4,5:9"
- *     This method called on the first string will return an XML such this:
- *     '&lt;training id="0"&gt;&lt;input id="0"&gt;2&lt;/input&gt;&lt;input id="1"&gt;3&lt;/input&gt;&lt;output id="0"&gt;5&lt;/output&gt;
- *     &lt;/training&gt;'
- *
- * @param id ID for the given training set (0,1,..,n)
- * @param set String containing input values and expected outputs
- * @return XML string
- */
 string NeuralNet::XMLFromSet (int id, string set)  {
 	string xml;
 	vector<double> in, out;
@@ -579,11 +467,8 @@ string NeuralNet::XMLFromSet (int id, string set)  {
 	return xml;
 }
 
-/**
- * @brief Closes an open XML document generated by "initXML" and "XMLFromSet"
- * @param XML string to close
- */
 void NeuralNet::closeXML(string &xml)  {
 	xml.append("</NETWORK>\n\n");
+}
 }
 
