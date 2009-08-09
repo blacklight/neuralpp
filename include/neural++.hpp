@@ -53,10 +53,6 @@ namespace neuralpp  {
 		double l_rate;
 		double ex;
 
-		Layer* input;
-		Layer* hidden;
-		Layer* output;
-
 		/**
 		 * @brief It updates the weights of the net's synapsis through back-propagation.
 		 *   In-class use only
@@ -90,6 +86,10 @@ namespace neuralpp  {
 		double (*deriv)(double);
 
 	public:
+		Layer* input;
+		Layer* hidden;
+		Layer* output;
+
 		/**
 		 * @brief Enum to choose the eventual training source for our network (XML from a file or from a string)
 		 */

@@ -73,7 +73,10 @@ namespace neuralpp {
 	}
 
 	void Synapsis::setWeight(double w) {
-		weight = w;
+		if (weight > 1.0)
+			weight = 1.0;
+		else
+			weight = w;
 	}
 
 	void Synapsis::setDelta(double d) {

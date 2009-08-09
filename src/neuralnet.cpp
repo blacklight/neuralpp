@@ -11,6 +11,7 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.                                      *
  **************************************************************************************************/
 
+#include <sstream>
 #include "neural++.hpp"
 #include "Markup.h"
 
@@ -417,7 +418,7 @@ namespace neuralpp {
 				xml.OutOfElem();
 
 				while (!valid) {
-					char str[BUFSIZ];
+					stringstream ss(stringstream::in | stringstream::out);
 
 					setInput(input);
 					propagate();
@@ -425,11 +426,10 @@ namespace neuralpp {
 					update();
 
 					out = getOutput();
-					memset(str, 0x0, sizeof(str));
-					snprintf(str, sizeof(str), "%f",
-						 out);
 
-					if (!strstr(str, "inf"))
+					ss << out;
+
+					if (ss.str().find("inf") == string::npos)
 						valid = true;
 				}
 			}
