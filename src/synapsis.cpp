@@ -15,67 +15,55 @@
 #include "neural++.hpp"
 using namespace neuralpp;
 
-Synapsis::Synapsis (Neuron* i, Neuron* o, NeuralNet* n, double(*a)(double), double(*d)(double))  {
+Synapsis::Synapsis(Neuron* i, Neuron* o, double w, double d)  {
+	in=i; out=o;
+	weight=w;
+	delta=d; prev_delta=0;
+}
+
+Synapsis::Synapsis (Neuron* i, Neuron* o, double(*a)(double), double(*d)(double))  {
 	srand((unsigned) time(NULL));
 
 	delta=0;
+	prev_delta=0;
 	weight=RAND;
 	in=i;
 	out=o;
 
 	actv_f=a;
 	deriv=d;
-	net=n;
 }
 
-/**
- * @brief Constructor
- * @param i Input neuron
- * @param o Output neuron
- * @param w Weight for the synapsis (default: random)
- * @param a Activation function
- * @param d Derivate for activation function
- */
-Synapsis::Synapsis (Neuron* i, Neuron* o, NeuralNet* n,
+Synapsis::Synapsis (Neuron* i, Neuron* o,
 		double w, double(*a)(double), double(*d)(double))  {
 	delta=0;
+	prev_delta=0;
 	weight=w;
 	in=i;
 	out=o;
 	
 	actv_f=a;
 	deriv=d;
-	net=n;
 }
 
-/**
- * @return Reference to input neuron of the synapsis
- */
 Neuron* Synapsis::getIn()  { return in; }
 
-/**
- * @return Reference to output neuron of the synapsis
- */
 Neuron* Synapsis::getOut()  { return out; }
 
-/**
- * @return Weight of the synapsis
- */
 double Synapsis::getWeight()  { return weight; }
 
-/**
- * @return Delta of the synapsis
- */
 double Synapsis::getDelta()  { return delta; }
 
-/**
- * @brief It sets the weight of the synapsis
- */
+double Synapsis::getPrevDelta()  { return prev_delta; }
+
 void Synapsis::setWeight(double w)  { weight=w; }
 
-/**
- * @brief It sets the delta (how much to change the weight after an update) 
- *  of the synapsis
- */
-void Synapsis::setDelta(double d)  { delta=d; }
+void Synapsis::setDelta(double d)  {
+	prev_delta=delta;
+	delta=d;
+}
+
+double Synapsis::momentum(int N, int x)  {
+	return (BETA0*N)/(20*x + N);
+}
 

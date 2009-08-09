@@ -7,3 +7,4 @@ clean:
 	rm learnAdd
 	rm doAdd
 	rm adderFromScratch
+	rm adder.net

@@ -21,7 +21,7 @@ using namespace neuralpp;
  * @param a Activation function
  * @param d Its derivate
  */
-Layer::Layer (size_t sz, NeuralNet* n, double(*a)(double), double(*d)(double))  {
+Layer::Layer (size_t sz, double(*a)(double), double(*d)(double))  {
 	for (size_t i=0; i<sz; i++)  {
 		Neuron n(a,d);
 		elements.push_back(n);
@@ -29,18 +29,16 @@ Layer::Layer (size_t sz, NeuralNet* n, double(*a)(double), double(*d)(double))  
 
 	actv_f=a;
 	deriv=d;
-	net=n;
 }
 
 /**
  * @brief Alternative constructor. It directly gets a vector of neurons to build
  *  the layer
  */
-Layer::Layer (vector< Neuron > &el, NeuralNet* n, double (*a)(double), double(*d)(double))  {
+Layer::Layer (vector< Neuron > &el, double (*a)(double), double(*d)(double))  {
 	elements=el;
 	actv_f=a;
 	deriv=d;
-	net=n;
 }
 
 /**
@@ -65,7 +63,7 @@ void Layer::link (Layer& l)  {
 
 		for (size_t j=0; j<size(); j++)  {
 			Neuron *n2 = &(elements[j]);
-			Synapsis s(n1, n2, net, RAND, actv_f, deriv);
+			Synapsis s(n1, n2, RAND, actv_f, deriv);
 
 			n1->push_out(s);
 			n2->push_in(s);

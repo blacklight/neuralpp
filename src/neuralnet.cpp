@@ -43,9 +43,9 @@ NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size, doubl
 	actv_f=__actv;
 	deriv=__deriv;
 
-	input  = new Layer(in_size, this, __actv, __deriv);
-	hidden = new Layer(hidden_size, this, __actv, __deriv);
-	output = new Layer(out_size, this, __actv, __deriv);
+	input  = new Layer(in_size, __actv, __deriv);
+	hidden = new Layer(hidden_size, __actv, __deriv);
+	output = new Layer(out_size, __actv, __deriv);
 	link();
 }
 
@@ -70,9 +70,9 @@ NeuralNet::NeuralNet (size_t in_size, size_t hidden_size, size_t out_size,
 	actv_f=a;
 	deriv=d;
 
-	input  = new Layer(in_size, this, a, d);
-	hidden = new Layer(hidden_size, this, a, d);
-	output = new Layer(out_size, this, a, d);
+	input  = new Layer(in_size, a, d);
+	hidden = new Layer(hidden_size, a, d);
+	output = new Layer(out_size, a, d);
 	link();
 }
 
@@ -153,7 +153,13 @@ void NeuralNet::updateWeights()  {
 
 		for (size_t j=0; j<n->nIn(); j++)  {
 			Synapsis *s = &(n->synIn(j));
-			out_delta = s->getIn()->getActv() * error(ex) * (-l_rate);
+
+			if (ref_epochs - epochs > 0)
+				out_delta = s->getIn()->getActv() * error(ex) * (-l_rate) +
+					s->momentum(ref_epochs, ref_epochs-epochs) * s->getPrevDelta();
+			else
+				out_delta = s->getIn()->getActv() * error(ex) * (-l_rate);
+
 			s->setDelta(out_delta);
 		}
 	}
@@ -164,7 +170,12 @@ void NeuralNet::updateWeights()  {
 
 		for (size_t j=0; j<n->nIn(); j++)  {
 			Synapsis *s = &(n->synIn(j));
-			s->setDelta((-l_rate) * d * s->getIn()->getActv());
+
+			if (ref_epochs - epochs > 0)
+				s->setDelta((-l_rate) * d * s->getIn()->getActv() +
+					s->momentum(ref_epochs, ref_epochs-epochs) * s->getPrevDelta());
+			else
+				s->setDelta((-l_rate) * d * s->getIn()->getActv());
 		}
 	}
 }

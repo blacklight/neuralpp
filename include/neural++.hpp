@@ -31,6 +31,9 @@ using namespace std;
 namespace neuralpp  {
 	//! Default rand value: |sin(rand)|, always >= 0 and <= 1
 	#define	RAND		( (double) abs( sinf((double) rand()) ) )
+
+	//! Initial value for the inertial momentum of the synapses
+	#define 	BETA0 	0.7
 	
 	class Synapsis;
 	class Neuron;
@@ -221,42 +224,43 @@ namespace neuralpp  {
 	 */
 	class Synapsis  {
 		double delta;
+		double prev_delta;
 		double weight;
 
 		Neuron *in;
 		Neuron *out;
-		NeuralNet *net;
 		
 		double (*actv_f)(double);
 		double (*deriv)(double);
 
 	public:
-		Synapsis(Neuron* i, Neuron* o, NeuralNet* n, double w, double d)  {
-			in=i; out=o;
-			weight=w; delta=d;
-			net=n;
-		}
+		/**
+		 * @brief Constructor
+		 * @param i Input neuron
+		 * @param o Output neuron
+		 * @param w Weight for the synapsis
+		 * @param d Delta for the synapsis
+		 */
+		Synapsis(Neuron* i, Neuron* o, double w, double d);
 
 		/**
 		 * @brief Constructor
 		 * @param i Input neuron
 		 * @param o Output neuron
-		 * @param n Reference to the neural network
 		 * @param a Activation function
 		 * @param d Derivate for activation function
 		 */
-		Synapsis (Neuron* i, Neuron* o, NeuralNet* n, double(*a)(double), double(*d)(double));
+		Synapsis (Neuron* i, Neuron* o, double(*a)(double), double(*d)(double));
 		
 		/**
 		 * @brief Constructor
 		 * @param i Input neuron
 		 * @param o Output neuron
-		 * @param n Reference to the neural network
 		 * @param w Weight for the synapsis (default: random)
 		 * @param a Activation function
 		 * @param d Derivate for activation function
 		 */
-		Synapsis (Neuron* i, Neuron* o, NeuralNet* n,
+		Synapsis (Neuron* i, Neuron* o,
 				double w, double(*a)(double), double(*d)(double));
 	
 		/**
@@ -289,6 +293,24 @@ namespace neuralpp  {
 		 * @return Delta of the synapsis
 		 */
 		double getDelta();
+		
+		/**
+		 * @brief Get the delta of the synapsis at the previous iteration
+		 * @return The previous delta
+		 */
+		double getPrevDelta();
+
+		/**
+		 * @brief Get the inertial momentum of a synapsis. This value is inversely proportional
+		 * to the number of steps done in the learning phase (quite high at the beginning, decreasing
+		 * to zero towards the end of the learning algorithm), and is needed to avoid strong
+		 * oscillations in output values at the beginning, caused by the random values assigned to
+		 * the synaptical weights
+		 * @param N The number of iterations the network must have to adjust the output values
+		 * @param x The number of iterations already taken
+		 * @return The inertial momentum of the synapsis
+		 */
+		double momentum (int N, int x);
 	};
 
 	/**
@@ -386,7 +408,6 @@ namespace neuralpp  {
 	 */
 	class Layer  {
 		vector< Neuron > elements;
-		NeuralNet *net;
 
 		void (*update_weights)();
 		double (*actv_f)(double);
@@ -396,17 +417,16 @@ namespace neuralpp  {
 		/**
 		 * @brief Constructor
 		 * @param sz Size of the layer
-		 * @param n Reference to the neural network
 		 * @param a Activation function
 		 * @param d Its derivate
 		 */
-		Layer (size_t sz, NeuralNet* n, double (*a)(double), double(*d)(double));
+		Layer (size_t sz, double (*a)(double), double(*d)(double));
 
 		/**
 		 * @brief Alternative constructor. It directly gets a vector of neurons to build
 		 *  the layer
 		 */
-		Layer (vector< Neuron >&, NeuralNet* net, double(*a)(double), double(*d)(double));
+		Layer (vector< Neuron >&, double(*a)(double), double(*d)(double));
 
 		/**
 		 * @brief Redefinition for operator []. It gets the neuron at <i>i</i>

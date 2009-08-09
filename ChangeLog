@@ -1,21 +1,47 @@
--------------------------------------------------------------------------------
-0.2.2:
-Added initXML(), XMLFromSet() and closeXML() methods to auto-generate training
-XML.
+--- 0.3 release ---
+
+2009-08-09 BlackLight <blacklight@autistici.org>
+
+	* Makefile: Totally changed
+	* neural++.hpp: Changed header name, added BETA0 macro
+	* synapsis.cpp: Added momentum() method to compute the inertial momentum
+	of a synapsis
+	* everything: Data type changed from float to double for everything
+
+--- Release 0.2.2 ---
+
+2008-11-04 BlackLight <blacklight@autistici.org>
+
+	* all: Added initXML(), XMLFromSet() and closeXML() methods to auto-
+	generate training XML.
 
 train() method can now get XML both from a file and from a simple string.
--------------------------------------------------------------------------------
-0.2.1:
-Added `train()` method to NeuralNet class, that allows you to train a neural
-network using an XML containing pre-saved training sets (input values,
-expected output). See examples/adder.xml for an example of such XML.
--------------------------------------------------------------------------------
-0.2:
-Added `save()` method to NeuralNet class, that allows you to save a trained
-neural network to a binary file, to load anytime you need using
-NeuralNet(const char *fname) constructor.
--------------------------------------------------------------------------------
-0.01b:
-First release ^^
--------------------------------------------------------------------------------
+
+--- Release 0.2.1 ---
+
+2008-10-22 BlackLight <blacklight@autistici.org>
+
+	* all: Added `train()` method to NeuralNet class, that allows you to
+	train a neural network using an XML containing pre-saved training
+	sets (input values, expected output). See examples/adder.xml for an
+	example of such XML.
+
+--- Release 0.2 ---
+
+2008-10-12 BlackLight <blacklight@autistici.org>
+
+	* all: Added `save()` method to NeuralNet class, that allows you to
+	save a trained  neural network to a binary file, to load anytime you
+	need using NeuralNet(const char *fname) constructor.
+
+--- Release 0.01b ---
+
+2008-04-03 BlackLight <blacklight@autistici.org>
+
+	* all: First beta release ^^
+
+Copyright 2008, 2009, BlackLight
+Copying and distribution of this file, with or without modification,
+are permitted provided the copyright notice and this notice are
+preserved.
 
