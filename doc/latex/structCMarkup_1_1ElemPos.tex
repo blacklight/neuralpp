@@ -1,0 +1,221 @@
+\section{CMarkup::ElemPos Struct Reference}
+\label{structCMarkup_1_1ElemPos}\index{CMarkup::ElemPos@{CMarkup::ElemPos}}
+{\tt \#include $<$Markup.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf ElemPos} ()
+\item 
+{\bf ElemPos} (const {\bf ElemPos} \&pos)
+\item 
+int {\bf StartTagLen} () const 
+\item 
+void {\bf SetStartTagLen} (int n)
+\item 
+void {\bf AdjustStartTagLen} (int n)
+\item 
+int {\bf EndTagLen} () const 
+\item 
+void {\bf SetEndTagLen} (int n)
+\item 
+bool {\bf IsEmptyElement} ()
+\item 
+int {\bf StartContent} () const 
+\item 
+int {\bf ContentLen} () const 
+\item 
+int {\bf StartAfter} () const 
+\item 
+int {\bf Level} () const 
+\item 
+void {\bf SetLevel} (int nLev)
+\item 
+void {\bf ClearVirtualParent} ()
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+int {\bf nStart}
+\item 
+int {\bf nLength}
+\item 
+unsigned int {\bf nStartTagLen}: 22
+\item 
+unsigned int {\bf nEndTagLen}: 10
+\item 
+int {\bf nFlags}
+\item 
+int {\bf iElemParent}
+\item 
+int {\bf iElemChild}
+\item 
+int {\bf iElemNext}
+\item 
+int {\bf iElemPrev}
+\end{CompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{CMarkup::ElemPos@{CMarkup::ElemPos}!ElemPos@{ElemPos}}
+\index{ElemPos@{ElemPos}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[ElemPos]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::ElemPos::ElemPos ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_7ba7e4930d77275e80e38ea151b2807b}
+
+
+\index{CMarkup::ElemPos@{CMarkup::ElemPos}!ElemPos@{ElemPos}}
+\index{ElemPos@{ElemPos}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[ElemPos]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::ElemPos::ElemPos (const {\bf ElemPos} \& {\em pos})\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_739a02a2c992cde556999155bee37e21}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{CMarkup::ElemPos@{CMarkup::ElemPos}!StartTagLen@{StartTagLen}}
+\index{StartTagLen@{StartTagLen}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[StartTagLen]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::ElemPos::StartTagLen () const\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_987926f5677976e6288e5b4c3a224d96}
+
+
+
+
+References nStartTagLen.
+
+Referenced by ContentLen(), IsEmptyElement(), and StartContent().\index{CMarkup::ElemPos@{CMarkup::ElemPos}!SetStartTagLen@{SetStartTagLen}}
+\index{SetStartTagLen@{SetStartTagLen}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[SetStartTagLen]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::ElemPos::SetStartTagLen (int {\em n})\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_6f366b2f636e221db004bf44fd952912}
+
+
+
+
+References nStartTagLen.\index{CMarkup::ElemPos@{CMarkup::ElemPos}!AdjustStartTagLen@{AdjustStartTagLen}}
+\index{AdjustStartTagLen@{AdjustStartTagLen}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[AdjustStartTagLen]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::ElemPos::AdjustStartTagLen (int {\em n})\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_3140f418c80056cb8aba69a270c6a71d}
+
+
+
+
+References nStartTagLen.\index{CMarkup::ElemPos@{CMarkup::ElemPos}!EndTagLen@{EndTagLen}}
+\index{EndTagLen@{EndTagLen}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[EndTagLen]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::ElemPos::EndTagLen () const\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_d9d0ad0c48a129555d1052e98e4f71bd}
+
+
+
+
+References nEndTagLen.
+
+Referenced by ContentLen().\index{CMarkup::ElemPos@{CMarkup::ElemPos}!SetEndTagLen@{SetEndTagLen}}
+\index{SetEndTagLen@{SetEndTagLen}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[SetEndTagLen]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::ElemPos::SetEndTagLen (int {\em n})\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_e427d1e0e53cfd0fe1c278f34c585bc9}
+
+
+
+
+References nEndTagLen.\index{CMarkup::ElemPos@{CMarkup::ElemPos}!IsEmptyElement@{IsEmptyElement}}
+\index{IsEmptyElement@{IsEmptyElement}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[IsEmptyElement]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::ElemPos::IsEmptyElement ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_97093aa0ddbd691dd00c91c945a3e98a}
+
+
+
+
+References nLength, and StartTagLen().\index{CMarkup::ElemPos@{CMarkup::ElemPos}!StartContent@{StartContent}}
+\index{StartContent@{StartContent}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[StartContent]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::ElemPos::StartContent () const\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_853d5e4a5c6b03643e7210671385896c}
+
+
+
+
+References nStart, and StartTagLen().\index{CMarkup::ElemPos@{CMarkup::ElemPos}!ContentLen@{ContentLen}}
+\index{ContentLen@{ContentLen}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[ContentLen]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::ElemPos::ContentLen () const\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_9099635ab9239103aa930b2f1a456d2d}
+
+
+
+
+References EndTagLen(), nLength, and StartTagLen().\index{CMarkup::ElemPos@{CMarkup::ElemPos}!StartAfter@{StartAfter}}
+\index{StartAfter@{StartAfter}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[StartAfter]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::ElemPos::StartAfter () const\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_e1e21b6e27db22eda6178898d2aa42d3}
+
+
+
+
+References nLength, and nStart.\index{CMarkup::ElemPos@{CMarkup::ElemPos}!Level@{Level}}
+\index{Level@{Level}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[Level]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::ElemPos::Level () const\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_cdea1fc74ed96d413138c6c2d9b0a4f7}
+
+
+
+
+References nFlags.\index{CMarkup::ElemPos@{CMarkup::ElemPos}!SetLevel@{SetLevel}}
+\index{SetLevel@{SetLevel}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[SetLevel]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::ElemPos::SetLevel (int {\em nLev})\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_625d84902ebb86bda4d5c5720f00e885}
+
+
+
+
+References nFlags.\index{CMarkup::ElemPos@{CMarkup::ElemPos}!ClearVirtualParent@{ClearVirtualParent}}
+\index{ClearVirtualParent@{ClearVirtualParent}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[ClearVirtualParent]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::ElemPos::ClearVirtualParent ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1ElemPos_b70cf4ad47e44a2d4c7f6c06a2ff0659}
+
+
+
+
+\subsection{Member Data Documentation}
+\index{CMarkup::ElemPos@{CMarkup::ElemPos}!nStart@{nStart}}
+\index{nStart@{nStart}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[nStart]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::ElemPos::nStart}}\label{structCMarkup_1_1ElemPos_37cbff8b4e0d5b086970efb1bc9b70fe}
+
+
+
+
+Referenced by StartAfter(), and StartContent().\index{CMarkup::ElemPos@{CMarkup::ElemPos}!nLength@{nLength}}
+\index{nLength@{nLength}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[nLength]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::ElemPos::nLength}}\label{structCMarkup_1_1ElemPos_d9d89d7af0f4cb69b0b1f4d0b5d4953f}
+
+
+
+
+Referenced by ContentLen(), IsEmptyElement(), and StartAfter().\index{CMarkup::ElemPos@{CMarkup::ElemPos}!nStartTagLen@{nStartTagLen}}
+\index{nStartTagLen@{nStartTagLen}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[nStartTagLen]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf CMarkup::ElemPos::nStartTagLen}}\label{structCMarkup_1_1ElemPos_c929700bbc1ec8b928253235dd5038af}
+
+
+
+
+Referenced by AdjustStartTagLen(), SetStartTagLen(), and StartTagLen().\index{CMarkup::ElemPos@{CMarkup::ElemPos}!nEndTagLen@{nEndTagLen}}
+\index{nEndTagLen@{nEndTagLen}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[nEndTagLen]{\setlength{\rightskip}{0pt plus 5cm}unsigned int {\bf CMarkup::ElemPos::nEndTagLen}}\label{structCMarkup_1_1ElemPos_a53ebdfa2aecc621f9cdde9c247d3357}
+
+
+
+
+Referenced by EndTagLen(), and SetEndTagLen().\index{CMarkup::ElemPos@{CMarkup::ElemPos}!nFlags@{nFlags}}
+\index{nFlags@{nFlags}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[nFlags]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::ElemPos::nFlags}}\label{structCMarkup_1_1ElemPos_586bb5a2dc7f48ac1417ffd07319a9c9}
+
+
+
+
+Referenced by Level(), and SetLevel().\index{CMarkup::ElemPos@{CMarkup::ElemPos}!iElemParent@{iElemParent}}
+\index{iElemParent@{iElemParent}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[iElemParent]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::ElemPos::iElemParent}}\label{structCMarkup_1_1ElemPos_e579f35b6cdee1609c6835eddf2b5b03}
+
+
+\index{CMarkup::ElemPos@{CMarkup::ElemPos}!iElemChild@{iElemChild}}
+\index{iElemChild@{iElemChild}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[iElemChild]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::ElemPos::iElemChild}}\label{structCMarkup_1_1ElemPos_3449b75f915ff4900af177d9a91d91d1}
+
+
+\index{CMarkup::ElemPos@{CMarkup::ElemPos}!iElemNext@{iElemNext}}
+\index{iElemNext@{iElemNext}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[iElemNext]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::ElemPos::iElemNext}}\label{structCMarkup_1_1ElemPos_c61f6c9ee6421801e94d7df7afa4f1ed}
+
+
+\index{CMarkup::ElemPos@{CMarkup::ElemPos}!iElemPrev@{iElemPrev}}
+\index{iElemPrev@{iElemPrev}!CMarkup::ElemPos@{CMarkup::ElemPos}}
+\subsubsection[iElemPrev]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::ElemPos::iElemPrev}}\label{structCMarkup_1_1ElemPos_45534bddcab1f12a8452a070368488ca}
+
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf Markup.h}\end{CompactItemize}

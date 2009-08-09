@@ -1,0 +1,385 @@
+\section{Markup.h File Reference}
+\label{Markup_8h}\index{Markup.h@{Markup.h}}
+{\tt \#include $<$stdlib.h$>$}\par
+{\tt \#include $<$string.h$>$}\par
+{\tt \#include $<$string$>$}\par
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct {\bf MCD\_\-CSTR}
+\item 
+class {\bf CMarkup}
+\item 
+struct {\bf CMarkup::ElemPos}
+\item 
+struct {\bf CMarkup::NodePos}
+\item 
+struct {\bf CMarkup::TokenPos}
+\item 
+struct {\bf CMarkup::SavedPos}
+\item 
+struct {\bf CMarkup::SavedPosMap}
+\item 
+struct {\bf CMarkup::SavedPosMapArray}
+\item 
+struct {\bf CMarkup::PosArray}
+\item 
+struct {\bf CMarkup::NodeStack}
+\item 
+struct {\bf CMarkup::FilePos}
+\item 
+struct {\bf CMarkup::ConvertEncoding}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf \_\-MARKUP\_\-H\_\-INCLUDED\_\-}
+\item 
+\#define {\bf MARKUP\_\-STL}
+\item 
+\#define {\bf MARKUP\_\-SIZEOFWCHAR}~2
+\item 
+\#define {\bf MARKUP\_\-WINCONV}
+\item 
+\#define {\bf MCD\_\-ACP}~0
+\item 
+\#define {\bf MCD\_\-UTF8}~65001
+\item 
+\#define {\bf MCD\_\-UTF16}~1200
+\item 
+\#define {\bf MCD\_\-UTF32}~65005
+\item 
+\#define {\bf MCD\_\-CHAR}~char
+\item 
+\#define {\bf MCD\_\-PCSZ}~const char$\ast$
+\item 
+\#define {\bf MCD\_\-PSZLEN}~(int)strlen
+\item 
+\#define {\bf MCD\_\-PSZCHR}~strchr
+\item 
+\#define {\bf MCD\_\-PSZSTR}~strstr
+\item 
+\#define {\bf MCD\_\-PSZTOL}~strtol
+\item 
+\#define {\bf MCD\_\-PSZNCMP}~strncmp
+\item 
+\#define {\bf MCD\_\-SSZ}(sz)~sz
+\item 
+\#define {\bf MCD\_\-PSZCPY}~strcpy
+\item 
+\#define {\bf MCD\_\-PSZNCPY}~strncpy
+\item 
+\#define {\bf MCD\_\-PSZCAT}~strcat
+\item 
+\#define {\bf MCD\_\-SPRINTF}~sprintf
+\item 
+\#define {\bf MCD\_\-FOPEN}(f, n, m)~f=fopen(n,m)
+\item 
+\#define {\bf MCD\_\-T}(s)~s
+\item 
+\#define {\bf MCD\_\-ENC}~MCD\_\-T(\char`\"{}UTF-8\char`\"{})
+\item 
+\#define {\bf MCD\_\-CLEN}(p)~1
+\item 
+\#define {\bf MCD\_\-STRERROR}~strerror(errno)
+\item 
+\#define {\bf MCD\_\-STR}~std::string
+\item 
+\#define {\bf MCD\_\-2PCSZ}(s)~s.c\_\-str()
+\item 
+\#define {\bf MCD\_\-STRLENGTH}(s)~(int)s.size()
+\item 
+\#define {\bf MCD\_\-STRCLEAR}(s)~s.erase()
+\item 
+\#define {\bf MCD\_\-STRISEMPTY}(s)~s.empty()
+\item 
+\#define {\bf MCD\_\-STRMID}(s, n, l)~s.substr(n,l)
+\item 
+\#define {\bf MCD\_\-STRASSIGN}(s, p, n)~s.assign(p,n)
+\item 
+\#define {\bf MCD\_\-STRCAPACITY}(s)~(int)s.capacity()
+\item 
+\#define {\bf MCD\_\-STRINSERTREPLACE}(d, i, r, s)~d.replace(i,r,s)
+\item 
+\#define {\bf MCD\_\-GETBUFFER}(s, n)~new MCD\_\-CHAR[n+1]; s.reserve(n)
+\item 
+\#define {\bf MCD\_\-RELEASEBUFFER}(s, p, n)~s.assign(p,n); delete[$\,$]p
+\item 
+\#define {\bf MCD\_\-BLDRESERVE}(s, n)~s.reserve(n)
+\item 
+\#define {\bf MCD\_\-BLDCHECK}(s, n, d)~;
+\item 
+\#define {\bf MCD\_\-BLDRELEASE}(s)~;
+\item 
+\#define {\bf MCD\_\-BLDAPPENDN}(s, p, n)~s.append(p,n)
+\item 
+\#define {\bf MCD\_\-BLDAPPEND}(s, p)~s.append(p)
+\item 
+\#define {\bf MCD\_\-BLDAPPEND1}(s, c)~s+=(MCD\_\-CHAR)(c)
+\item 
+\#define {\bf MCD\_\-STRTOINT}(s)~MCD\_\-PSZTOL(MCD\_\-2PCSZ(s),NULL,10)
+\item 
+\#define {\bf MCD\_\-CSTR\_\-FILENAME}~{\bf MCD\_\-CSTR}
+\item 
+\#define {\bf MCD\_\-T\_\-FILENAME}~MCD\_\-T
+\item 
+\#define {\bf MCD\_\-PCSZ\_\-FILENAME}~MCD\_\-PCSZ
+\item 
+\#define {\bf MARKUP\_\-SETDEBUGSTATE}
+\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{Markup.h@{Markup.h}!\_\-MARKUP\_\-H\_\-INCLUDED\_\-@{\_\-MARKUP\_\-H\_\-INCLUDED\_\-}}
+\index{\_\-MARKUP\_\-H\_\-INCLUDED\_\-@{\_\-MARKUP\_\-H\_\-INCLUDED\_\-}!Markup.h@{Markup.h}}
+\subsubsection[\_\-MARKUP\_\-H\_\-INCLUDED\_\-]{\setlength{\rightskip}{0pt plus 5cm}\#define \_\-MARKUP\_\-H\_\-INCLUDED\_\-}\label{Markup_8h_964424c93c5bcf9f53d1bfb1f48dded8}
+
+
+\index{Markup.h@{Markup.h}!MARKUP\_\-SETDEBUGSTATE@{MARKUP\_\-SETDEBUGSTATE}}
+\index{MARKUP\_\-SETDEBUGSTATE@{MARKUP\_\-SETDEBUGSTATE}!Markup.h@{Markup.h}}
+\subsubsection[MARKUP\_\-SETDEBUGSTATE]{\setlength{\rightskip}{0pt plus 5cm}\#define MARKUP\_\-SETDEBUGSTATE}\label{Markup_8h_eb217cbc320c044ab434a9765f3c43da}
+
+
+
+
+Referenced by CMarkup::x\_\-SetPos().\index{Markup.h@{Markup.h}!MARKUP\_\-SIZEOFWCHAR@{MARKUP\_\-SIZEOFWCHAR}}
+\index{MARKUP\_\-SIZEOFWCHAR@{MARKUP\_\-SIZEOFWCHAR}!Markup.h@{Markup.h}}
+\subsubsection[MARKUP\_\-SIZEOFWCHAR]{\setlength{\rightskip}{0pt plus 5cm}\#define MARKUP\_\-SIZEOFWCHAR~2}\label{Markup_8h_56bf764d158432507ce70140a7a39796}
+
+
+\index{Markup.h@{Markup.h}!MARKUP\_\-STL@{MARKUP\_\-STL}}
+\index{MARKUP\_\-STL@{MARKUP\_\-STL}!Markup.h@{Markup.h}}
+\subsubsection[MARKUP\_\-STL]{\setlength{\rightskip}{0pt plus 5cm}\#define MARKUP\_\-STL}\label{Markup_8h_068f185d8c3f5030193410463434700e}
+
+
+\index{Markup.h@{Markup.h}!MARKUP\_\-WINCONV@{MARKUP\_\-WINCONV}}
+\index{MARKUP\_\-WINCONV@{MARKUP\_\-WINCONV}!Markup.h@{Markup.h}}
+\subsubsection[MARKUP\_\-WINCONV]{\setlength{\rightskip}{0pt plus 5cm}\#define MARKUP\_\-WINCONV}\label{Markup_8h_dbc6eaa1c00e7bd9a20a31e034dd2e81}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-2PCSZ@{MCD\_\-2PCSZ}}
+\index{MCD\_\-2PCSZ@{MCD\_\-2PCSZ}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-2PCSZ]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-2PCSZ(s)~s.c\_\-str()}\label{Markup_8h_8308b5dc66582065497df0946227c24f}
+
+
+
+
+Referenced by MCD\_\-CSTR::MCD\_\-CSTR().\index{Markup.h@{Markup.h}!MCD\_\-ACP@{MCD\_\-ACP}}
+\index{MCD\_\-ACP@{MCD\_\-ACP}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-ACP]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-ACP~0}\label{Markup_8h_4b7b55ce45b2dc0166e17835c36d24ae}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-BLDAPPEND@{MCD\_\-BLDAPPEND}}
+\index{MCD\_\-BLDAPPEND@{MCD\_\-BLDAPPEND}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-BLDAPPEND]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-BLDAPPEND(s, \/  p)~s.append(p)}\label{Markup_8h_1b5b2dbff24ec07b7f947a92c79374db}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-BLDAPPEND1@{MCD\_\-BLDAPPEND1}}
+\index{MCD\_\-BLDAPPEND1@{MCD\_\-BLDAPPEND1}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-BLDAPPEND1]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-BLDAPPEND1(s, \/  c)~s+=(MCD\_\-CHAR)(c)}\label{Markup_8h_66fdcace6236f2f212b819bbb607eb00}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-BLDAPPENDN@{MCD\_\-BLDAPPENDN}}
+\index{MCD\_\-BLDAPPENDN@{MCD\_\-BLDAPPENDN}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-BLDAPPENDN]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-BLDAPPENDN(s, \/  p, \/  n)~s.append(p,n)}\label{Markup_8h_3fa052a44a1028c32ec80a98e2dc2ee2}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-BLDCHECK@{MCD\_\-BLDCHECK}}
+\index{MCD\_\-BLDCHECK@{MCD\_\-BLDCHECK}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-BLDCHECK]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-BLDCHECK(s, \/  n, \/  d)~;}\label{Markup_8h_462dda37bd35bcc7de74c6f137678994}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-BLDRELEASE@{MCD\_\-BLDRELEASE}}
+\index{MCD\_\-BLDRELEASE@{MCD\_\-BLDRELEASE}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-BLDRELEASE]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-BLDRELEASE(s)~;}\label{Markup_8h_9ed9b064f852a4ad5a9727b72f09c761}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-BLDRESERVE@{MCD\_\-BLDRESERVE}}
+\index{MCD\_\-BLDRESERVE@{MCD\_\-BLDRESERVE}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-BLDRESERVE]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-BLDRESERVE(s, \/  n)~s.reserve(n)}\label{Markup_8h_3db4aba7b130d4d0ca7eece1314464e8}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-CHAR@{MCD\_\-CHAR}}
+\index{MCD\_\-CHAR@{MCD\_\-CHAR}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-CHAR]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-CHAR~char}\label{Markup_8h_12bf56fe481c397f8df59076c90c45a6}
+
+
+
+
+Referenced by CMarkup::TokenPos::StrNIACmp(), and CMarkup::x\_\-IntToStr().\index{Markup.h@{Markup.h}!MCD\_\-CLEN@{MCD\_\-CLEN}}
+\index{MCD\_\-CLEN@{MCD\_\-CLEN}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-CLEN]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-CLEN(p)~1}\label{Markup_8h_d56c92f847a54f85e183ebc96422db7b}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-CSTR\_\-FILENAME@{MCD\_\-CSTR\_\-FILENAME}}
+\index{MCD\_\-CSTR\_\-FILENAME@{MCD\_\-CSTR\_\-FILENAME}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-CSTR\_\-FILENAME]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-CSTR\_\-FILENAME~{\bf MCD\_\-CSTR}}\label{Markup_8h_b7f2fa74461b566c44371deb46c73de2}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-ENC@{MCD\_\-ENC}}
+\index{MCD\_\-ENC@{MCD\_\-ENC}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-ENC]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-ENC~MCD\_\-T(\char`\"{}UTF-8\char`\"{})}\label{Markup_8h_76b22bbde60fb0f34064d566e89c456a}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-FOPEN@{MCD\_\-FOPEN}}
+\index{MCD\_\-FOPEN@{MCD\_\-FOPEN}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-FOPEN]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-FOPEN(f, \/  n, \/  m)~f=fopen(n,m)}\label{Markup_8h_f539ef4d57b2dc09eae1ff35115d30b3}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-GETBUFFER@{MCD\_\-GETBUFFER}}
+\index{MCD\_\-GETBUFFER@{MCD\_\-GETBUFFER}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-GETBUFFER]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-GETBUFFER(s, \/  n)~new MCD\_\-CHAR[n+1]; s.reserve(n)}\label{Markup_8h_8bec93c42fdcd4f51326f897d2185aa8}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-PCSZ@{MCD\_\-PCSZ}}
+\index{MCD\_\-PCSZ@{MCD\_\-PCSZ}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-PCSZ]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-PCSZ~const char$\ast$}\label{Markup_8h_edde484976c7ebb2e31d6be23e669128}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-PCSZ\_\-FILENAME@{MCD\_\-PCSZ\_\-FILENAME}}
+\index{MCD\_\-PCSZ\_\-FILENAME@{MCD\_\-PCSZ\_\-FILENAME}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-PCSZ\_\-FILENAME]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-PCSZ\_\-FILENAME~MCD\_\-PCSZ}\label{Markup_8h_7dbef2772d51e540f1dfc521c1fa5866}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-PSZCAT@{MCD\_\-PSZCAT}}
+\index{MCD\_\-PSZCAT@{MCD\_\-PSZCAT}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-PSZCAT]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-PSZCAT~strcat}\label{Markup_8h_1f111b6472a97a8308f47a42a5ca02c0}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-PSZCHR@{MCD\_\-PSZCHR}}
+\index{MCD\_\-PSZCHR@{MCD\_\-PSZCHR}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-PSZCHR]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-PSZCHR~strchr}\label{Markup_8h_0b4f312ed85cdcdafc5ed8c88da98ce9}
+
+
+
+
+Referenced by CMarkup::TokenPos::Match().\index{Markup.h@{Markup.h}!MCD\_\-PSZCPY@{MCD\_\-PSZCPY}}
+\index{MCD\_\-PSZCPY@{MCD\_\-PSZCPY}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-PSZCPY]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-PSZCPY~strcpy}\label{Markup_8h_ff4771eb9cee750223aa117b8cafdab6}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-PSZLEN@{MCD\_\-PSZLEN}}
+\index{MCD\_\-PSZLEN@{MCD\_\-PSZLEN}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-PSZLEN]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-PSZLEN~(int)strlen}\label{Markup_8h_f8601b14e21b7fe9a4b55953ddbb75c2}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-PSZNCMP@{MCD\_\-PSZNCMP}}
+\index{MCD\_\-PSZNCMP@{MCD\_\-PSZNCMP}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-PSZNCMP]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-PSZNCMP~strncmp}\label{Markup_8h_4e2907b0d2098130db8cffd774afef88}
+
+
+
+
+Referenced by CMarkup::TokenPos::Match().\index{Markup.h@{Markup.h}!MCD\_\-PSZNCPY@{MCD\_\-PSZNCPY}}
+\index{MCD\_\-PSZNCPY@{MCD\_\-PSZNCPY}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-PSZNCPY]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-PSZNCPY~strncpy}\label{Markup_8h_6abfcd289e88bf2cd4a7e26abf231551}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-PSZSTR@{MCD\_\-PSZSTR}}
+\index{MCD\_\-PSZSTR@{MCD\_\-PSZSTR}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-PSZSTR]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-PSZSTR~strstr}\label{Markup_8h_d63af44417f9dcdb5ee845a08cbd19d2}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-PSZTOL@{MCD\_\-PSZTOL}}
+\index{MCD\_\-PSZTOL@{MCD\_\-PSZTOL}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-PSZTOL]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-PSZTOL~strtol}\label{Markup_8h_0f9f184175207bff11e204540c56b473}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-RELEASEBUFFER@{MCD\_\-RELEASEBUFFER}}
+\index{MCD\_\-RELEASEBUFFER@{MCD\_\-RELEASEBUFFER}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-RELEASEBUFFER]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-RELEASEBUFFER(s, \/  p, \/  n)~s.assign(p,n); delete[$\,$]p}\label{Markup_8h_c7aebf04b6e902c953c2422b65cde140}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-SPRINTF@{MCD\_\-SPRINTF}}
+\index{MCD\_\-SPRINTF@{MCD\_\-SPRINTF}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-SPRINTF]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-SPRINTF~sprintf}\label{Markup_8h_fdebb4fe97791f466e9e52337e36e707}
+
+
+
+
+Referenced by CMarkup::x\_\-IntToStr().\index{Markup.h@{Markup.h}!MCD\_\-SSZ@{MCD\_\-SSZ}}
+\index{MCD\_\-SSZ@{MCD\_\-SSZ}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-SSZ]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-SSZ(sz)~sz}\label{Markup_8h_c327a6af700343d0cced4ed2bf855460}
+
+
+
+
+Referenced by CMarkup::x\_\-IntToStr().\index{Markup.h@{Markup.h}!MCD\_\-STR@{MCD\_\-STR}}
+\index{MCD\_\-STR@{MCD\_\-STR}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-STR]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-STR~std::string}\label{Markup_8h_1b37b66197558752f7dfcdb82011648b}
+
+
+
+
+Referenced by CMarkup::x\_\-IntToStr().\index{Markup.h@{Markup.h}!MCD\_\-STRASSIGN@{MCD\_\-STRASSIGN}}
+\index{MCD\_\-STRASSIGN@{MCD\_\-STRASSIGN}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-STRASSIGN]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-STRASSIGN(s, \/  p, \/  n)~s.assign(p,n)}\label{Markup_8h_25a39e06935325797827ef910d1e9c33}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-STRCAPACITY@{MCD\_\-STRCAPACITY}}
+\index{MCD\_\-STRCAPACITY@{MCD\_\-STRCAPACITY}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-STRCAPACITY]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-STRCAPACITY(s)~(int)s.capacity()}\label{Markup_8h_86a80a1134afea2893d7f10fe7a94656}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-STRCLEAR@{MCD\_\-STRCLEAR}}
+\index{MCD\_\-STRCLEAR@{MCD\_\-STRCLEAR}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-STRCLEAR]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-STRCLEAR(s)~s.erase()}\label{Markup_8h_f26261378df965f267408dad0fc32731}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-STRERROR@{MCD\_\-STRERROR}}
+\index{MCD\_\-STRERROR@{MCD\_\-STRERROR}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-STRERROR]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-STRERROR~strerror(errno)}\label{Markup_8h_1930dded538d6aeb11899a588cbe0694}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-STRINSERTREPLACE@{MCD\_\-STRINSERTREPLACE}}
+\index{MCD\_\-STRINSERTREPLACE@{MCD\_\-STRINSERTREPLACE}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-STRINSERTREPLACE]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-STRINSERTREPLACE(d, \/  i, \/  r, \/  s)~d.replace(i,r,s)}\label{Markup_8h_e858b63711717ae98a1ef06b8c992c46}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-STRISEMPTY@{MCD\_\-STRISEMPTY}}
+\index{MCD\_\-STRISEMPTY@{MCD\_\-STRISEMPTY}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-STRISEMPTY]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-STRISEMPTY(s)~s.empty()}\label{Markup_8h_2790455cead9f63ecdd40f3a1391fdb4}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-STRLENGTH@{MCD\_\-STRLENGTH}}
+\index{MCD\_\-STRLENGTH@{MCD\_\-STRLENGTH}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-STRLENGTH]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-STRLENGTH(s)~(int)s.size()}\label{Markup_8h_0cf539be69b737a377b5ba5080febc17}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-STRMID@{MCD\_\-STRMID}}
+\index{MCD\_\-STRMID@{MCD\_\-STRMID}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-STRMID]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-STRMID(s, \/  n, \/  l)~s.substr(n,l)}\label{Markup_8h_9ac43f7dfd3f9b4a40fa2975a4289037}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-STRTOINT@{MCD\_\-STRTOINT}}
+\index{MCD\_\-STRTOINT@{MCD\_\-STRTOINT}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-STRTOINT]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-STRTOINT(s)~MCD\_\-PSZTOL(MCD\_\-2PCSZ(s),NULL,10)}\label{Markup_8h_d943bd4174ba98a10524bc437d0c0d50}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-T@{MCD\_\-T}}
+\index{MCD\_\-T@{MCD\_\-T}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-T]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-T(s)~s}\label{Markup_8h_3717b2fa88d73f5f346ec6efdfbe2032}
+
+
+
+
+Referenced by CMarkup::TokenPos::Match(), and CMarkup::x\_\-IntToStr().\index{Markup.h@{Markup.h}!MCD\_\-T\_\-FILENAME@{MCD\_\-T\_\-FILENAME}}
+\index{MCD\_\-T\_\-FILENAME@{MCD\_\-T\_\-FILENAME}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-T\_\-FILENAME]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-T\_\-FILENAME~MCD\_\-T}\label{Markup_8h_c5dd80c2be80f6331999ca42ba047aca}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-UTF16@{MCD\_\-UTF16}}
+\index{MCD\_\-UTF16@{MCD\_\-UTF16}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-UTF16]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-UTF16~1200}\label{Markup_8h_d9263b419662458249b697e27f9af6ee}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-UTF32@{MCD\_\-UTF32}}
+\index{MCD\_\-UTF32@{MCD\_\-UTF32}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-UTF32]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-UTF32~65005}\label{Markup_8h_534d77c158c8f18fd0b5f238f8715a31}
+
+
+\index{Markup.h@{Markup.h}!MCD\_\-UTF8@{MCD\_\-UTF8}}
+\index{MCD\_\-UTF8@{MCD\_\-UTF8}!Markup.h@{Markup.h}}
+\subsubsection[MCD\_\-UTF8]{\setlength{\rightskip}{0pt plus 5cm}\#define MCD\_\-UTF8~65001}\label{Markup_8h_ee5e990ae605088df779ccb343b44e66}
+
+

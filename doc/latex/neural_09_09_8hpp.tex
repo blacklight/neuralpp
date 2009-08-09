@@ -1,0 +1,54 @@
+\section{neural++.hpp File Reference}
+\label{neural_09_09_8hpp}\index{neural++.hpp@{neural++.hpp}}
+{\tt \#include $<$vector$>$}\par
+{\tt \#include $<$string$>$}\par
+{\tt \#include $<$cmath$>$}\par
+{\tt \#include $<$ctime$>$}\par
+{\tt \#include $<$cstdio$>$}\par
+{\tt \#include \char`\"{}neural++\_\-exception.hpp\char`\"{}}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace {\bf neuralpp}
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class {\bf neuralpp::NeuralNet}
+\begin{CompactList}\small\item\em Main project's class. \item\end{CompactList}\item 
+class {\bf neuralpp::Synapsis}
+\begin{CompactList}\small\item\em Class for managing synapsis. \item\end{CompactList}\item 
+class {\bf neuralpp::Neuron}
+\begin{CompactList}\small\item\em Class for managing neurons. \item\end{CompactList}\item 
+class {\bf neuralpp::Layer}
+\begin{CompactList}\small\item\em Class for managing layers of neurons. \item\end{CompactList}\item 
+struct {\bf neuralpp::netrecord}
+\item 
+struct {\bf neuralpp::neuronrecord}
+\item 
+struct {\bf neuralpp::synrecord}
+\end{CompactItemize}
+\subsection*{Defines}
+\begin{CompactItemize}
+\item 
+\#define {\bf RAND}~( abs( sin(rand()) ) )
+\begin{CompactList}\small\item\em Default rand value: $|$sin(rand)$|$, always $>$= 0 and $<$= 1. \item\end{CompactList}\item 
+\#define {\bf BETA0}~0.7
+\begin{CompactList}\small\item\em Initial value for the inertial momentum of the synapses. \item\end{CompactList}\end{CompactItemize}
+
+
+\subsection{Define Documentation}
+\index{neural++.hpp@{neural++.hpp}!BETA0@{BETA0}}
+\index{BETA0@{BETA0}!neural++.hpp@{neural++.hpp}}
+\subsubsection[BETA0]{\setlength{\rightskip}{0pt plus 5cm}\#define BETA0~0.7}\label{neural_09_09_8hpp_05e2bb5b9fc32f0b6b4d84fe43177d72}
+
+
+Initial value for the inertial momentum of the synapses. 
+
+\index{neural++.hpp@{neural++.hpp}!RAND@{RAND}}
+\index{RAND@{RAND}!neural++.hpp@{neural++.hpp}}
+\subsubsection[RAND]{\setlength{\rightskip}{0pt plus 5cm}\#define RAND~( abs( sin(rand()) ) )}\label{neural_09_09_8hpp_839a9222721835f53c5b248241f535f4}
+
+
+Default rand value: $|$sin(rand)$|$, always $>$= 0 and $<$= 1. 
+

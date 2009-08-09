@@ -1,0 +1,252 @@
+\section{neuralpp::Neuron Class Reference}
+\label{classneuralpp_1_1Neuron}\index{neuralpp::Neuron@{neuralpp::Neuron}}
+Class for managing neurons.  
+
+
+{\tt \#include $<$neural++.hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Neuron} (double($\ast$a)(double), double($\ast$d)(double))
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
+{\bf Neuron} (vector$<$ {\bf Synapsis} $>$ {\bf in}, vector$<$ {\bf Synapsis} $>$ {\bf out}, double($\ast$a)(double), double($\ast$d)(double))
+\begin{CompactList}\small\item\em Alternative constructor, that gets also the synapsis linked to the neuron. \item\end{CompactList}\item 
+{\bf Synapsis} \& {\bf synIn} (size\_\-t i)
+\begin{CompactList}\small\item\em Get the i-th synapsis connected on the input of the neuron. \item\end{CompactList}\item 
+{\bf Synapsis} \& {\bf synOut} (size\_\-t i)
+\begin{CompactList}\small\item\em Get the i-th synapsis connected on the output of the neuron. \item\end{CompactList}\item 
+void {\bf push\_\-in} ({\bf Synapsis} \&s)
+\begin{CompactList}\small\item\em It pushes a new input synapsis. \item\end{CompactList}\item 
+void {\bf push\_\-out} ({\bf Synapsis} \&s)
+\begin{CompactList}\small\item\em It pushes a new output synapsis. \item\end{CompactList}\item 
+void {\bf setActv} (double a)
+\begin{CompactList}\small\item\em Change the activation value of the neuron. \item\end{CompactList}\item 
+void {\bf setProp} (double p)
+\begin{CompactList}\small\item\em Change the propagation value of the neuron. \item\end{CompactList}\item 
+double {\bf getActv} ()
+\begin{CompactList}\small\item\em Get the activation value of the neuron. \item\end{CompactList}\item 
+double {\bf getProp} ()
+\begin{CompactList}\small\item\em Get the propagation value of the neuron. \item\end{CompactList}\item 
+double {\bf propagate} ()
+\begin{CompactList}\small\item\em It propagates its activation value to the connected neurons. \item\end{CompactList}\item 
+size\_\-t {\bf nIn} ()
+\begin{CompactList}\small\item\em Get the number of input synapsis for the neuron. \item\end{CompactList}\item 
+size\_\-t {\bf nOut} ()
+\begin{CompactList}\small\item\em Get the number of output synapsis for the neuron. \item\end{CompactList}\item 
+void {\bf synClear} ()
+\begin{CompactList}\small\item\em Remove input and output synapsis from a neuron. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+double {\bf actv\_\-val}
+\item 
+double {\bf prop\_\-val}
+\item 
+vector$<$ {\bf Synapsis} $>$ {\bf in}
+\item 
+vector$<$ {\bf Synapsis} $>$ {\bf out}
+\item 
+double($\ast$ {\bf actv\_\-f} )(double)
+\item 
+double($\ast$ {\bf deriv} )(double)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class for managing neurons. 
+
+Don't use this class directly unless you know what you're doing, use \doxyref{NeuralNet}{p.}{classneuralpp_1_1NeuralNet} instead 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[Neuron]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Neuron::Neuron (double($\ast$)(double) {\em a}, \/  double($\ast$)(double) {\em d})}\label{classneuralpp_1_1Neuron_c877424a295478e3464046ea43c2a7ad}
+
+
+Constructor. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a}]Activation function \item[{\em d}]Its derivate \end{description}
+\end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!Neuron@{Neuron}}
+\index{Neuron@{Neuron}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[Neuron]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Neuron::Neuron (vector$<$ {\bf Synapsis} $>$ {\em in}, \/  vector$<$ {\bf Synapsis} $>$ {\em out}, \/  double($\ast$)(double) {\em a}, \/  double($\ast$)(double) {\em d})}\label{classneuralpp_1_1Neuron_e25546d4f7126f106c2f3b2d8ed2c792}
+
+
+Alternative constructor, that gets also the synapsis linked to the neuron. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em in}]Input synapses \item[{\em out}]Output synapses \item[{\em a}]Activation function \item[{\em d}]Derivate of the activation function \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!synIn@{synIn}}
+\index{synIn@{synIn}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[synIn]{\setlength{\rightskip}{0pt plus 5cm}{\bf Synapsis}\& neuralpp::Neuron::synIn (size\_\-t {\em i})}\label{classneuralpp_1_1Neuron_29f2d9dcc4ca34f224d4dc39bb2f180a}
+
+
+Get the i-th synapsis connected on the input of the neuron. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em i}]Index of the input synapsis to get \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Reference to the i-th synapsis \end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!synOut@{synOut}}
+\index{synOut@{synOut}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[synOut]{\setlength{\rightskip}{0pt plus 5cm}{\bf Synapsis}\& neuralpp::Neuron::synOut (size\_\-t {\em i})}\label{classneuralpp_1_1Neuron_655f1637e1b754461413ac7fc2ffeebe}
+
+
+Get the i-th synapsis connected on the output of the neuron. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em i}]Index of the output synapsis to get \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]Reference to the i-th synapsis \end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!push\_\-in@{push\_\-in}}
+\index{push\_\-in@{push\_\-in}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[push\_\-in]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Neuron::push\_\-in ({\bf Synapsis} \& {\em s})}\label{classneuralpp_1_1Neuron_583ada6e1dd3f2e113415b4d89196e62}
+
+
+It pushes a new input synapsis. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]\doxyref{Synapsis}{p.}{classneuralpp_1_1Synapsis} to be pushed \end{description}
+\end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!push\_\-out@{push\_\-out}}
+\index{push\_\-out@{push\_\-out}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[push\_\-out]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Neuron::push\_\-out ({\bf Synapsis} \& {\em s})}\label{classneuralpp_1_1Neuron_bca65db84f56f9d40694bfbcd25812cb}
+
+
+It pushes a new output synapsis. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em s}]\doxyref{Synapsis}{p.}{classneuralpp_1_1Synapsis} to be pushed \end{description}
+\end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!setActv@{setActv}}
+\index{setActv@{setActv}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[setActv]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Neuron::setActv (double {\em a})}\label{classneuralpp_1_1Neuron_ddf00ffef030b27ed11901aad08822bd}
+
+
+Change the activation value of the neuron. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em a}]Activation value \end{description}
+\end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!setProp@{setProp}}
+\index{setProp@{setProp}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[setProp]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Neuron::setProp (double {\em p})}\label{classneuralpp_1_1Neuron_aa6e58f073a76b3481fea9115a4e6ea6}
+
+
+Change the propagation value of the neuron. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em p}]Propagation value \end{description}
+\end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!getActv@{getActv}}
+\index{getActv@{getActv}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[getActv]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Neuron::getActv ()}\label{classneuralpp_1_1Neuron_55993867179f0ac7d1e0e2c460ceb611}
+
+
+Get the activation value of the neuron. 
+
+\begin{Desc}
+\item[Returns:]Activation value for the neuron \end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!getProp@{getProp}}
+\index{getProp@{getProp}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[getProp]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Neuron::getProp ()}\label{classneuralpp_1_1Neuron_57c022f82213f662e2a263fc134a3fc9}
+
+
+Get the propagation value of the neuron. 
+
+\begin{Desc}
+\item[Returns:]Propagation value for the neuron \end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!propagate@{propagate}}
+\index{propagate@{propagate}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[propagate]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Neuron::propagate ()}\label{classneuralpp_1_1Neuron_8b0ca61cd0e047c8691ab39aae56dbda}
+
+
+It propagates its activation value to the connected neurons. 
+
+\index{neuralpp::Neuron@{neuralpp::Neuron}!nIn@{nIn}}
+\index{nIn@{nIn}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[nIn]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t neuralpp::Neuron::nIn ()}\label{classneuralpp_1_1Neuron_ad97f1a082d5f969eb4c69ab454ecfbb}
+
+
+Get the number of input synapsis for the neuron. 
+
+\begin{Desc}
+\item[Returns:]Number of input synapsis \end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!nOut@{nOut}}
+\index{nOut@{nOut}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[nOut]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t neuralpp::Neuron::nOut ()}\label{classneuralpp_1_1Neuron_fe458021e3b20d58dc608fb94ae2135b}
+
+
+Get the number of output synapsis for the neuron. 
+
+\begin{Desc}
+\item[Returns:]Number of output synapsis \end{Desc}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!synClear@{synClear}}
+\index{synClear@{synClear}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[synClear]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Neuron::synClear ()}\label{classneuralpp_1_1Neuron_2e2ccb69277fc3d992a3a3f2360ed154}
+
+
+Remove input and output synapsis from a neuron. 
+
+
+
+\subsection{Member Data Documentation}
+\index{neuralpp::Neuron@{neuralpp::Neuron}!actv\_\-val@{actv\_\-val}}
+\index{actv\_\-val@{actv\_\-val}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[actv\_\-val]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::Neuron::actv\_\-val}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_eec680c47272b2465e8d8a998c359853}
+
+
+\index{neuralpp::Neuron@{neuralpp::Neuron}!prop\_\-val@{prop\_\-val}}
+\index{prop\_\-val@{prop\_\-val}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[prop\_\-val]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::Neuron::prop\_\-val}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_da75259de98b1a893c736666af6bfdc3}
+
+
+\index{neuralpp::Neuron@{neuralpp::Neuron}!in@{in}}
+\index{in@{in}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[in]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Synapsis} $>$ {\bf neuralpp::Neuron::in}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_ead827210fa18c2baae03927b2c798ff}
+
+
+\index{neuralpp::Neuron@{neuralpp::Neuron}!out@{out}}
+\index{out@{out}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[out]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Synapsis} $>$ {\bf neuralpp::Neuron::out}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_82a4297f84d6403e52a8386d26117b4f}
+
+
+\index{neuralpp::Neuron@{neuralpp::Neuron}!actv\_\-f@{actv\_\-f}}
+\index{actv\_\-f@{actv\_\-f}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[actv\_\-f]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf neuralpp::Neuron::actv\_\-f})(double)\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_198ddd0d11a26d0052d52b787d6a0df0}
+
+
+\index{neuralpp::Neuron@{neuralpp::Neuron}!deriv@{deriv}}
+\index{deriv@{deriv}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[deriv]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf neuralpp::Neuron::deriv})(double)\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_8b881889e40e9782c49b0efad2b1dde3}
+
+
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf neural++.hpp}\end{CompactItemize}

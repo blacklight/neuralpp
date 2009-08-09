@@ -13,62 +13,64 @@
 
 #include <cstdlib>
 #include "neural++.hpp"
-using namespace neuralpp;
 
-namespace neuralpp  {
-Layer::Layer (size_t sz, double(*a)(double), double(*d)(double))  {
-	for (size_t i=0; i<sz; i++)  {
-		Neuron n(a,d);
-		elements.push_back(n);
+namespace neuralpp {
+	Layer::Layer(size_t sz, double (*a) (double), double (*d) (double)) {
+		for (size_t i = 0; i < sz; i++) {
+			Neuron n(a, d);
+			 elements.push_back(n);
+		} actv_f = a;
+		deriv = d;
 	}
 
-	actv_f=a;
-	deriv=d;
-}
+	Layer::Layer(vector < Neuron > &el, double (*a) (double),
+		     double (*d) (double)) {
+		elements = el;
+		actv_f = a;
+		deriv = d;
+	}
 
-Layer::Layer (vector< Neuron > &el, double (*a)(double), double(*d)(double))  {
-	elements=el;
-	actv_f=a;
-	deriv=d;
-}
+	size_t Layer::size() {
+		return elements.size();
+	}
 
-size_t Layer::size()  { return elements.size(); }
+	Neuron & Layer::operator[](size_t i) {
+		return elements[i];
+	}
 
-Neuron& Layer::operator[] (size_t i)  { return elements[i]; }
+	void Layer::link(Layer & l) {
+		srand((unsigned) time(NULL));
 
-void Layer::link (Layer& l)  {
-	srand ((unsigned) time(NULL));
+		for (size_t i = 0; i < l.size(); i++) {
+			Neuron *n1 = &(l.elements[i]);
 
-	for (size_t i=0; i<l.size(); i++)  {
-		Neuron *n1 = &(l.elements[i]);
+			for (size_t j = 0; j < size(); j++) {
+				Neuron *n2 = &(elements[j]);
+				Synapsis s(n1, n2, RAND, actv_f, deriv);
 
-		for (size_t j=0; j<size(); j++)  {
-			Neuron *n2 = &(elements[j]);
-			Synapsis s(n1, n2, RAND, actv_f, deriv);
-
-			n1->push_out(s);
-			n2->push_in(s);
+				n1->push_out(s);
+				n2->push_in(s);
+			}
 		}
 	}
-}
 
-void Layer::setProp (vector<double> &v)  {
-	for (size_t i=0; i<size(); i++)
-		elements[i].setProp(v[i]);
-}
-
-void Layer::setActv (vector<double> &v)  {
-	for (size_t i=0; i<size(); i++)
-		elements[i].setActv(v[i]);
-}
-
-void Layer::propagate()  {
-	for (size_t i=0; i<size(); i++)  {
-		Neuron *n = &(elements[i]);
-
-		n->setProp(n->propagate());
-		n->setActv( actv_f(n->getProp()) );
+	void Layer::setProp(vector < double >&v) {
+		for (size_t i = 0; i < size(); i++)
+			elements[i].setProp(v[i]);
 	}
-}
+
+	void Layer::setActv(vector < double >&v) {
+		for (size_t i = 0; i < size(); i++)
+			elements[i].setActv(v[i]);
+	}
+
+	void Layer::propagate() {
+		for (size_t i = 0; i < size(); i++) {
+			Neuron *n = &(elements[i]);
+
+			n->setProp(n->propagate());
+			n->setActv(actv_f(n->getProp()));
+		}
+	}
 }
 

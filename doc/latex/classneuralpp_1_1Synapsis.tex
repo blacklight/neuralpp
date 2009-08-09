@@ -1,0 +1,218 @@
+\section{neuralpp::Synapsis Class Reference}
+\label{classneuralpp_1_1Synapsis}\index{neuralpp::Synapsis@{neuralpp::Synapsis}}
+Class for managing synapsis.  
+
+
+{\tt \#include $<$neural++.hpp$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf Synapsis} ({\bf Neuron} $\ast$i, {\bf Neuron} $\ast$o, double w, double d)
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
+{\bf Synapsis} ({\bf Neuron} $\ast$i, {\bf Neuron} $\ast$o, double($\ast$a)(double), double($\ast$d)(double))
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
+{\bf Synapsis} ({\bf Neuron} $\ast$i, {\bf Neuron} $\ast$o, double w, double($\ast$a)(double), double($\ast$d)(double))
+\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
+{\bf Neuron} $\ast$ {\bf getIn} ()
+\item 
+{\bf Neuron} $\ast$ {\bf getOut} ()
+\item 
+void {\bf setWeight} (double w)
+\begin{CompactList}\small\item\em Set the weight of the synapsis. \item\end{CompactList}\item 
+void {\bf setDelta} (double d)
+\begin{CompactList}\small\item\em It sets the delta (how much to change the weight after an update) of the synapsis. \item\end{CompactList}\item 
+double {\bf getWeight} ()
+\begin{CompactList}\small\item\em Return the weight of the synapsis. \item\end{CompactList}\item 
+double {\bf getDelta} ()
+\begin{CompactList}\small\item\em Return the delta of the synapsis. \item\end{CompactList}\item 
+double {\bf getPrevDelta} ()
+\begin{CompactList}\small\item\em Get the delta of the synapsis at the previous iteration. \item\end{CompactList}\item 
+double {\bf momentum} (int N, int x)
+\begin{CompactList}\small\item\em Get the inertial momentum of a synapsis. \item\end{CompactList}\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+double {\bf delta}
+\item 
+double {\bf prev\_\-delta}
+\item 
+double {\bf weight}
+\item 
+{\bf Neuron} $\ast$ {\bf in}
+\item 
+{\bf Neuron} $\ast$ {\bf out}
+\item 
+double($\ast$ {\bf actv\_\-f} )(double)
+\item 
+double($\ast$ {\bf deriv} )(double)
+\end{CompactItemize}
+
+
+\subsection{Detailed Description}
+Class for managing synapsis. 
+
+Don't use this class directly unless you know what you're doing, use \doxyref{NeuralNet}{p.}{classneuralpp_1_1NeuralNet} instead 
+
+\subsection{Constructor \& Destructor Documentation}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!Synapsis@{Synapsis}}
+\index{Synapsis@{Synapsis}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[Synapsis]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Synapsis::Synapsis ({\bf Neuron} $\ast$ {\em i}, \/  {\bf Neuron} $\ast$ {\em o}, \/  double {\em w}, \/  double {\em d})}\label{classneuralpp_1_1Synapsis_0729de9e737b9967421edcfc4b410bd8}
+
+
+Constructor. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em i}]Input neuron \item[{\em o}]Output neuron \item[{\em w}]Weight for the synapsis \item[{\em d}]Delta for the synapsis \end{description}
+\end{Desc}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!Synapsis@{Synapsis}}
+\index{Synapsis@{Synapsis}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[Synapsis]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Synapsis::Synapsis ({\bf Neuron} $\ast$ {\em i}, \/  {\bf Neuron} $\ast$ {\em o}, \/  double($\ast$)(double) {\em a}, \/  double($\ast$)(double) {\em d})}\label{classneuralpp_1_1Synapsis_a75e0de57380141973c46dd83d9985e2}
+
+
+Constructor. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em i}]Input neuron \item[{\em o}]Output neuron \item[{\em a}]Activation function \item[{\em d}]Derivate for activation function \end{description}
+\end{Desc}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!Synapsis@{Synapsis}}
+\index{Synapsis@{Synapsis}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[Synapsis]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Synapsis::Synapsis ({\bf Neuron} $\ast$ {\em i}, \/  {\bf Neuron} $\ast$ {\em o}, \/  double {\em w}, \/  double($\ast$)(double) {\em a}, \/  double($\ast$)(double) {\em d})}\label{classneuralpp_1_1Synapsis_3b9714684c845beae5b3474428509663}
+
+
+Constructor. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em i}]Input neuron \item[{\em o}]Output neuron \item[{\em w}]Weight for the synapsis (default: random) \item[{\em a}]Activation function \item[{\em d}]Derivate for activation function \end{description}
+\end{Desc}
+
+
+\subsection{Member Function Documentation}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!getIn@{getIn}}
+\index{getIn@{getIn}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[getIn]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}$\ast$ neuralpp::Synapsis::getIn ()}\label{classneuralpp_1_1Synapsis_5ba8a93a5741f4855390eb8a46e99435}
+
+
+\begin{Desc}
+\item[Returns:]Reference to input neuron of the synapsis \end{Desc}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!getOut@{getOut}}
+\index{getOut@{getOut}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[getOut]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}$\ast$ neuralpp::Synapsis::getOut ()}\label{classneuralpp_1_1Synapsis_61c9a04e03291a01f44520cef143cbdd}
+
+
+\begin{Desc}
+\item[Returns:]Reference to output neuron of the synapsis \end{Desc}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!setWeight@{setWeight}}
+\index{setWeight@{setWeight}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[setWeight]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Synapsis::setWeight (double {\em w})}\label{classneuralpp_1_1Synapsis_acee77d0fdf9889464ab5ed27beae0ff}
+
+
+Set the weight of the synapsis. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em w}]Weight to be set \end{description}
+\end{Desc}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!setDelta@{setDelta}}
+\index{setDelta@{setDelta}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[setDelta]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Synapsis::setDelta (double {\em d})}\label{classneuralpp_1_1Synapsis_429ad5b25930faf436a9d725582802e1}
+
+
+It sets the delta (how much to change the weight after an update) of the synapsis. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em d}]Delta to be set \end{description}
+\end{Desc}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!getWeight@{getWeight}}
+\index{getWeight@{getWeight}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[getWeight]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::getWeight ()}\label{classneuralpp_1_1Synapsis_aa79c16ec6b59949e5d2f75a3f10d530}
+
+
+Return the weight of the synapsis. 
+
+\begin{Desc}
+\item[Returns:]Weight of the synapsis \end{Desc}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!getDelta@{getDelta}}
+\index{getDelta@{getDelta}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[getDelta]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::getDelta ()}\label{classneuralpp_1_1Synapsis_18f15b920609be8b818d43a0227aada5}
+
+
+Return the delta of the synapsis. 
+
+\begin{Desc}
+\item[Returns:]Delta of the synapsis \end{Desc}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!getPrevDelta@{getPrevDelta}}
+\index{getPrevDelta@{getPrevDelta}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[getPrevDelta]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::getPrevDelta ()}\label{classneuralpp_1_1Synapsis_2fe3e9ec97542f1476d8b9306aa09756}
+
+
+Get the delta of the synapsis at the previous iteration. 
+
+\begin{Desc}
+\item[Returns:]The previous delta \end{Desc}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!momentum@{momentum}}
+\index{momentum@{momentum}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[momentum]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::momentum (int {\em N}, \/  int {\em x})}\label{classneuralpp_1_1Synapsis_ecdb17182de791f7fdd417232e184350}
+
+
+Get the inertial momentum of a synapsis. 
+
+This value is inversely proportional to the number of steps done in the learning phase (quite high at the beginning, decreasing to zero towards the end of the learning algorithm), and is needed to avoid strong oscillations in output values at the beginning, caused by the random values assigned to the synaptical weights \begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em N}]The number of iterations the network must have to adjust the output values \item[{\em x}]The number of iterations already taken \end{description}
+\end{Desc}
+\begin{Desc}
+\item[Returns:]The inertial momentum of the synapsis \end{Desc}
+
+
+\subsection{Member Data Documentation}
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!delta@{delta}}
+\index{delta@{delta}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[delta]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::Synapsis::delta}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Synapsis_617fdc4305f8f1850eac267a7ee22660}
+
+
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!prev\_\-delta@{prev\_\-delta}}
+\index{prev\_\-delta@{prev\_\-delta}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[prev\_\-delta]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::Synapsis::prev\_\-delta}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Synapsis_65471cd6c9ef87609dfa4b0e5fafa708}
+
+
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!weight@{weight}}
+\index{weight@{weight}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[weight]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::Synapsis::weight}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Synapsis_0bc523a8135ebbb5c0da932939d30ed7}
+
+
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!in@{in}}
+\index{in@{in}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[in]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}$\ast$ {\bf neuralpp::Synapsis::in}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Synapsis_83d41c158054b08bd05051736e89a0ad}
+
+
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!out@{out}}
+\index{out@{out}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[out]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}$\ast$ {\bf neuralpp::Synapsis::out}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Synapsis_fb219e05038fa0da20db1082ab0500be}
+
+
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!actv\_\-f@{actv\_\-f}}
+\index{actv\_\-f@{actv\_\-f}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[actv\_\-f]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf neuralpp::Synapsis::actv\_\-f})(double)\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Synapsis_2539b9eef2ff0f3522aea8d89e394f02}
+
+
+\index{neuralpp::Synapsis@{neuralpp::Synapsis}!deriv@{deriv}}
+\index{deriv@{deriv}!neuralpp::Synapsis@{neuralpp::Synapsis}}
+\subsubsection[deriv]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf neuralpp::Synapsis::deriv})(double)\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Synapsis_2940b370c283aa1b63890666942c26bf}
+
+
+
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf neural++.hpp}\end{CompactItemize}

@@ -20,10 +20,7 @@
 
 #include <vector>
 #include <string>
-
 #include <cmath>
-#include <ctime>
-#include <cstdio>
 
 #include "neural++_exception.hpp"
 using namespace std;
@@ -33,7 +30,11 @@ using namespace std;
 
 //! Initial value for the inertial momentum of the synapses
 #define 	BETA0 	0.7
-	
+
+/**
+ * @namespace neuralpp
+ * @brief Main namespace for the library
+ */
 namespace neuralpp  {
 	class Synapsis;
 	class Neuron;
@@ -71,12 +72,21 @@ namespace neuralpp  {
 
 		/**
 		 * @brief It get the error made on the expected result as |v-v'|/v
-		 * @param Expected value
+		 * @param ex Expected value
 		 * @return Mean error
 		 */
-		double error(double);
+		double error(double ex);
 		
+		/**
+		 * @brief Private pointer to function, containing the function to
+		 * be used as activation function
+		 */
 		double (*actv_f)(double);
+
+		/**
+		 * @brief Private pointer to function, containing the function to
+		 * be used as derivate of the activation function
+		 */
 		double (*deriv)(double);
 
 	public:
@@ -85,6 +95,9 @@ namespace neuralpp  {
 		 */
 		typedef enum  { file, str } source;
 
+		/**
+		 * @brief Empty constructor for the class - it just makes nothing
+		 */
 		NeuralNet()  {}
 
 		/**
@@ -97,14 +110,14 @@ namespace neuralpp  {
 		 * @param e Epochs (cycles) to execute (the most you execute, the most the network
 		 *   can be accurate for its purpose)
 		 */
-		NeuralNet (size_t, size_t, size_t, double, int);
+		NeuralNet (size_t in_size, size_t hidden_size, size_t out_size, double l, int e);
 
 		/**
 		 * @brief Constructor
 		 * @param file Binary file containing a neural network previously saved by save() method
 		 * @throw NetworkFileNotFoundException
 		 */
-		NeuralNet (const char*) throw();
+		NeuralNet (const char* file) throw(NetworkFileNotFoundException);
 		
 		
 		/**
@@ -119,40 +132,45 @@ namespace neuralpp  {
 		 * @param e Epochs (cycles) to execute (the most you execute, the most the network
 		 *   can be accurate for its purpose)
 		 */
-		NeuralNet (size_t, size_t, size_t, double(*)(double), double(*)(double), double, int);
+		NeuralNet (size_t in_size, size_t hidden_size, size_t out_size,
+				double(*actv)(double), double(*deriv)(double), double l, int e);
 
 		/**
 		 * @brief It gets the output of the network (note: the layer output should contain
-		 *   an only neuron)
+		 * an only neuron)
+		 * @return The output value of the network
 		 */
 		double getOutput();
 
 		/**
 		 * @brief It gets the output of the network in case the output layer contains more neurons
+		 * @return A vector containing the output values of the network
 		 */
-		vector<double> getVectorOutput();
+		vector<double> getOutputs();
 
 		/**
 		 * @brief It gets the value expected. Of course you should specify this when you
-		 *   build your network by using setExpected.
+		 * build your network by using setExpected.
+		 * @return The expected output value for a certain training phase
 		 */
 		double expected();
 
 		/**
 		 * @brief It sets the value you expect from your network
+		 * @param ex Expected output value
 		 */
-		void setExpected(double);
+		void setExpected(double ex);
 
 		/**
 		 * @brief It updates through back-propagation the weights of the synapsis and
-		 *  computes again the output value for <i>epochs</i> times, calling back
-		 *  updateWeights and commitChanges functions
+		 * computes again the output value for <i>epochs</i> times, calling back
+		 * updateWeights and commitChanges functions
 		 */
 		void update();
 
 		/**
 		 * @brief It propagates values through the network. Use this when you want to give
-		 *  an already trained network some new values the get to the output
+		 * an already trained network some new values the get to the output
 		 */
 		void propagate();
 
@@ -160,18 +178,19 @@ namespace neuralpp  {
 		 * @brief It sets the input for the network
 		 * @param v Vector of doubles, containing the values to give to your network
 		 */
-		void setInput (vector<double>&);
+		void setInput (vector<double>& v);
 
 		/**
 		 * @brief It links the layers of the network (input, hidden, output). Don't use unless
-		 *  you exactly know what you're doing, it is already called by the constructor
+		 * you exactly know what you're doing, it is already called by the constructor
 		 */
 		void link();
 
 		/**
 		 * @brief Save a trained neural network to a binary file
+		 * @param fname Binary file where you're going to save your network
 		 */
-		bool save(const char*);
+		bool save(const char* fname);
 
 		/**
 		 * @brief Train a network using a training set loaded from an XML file. A sample XML file
@@ -180,13 +199,13 @@ namespace neuralpp  {
 		 * @param src Source type from which the XML will be loaded (from a file [default] or from a string)
 		 * @throw InvalidXMLException
 		 */
-		void train(string, source) throw();
+		void train(string xml, source xrc) throw(InvalidXMLException);
 
 		/**
 		 * @brief Initialize the training XML for the neural network
 		 * @param xml String that will contain the XML
 		 */
-		static void initXML (string&);
+		static void initXML (string& xml);
 
 		/**
 		 * @brief Splits a string into a vector of doubles, given a delimitator
@@ -194,7 +213,7 @@ namespace neuralpp  {
 		 * @param str String to be splitted
 		 * @return Vector of doubles containing splitted values
 		 */
-		static vector<double> split (char, string);
+		static vector<double> split (char delim, string str);
 
 		/**
 		 * @brief Get a training set from a string and copies it to an XML
@@ -208,13 +227,13 @@ namespace neuralpp  {
 		 * @param set String containing input values and expected outputs
 		 * @return XML string
 		 */
-		static string XMLFromSet (int, string);
+		static string XMLFromSet (int id, string set);
 
 		/**
 		 * @brief Closes an open XML document generated by "initXML" and "XMLFromSet"
-		 * @param XML string to be closed
+		 * @param xml XML string to be closed
 		 */
-		static void closeXML(string&);
+		static void closeXML(string& xml);
 	};
 
 	/**
@@ -274,22 +293,26 @@ namespace neuralpp  {
 		Neuron* getOut();
 
 		/**
-		 * @brief It sets the weight of the synapsis
+		 * @brief Set the weight of the synapsis
+		 * @param w Weight to be set
 		 */
-		void setWeight(double);
+		void setWeight(double w);
 		
 		/**
 		 * @brief It sets the delta (how much to change the weight after an update) 
-		 *  of the synapsis
+		 * of the synapsis
+		 * @param d Delta to be set
 		 */
-		void setDelta(double);
+		void setDelta(double d);
 
 		/**
+		 * @brief Return the weight of the synapsis
 		 * @return Weight of the synapsis
 		 */
 		double getWeight();
 		
 		/**
+		 * @brief Return the delta of the synapsis
 		 * @return Delta of the synapsis
 		 */
 		double getDelta();
@@ -333,50 +356,65 @@ namespace neuralpp  {
 		 * @param a Activation function
 		 * @param d Its derivate
 		 */
-		Neuron (double (*)(double), double(*)(double));
+		Neuron (double (*a)(double), double(*d)(double));
 
 		/**
 		 * @brief Alternative constructor, that gets also the synapsis linked to the neuron
+		 * @param in Input synapses
+		 * @param out Output synapses
+		 * @param a Activation function
+		 * @param d Derivate of the activation function
 		 */
-		Neuron (vector< Synapsis >, vector< Synapsis >, double (*)(double), double(*)(double));
+		Neuron (vector<Synapsis> in, vector<Synapsis> out,
+				double (*a)(double), double(*d)(double));
 
 		/**
-		 * @brief Gets the i-th synapsis connected on the input of the neuron
+		 * @brief Get the i-th synapsis connected on the input of the neuron
+		 * @param i Index of the input synapsis to get
+		 * @return Reference to the i-th synapsis
 		 */
 		Synapsis& synIn (size_t i);
 		
 		/**
-		 * @brief Gets the i-th synapsis connected on the output of the neuron
+		 * @brief Get the i-th synapsis connected on the output of the neuron
+		 * @param i Index of the output synapsis to get
+		 * @return Reference to the i-th synapsis
 		 */
 		Synapsis& synOut (size_t i);
 
 		/**
 		 * @brief It pushes a new input synapsis
+		 * @param s Synapsis to be pushed
 		 */
-		void push_in (Synapsis&);
+		void push_in (Synapsis& s);
 		
 		/**
 		 * @brief It pushes a new output synapsis
+		 * @param s Synapsis to be pushed
 		 */
-		void push_out (Synapsis&);
+		void push_out (Synapsis& s);
 
 		/**
 		 * @brief Change the activation value of the neuron
+		 * @param a Activation value
 		 */
-		void setActv (double);
+		void setActv (double a);
 
 		/**
 		 * @brief Change the propagation value of the neuron
+		 * @param p Propagation value
 		 */
-		void setProp (double);
+		void setProp (double p);
 
 		/**
-		 * @brief It gets the activation value of the neuron
+		 * @brief Get the activation value of the neuron
+		 * @return Activation value for the neuron
 		 */
 		double getActv();
 		
 		/**
-		 * @brief It gets the propagation value of the neuron
+		 * @brief Get the propagation value of the neuron
+		 * @return Propagation value for the neuron
 		 */
 		double getProp();
 
@@ -386,11 +424,13 @@ namespace neuralpp  {
 		double propagate();
 
 		/**
+		 * @brief Get the number of input synapsis for the neuron
 		 * @return Number of input synapsis
 		 */
 		size_t nIn();
 		
 		/**
+		 * @brief Get the number of output synapsis for the neuron
 		 * @return Number of output synapsis
 		 */
 		size_t nOut();
@@ -398,7 +438,7 @@ namespace neuralpp  {
 		/**
 		 * @brief Remove input and output synapsis from a neuron
 		 */
-		void synClear()  { in.clear(); out.clear(); }
+		void synClear();
 	};
 
 	/**
@@ -407,7 +447,7 @@ namespace neuralpp  {
 	 *  you're doing, use NeuralNet instead
 	 */
 	class Layer  {
-		vector< Neuron > elements;
+		vector<Neuron> elements;
 
 		void (*update_weights)();
 		double (*actv_f)(double);
@@ -424,32 +464,37 @@ namespace neuralpp  {
 
 		/**
 		 * @brief Alternative constructor. It directly gets a vector of neurons to build
-		 *  the layer
+		 * the layer
+		 * @param neurons Vector of neurons to be included in the layer
+		 * @param a Activation function
+		 * @param d Its derivate
 		 */
-		Layer (vector< Neuron >&, double(*a)(double), double(*d)(double));
+		Layer (vector<Neuron>& neurons, double(*a)(double), double(*d)(double));
 
 		/**
 		 * @brief Redefinition for operator []. It gets the neuron at <i>i</i>
+		 * @param i Index of the neuron to get in the layer
+		 * @return Reference to the i-th neuron
 		 */
-		Neuron& operator[] (size_t);
+		Neuron& operator[] (size_t i);
 
 		/**
 		 * @brief It links a layer to another
 		 * @param l Layer to connect to the current as input layer
 		 */
-		void link (Layer&);
+		void link (Layer& l);
 
 		/**
 		 * @brief It sets a vector of propagation values to all its neurons
 		 * @param v Vector of values to write as propagation values
 		 */
-		void setProp (vector<double>&);
+		void setProp (vector<double>& v);
 		 
 		/** 
 		 * @brief It sets a vector of activation values to all its neurons
 		 * @param v Vector of values to write as activation values
 		 */
-		void setActv (vector<double>&);
+		void setActv (vector<double>& v);
 
 		/**
 		 * @brief It propagates its activation values to the output layers

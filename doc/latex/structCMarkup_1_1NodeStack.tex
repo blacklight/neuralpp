@@ -1,0 +1,137 @@
+\section{CMarkup::NodeStack Struct Reference}
+\label{structCMarkup_1_1NodeStack}\index{CMarkup::NodeStack@{CMarkup::NodeStack}}
+{\tt \#include $<$Markup.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf NodeStack} ()
+\item 
+{\bf $\sim$NodeStack} ()
+\item 
+{\bf NodePos} \& {\bf Top} ()
+\item 
+{\bf NodePos} \& {\bf At} (int n)
+\item 
+void {\bf Add} ()
+\item 
+void {\bf Remove} ()
+\item 
+int {\bf TopIndex} ()
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void {\bf Alloc} (int nNewSize)
+\item 
+void {\bf Copy} ({\bf NodePos} $\ast$pNNew)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+{\bf NodePos} $\ast$ {\bf pN}
+\item 
+int {\bf nSize}
+\item 
+int {\bf nTop}
+\end{CompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{CMarkup::NodeStack@{CMarkup::NodeStack}!NodeStack@{NodeStack}}
+\index{NodeStack@{NodeStack}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[NodeStack]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::NodeStack::NodeStack ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1NodeStack_de0c540ed4a133345e7c8ec6e05b0b11}
+
+
+
+
+References nSize, nTop, and pN.\index{CMarkup::NodeStack@{CMarkup::NodeStack}!$\sim$NodeStack@{$\sim$NodeStack}}
+\index{$\sim$NodeStack@{$\sim$NodeStack}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[$\sim$NodeStack]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::NodeStack::$\sim$NodeStack ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1NodeStack_6bd62bb0b4c4596016a00eade46cd5ca}
+
+
+
+
+References pN.
+
+\subsection{Member Function Documentation}
+\index{CMarkup::NodeStack@{CMarkup::NodeStack}!Top@{Top}}
+\index{Top@{Top}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[Top]{\setlength{\rightskip}{0pt plus 5cm}{\bf NodePos}\& CMarkup::NodeStack::Top ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1NodeStack_6be20984a9a499498312be0688c54bc5}
+
+
+
+
+References nTop, and pN.\index{CMarkup::NodeStack@{CMarkup::NodeStack}!At@{At}}
+\index{At@{At}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[At]{\setlength{\rightskip}{0pt plus 5cm}{\bf NodePos}\& CMarkup::NodeStack::At (int {\em n})\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1NodeStack_909848e1d3a591d21820d8ba4f03ee0d}
+
+
+
+
+References pN.\index{CMarkup::NodeStack@{CMarkup::NodeStack}!Add@{Add}}
+\index{Add@{Add}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[Add]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::NodeStack::Add ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1NodeStack_623cec96b6f3f3e246902d32f62244f8}
+
+
+
+
+References Alloc(), nSize, and nTop.\index{CMarkup::NodeStack@{CMarkup::NodeStack}!Remove@{Remove}}
+\index{Remove@{Remove}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[Remove]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::NodeStack::Remove ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1NodeStack_4782babbf126c3ff7d3568455e571282}
+
+
+
+
+References nTop.\index{CMarkup::NodeStack@{CMarkup::NodeStack}!TopIndex@{TopIndex}}
+\index{TopIndex@{TopIndex}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[TopIndex]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::NodeStack::TopIndex ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1NodeStack_4e9aad88e12b7bbabdbb3fd65fc51585}
+
+
+
+
+References nTop.\index{CMarkup::NodeStack@{CMarkup::NodeStack}!Alloc@{Alloc}}
+\index{Alloc@{Alloc}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[Alloc]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::NodeStack::Alloc (int {\em nNewSize})\hspace{0.3cm}{\tt  [inline, protected]}}\label{structCMarkup_1_1NodeStack_ac640e8a348792b4008057f02a3781ff}
+
+
+
+
+References Copy(), and nSize.
+
+Referenced by Add().\index{CMarkup::NodeStack@{CMarkup::NodeStack}!Copy@{Copy}}
+\index{Copy@{Copy}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[Copy]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::NodeStack::Copy ({\bf NodePos} $\ast$ {\em pNNew})\hspace{0.3cm}{\tt  [inline, protected]}}\label{structCMarkup_1_1NodeStack_499a05e053b785df518fb0b6124fd0ee}
+
+
+
+
+Referenced by Alloc().
+
+\subsection{Member Data Documentation}
+\index{CMarkup::NodeStack@{CMarkup::NodeStack}!pN@{pN}}
+\index{pN@{pN}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[pN]{\setlength{\rightskip}{0pt plus 5cm}{\bf NodePos}$\ast$ {\bf CMarkup::NodeStack::pN}\hspace{0.3cm}{\tt  [protected]}}\label{structCMarkup_1_1NodeStack_636ddd56b9f0c53d1d8fb98d154b8ce3}
+
+
+
+
+Referenced by At(), NodeStack(), Top(), and $\sim$NodeStack().\index{CMarkup::NodeStack@{CMarkup::NodeStack}!nSize@{nSize}}
+\index{nSize@{nSize}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[nSize]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::NodeStack::nSize}\hspace{0.3cm}{\tt  [protected]}}\label{structCMarkup_1_1NodeStack_7031af9e6f3ceca049b5467b1fd7e478}
+
+
+
+
+Referenced by Add(), Alloc(), and NodeStack().\index{CMarkup::NodeStack@{CMarkup::NodeStack}!nTop@{nTop}}
+\index{nTop@{nTop}!CMarkup::NodeStack@{CMarkup::NodeStack}}
+\subsubsection[nTop]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::NodeStack::nTop}\hspace{0.3cm}{\tt  [protected]}}\label{structCMarkup_1_1NodeStack_f3e08fa5dce853a6267da9f77ef3f986}
+
+
+
+
+Referenced by Add(), NodeStack(), Remove(), Top(), and TopIndex().
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf Markup.h}\end{CompactItemize}

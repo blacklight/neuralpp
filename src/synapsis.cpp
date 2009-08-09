@@ -13,60 +13,76 @@
 
 #include <cstdlib>
 #include "neural++.hpp"
-using namespace neuralpp;
 
-namespace neuralpp  {
-
-Synapsis::Synapsis(Neuron* i, Neuron* o, double w, double d)  {
-	in=i; out=o;
-	weight=w;
-	delta=d; prev_delta=0;
-}
-
-Synapsis::Synapsis (Neuron* i, Neuron* o, double(*a)(double), double(*d)(double))  {
-	srand((unsigned) time(NULL));
-
-	delta=0;
-	prev_delta=0;
-	weight=RAND;
-	in=i;
-	out=o;
-
-	actv_f=a;
-	deriv=d;
-}
-
-Synapsis::Synapsis (Neuron* i, Neuron* o,
-		double w, double(*a)(double), double(*d)(double))  {
-	delta=0;
-	prev_delta=0;
-	weight=w;
-	in=i;
-	out=o;
+namespace neuralpp {
+	Synapsis::Synapsis(Neuron * i, Neuron * o, double w, double d) {
+		in = i;
+		out = o;
+		weight = w;
+		delta = d;
+		prev_delta = 0;
+	}
 	
-	actv_f=a;
-	deriv=d;
-}
+	Synapsis::Synapsis(Neuron * i, Neuron * o, double (*a) (double),
+			     double (*d) (double)) {
+	
+		srand((unsigned) time(NULL));
 
-Neuron* Synapsis::getIn()  { return in; }
+		delta = 0;
+		prev_delta = 0;
+		weight = RAND;
+		in = i;
+		out = o;
 
-Neuron* Synapsis::getOut()  { return out; }
+		actv_f = a;
+		deriv = d;
+	}
 
-double Synapsis::getWeight()  { return weight; }
+	Synapsis::Synapsis(Neuron * i, Neuron * o,
+			   double w, double (*a) (double),
+			   double (*d) (double)) {
+		
+		delta = 0;
+		prev_delta = 0;
+		weight = w;
+		in = i;
+		out = o;
 
-double Synapsis::getDelta()  { return delta; }
+		actv_f = a;
+		deriv = d;
+	}
 
-double Synapsis::getPrevDelta()  { return prev_delta; }
+	Neuron *Synapsis::getIn() {
+		return in;
+	}
 
-void Synapsis::setWeight(double w)  { weight=w; }
+	Neuron *Synapsis::getOut() {
+		return out;
+	}
 
-void Synapsis::setDelta(double d)  {
-	prev_delta=delta;
-	delta=d;
-}
+	double Synapsis::getWeight() {
+		return weight;
+	}
 
-double Synapsis::momentum(int N, int x)  {
-	return (BETA0*N)/(20*x + N);
-}
+	double Synapsis::getDelta() {
+		return delta;
+	}
+
+	double Synapsis::getPrevDelta() {
+		return prev_delta;
+	}
+
+	void Synapsis::setWeight(double w) {
+		weight = w;
+	}
+
+	void Synapsis::setDelta(double d) {
+		prev_delta = delta;
+		delta = d;
+	}
+
+	double Synapsis::momentum(int N, int x) {
+		return (BETA0 * N) / (20 * x + N);
+	}
 }
 

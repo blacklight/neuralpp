@@ -1,0 +1,1427 @@
+\section{CMarkup Class Reference}
+\label{classCMarkup}\index{CMarkup@{CMarkup}}
+{\tt \#include $<$Markup.h$>$}
+
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+enum {\bf MarkupDocFlags} \{ \par
+{\bf MDF\_\-UTF16LEFILE} =  1, 
+{\bf MDF\_\-UTF8PREAMBLE} =  4, 
+{\bf MDF\_\-IGNORECASE} =  8, 
+{\bf MDF\_\-READFILE} =  16, 
+\par
+{\bf MDF\_\-WRITEFILE} =  32, 
+{\bf MDF\_\-APPENDFILE} =  64, 
+{\bf MDF\_\-UTF16BEFILE} =  128
+ \}
+\item 
+enum {\bf MarkupNodeFlags} \{ \par
+{\bf MNF\_\-WITHCDATA} =  0x01, 
+{\bf MNF\_\-WITHNOLINES} =  0x02, 
+{\bf MNF\_\-WITHXHTMLSPACE} =  0x04, 
+{\bf MNF\_\-WITHREFS} =  0x08, 
+\par
+{\bf MNF\_\-WITHNOEND} =  0x10, 
+{\bf MNF\_\-ESCAPEQUOTES} =  0x100, 
+{\bf MNF\_\-NONENDED} =  0x100000, 
+{\bf MNF\_\-ILLDATA} =  0x200000
+ \}
+\item 
+enum {\bf MarkupNodeType} \{ \par
+{\bf MNT\_\-ELEMENT} =  1, 
+{\bf MNT\_\-TEXT} =  2, 
+{\bf MNT\_\-WHITESPACE} =  4, 
+{\bf MNT\_\-CDATA\_\-SECTION} =  8, 
+\par
+{\bf MNT\_\-PROCESSING\_\-INSTRUCTION} =  16, 
+{\bf MNT\_\-COMMENT} =  32, 
+{\bf MNT\_\-DOCUMENT\_\-TYPE} =  64, 
+{\bf MNT\_\-EXCLUDE\_\-WHITESPACE} =  123, 
+\par
+{\bf MNT\_\-LONE\_\-END\_\-TAG} =  128, 
+{\bf MNT\_\-NODE\_\-ERROR} =  32768
+ \}
+\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf CMarkup} ()
+\item 
+{\bf CMarkup} ({\bf MCD\_\-CSTR} szDoc)
+\item 
+{\bf CMarkup} (int nFlags)
+\item 
+{\bf CMarkup} (const {\bf CMarkup} \&markup)
+\item 
+void {\bf operator=} (const {\bf CMarkup} \&markup)
+\item 
+{\bf $\sim$CMarkup} ()
+\item 
+bool {\bf Load} (MCD\_\-CSTR\_\-FILENAME szFileName)
+\item 
+bool {\bf SetDoc} (MCD\_\-PCSZ pDoc)
+\item 
+bool {\bf SetDoc} (const MCD\_\-STR \&strDoc)
+\item 
+bool {\bf IsWellFormed} ()
+\item 
+bool {\bf FindElem} ({\bf MCD\_\-CSTR} szName=NULL)
+\item 
+bool {\bf FindChildElem} ({\bf MCD\_\-CSTR} szName=NULL)
+\item 
+bool {\bf IntoElem} ()
+\item 
+bool {\bf OutOfElem} ()
+\item 
+void {\bf ResetChildPos} ()
+\item 
+void {\bf ResetMainPos} ()
+\item 
+void {\bf ResetPos} ()
+\item 
+MCD\_\-STR {\bf GetTagName} () const 
+\item 
+MCD\_\-STR {\bf GetChildTagName} () const 
+\item 
+MCD\_\-STR {\bf GetData} () const 
+\item 
+MCD\_\-STR {\bf GetChildData} () const 
+\item 
+MCD\_\-STR {\bf GetElemContent} () const 
+\item 
+MCD\_\-STR {\bf GetAttrib} ({\bf MCD\_\-CSTR} szAttrib) const 
+\item 
+MCD\_\-STR {\bf GetChildAttrib} ({\bf MCD\_\-CSTR} szAttrib) const 
+\item 
+MCD\_\-STR {\bf GetAttribName} (int n) const 
+\item 
+int {\bf FindNode} (int nType=0)
+\item 
+int {\bf GetNodeType} ()
+\item 
+bool {\bf SavePos} ({\bf MCD\_\-CSTR} szPosName=MCD\_\-T(\char`\"{}\char`\"{}), int nMap=0)
+\item 
+bool {\bf RestorePos} ({\bf MCD\_\-CSTR} szPosName=MCD\_\-T(\char`\"{}\char`\"{}), int nMap=0)
+\item 
+bool {\bf SetMapSize} (int nSize, int nMap=0)
+\item 
+const MCD\_\-STR \& {\bf GetError} () const 
+\item 
+int {\bf GetDocFlags} () const 
+\item 
+void {\bf SetDocFlags} (int nFlags)
+\item 
+bool {\bf Save} (MCD\_\-CSTR\_\-FILENAME szFileName)
+\item 
+const MCD\_\-STR \& {\bf GetDoc} () const 
+\item 
+bool {\bf AddElem} ({\bf MCD\_\-CSTR} szName, {\bf MCD\_\-CSTR} szData=NULL, int nFlags=0)
+\item 
+bool {\bf InsertElem} ({\bf MCD\_\-CSTR} szName, {\bf MCD\_\-CSTR} szData=NULL, int nFlags=0)
+\item 
+bool {\bf AddChildElem} ({\bf MCD\_\-CSTR} szName, {\bf MCD\_\-CSTR} szData=NULL, int nFlags=0)
+\item 
+bool {\bf InsertChildElem} ({\bf MCD\_\-CSTR} szName, {\bf MCD\_\-CSTR} szData=NULL, int nFlags=0)
+\item 
+bool {\bf AddElem} ({\bf MCD\_\-CSTR} szName, int nValue, int nFlags=0)
+\item 
+bool {\bf InsertElem} ({\bf MCD\_\-CSTR} szName, int nValue, int nFlags=0)
+\item 
+bool {\bf AddChildElem} ({\bf MCD\_\-CSTR} szName, int nValue, int nFlags=0)
+\item 
+bool {\bf InsertChildElem} ({\bf MCD\_\-CSTR} szName, int nValue, int nFlags=0)
+\item 
+bool {\bf AddAttrib} ({\bf MCD\_\-CSTR} szAttrib, {\bf MCD\_\-CSTR} szValue)
+\item 
+bool {\bf AddChildAttrib} ({\bf MCD\_\-CSTR} szAttrib, {\bf MCD\_\-CSTR} szValue)
+\item 
+bool {\bf AddAttrib} ({\bf MCD\_\-CSTR} szAttrib, int nValue)
+\item 
+bool {\bf AddChildAttrib} ({\bf MCD\_\-CSTR} szAttrib, int nValue)
+\item 
+bool {\bf AddSubDoc} ({\bf MCD\_\-CSTR} szSubDoc)
+\item 
+bool {\bf InsertSubDoc} ({\bf MCD\_\-CSTR} szSubDoc)
+\item 
+MCD\_\-STR {\bf GetSubDoc} () const 
+\item 
+bool {\bf AddChildSubDoc} ({\bf MCD\_\-CSTR} szSubDoc)
+\item 
+bool {\bf InsertChildSubDoc} ({\bf MCD\_\-CSTR} szSubDoc)
+\item 
+MCD\_\-STR {\bf GetChildSubDoc} () const 
+\item 
+bool {\bf AddNode} (int nType, {\bf MCD\_\-CSTR} szText)
+\item 
+bool {\bf InsertNode} (int nType, {\bf MCD\_\-CSTR} szText)
+\item 
+bool {\bf RemoveElem} ()
+\item 
+bool {\bf RemoveChildElem} ()
+\item 
+bool {\bf RemoveNode} ()
+\item 
+bool {\bf SetAttrib} ({\bf MCD\_\-CSTR} szAttrib, {\bf MCD\_\-CSTR} szValue, int nFlags=0)
+\item 
+bool {\bf SetChildAttrib} ({\bf MCD\_\-CSTR} szAttrib, {\bf MCD\_\-CSTR} szValue, int nFlags=0)
+\item 
+bool {\bf SetAttrib} ({\bf MCD\_\-CSTR} szAttrib, int nValue, int nFlags=0)
+\item 
+bool {\bf SetChildAttrib} ({\bf MCD\_\-CSTR} szAttrib, int nValue, int nFlags=0)
+\item 
+bool {\bf SetData} ({\bf MCD\_\-CSTR} szData, int nFlags=0)
+\item 
+bool {\bf SetChildData} ({\bf MCD\_\-CSTR} szData, int nFlags=0)
+\item 
+bool {\bf SetData} (int nValue)
+\item 
+bool {\bf SetChildData} (int nValue)
+\item 
+bool {\bf SetElemContent} ({\bf MCD\_\-CSTR} szContent)
+\end{CompactItemize}
+\subsection*{Static Public Member Functions}
+\begin{CompactItemize}
+\item 
+static bool {\bf ReadTextFile} (MCD\_\-CSTR\_\-FILENAME szFileName, MCD\_\-STR \&strDoc, MCD\_\-STR $\ast$pstrError=NULL, int $\ast$pnDocFlags=NULL, MCD\_\-STR $\ast$pstrEncoding=NULL)
+\item 
+static bool {\bf WriteTextFile} (MCD\_\-CSTR\_\-FILENAME szFileName, const MCD\_\-STR \&strDoc, MCD\_\-STR $\ast$pstrError=NULL, int $\ast$pnDocFlags=NULL, MCD\_\-STR $\ast$pstrEncoding=NULL)
+\item 
+static MCD\_\-STR {\bf EscapeText} ({\bf MCD\_\-CSTR} szText, int nFlags=0)
+\item 
+static MCD\_\-STR {\bf UnescapeText} ({\bf MCD\_\-CSTR} szText, int nTextLength=-1)
+\item 
+static int {\bf UTF16To8} (char $\ast$pszUTF8, const unsigned short $\ast$pwszUTF16, int nUTF8Count)
+\item 
+static int {\bf UTF8To16} (unsigned short $\ast$pwszUTF16, const char $\ast$pszUTF8, int nUTF8Count)
+\item 
+static MCD\_\-STR {\bf UTF8ToA} ({\bf MCD\_\-CSTR} pszUTF8, int $\ast$pnFailed=NULL)
+\item 
+static MCD\_\-STR {\bf AToUTF8} ({\bf MCD\_\-CSTR} pszANSI)
+\item 
+static void {\bf EncodeCharUTF8} (int nUChar, char $\ast$pszUTF8, int \&nUTF8Len)
+\item 
+static int {\bf DecodeCharUTF8} (const char $\ast$\&pszUTF8, const char $\ast$pszUTF8End=NULL)
+\item 
+static void {\bf EncodeCharUTF16} (int nUChar, unsigned short $\ast$pwszUTF16, int \&nUTF16Len)
+\item 
+static int {\bf DecodeCharUTF16} (const unsigned short $\ast$\&pwszUTF16, const unsigned short $\ast$pszUTF16End=NULL)
+\item 
+static bool {\bf DetectUTF8} (const char $\ast$pText, int nTextLen, int $\ast$pnNonASCII=NULL)
+\item 
+static MCD\_\-STR {\bf GetDeclaredEncoding} ({\bf MCD\_\-CSTR} szDoc)
+\end{CompactItemize}
+\subsection*{Protected Types}
+\begin{CompactItemize}
+\item 
+enum {\bf MarkupNodeFlagsInternal} \{ \par
+{\bf MNF\_\-REPLACE} =  0x001000, 
+{\bf MNF\_\-INSERT} =  0x002000, 
+{\bf MNF\_\-CHILD} =  0x004000, 
+{\bf MNF\_\-QUOTED} =  0x008000, 
+\par
+{\bf MNF\_\-EMPTY} =  0x010000, 
+{\bf MNF\_\-DELETED} =  0x020000, 
+{\bf MNF\_\-FIRST} =  0x080000, 
+{\bf MNF\_\-PUBLIC} =  0x300000, 
+\par
+{\bf MNF\_\-ILLFORMED} =  0x800000, 
+{\bf MNF\_\-USER} =  0xf000000
+ \}
+\end{CompactItemize}
+\subsection*{Protected Member Functions}
+\begin{CompactItemize}
+\item 
+void {\bf x\_\-SetPos} (int iPosParent, int iPos, int iPosChild)
+\item 
+int {\bf x\_\-GetFreePos} ()
+\item 
+bool {\bf x\_\-AllocPosArray} (int nNewSize=0)
+\item 
+void {\bf InitDocFlags} ()
+\item 
+bool {\bf x\_\-ParseDoc} ()
+\item 
+int {\bf x\_\-ParseElem} (int iPos, {\bf TokenPos} \&token)
+\item 
+int {\bf x\_\-FindElem} (int iPosParent, int iPos, MCD\_\-PCSZ szPath) const 
+\item 
+MCD\_\-STR {\bf x\_\-GetPath} (int iPos) const 
+\item 
+MCD\_\-STR {\bf x\_\-GetTagName} (int iPos) const 
+\item 
+MCD\_\-STR {\bf x\_\-GetData} (int iPos) const 
+\item 
+MCD\_\-STR {\bf x\_\-GetAttrib} (int iPos, MCD\_\-PCSZ pAttrib) const 
+\item 
+bool {\bf x\_\-AddElem} (MCD\_\-PCSZ pName, MCD\_\-PCSZ pValue, int nFlags)
+\item 
+bool {\bf x\_\-AddElem} (MCD\_\-PCSZ pName, int nValue, int nFlags)
+\item 
+MCD\_\-STR {\bf x\_\-GetSubDoc} (int iPos) const 
+\item 
+bool {\bf x\_\-AddSubDoc} (MCD\_\-PCSZ pSubDoc, int nFlags)
+\item 
+bool {\bf x\_\-SetAttrib} (int iPos, MCD\_\-PCSZ pAttrib, MCD\_\-PCSZ pValue, int nFlags=0)
+\item 
+bool {\bf x\_\-SetAttrib} (int iPos, MCD\_\-PCSZ pAttrib, int nValue, int nFlags=0)
+\item 
+bool {\bf x\_\-AddNode} (int nNodeType, MCD\_\-PCSZ pText, int nNodeFlags)
+\item 
+void {\bf x\_\-RemoveNode} (int iPosParent, int \&iPos, int \&nNodeType, int \&nNodeOffset, int \&nNodeLength)
+\item 
+void {\bf x\_\-AdjustForNode} (int iPosParent, int iPos, int nShift)
+\item 
+int {\bf x\_\-InsertNew} (int iPosParent, int \&iPosRel, {\bf NodePos} \&node)
+\item 
+void {\bf x\_\-LinkElem} (int iPosParent, int iPosBefore, int iPos)
+\item 
+int {\bf x\_\-UnlinkElem} (int iPos)
+\item 
+int {\bf x\_\-ReleaseSubDoc} (int iPos)
+\item 
+int {\bf x\_\-ReleasePos} (int iPos)
+\item 
+bool {\bf x\_\-GetMap} ({\bf SavedPosMap} $\ast$\&pMap, int nMap, int nMapSize=7)
+\item 
+void {\bf x\_\-CheckSavedPos} ()
+\item 
+bool {\bf x\_\-SetData} (int iPos, MCD\_\-PCSZ szData, int nFlags)
+\item 
+bool {\bf x\_\-SetData} (int iPos, int nValue)
+\item 
+int {\bf x\_\-RemoveElem} (int iPos)
+\item 
+MCD\_\-STR {\bf x\_\-GetElemContent} (int iPos) const 
+\item 
+bool {\bf x\_\-SetElemContent} (MCD\_\-PCSZ szContent)
+\item 
+void {\bf x\_\-DocChange} (int nLeft, int nReplace, const MCD\_\-STR \&strInsert)
+\item 
+void {\bf x\_\-Adjust} (int iPos, int nShift, bool bAfterPos=false)
+\end{CompactItemize}
+\subsection*{Static Protected Member Functions}
+\begin{CompactItemize}
+\item 
+static bool {\bf x\_\-FindAny} (MCD\_\-PCSZ pDoc, int \&nChar)
+\item 
+static bool {\bf x\_\-FindName} ({\bf TokenPos} \&token)
+\item 
+static MCD\_\-STR {\bf x\_\-GetToken} (const {\bf TokenPos} \&token)
+\item 
+static MCD\_\-STR {\bf x\_\-EncodeCDATASection} (MCD\_\-PCSZ szData)
+\item 
+static bool {\bf x\_\-FindAttrib} ({\bf TokenPos} \&token, MCD\_\-PCSZ pAttrib, int n=0)
+\item 
+static bool {\bf x\_\-CreateNode} (MCD\_\-STR \&strNode, int nNodeType, MCD\_\-PCSZ pText)
+\item 
+static int {\bf x\_\-ParseNode} ({\bf TokenPos} \&token, {\bf NodePos} \&node)
+\item 
+static MCD\_\-STR {\bf x\_\-GetLastError} ()
+\item 
+static int {\bf x\_\-Hash} (MCD\_\-PCSZ p, int nSize)
+\item 
+static int {\bf x\_\-GetEncodingCodePage} ({\bf MCD\_\-CSTR} psz7Encoding)
+\item 
+static bool {\bf x\_\-EndianSwapRequired} (int nDocFlags)
+\item 
+static void {\bf x\_\-EndianSwapUTF16} (unsigned short $\ast$pUTF16, int nCharLen)
+\item 
+static bool {\bf x\_\-CanConvert} ({\bf MCD\_\-CSTR} pszToEnc, {\bf MCD\_\-CSTR} pszFromEnc)
+\item 
+static int {\bf x\_\-ConvertEncoding} ({\bf ConvertEncoding} \&convert, void $\ast$pTo)
+\item 
+static bool {\bf x\_\-Open} (MCD\_\-CSTR\_\-FILENAME szFileName, {\bf FilePos} \&file)
+\item 
+static bool {\bf x\_\-Read} (void $\ast$pBuffer, {\bf FilePos} \&file)
+\item 
+static bool {\bf x\_\-ReadText} (MCD\_\-STR \&strDoc, {\bf FilePos} \&file)
+\item 
+static bool {\bf x\_\-Write} (void $\ast$pBuffer, {\bf FilePos} \&file, const void $\ast$pConstBuffer=NULL)
+\item 
+static bool {\bf x\_\-WriteText} (const MCD\_\-STR \&strDoc, {\bf FilePos} \&file)
+\item 
+static bool {\bf x\_\-Close} ({\bf FilePos} \&file)
+\item 
+static MCD\_\-STR {\bf x\_\-IntToStr} (int n)
+\end{CompactItemize}
+\subsection*{Protected Attributes}
+\begin{CompactItemize}
+\item 
+MCD\_\-STR {\bf m\_\-strDoc}
+\item 
+MCD\_\-STR {\bf m\_\-strError}
+\item 
+int {\bf m\_\-iPosParent}
+\item 
+int {\bf m\_\-iPos}
+\item 
+int {\bf m\_\-iPosChild}
+\item 
+int {\bf m\_\-iPosFree}
+\item 
+int {\bf m\_\-iPosDeleted}
+\item 
+int {\bf m\_\-nNodeType}
+\item 
+int {\bf m\_\-nNodeOffset}
+\item 
+int {\bf m\_\-nNodeLength}
+\item 
+int {\bf m\_\-nDocFlags}
+\item 
+{\bf SavedPosMapArray} {\bf m\_\-SavedPosMapArray}
+\item 
+{\bf PosArray} {\bf m\_\-aPos}
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+struct {\bf ConvertEncoding}
+\item 
+struct {\bf ElemPos}
+\item 
+struct {\bf FilePos}
+\item 
+struct {\bf NodePos}
+\item 
+struct {\bf NodeStack}
+\item 
+struct {\bf PosArray}
+\item 
+struct {\bf SavedPos}
+\item 
+struct {\bf SavedPosMap}
+\item 
+struct {\bf SavedPosMapArray}
+\item 
+struct {\bf TokenPos}
+\end{CompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\index{CMarkup@{CMarkup}!MarkupDocFlags@{MarkupDocFlags}}
+\index{MarkupDocFlags@{MarkupDocFlags}!CMarkup@{CMarkup}}
+\subsubsection[MarkupDocFlags]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf CMarkup::MarkupDocFlags}}\label{classCMarkup_c7127c7bea2c8b0be6c828b607e8554b}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{MDF\_\-UTF16LEFILE@{MDF\_\-UTF16LEFILE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MDF\_\-UTF16LEFILE@{MDF\_\-UTF16LEFILE}}\item[{\em 
+MDF\_\-UTF16LEFILE\label{classCMarkup_c7127c7bea2c8b0be6c828b607e8554befcb2d72b1d16be29fa3321fdb90be5a}
+}]\index{MDF\_\-UTF8PREAMBLE@{MDF\_\-UTF8PREAMBLE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MDF\_\-UTF8PREAMBLE@{MDF\_\-UTF8PREAMBLE}}\item[{\em 
+MDF\_\-UTF8PREAMBLE\label{classCMarkup_c7127c7bea2c8b0be6c828b607e8554bafe9691400e459b31c79b838e9e1d9fc}
+}]\index{MDF\_\-IGNORECASE@{MDF\_\-IGNORECASE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MDF\_\-IGNORECASE@{MDF\_\-IGNORECASE}}\item[{\em 
+MDF\_\-IGNORECASE\label{classCMarkup_c7127c7bea2c8b0be6c828b607e8554b725e9783bc1deedb0c3b98e82a5707c1}
+}]\index{MDF\_\-READFILE@{MDF\_\-READFILE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MDF\_\-READFILE@{MDF\_\-READFILE}}\item[{\em 
+MDF\_\-READFILE\label{classCMarkup_c7127c7bea2c8b0be6c828b607e8554bd1a77f583c5d922529404846bd56c59e}
+}]\index{MDF\_\-WRITEFILE@{MDF\_\-WRITEFILE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MDF\_\-WRITEFILE@{MDF\_\-WRITEFILE}}\item[{\em 
+MDF\_\-WRITEFILE\label{classCMarkup_c7127c7bea2c8b0be6c828b607e8554ba765e050fcd8758d58b4b0573474a706}
+}]\index{MDF\_\-APPENDFILE@{MDF\_\-APPENDFILE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MDF\_\-APPENDFILE@{MDF\_\-APPENDFILE}}\item[{\em 
+MDF\_\-APPENDFILE\label{classCMarkup_c7127c7bea2c8b0be6c828b607e8554b44c9a6ce28bbb94646f77579b7638b28}
+}]\index{MDF\_\-UTF16BEFILE@{MDF\_\-UTF16BEFILE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MDF\_\-UTF16BEFILE@{MDF\_\-UTF16BEFILE}}\item[{\em 
+MDF\_\-UTF16BEFILE\label{classCMarkup_c7127c7bea2c8b0be6c828b607e8554b88c047641c1ec7fa6211443d45746a3b}
+}]\end{description}
+\end{Desc}
+
+\index{CMarkup@{CMarkup}!MarkupNodeFlags@{MarkupNodeFlags}}
+\index{MarkupNodeFlags@{MarkupNodeFlags}!CMarkup@{CMarkup}}
+\subsubsection[MarkupNodeFlags]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf CMarkup::MarkupNodeFlags}}\label{classCMarkup_2430b70622042675770921f21ee85de9}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{MNF\_\-WITHCDATA@{MNF\_\-WITHCDATA}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-WITHCDATA@{MNF\_\-WITHCDATA}}\item[{\em 
+MNF\_\-WITHCDATA\label{classCMarkup_2430b70622042675770921f21ee85de973723ee5750bd9abeb43360103219d3f}
+}]\index{MNF\_\-WITHNOLINES@{MNF\_\-WITHNOLINES}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-WITHNOLINES@{MNF\_\-WITHNOLINES}}\item[{\em 
+MNF\_\-WITHNOLINES\label{classCMarkup_2430b70622042675770921f21ee85de9f0e3644e886a52e470a374f4c5f0043b}
+}]\index{MNF\_\-WITHXHTMLSPACE@{MNF\_\-WITHXHTMLSPACE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-WITHXHTMLSPACE@{MNF\_\-WITHXHTMLSPACE}}\item[{\em 
+MNF\_\-WITHXHTMLSPACE\label{classCMarkup_2430b70622042675770921f21ee85de960223e72ec909eb1fd56ac1f0f75f6fd}
+}]\index{MNF\_\-WITHREFS@{MNF\_\-WITHREFS}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-WITHREFS@{MNF\_\-WITHREFS}}\item[{\em 
+MNF\_\-WITHREFS\label{classCMarkup_2430b70622042675770921f21ee85de9145d3689a42969290c7181f6c2f619f4}
+}]\index{MNF\_\-WITHNOEND@{MNF\_\-WITHNOEND}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-WITHNOEND@{MNF\_\-WITHNOEND}}\item[{\em 
+MNF\_\-WITHNOEND\label{classCMarkup_2430b70622042675770921f21ee85de91628c1dfcdd804a46f573847b209edf0}
+}]\index{MNF\_\-ESCAPEQUOTES@{MNF\_\-ESCAPEQUOTES}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-ESCAPEQUOTES@{MNF\_\-ESCAPEQUOTES}}\item[{\em 
+MNF\_\-ESCAPEQUOTES\label{classCMarkup_2430b70622042675770921f21ee85de9cdc9a302a8d019abf548f423c8f4f8cd}
+}]\index{MNF\_\-NONENDED@{MNF\_\-NONENDED}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-NONENDED@{MNF\_\-NONENDED}}\item[{\em 
+MNF\_\-NONENDED\label{classCMarkup_2430b70622042675770921f21ee85de9dcbd22a2e5f43554eca309bbb5afe4fe}
+}]\index{MNF\_\-ILLDATA@{MNF\_\-ILLDATA}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-ILLDATA@{MNF\_\-ILLDATA}}\item[{\em 
+MNF\_\-ILLDATA\label{classCMarkup_2430b70622042675770921f21ee85de9d613025f3363f3c24d0f2ad9148c3c19}
+}]\end{description}
+\end{Desc}
+
+\index{CMarkup@{CMarkup}!MarkupNodeType@{MarkupNodeType}}
+\index{MarkupNodeType@{MarkupNodeType}!CMarkup@{CMarkup}}
+\subsubsection[MarkupNodeType]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf CMarkup::MarkupNodeType}}\label{classCMarkup_a7f0377cbea81f5b932347af5fafab68}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{MNT\_\-ELEMENT@{MNT\_\-ELEMENT}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNT\_\-ELEMENT@{MNT\_\-ELEMENT}}\item[{\em 
+MNT\_\-ELEMENT\label{classCMarkup_a7f0377cbea81f5b932347af5fafab689b3fc0d8f9bd45a9c917a064fef42f5d}
+}]\index{MNT\_\-TEXT@{MNT\_\-TEXT}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNT\_\-TEXT@{MNT\_\-TEXT}}\item[{\em 
+MNT\_\-TEXT\label{classCMarkup_a7f0377cbea81f5b932347af5fafab68dc0e43574b4e3717aa3736013c24a64c}
+}]\index{MNT\_\-WHITESPACE@{MNT\_\-WHITESPACE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNT\_\-WHITESPACE@{MNT\_\-WHITESPACE}}\item[{\em 
+MNT\_\-WHITESPACE\label{classCMarkup_a7f0377cbea81f5b932347af5fafab68840c4d18280cdc454e51b86168ed8c11}
+}]\index{MNT\_\-CDATA\_\-SECTION@{MNT\_\-CDATA\_\-SECTION}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNT\_\-CDATA\_\-SECTION@{MNT\_\-CDATA\_\-SECTION}}\item[{\em 
+MNT\_\-CDATA\_\-SECTION\label{classCMarkup_a7f0377cbea81f5b932347af5fafab68e021e850432d978fc0c4a8e0d5cbe087}
+}]\index{MNT\_\-PROCESSING\_\-INSTRUCTION@{MNT\_\-PROCESSING\_\-INSTRUCTION}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNT\_\-PROCESSING\_\-INSTRUCTION@{MNT\_\-PROCESSING\_\-INSTRUCTION}}\item[{\em 
+MNT\_\-PROCESSING\_\-INSTRUCTION\label{classCMarkup_a7f0377cbea81f5b932347af5fafab68e9849c7b999daccf0cfcf9ec1b8301df}
+}]\index{MNT\_\-COMMENT@{MNT\_\-COMMENT}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNT\_\-COMMENT@{MNT\_\-COMMENT}}\item[{\em 
+MNT\_\-COMMENT\label{classCMarkup_a7f0377cbea81f5b932347af5fafab68cf2c2cdc9f12d1adcddb7698f2541d28}
+}]\index{MNT\_\-DOCUMENT\_\-TYPE@{MNT\_\-DOCUMENT\_\-TYPE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNT\_\-DOCUMENT\_\-TYPE@{MNT\_\-DOCUMENT\_\-TYPE}}\item[{\em 
+MNT\_\-DOCUMENT\_\-TYPE\label{classCMarkup_a7f0377cbea81f5b932347af5fafab68d489a35314e38d5b0de86f484d16b064}
+}]\index{MNT\_\-EXCLUDE\_\-WHITESPACE@{MNT\_\-EXCLUDE\_\-WHITESPACE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNT\_\-EXCLUDE\_\-WHITESPACE@{MNT\_\-EXCLUDE\_\-WHITESPACE}}\item[{\em 
+MNT\_\-EXCLUDE\_\-WHITESPACE\label{classCMarkup_a7f0377cbea81f5b932347af5fafab68fb5b9628a79d30a35162782c3c3b31b6}
+}]\index{MNT\_\-LONE\_\-END\_\-TAG@{MNT\_\-LONE\_\-END\_\-TAG}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNT\_\-LONE\_\-END\_\-TAG@{MNT\_\-LONE\_\-END\_\-TAG}}\item[{\em 
+MNT\_\-LONE\_\-END\_\-TAG\label{classCMarkup_a7f0377cbea81f5b932347af5fafab68cc28ec03a604f71e7fa96e844f5588b7}
+}]\index{MNT\_\-NODE\_\-ERROR@{MNT\_\-NODE\_\-ERROR}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNT\_\-NODE\_\-ERROR@{MNT\_\-NODE\_\-ERROR}}\item[{\em 
+MNT\_\-NODE\_\-ERROR\label{classCMarkup_a7f0377cbea81f5b932347af5fafab680ebc6e9e8955b4e44814e08f0fa843a1}
+}]\end{description}
+\end{Desc}
+
+\index{CMarkup@{CMarkup}!MarkupNodeFlagsInternal@{MarkupNodeFlagsInternal}}
+\index{MarkupNodeFlagsInternal@{MarkupNodeFlagsInternal}!CMarkup@{CMarkup}}
+\subsubsection[MarkupNodeFlagsInternal]{\setlength{\rightskip}{0pt plus 5cm}enum {\bf CMarkup::MarkupNodeFlagsInternal}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8c}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{MNF\_\-REPLACE@{MNF\_\-REPLACE}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-REPLACE@{MNF\_\-REPLACE}}\item[{\em 
+MNF\_\-REPLACE\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8ca8715553759e26f92ea24e8b76b8b158}
+}]\index{MNF\_\-INSERT@{MNF\_\-INSERT}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-INSERT@{MNF\_\-INSERT}}\item[{\em 
+MNF\_\-INSERT\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8cd3bd67680ce50796134080f5d10c9bd1}
+}]\index{MNF\_\-CHILD@{MNF\_\-CHILD}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-CHILD@{MNF\_\-CHILD}}\item[{\em 
+MNF\_\-CHILD\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8cb6494b8591638c21266879931d5307b2}
+}]\index{MNF\_\-QUOTED@{MNF\_\-QUOTED}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-QUOTED@{MNF\_\-QUOTED}}\item[{\em 
+MNF\_\-QUOTED\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8c897c4556a6eae4c07e2e2982d8f0f8d4}
+}]\index{MNF\_\-EMPTY@{MNF\_\-EMPTY}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-EMPTY@{MNF\_\-EMPTY}}\item[{\em 
+MNF\_\-EMPTY\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8c9971060ae3d21c6df56dc12fe331a30e}
+}]\index{MNF\_\-DELETED@{MNF\_\-DELETED}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-DELETED@{MNF\_\-DELETED}}\item[{\em 
+MNF\_\-DELETED\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8c99b57daa5da3a5a18fa0f0d6cf4b05b7}
+}]\index{MNF\_\-FIRST@{MNF\_\-FIRST}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-FIRST@{MNF\_\-FIRST}}\item[{\em 
+MNF\_\-FIRST\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8c37da679825623e48b6a54516b870b9ae}
+}]\index{MNF\_\-PUBLIC@{MNF\_\-PUBLIC}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-PUBLIC@{MNF\_\-PUBLIC}}\item[{\em 
+MNF\_\-PUBLIC\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8cf3bb3528caca376799c6eae33521787b}
+}]\index{MNF\_\-ILLFORMED@{MNF\_\-ILLFORMED}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-ILLFORMED@{MNF\_\-ILLFORMED}}\item[{\em 
+MNF\_\-ILLFORMED\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8c3691b524fb3b4d734fd36fc62e3b1dc2}
+}]\index{MNF\_\-USER@{MNF\_\-USER}!CMarkup@{CMarkup}}\index{CMarkup@{CMarkup}!MNF\_\-USER@{MNF\_\-USER}}\item[{\em 
+MNF\_\-USER\label{classCMarkup_cbbb329497c02ffa1894238b9dc01e8c346dcfb669d736fc52779ba6ebffecda}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{CMarkup@{CMarkup}!CMarkup@{CMarkup}}
+\index{CMarkup@{CMarkup}!CMarkup@{CMarkup}}
+\subsubsection[CMarkup]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::CMarkup ()\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_ef1594806cb878a276025d452c919a29}
+
+
+
+
+References InitDocFlags(), and SetDoc().\index{CMarkup@{CMarkup}!CMarkup@{CMarkup}}
+\index{CMarkup@{CMarkup}!CMarkup@{CMarkup}}
+\subsubsection[CMarkup]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::CMarkup ({\bf MCD\_\-CSTR} {\em szDoc})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_186b921d6af5fde01449e5365eef095c}
+
+
+
+
+References InitDocFlags(), and SetDoc().\index{CMarkup@{CMarkup}!CMarkup@{CMarkup}}
+\index{CMarkup@{CMarkup}!CMarkup@{CMarkup}}
+\subsubsection[CMarkup]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::CMarkup (int {\em nFlags})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_9f3fdb3c94ce931f34e96bc387bfb199}
+
+
+
+
+References m\_\-nDocFlags, and SetDoc().\index{CMarkup@{CMarkup}!CMarkup@{CMarkup}}
+\index{CMarkup@{CMarkup}!CMarkup@{CMarkup}}
+\subsubsection[CMarkup]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::CMarkup (const {\bf CMarkup} \& {\em markup})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_e4dc90b99846d35849bc323064fbafcf}
+
+
+\index{CMarkup@{CMarkup}!$\sim$CMarkup@{$\sim$CMarkup}}
+\index{$\sim$CMarkup@{$\sim$CMarkup}!CMarkup@{CMarkup}}
+\subsubsection[$\sim$CMarkup]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::$\sim$CMarkup ()\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_8aa2cd9b38b3e173d2149914c59eb2b7}
+
+
+
+
+\subsection{Member Function Documentation}
+\index{CMarkup@{CMarkup}!operator=@{operator=}}
+\index{operator=@{operator=}!CMarkup@{CMarkup}}
+\subsubsection[operator=]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::operator= (const {\bf CMarkup} \& {\em markup})}\label{classCMarkup_3feb577bf5483591ac318ecf19cc6577}
+
+
+\index{CMarkup@{CMarkup}!Load@{Load}}
+\index{Load@{Load}!CMarkup@{CMarkup}}
+\subsubsection[Load]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::Load (MCD\_\-CSTR\_\-FILENAME {\em szFileName})}\label{classCMarkup_c7604e24564eac2dce702f7fbaf430a6}
+
+
+\index{CMarkup@{CMarkup}!SetDoc@{SetDoc}}
+\index{SetDoc@{SetDoc}!CMarkup@{CMarkup}}
+\subsubsection[SetDoc]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetDoc (MCD\_\-PCSZ {\em pDoc})}\label{classCMarkup_3f7b4f882a3ba216fdaf21b59778869d}
+
+
+
+
+Referenced by CMarkup().\index{CMarkup@{CMarkup}!SetDoc@{SetDoc}}
+\index{SetDoc@{SetDoc}!CMarkup@{CMarkup}}
+\subsubsection[SetDoc]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetDoc (const MCD\_\-STR \& {\em strDoc})}\label{classCMarkup_785043b375dbe831b700722518dcd29f}
+
+
+\index{CMarkup@{CMarkup}!IsWellFormed@{IsWellFormed}}
+\index{IsWellFormed@{IsWellFormed}!CMarkup@{CMarkup}}
+\subsubsection[IsWellFormed]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::IsWellFormed ()}\label{classCMarkup_f3a54e13b8565c2789c2c80aa2c9a563}
+
+
+\index{CMarkup@{CMarkup}!FindElem@{FindElem}}
+\index{FindElem@{FindElem}!CMarkup@{CMarkup}}
+\subsubsection[FindElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::FindElem ({\bf MCD\_\-CSTR} {\em szName} = {\tt NULL})}\label{classCMarkup_dc3e9cb6eb579afdf10bef7e91da746a}
+
+
+\index{CMarkup@{CMarkup}!FindChildElem@{FindChildElem}}
+\index{FindChildElem@{FindChildElem}!CMarkup@{CMarkup}}
+\subsubsection[FindChildElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::FindChildElem ({\bf MCD\_\-CSTR} {\em szName} = {\tt NULL})}\label{classCMarkup_8a882f72c9b206ed833c45ca9376e3d8}
+
+
+\index{CMarkup@{CMarkup}!IntoElem@{IntoElem}}
+\index{IntoElem@{IntoElem}!CMarkup@{CMarkup}}
+\subsubsection[IntoElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::IntoElem ()}\label{classCMarkup_e6136fa65e4f1927fe763d011d3eb9a3}
+
+
+\index{CMarkup@{CMarkup}!OutOfElem@{OutOfElem}}
+\index{OutOfElem@{OutOfElem}!CMarkup@{CMarkup}}
+\subsubsection[OutOfElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::OutOfElem ()}\label{classCMarkup_012bca9ceaf157033a5697fa6ea92e45}
+
+
+\index{CMarkup@{CMarkup}!ResetChildPos@{ResetChildPos}}
+\index{ResetChildPos@{ResetChildPos}!CMarkup@{CMarkup}}
+\subsubsection[ResetChildPos]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::ResetChildPos ()\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_b7c6cb57c9cca484ed7b1d741c5d37ee}
+
+
+
+
+References m\_\-iPos, m\_\-iPosParent, and x\_\-SetPos().\index{CMarkup@{CMarkup}!ResetMainPos@{ResetMainPos}}
+\index{ResetMainPos@{ResetMainPos}!CMarkup@{CMarkup}}
+\subsubsection[ResetMainPos]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::ResetMainPos ()\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_17a436dfc77e82619ad186e784a26ce7}
+
+
+
+
+References m\_\-iPosParent, and x\_\-SetPos().\index{CMarkup@{CMarkup}!ResetPos@{ResetPos}}
+\index{ResetPos@{ResetPos}!CMarkup@{CMarkup}}
+\subsubsection[ResetPos]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::ResetPos ()\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_834ff734949071455e5808aaf7c82f03}
+
+
+
+
+References x\_\-SetPos().\index{CMarkup@{CMarkup}!GetTagName@{GetTagName}}
+\index{GetTagName@{GetTagName}!CMarkup@{CMarkup}}
+\subsubsection[GetTagName]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::GetTagName () const}\label{classCMarkup_0fcd179bb0ba35d6a262d571c1ef1004}
+
+
+\index{CMarkup@{CMarkup}!GetChildTagName@{GetChildTagName}}
+\index{GetChildTagName@{GetChildTagName}!CMarkup@{CMarkup}}
+\subsubsection[GetChildTagName]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::GetChildTagName () const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_2409a176f7a964dc6e0bf73f5ba47863}
+
+
+
+
+References m\_\-iPosChild, and x\_\-GetTagName().\index{CMarkup@{CMarkup}!GetData@{GetData}}
+\index{GetData@{GetData}!CMarkup@{CMarkup}}
+\subsubsection[GetData]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::GetData () const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_1a671b10223425ac4fc600c96366b0d2}
+
+
+
+
+References m\_\-iPos, and x\_\-GetData().\index{CMarkup@{CMarkup}!GetChildData@{GetChildData}}
+\index{GetChildData@{GetChildData}!CMarkup@{CMarkup}}
+\subsubsection[GetChildData]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::GetChildData () const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_7b66931cdfa9bf4423aaeb1cb37fa6f5}
+
+
+
+
+References m\_\-iPosChild, and x\_\-GetData().\index{CMarkup@{CMarkup}!GetElemContent@{GetElemContent}}
+\index{GetElemContent@{GetElemContent}!CMarkup@{CMarkup}}
+\subsubsection[GetElemContent]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::GetElemContent () const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_9dfbb66afa75291b5ed19b51e0f6357b}
+
+
+
+
+References m\_\-iPos, and x\_\-GetElemContent().\index{CMarkup@{CMarkup}!GetAttrib@{GetAttrib}}
+\index{GetAttrib@{GetAttrib}!CMarkup@{CMarkup}}
+\subsubsection[GetAttrib]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::GetAttrib ({\bf MCD\_\-CSTR} {\em szAttrib}) const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_de52b4aa36263acc26c8d4f75e8941eb}
+
+
+
+
+References m\_\-iPos, and x\_\-GetAttrib().\index{CMarkup@{CMarkup}!GetChildAttrib@{GetChildAttrib}}
+\index{GetChildAttrib@{GetChildAttrib}!CMarkup@{CMarkup}}
+\subsubsection[GetChildAttrib]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::GetChildAttrib ({\bf MCD\_\-CSTR} {\em szAttrib}) const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_d617eafd272e9c1b18bcc6c9128815fd}
+
+
+
+
+References m\_\-iPosChild, and x\_\-GetAttrib().\index{CMarkup@{CMarkup}!GetAttribName@{GetAttribName}}
+\index{GetAttribName@{GetAttribName}!CMarkup@{CMarkup}}
+\subsubsection[GetAttribName]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::GetAttribName (int {\em n}) const}\label{classCMarkup_737ea06600da95647a09bd2375e2baa3}
+
+
+\index{CMarkup@{CMarkup}!FindNode@{FindNode}}
+\index{FindNode@{FindNode}!CMarkup@{CMarkup}}
+\subsubsection[FindNode]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::FindNode (int {\em nType} = {\tt 0})}\label{classCMarkup_e29573627f9b0cdc0d7152ff749ba407}
+
+
+\index{CMarkup@{CMarkup}!GetNodeType@{GetNodeType}}
+\index{GetNodeType@{GetNodeType}!CMarkup@{CMarkup}}
+\subsubsection[GetNodeType]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::GetNodeType ()\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_86a5f997b734d560b3b21c8ef89d3a57}
+
+
+
+
+References m\_\-nNodeType.\index{CMarkup@{CMarkup}!SavePos@{SavePos}}
+\index{SavePos@{SavePos}!CMarkup@{CMarkup}}
+\subsubsection[SavePos]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SavePos ({\bf MCD\_\-CSTR} {\em szPosName} = {\tt MCD\_\-T(\char`\"{}\char`\"{})}, \/  int {\em nMap} = {\tt 0})}\label{classCMarkup_21279989fdcfbed6ed4d8824b9614eb0}
+
+
+\index{CMarkup@{CMarkup}!RestorePos@{RestorePos}}
+\index{RestorePos@{RestorePos}!CMarkup@{CMarkup}}
+\subsubsection[RestorePos]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::RestorePos ({\bf MCD\_\-CSTR} {\em szPosName} = {\tt MCD\_\-T(\char`\"{}\char`\"{})}, \/  int {\em nMap} = {\tt 0})}\label{classCMarkup_dbab6d52d320eac695850f0b47e5b5ce}
+
+
+\index{CMarkup@{CMarkup}!SetMapSize@{SetMapSize}}
+\index{SetMapSize@{SetMapSize}!CMarkup@{CMarkup}}
+\subsubsection[SetMapSize]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetMapSize (int {\em nSize}, \/  int {\em nMap} = {\tt 0})}\label{classCMarkup_834d5e280500d0f62cd6fdb53b834ebb}
+
+
+\index{CMarkup@{CMarkup}!GetError@{GetError}}
+\index{GetError@{GetError}!CMarkup@{CMarkup}}
+\subsubsection[GetError]{\setlength{\rightskip}{0pt plus 5cm}const MCD\_\-STR\& CMarkup::GetError () const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_15f1042ff13167216b741f360e88f649}
+
+
+
+
+References m\_\-strError.\index{CMarkup@{CMarkup}!GetDocFlags@{GetDocFlags}}
+\index{GetDocFlags@{GetDocFlags}!CMarkup@{CMarkup}}
+\subsubsection[GetDocFlags]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::GetDocFlags () const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_455d13d62ba9f2fd3ce6ad3802376c1c}
+
+
+
+
+References m\_\-nDocFlags.\index{CMarkup@{CMarkup}!SetDocFlags@{SetDocFlags}}
+\index{SetDocFlags@{SetDocFlags}!CMarkup@{CMarkup}}
+\subsubsection[SetDocFlags]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::SetDocFlags (int {\em nFlags})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_3cf48b937254c4cd36e0c9cc7b76cff1}
+
+
+
+
+References m\_\-nDocFlags.\index{CMarkup@{CMarkup}!Save@{Save}}
+\index{Save@{Save}!CMarkup@{CMarkup}}
+\subsubsection[Save]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::Save (MCD\_\-CSTR\_\-FILENAME {\em szFileName})}\label{classCMarkup_61b774f533449eeda7f3d78d8d69e4fb}
+
+
+\index{CMarkup@{CMarkup}!GetDoc@{GetDoc}}
+\index{GetDoc@{GetDoc}!CMarkup@{CMarkup}}
+\subsubsection[GetDoc]{\setlength{\rightskip}{0pt plus 5cm}const MCD\_\-STR\& CMarkup::GetDoc () const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_04364a3697a67d5652b2259bd8b17889}
+
+
+
+
+References m\_\-strDoc.\index{CMarkup@{CMarkup}!AddElem@{AddElem}}
+\index{AddElem@{AddElem}!CMarkup@{CMarkup}}
+\subsubsection[AddElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddElem ({\bf MCD\_\-CSTR} {\em szName}, \/  {\bf MCD\_\-CSTR} {\em szData} = {\tt NULL}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_4662396e9424b09566bdcc678ad9dd74}
+
+
+
+
+References x\_\-AddElem().\index{CMarkup@{CMarkup}!InsertElem@{InsertElem}}
+\index{InsertElem@{InsertElem}!CMarkup@{CMarkup}}
+\subsubsection[InsertElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::InsertElem ({\bf MCD\_\-CSTR} {\em szName}, \/  {\bf MCD\_\-CSTR} {\em szData} = {\tt NULL}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_becf9cd13700fc16d44bef412d76beaf}
+
+
+
+
+References MNF\_\-INSERT, and x\_\-AddElem().\index{CMarkup@{CMarkup}!AddChildElem@{AddChildElem}}
+\index{AddChildElem@{AddChildElem}!CMarkup@{CMarkup}}
+\subsubsection[AddChildElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddChildElem ({\bf MCD\_\-CSTR} {\em szName}, \/  {\bf MCD\_\-CSTR} {\em szData} = {\tt NULL}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_013e1b40382e8d06410f8a7e823976a1}
+
+
+
+
+References MNF\_\-CHILD, and x\_\-AddElem().\index{CMarkup@{CMarkup}!InsertChildElem@{InsertChildElem}}
+\index{InsertChildElem@{InsertChildElem}!CMarkup@{CMarkup}}
+\subsubsection[InsertChildElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::InsertChildElem ({\bf MCD\_\-CSTR} {\em szName}, \/  {\bf MCD\_\-CSTR} {\em szData} = {\tt NULL}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_e7ec8b7cc039f3308ab23a1465883061}
+
+
+
+
+References MNF\_\-CHILD, MNF\_\-INSERT, and x\_\-AddElem().\index{CMarkup@{CMarkup}!AddElem@{AddElem}}
+\index{AddElem@{AddElem}!CMarkup@{CMarkup}}
+\subsubsection[AddElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddElem ({\bf MCD\_\-CSTR} {\em szName}, \/  int {\em nValue}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_4ed6f7e35a579b846c3a7cc8cae55bf3}
+
+
+
+
+References x\_\-AddElem().\index{CMarkup@{CMarkup}!InsertElem@{InsertElem}}
+\index{InsertElem@{InsertElem}!CMarkup@{CMarkup}}
+\subsubsection[InsertElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::InsertElem ({\bf MCD\_\-CSTR} {\em szName}, \/  int {\em nValue}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_d0548425b4e5e0522b33a9f5e30c36ca}
+
+
+
+
+References MNF\_\-INSERT, and x\_\-AddElem().\index{CMarkup@{CMarkup}!AddChildElem@{AddChildElem}}
+\index{AddChildElem@{AddChildElem}!CMarkup@{CMarkup}}
+\subsubsection[AddChildElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddChildElem ({\bf MCD\_\-CSTR} {\em szName}, \/  int {\em nValue}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_a5d807472725dd66a45a94ca9b0e7e35}
+
+
+
+
+References MNF\_\-CHILD, and x\_\-AddElem().\index{CMarkup@{CMarkup}!InsertChildElem@{InsertChildElem}}
+\index{InsertChildElem@{InsertChildElem}!CMarkup@{CMarkup}}
+\subsubsection[InsertChildElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::InsertChildElem ({\bf MCD\_\-CSTR} {\em szName}, \/  int {\em nValue}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_91c3a9a4a47a3c8c9e184d9a6ee7f97a}
+
+
+
+
+References MNF\_\-CHILD, MNF\_\-INSERT, and x\_\-AddElem().\index{CMarkup@{CMarkup}!AddAttrib@{AddAttrib}}
+\index{AddAttrib@{AddAttrib}!CMarkup@{CMarkup}}
+\subsubsection[AddAttrib]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddAttrib ({\bf MCD\_\-CSTR} {\em szAttrib}, \/  {\bf MCD\_\-CSTR} {\em szValue})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_0e563a8e5187c6145ef7da0eda8f48a0}
+
+
+
+
+References m\_\-iPos, and x\_\-SetAttrib().\index{CMarkup@{CMarkup}!AddChildAttrib@{AddChildAttrib}}
+\index{AddChildAttrib@{AddChildAttrib}!CMarkup@{CMarkup}}
+\subsubsection[AddChildAttrib]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddChildAttrib ({\bf MCD\_\-CSTR} {\em szAttrib}, \/  {\bf MCD\_\-CSTR} {\em szValue})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_abf8a4d65e8d1e24dab3f3299c82a51b}
+
+
+
+
+References m\_\-iPosChild, and x\_\-SetAttrib().\index{CMarkup@{CMarkup}!AddAttrib@{AddAttrib}}
+\index{AddAttrib@{AddAttrib}!CMarkup@{CMarkup}}
+\subsubsection[AddAttrib]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddAttrib ({\bf MCD\_\-CSTR} {\em szAttrib}, \/  int {\em nValue})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_003a55d86bd2c78646abd3f408bd4acb}
+
+
+
+
+References m\_\-iPos, and x\_\-SetAttrib().\index{CMarkup@{CMarkup}!AddChildAttrib@{AddChildAttrib}}
+\index{AddChildAttrib@{AddChildAttrib}!CMarkup@{CMarkup}}
+\subsubsection[AddChildAttrib]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddChildAttrib ({\bf MCD\_\-CSTR} {\em szAttrib}, \/  int {\em nValue})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_6038dab1d6fe99029937e6701c3d33d8}
+
+
+
+
+References m\_\-iPosChild, and x\_\-SetAttrib().\index{CMarkup@{CMarkup}!AddSubDoc@{AddSubDoc}}
+\index{AddSubDoc@{AddSubDoc}!CMarkup@{CMarkup}}
+\subsubsection[AddSubDoc]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddSubDoc ({\bf MCD\_\-CSTR} {\em szSubDoc})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_cc3a92d27a83cd20854244027b0269b7}
+
+
+
+
+References x\_\-AddSubDoc().\index{CMarkup@{CMarkup}!InsertSubDoc@{InsertSubDoc}}
+\index{InsertSubDoc@{InsertSubDoc}!CMarkup@{CMarkup}}
+\subsubsection[InsertSubDoc]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::InsertSubDoc ({\bf MCD\_\-CSTR} {\em szSubDoc})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_8f2a8484e2d4f8a27032f14818d96a66}
+
+
+
+
+References MNF\_\-INSERT, and x\_\-AddSubDoc().\index{CMarkup@{CMarkup}!GetSubDoc@{GetSubDoc}}
+\index{GetSubDoc@{GetSubDoc}!CMarkup@{CMarkup}}
+\subsubsection[GetSubDoc]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::GetSubDoc () const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_9d963c7234a4cecc16d9bd46c32ff87a}
+
+
+
+
+References m\_\-iPos, and x\_\-GetSubDoc().\index{CMarkup@{CMarkup}!AddChildSubDoc@{AddChildSubDoc}}
+\index{AddChildSubDoc@{AddChildSubDoc}!CMarkup@{CMarkup}}
+\subsubsection[AddChildSubDoc]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddChildSubDoc ({\bf MCD\_\-CSTR} {\em szSubDoc})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_3500f6d0c1ea550bfd70c0dc0b1217c2}
+
+
+
+
+References MNF\_\-CHILD, and x\_\-AddSubDoc().\index{CMarkup@{CMarkup}!InsertChildSubDoc@{InsertChildSubDoc}}
+\index{InsertChildSubDoc@{InsertChildSubDoc}!CMarkup@{CMarkup}}
+\subsubsection[InsertChildSubDoc]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::InsertChildSubDoc ({\bf MCD\_\-CSTR} {\em szSubDoc})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_f77bad4653eb8a9396844ea0d94c19a7}
+
+
+
+
+References MNF\_\-CHILD, MNF\_\-INSERT, and x\_\-AddSubDoc().\index{CMarkup@{CMarkup}!GetChildSubDoc@{GetChildSubDoc}}
+\index{GetChildSubDoc@{GetChildSubDoc}!CMarkup@{CMarkup}}
+\subsubsection[GetChildSubDoc]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::GetChildSubDoc () const\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_5957fb2553a8104d064a5adf1726b838}
+
+
+
+
+References m\_\-iPosChild, and x\_\-GetSubDoc().\index{CMarkup@{CMarkup}!AddNode@{AddNode}}
+\index{AddNode@{AddNode}!CMarkup@{CMarkup}}
+\subsubsection[AddNode]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::AddNode (int {\em nType}, \/  {\bf MCD\_\-CSTR} {\em szText})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_650eb815a83605636088c30de6f4e6a7}
+
+
+
+
+References x\_\-AddNode().\index{CMarkup@{CMarkup}!InsertNode@{InsertNode}}
+\index{InsertNode@{InsertNode}!CMarkup@{CMarkup}}
+\subsubsection[InsertNode]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::InsertNode (int {\em nType}, \/  {\bf MCD\_\-CSTR} {\em szText})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_3217ba51dd76d42272bb7e2cddfb3102}
+
+
+
+
+References MNF\_\-INSERT, and x\_\-AddNode().\index{CMarkup@{CMarkup}!RemoveElem@{RemoveElem}}
+\index{RemoveElem@{RemoveElem}!CMarkup@{CMarkup}}
+\subsubsection[RemoveElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::RemoveElem ()}\label{classCMarkup_e2184e5dbf2aaf056aaad6a3690e2963}
+
+
+\index{CMarkup@{CMarkup}!RemoveChildElem@{RemoveChildElem}}
+\index{RemoveChildElem@{RemoveChildElem}!CMarkup@{CMarkup}}
+\subsubsection[RemoveChildElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::RemoveChildElem ()}\label{classCMarkup_7f1b54d8bcb5c68cf823835c98d41ae9}
+
+
+\index{CMarkup@{CMarkup}!RemoveNode@{RemoveNode}}
+\index{RemoveNode@{RemoveNode}!CMarkup@{CMarkup}}
+\subsubsection[RemoveNode]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::RemoveNode ()}\label{classCMarkup_521a5dc4f62c9535a45cfc5a765df1e7}
+
+
+\index{CMarkup@{CMarkup}!SetAttrib@{SetAttrib}}
+\index{SetAttrib@{SetAttrib}!CMarkup@{CMarkup}}
+\subsubsection[SetAttrib]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetAttrib ({\bf MCD\_\-CSTR} {\em szAttrib}, \/  {\bf MCD\_\-CSTR} {\em szValue}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_e358f67c104c9b02e93a8a33cd81093f}
+
+
+
+
+References m\_\-iPos, and x\_\-SetAttrib().\index{CMarkup@{CMarkup}!SetChildAttrib@{SetChildAttrib}}
+\index{SetChildAttrib@{SetChildAttrib}!CMarkup@{CMarkup}}
+\subsubsection[SetChildAttrib]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetChildAttrib ({\bf MCD\_\-CSTR} {\em szAttrib}, \/  {\bf MCD\_\-CSTR} {\em szValue}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_054134023f97323604f77feefb3ab8b4}
+
+
+
+
+References m\_\-iPosChild, and x\_\-SetAttrib().\index{CMarkup@{CMarkup}!SetAttrib@{SetAttrib}}
+\index{SetAttrib@{SetAttrib}!CMarkup@{CMarkup}}
+\subsubsection[SetAttrib]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetAttrib ({\bf MCD\_\-CSTR} {\em szAttrib}, \/  int {\em nValue}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_a1b52eb318133c539e5eaf23915321ad}
+
+
+
+
+References m\_\-iPos, and x\_\-SetAttrib().\index{CMarkup@{CMarkup}!SetChildAttrib@{SetChildAttrib}}
+\index{SetChildAttrib@{SetChildAttrib}!CMarkup@{CMarkup}}
+\subsubsection[SetChildAttrib]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetChildAttrib ({\bf MCD\_\-CSTR} {\em szAttrib}, \/  int {\em nValue}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_17d99292ae941bb12e4a10a285efd363}
+
+
+
+
+References m\_\-iPosChild, and x\_\-SetAttrib().\index{CMarkup@{CMarkup}!SetData@{SetData}}
+\index{SetData@{SetData}!CMarkup@{CMarkup}}
+\subsubsection[SetData]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetData ({\bf MCD\_\-CSTR} {\em szData}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_65f994e7c180c9e02cb8a3deb9cc1a32}
+
+
+
+
+References m\_\-iPos, and x\_\-SetData().\index{CMarkup@{CMarkup}!SetChildData@{SetChildData}}
+\index{SetChildData@{SetChildData}!CMarkup@{CMarkup}}
+\subsubsection[SetChildData]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetChildData ({\bf MCD\_\-CSTR} {\em szData}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_b2db581de961cbdf0004e9377029a8c7}
+
+
+
+
+References m\_\-iPosChild, and x\_\-SetData().\index{CMarkup@{CMarkup}!SetData@{SetData}}
+\index{SetData@{SetData}!CMarkup@{CMarkup}}
+\subsubsection[SetData]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetData (int {\em nValue})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_ce922c959d826b28f4ad2b279697238b}
+
+
+
+
+References m\_\-iPos, and x\_\-SetData().\index{CMarkup@{CMarkup}!SetChildData@{SetChildData}}
+\index{SetChildData@{SetChildData}!CMarkup@{CMarkup}}
+\subsubsection[SetChildData]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetChildData (int {\em nValue})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_ffe236d0a43d1ac2502fef04b5d701c5}
+
+
+
+
+References m\_\-iPosChild, and x\_\-SetData().\index{CMarkup@{CMarkup}!SetElemContent@{SetElemContent}}
+\index{SetElemContent@{SetElemContent}!CMarkup@{CMarkup}}
+\subsubsection[SetElemContent]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::SetElemContent ({\bf MCD\_\-CSTR} {\em szContent})\hspace{0.3cm}{\tt  [inline]}}\label{classCMarkup_9ee2b70e88102a9d98d54be9b6f27172}
+
+
+
+
+References x\_\-SetElemContent().\index{CMarkup@{CMarkup}!ReadTextFile@{ReadTextFile}}
+\index{ReadTextFile@{ReadTextFile}!CMarkup@{CMarkup}}
+\subsubsection[ReadTextFile]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::ReadTextFile (MCD\_\-CSTR\_\-FILENAME {\em szFileName}, \/  MCD\_\-STR \& {\em strDoc}, \/  MCD\_\-STR $\ast$ {\em pstrError} = {\tt NULL}, \/  int $\ast$ {\em pnDocFlags} = {\tt NULL}, \/  MCD\_\-STR $\ast$ {\em pstrEncoding} = {\tt NULL})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_6d871eed98105bf74b09c3412d8e5b56}
+
+
+\index{CMarkup@{CMarkup}!WriteTextFile@{WriteTextFile}}
+\index{WriteTextFile@{WriteTextFile}!CMarkup@{CMarkup}}
+\subsubsection[WriteTextFile]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::WriteTextFile (MCD\_\-CSTR\_\-FILENAME {\em szFileName}, \/  const MCD\_\-STR \& {\em strDoc}, \/  MCD\_\-STR $\ast$ {\em pstrError} = {\tt NULL}, \/  int $\ast$ {\em pnDocFlags} = {\tt NULL}, \/  MCD\_\-STR $\ast$ {\em pstrEncoding} = {\tt NULL})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_983286cbcb7c4f9aa1f462ffb5dc641f}
+
+
+\index{CMarkup@{CMarkup}!EscapeText@{EscapeText}}
+\index{EscapeText@{EscapeText}!CMarkup@{CMarkup}}
+\subsubsection[EscapeText]{\setlength{\rightskip}{0pt plus 5cm}static MCD\_\-STR CMarkup::EscapeText ({\bf MCD\_\-CSTR} {\em szText}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_ba91db9799ea46f2594a85f7026b6034}
+
+
+\index{CMarkup@{CMarkup}!UnescapeText@{UnescapeText}}
+\index{UnescapeText@{UnescapeText}!CMarkup@{CMarkup}}
+\subsubsection[UnescapeText]{\setlength{\rightskip}{0pt plus 5cm}static MCD\_\-STR CMarkup::UnescapeText ({\bf MCD\_\-CSTR} {\em szText}, \/  int {\em nTextLength} = {\tt -1})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_e4b84116d09deeeb06fdbb51a9550ad1}
+
+
+\index{CMarkup@{CMarkup}!UTF16To8@{UTF16To8}}
+\index{UTF16To8@{UTF16To8}!CMarkup@{CMarkup}}
+\subsubsection[UTF16To8]{\setlength{\rightskip}{0pt plus 5cm}static int CMarkup::UTF16To8 (char $\ast$ {\em pszUTF8}, \/  const unsigned short $\ast$ {\em pwszUTF16}, \/  int {\em nUTF8Count})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_cf38e3d9c2a76d33f942b15af22c36bd}
+
+
+\index{CMarkup@{CMarkup}!UTF8To16@{UTF8To16}}
+\index{UTF8To16@{UTF8To16}!CMarkup@{CMarkup}}
+\subsubsection[UTF8To16]{\setlength{\rightskip}{0pt plus 5cm}static int CMarkup::UTF8To16 (unsigned short $\ast$ {\em pwszUTF16}, \/  const char $\ast$ {\em pszUTF8}, \/  int {\em nUTF8Count})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_c5196f0e363a619fad8dbf5c0ea55d31}
+
+
+\index{CMarkup@{CMarkup}!UTF8ToA@{UTF8ToA}}
+\index{UTF8ToA@{UTF8ToA}!CMarkup@{CMarkup}}
+\subsubsection[UTF8ToA]{\setlength{\rightskip}{0pt plus 5cm}static MCD\_\-STR CMarkup::UTF8ToA ({\bf MCD\_\-CSTR} {\em pszUTF8}, \/  int $\ast$ {\em pnFailed} = {\tt NULL})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_8e6cb088e69b6078f5923b0940fd647c}
+
+
+\index{CMarkup@{CMarkup}!AToUTF8@{AToUTF8}}
+\index{AToUTF8@{AToUTF8}!CMarkup@{CMarkup}}
+\subsubsection[AToUTF8]{\setlength{\rightskip}{0pt plus 5cm}static MCD\_\-STR CMarkup::AToUTF8 ({\bf MCD\_\-CSTR} {\em pszANSI})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_3257cd5f249587254e816d12bd3b0e0d}
+
+
+\index{CMarkup@{CMarkup}!EncodeCharUTF8@{EncodeCharUTF8}}
+\index{EncodeCharUTF8@{EncodeCharUTF8}!CMarkup@{CMarkup}}
+\subsubsection[EncodeCharUTF8]{\setlength{\rightskip}{0pt plus 5cm}static void CMarkup::EncodeCharUTF8 (int {\em nUChar}, \/  char $\ast$ {\em pszUTF8}, \/  int \& {\em nUTF8Len})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_10ff4693c95b049ad13b9537858aabfd}
+
+
+\index{CMarkup@{CMarkup}!DecodeCharUTF8@{DecodeCharUTF8}}
+\index{DecodeCharUTF8@{DecodeCharUTF8}!CMarkup@{CMarkup}}
+\subsubsection[DecodeCharUTF8]{\setlength{\rightskip}{0pt plus 5cm}static int CMarkup::DecodeCharUTF8 (const char $\ast$\& {\em pszUTF8}, \/  const char $\ast$ {\em pszUTF8End} = {\tt NULL})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_637a7f8239f974d4ce5fe2e33336ca9e}
+
+
+\index{CMarkup@{CMarkup}!EncodeCharUTF16@{EncodeCharUTF16}}
+\index{EncodeCharUTF16@{EncodeCharUTF16}!CMarkup@{CMarkup}}
+\subsubsection[EncodeCharUTF16]{\setlength{\rightskip}{0pt plus 5cm}static void CMarkup::EncodeCharUTF16 (int {\em nUChar}, \/  unsigned short $\ast$ {\em pwszUTF16}, \/  int \& {\em nUTF16Len})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_08ef725aa1de4831643e478da1aa582e}
+
+
+\index{CMarkup@{CMarkup}!DecodeCharUTF16@{DecodeCharUTF16}}
+\index{DecodeCharUTF16@{DecodeCharUTF16}!CMarkup@{CMarkup}}
+\subsubsection[DecodeCharUTF16]{\setlength{\rightskip}{0pt plus 5cm}static int CMarkup::DecodeCharUTF16 (const unsigned short $\ast$\& {\em pwszUTF16}, \/  const unsigned short $\ast$ {\em pszUTF16End} = {\tt NULL})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_7eb3cf4b83927047fd4d9ee61ce3f246}
+
+
+\index{CMarkup@{CMarkup}!DetectUTF8@{DetectUTF8}}
+\index{DetectUTF8@{DetectUTF8}!CMarkup@{CMarkup}}
+\subsubsection[DetectUTF8]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::DetectUTF8 (const char $\ast$ {\em pText}, \/  int {\em nTextLen}, \/  int $\ast$ {\em pnNonASCII} = {\tt NULL})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_f91e20dfe9e95194e3ca8143eeb889c2}
+
+
+\index{CMarkup@{CMarkup}!GetDeclaredEncoding@{GetDeclaredEncoding}}
+\index{GetDeclaredEncoding@{GetDeclaredEncoding}!CMarkup@{CMarkup}}
+\subsubsection[GetDeclaredEncoding]{\setlength{\rightskip}{0pt plus 5cm}static MCD\_\-STR CMarkup::GetDeclaredEncoding ({\bf MCD\_\-CSTR} {\em szDoc})\hspace{0.3cm}{\tt  [static]}}\label{classCMarkup_1f2b3c176609588986004058a77afe27}
+
+
+\index{CMarkup@{CMarkup}!x\_\-SetPos@{x\_\-SetPos}}
+\index{x\_\-SetPos@{x\_\-SetPos}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-SetPos]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::x\_\-SetPos (int {\em iPosParent}, \/  int {\em iPos}, \/  int {\em iPosChild})\hspace{0.3cm}{\tt  [inline, protected]}}\label{classCMarkup_b64a1aaeaef4deab466af63b9bb82924}
+
+
+
+
+References m\_\-iPos, m\_\-iPosChild, m\_\-iPosParent, m\_\-nNodeLength, m\_\-nNodeOffset, m\_\-nNodeType, MARKUP\_\-SETDEBUGSTATE, and MNT\_\-ELEMENT.
+
+Referenced by ResetChildPos(), ResetMainPos(), and ResetPos().\index{CMarkup@{CMarkup}!x\_\-GetFreePos@{x\_\-GetFreePos}}
+\index{x\_\-GetFreePos@{x\_\-GetFreePos}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetFreePos]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::x\_\-GetFreePos ()\hspace{0.3cm}{\tt  [inline, protected]}}\label{classCMarkup_43983d1f3627432ce893f5e0898848f2}
+
+
+
+
+References CMarkup::PosArray::GetSize(), m\_\-aPos, m\_\-iPosFree, and x\_\-AllocPosArray().\index{CMarkup@{CMarkup}!x\_\-AllocPosArray@{x\_\-AllocPosArray}}
+\index{x\_\-AllocPosArray@{x\_\-AllocPosArray}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-AllocPosArray]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-AllocPosArray (int {\em nNewSize} = {\tt 0})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_68cb62765d67e529b04134f561851342}
+
+
+
+
+Referenced by x\_\-GetFreePos().\index{CMarkup@{CMarkup}!InitDocFlags@{InitDocFlags}}
+\index{InitDocFlags@{InitDocFlags}!CMarkup@{CMarkup}}
+\subsubsection[InitDocFlags]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::InitDocFlags ()\hspace{0.3cm}{\tt  [inline, protected]}}\label{classCMarkup_6ce98f8685f47a0d5457ade12a9b500f}
+
+
+
+
+References m\_\-nDocFlags, and MDF\_\-IGNORECASE.
+
+Referenced by CMarkup().\index{CMarkup@{CMarkup}!x\_\-ParseDoc@{x\_\-ParseDoc}}
+\index{x\_\-ParseDoc@{x\_\-ParseDoc}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-ParseDoc]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-ParseDoc ()\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_380c4a7ec48c76192c812e647a4a7e4e}
+
+
+\index{CMarkup@{CMarkup}!x\_\-ParseElem@{x\_\-ParseElem}}
+\index{x\_\-ParseElem@{x\_\-ParseElem}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-ParseElem]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::x\_\-ParseElem (int {\em iPos}, \/  {\bf TokenPos} \& {\em token})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_c92b4883b891cb7f1c293c4801f5963c}
+
+
+\index{CMarkup@{CMarkup}!x\_\-FindAny@{x\_\-FindAny}}
+\index{x\_\-FindAny@{x\_\-FindAny}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-FindAny]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-FindAny (MCD\_\-PCSZ {\em pDoc}, \/  int \& {\em nChar})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_ce7bf02a001c0ff3b33142e936c4415f}
+
+
+\index{CMarkup@{CMarkup}!x\_\-FindName@{x\_\-FindName}}
+\index{x\_\-FindName@{x\_\-FindName}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-FindName]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-FindName ({\bf TokenPos} \& {\em token})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_873190d7a7ce765cb6c14f0a3f9758dc}
+
+
+\index{CMarkup@{CMarkup}!x\_\-GetToken@{x\_\-GetToken}}
+\index{x\_\-GetToken@{x\_\-GetToken}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetToken]{\setlength{\rightskip}{0pt plus 5cm}static MCD\_\-STR CMarkup::x\_\-GetToken (const {\bf TokenPos} \& {\em token})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_aeb5a1390a8c97c469ade070acb5d710}
+
+
+\index{CMarkup@{CMarkup}!x\_\-FindElem@{x\_\-FindElem}}
+\index{x\_\-FindElem@{x\_\-FindElem}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-FindElem]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::x\_\-FindElem (int {\em iPosParent}, \/  int {\em iPos}, \/  MCD\_\-PCSZ {\em szPath}) const\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_6d2f2950334d6e3e126ee5e8574f77b4}
+
+
+\index{CMarkup@{CMarkup}!x\_\-GetPath@{x\_\-GetPath}}
+\index{x\_\-GetPath@{x\_\-GetPath}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetPath]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::x\_\-GetPath (int {\em iPos}) const\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_cc202d08dd9465e74b26e9275a740356}
+
+
+\index{CMarkup@{CMarkup}!x\_\-GetTagName@{x\_\-GetTagName}}
+\index{x\_\-GetTagName@{x\_\-GetTagName}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetTagName]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::x\_\-GetTagName (int {\em iPos}) const\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_10cf51b58f6c144f4b7dd1c577277bee}
+
+
+
+
+Referenced by GetChildTagName().\index{CMarkup@{CMarkup}!x\_\-GetData@{x\_\-GetData}}
+\index{x\_\-GetData@{x\_\-GetData}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetData]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::x\_\-GetData (int {\em iPos}) const\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_3ce9132cb71e0b343141a7ba3102cea6}
+
+
+
+
+Referenced by GetChildData(), and GetData().\index{CMarkup@{CMarkup}!x\_\-GetAttrib@{x\_\-GetAttrib}}
+\index{x\_\-GetAttrib@{x\_\-GetAttrib}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetAttrib]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::x\_\-GetAttrib (int {\em iPos}, \/  MCD\_\-PCSZ {\em pAttrib}) const\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_e92d1478dd44c06bd366b5f26f8a5fe2}
+
+
+
+
+Referenced by GetAttrib(), and GetChildAttrib().\index{CMarkup@{CMarkup}!x\_\-EncodeCDATASection@{x\_\-EncodeCDATASection}}
+\index{x\_\-EncodeCDATASection@{x\_\-EncodeCDATASection}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-EncodeCDATASection]{\setlength{\rightskip}{0pt plus 5cm}static MCD\_\-STR CMarkup::x\_\-EncodeCDATASection (MCD\_\-PCSZ {\em szData})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_4a107f60dd4e52ef64117cf460da9381}
+
+
+\index{CMarkup@{CMarkup}!x\_\-AddElem@{x\_\-AddElem}}
+\index{x\_\-AddElem@{x\_\-AddElem}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-AddElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-AddElem (MCD\_\-PCSZ {\em pName}, \/  MCD\_\-PCSZ {\em pValue}, \/  int {\em nFlags})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_838bd93651009a22d8feeaa080b1bc1e}
+
+
+
+
+Referenced by AddChildElem(), AddElem(), InsertChildElem(), and InsertElem().\index{CMarkup@{CMarkup}!x\_\-AddElem@{x\_\-AddElem}}
+\index{x\_\-AddElem@{x\_\-AddElem}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-AddElem]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-AddElem (MCD\_\-PCSZ {\em pName}, \/  int {\em nValue}, \/  int {\em nFlags})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_ad258b7843d396f7b181d10df10d1ba7}
+
+
+\index{CMarkup@{CMarkup}!x\_\-GetSubDoc@{x\_\-GetSubDoc}}
+\index{x\_\-GetSubDoc@{x\_\-GetSubDoc}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetSubDoc]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::x\_\-GetSubDoc (int {\em iPos}) const\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_4af006666be13b4c295823a343c3ba76}
+
+
+
+
+Referenced by GetChildSubDoc(), and GetSubDoc().\index{CMarkup@{CMarkup}!x\_\-AddSubDoc@{x\_\-AddSubDoc}}
+\index{x\_\-AddSubDoc@{x\_\-AddSubDoc}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-AddSubDoc]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-AddSubDoc (MCD\_\-PCSZ {\em pSubDoc}, \/  int {\em nFlags})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_9b842e3673c7ee3da3eaeaa1dfb8c204}
+
+
+
+
+Referenced by AddChildSubDoc(), AddSubDoc(), InsertChildSubDoc(), and InsertSubDoc().\index{CMarkup@{CMarkup}!x\_\-FindAttrib@{x\_\-FindAttrib}}
+\index{x\_\-FindAttrib@{x\_\-FindAttrib}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-FindAttrib]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-FindAttrib ({\bf TokenPos} \& {\em token}, \/  MCD\_\-PCSZ {\em pAttrib}, \/  int {\em n} = {\tt 0})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_dcd241445e2bca6e1f05fa28babbc5a1}
+
+
+\index{CMarkup@{CMarkup}!x\_\-SetAttrib@{x\_\-SetAttrib}}
+\index{x\_\-SetAttrib@{x\_\-SetAttrib}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-SetAttrib]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-SetAttrib (int {\em iPos}, \/  MCD\_\-PCSZ {\em pAttrib}, \/  MCD\_\-PCSZ {\em pValue}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_5716401661aa51b04936c9f7df163ba7}
+
+
+
+
+Referenced by AddAttrib(), AddChildAttrib(), SetAttrib(), and SetChildAttrib().\index{CMarkup@{CMarkup}!x\_\-SetAttrib@{x\_\-SetAttrib}}
+\index{x\_\-SetAttrib@{x\_\-SetAttrib}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-SetAttrib]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-SetAttrib (int {\em iPos}, \/  MCD\_\-PCSZ {\em pAttrib}, \/  int {\em nValue}, \/  int {\em nFlags} = {\tt 0})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_8fdf35d7e47bf09bdeef322cc2eef57e}
+
+
+\index{CMarkup@{CMarkup}!x\_\-AddNode@{x\_\-AddNode}}
+\index{x\_\-AddNode@{x\_\-AddNode}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-AddNode]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-AddNode (int {\em nNodeType}, \/  MCD\_\-PCSZ {\em pText}, \/  int {\em nNodeFlags})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_d556122bb3c73aff12e7fb84b4318d0d}
+
+
+
+
+Referenced by AddNode(), and InsertNode().\index{CMarkup@{CMarkup}!x\_\-RemoveNode@{x\_\-RemoveNode}}
+\index{x\_\-RemoveNode@{x\_\-RemoveNode}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-RemoveNode]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::x\_\-RemoveNode (int {\em iPosParent}, \/  int \& {\em iPos}, \/  int \& {\em nNodeType}, \/  int \& {\em nNodeOffset}, \/  int \& {\em nNodeLength})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_64af7284f3c7c8babdaa5248b52a0f04}
+
+
+\index{CMarkup@{CMarkup}!x\_\-AdjustForNode@{x\_\-AdjustForNode}}
+\index{x\_\-AdjustForNode@{x\_\-AdjustForNode}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-AdjustForNode]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::x\_\-AdjustForNode (int {\em iPosParent}, \/  int {\em iPos}, \/  int {\em nShift})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_dcdad1f2e782ce519675ceaae421da8d}
+
+
+\index{CMarkup@{CMarkup}!x\_\-CreateNode@{x\_\-CreateNode}}
+\index{x\_\-CreateNode@{x\_\-CreateNode}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-CreateNode]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-CreateNode (MCD\_\-STR \& {\em strNode}, \/  int {\em nNodeType}, \/  MCD\_\-PCSZ {\em pText})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_43c780106bb839a6ba17a4f222ebc47c}
+
+
+\index{CMarkup@{CMarkup}!x\_\-InsertNew@{x\_\-InsertNew}}
+\index{x\_\-InsertNew@{x\_\-InsertNew}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-InsertNew]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::x\_\-InsertNew (int {\em iPosParent}, \/  int \& {\em iPosRel}, \/  {\bf NodePos} \& {\em node})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_108530f8ed1d5b954109335556e752fc}
+
+
+\index{CMarkup@{CMarkup}!x\_\-LinkElem@{x\_\-LinkElem}}
+\index{x\_\-LinkElem@{x\_\-LinkElem}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-LinkElem]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::x\_\-LinkElem (int {\em iPosParent}, \/  int {\em iPosBefore}, \/  int {\em iPos})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_6840b6b96252adfc63ab6576f09b6ced}
+
+
+\index{CMarkup@{CMarkup}!x\_\-UnlinkElem@{x\_\-UnlinkElem}}
+\index{x\_\-UnlinkElem@{x\_\-UnlinkElem}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-UnlinkElem]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::x\_\-UnlinkElem (int {\em iPos})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_a730d3e5c3fae0cb214f9933889957f7}
+
+
+\index{CMarkup@{CMarkup}!x\_\-ReleaseSubDoc@{x\_\-ReleaseSubDoc}}
+\index{x\_\-ReleaseSubDoc@{x\_\-ReleaseSubDoc}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-ReleaseSubDoc]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::x\_\-ReleaseSubDoc (int {\em iPos})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_2cdb9e0924114a8b1274be02dc675a78}
+
+
+\index{CMarkup@{CMarkup}!x\_\-ReleasePos@{x\_\-ReleasePos}}
+\index{x\_\-ReleasePos@{x\_\-ReleasePos}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-ReleasePos]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::x\_\-ReleasePos (int {\em iPos})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_d468ae1a39272fca4e53588906267ff4}
+
+
+\index{CMarkup@{CMarkup}!x\_\-GetMap@{x\_\-GetMap}}
+\index{x\_\-GetMap@{x\_\-GetMap}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetMap]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-GetMap ({\bf SavedPosMap} $\ast$\& {\em pMap}, \/  int {\em nMap}, \/  int {\em nMapSize} = {\tt 7})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_59332dee2e4c9f69b49412f0fad6874a}
+
+
+\index{CMarkup@{CMarkup}!x\_\-CheckSavedPos@{x\_\-CheckSavedPos}}
+\index{x\_\-CheckSavedPos@{x\_\-CheckSavedPos}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-CheckSavedPos]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::x\_\-CheckSavedPos ()\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_30aa7b46d2e888309de99dae0b186f88}
+
+
+\index{CMarkup@{CMarkup}!x\_\-ParseNode@{x\_\-ParseNode}}
+\index{x\_\-ParseNode@{x\_\-ParseNode}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-ParseNode]{\setlength{\rightskip}{0pt plus 5cm}static int CMarkup::x\_\-ParseNode ({\bf TokenPos} \& {\em token}, \/  {\bf NodePos} \& {\em node})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_0d02b41058d6949dd83496d20532e7b3}
+
+
+\index{CMarkup@{CMarkup}!x\_\-SetData@{x\_\-SetData}}
+\index{x\_\-SetData@{x\_\-SetData}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-SetData]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-SetData (int {\em iPos}, \/  MCD\_\-PCSZ {\em szData}, \/  int {\em nFlags})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_e55b7533359dd64e5528f4ab31ef6912}
+
+
+
+
+Referenced by SetChildData(), and SetData().\index{CMarkup@{CMarkup}!x\_\-SetData@{x\_\-SetData}}
+\index{x\_\-SetData@{x\_\-SetData}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-SetData]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-SetData (int {\em iPos}, \/  int {\em nValue})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_a755a1437e59c3c491076344509d6b0e}
+
+
+\index{CMarkup@{CMarkup}!x\_\-RemoveElem@{x\_\-RemoveElem}}
+\index{x\_\-RemoveElem@{x\_\-RemoveElem}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-RemoveElem]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::x\_\-RemoveElem (int {\em iPos})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_4104ccf277f80f08a999b95e8d4afb47}
+
+
+\index{CMarkup@{CMarkup}!x\_\-GetElemContent@{x\_\-GetElemContent}}
+\index{x\_\-GetElemContent@{x\_\-GetElemContent}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetElemContent]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR CMarkup::x\_\-GetElemContent (int {\em iPos}) const\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_24cdcb05636e244edf60450b3578f986}
+
+
+
+
+Referenced by GetElemContent().\index{CMarkup@{CMarkup}!x\_\-SetElemContent@{x\_\-SetElemContent}}
+\index{x\_\-SetElemContent@{x\_\-SetElemContent}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-SetElemContent]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::x\_\-SetElemContent (MCD\_\-PCSZ {\em szContent})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_6f23aa890945aabddab25986b18a8eac}
+
+
+
+
+Referenced by SetElemContent().\index{CMarkup@{CMarkup}!x\_\-DocChange@{x\_\-DocChange}}
+\index{x\_\-DocChange@{x\_\-DocChange}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-DocChange]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::x\_\-DocChange (int {\em nLeft}, \/  int {\em nReplace}, \/  const MCD\_\-STR \& {\em strInsert})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_1820bec7304749b944d3d3f78184878b}
+
+
+\index{CMarkup@{CMarkup}!x\_\-Adjust@{x\_\-Adjust}}
+\index{x\_\-Adjust@{x\_\-Adjust}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-Adjust]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::x\_\-Adjust (int {\em iPos}, \/  int {\em nShift}, \/  bool {\em bAfterPos} = {\tt false})\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_b9d78278bfb6a7d3799e0289744da98d}
+
+
+\index{CMarkup@{CMarkup}!x\_\-GetLastError@{x\_\-GetLastError}}
+\index{x\_\-GetLastError@{x\_\-GetLastError}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetLastError]{\setlength{\rightskip}{0pt plus 5cm}static MCD\_\-STR CMarkup::x\_\-GetLastError ()\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_7a902073dcce3edc449753cb5e8bac4c}
+
+
+\index{CMarkup@{CMarkup}!x\_\-Hash@{x\_\-Hash}}
+\index{x\_\-Hash@{x\_\-Hash}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-Hash]{\setlength{\rightskip}{0pt plus 5cm}static int CMarkup::x\_\-Hash (MCD\_\-PCSZ {\em p}, \/  int {\em nSize})\hspace{0.3cm}{\tt  [inline, static, protected]}}\label{classCMarkup_e0869e4876675e0272ab21aa4d5c1058}
+
+
+\index{CMarkup@{CMarkup}!x\_\-GetEncodingCodePage@{x\_\-GetEncodingCodePage}}
+\index{x\_\-GetEncodingCodePage@{x\_\-GetEncodingCodePage}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-GetEncodingCodePage]{\setlength{\rightskip}{0pt plus 5cm}static int CMarkup::x\_\-GetEncodingCodePage ({\bf MCD\_\-CSTR} {\em psz7Encoding})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_de551e17e600f8e6ec17bf7a46325285}
+
+
+\index{CMarkup@{CMarkup}!x\_\-EndianSwapRequired@{x\_\-EndianSwapRequired}}
+\index{x\_\-EndianSwapRequired@{x\_\-EndianSwapRequired}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-EndianSwapRequired]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-EndianSwapRequired (int {\em nDocFlags})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_bf802e6db6a9a527e0d01d5e69a2464a}
+
+
+\index{CMarkup@{CMarkup}!x\_\-EndianSwapUTF16@{x\_\-EndianSwapUTF16}}
+\index{x\_\-EndianSwapUTF16@{x\_\-EndianSwapUTF16}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-EndianSwapUTF16]{\setlength{\rightskip}{0pt plus 5cm}static void CMarkup::x\_\-EndianSwapUTF16 (unsigned short $\ast$ {\em pUTF16}, \/  int {\em nCharLen})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_7222375779b91c2b4788057596ff89e4}
+
+
+\index{CMarkup@{CMarkup}!x\_\-CanConvert@{x\_\-CanConvert}}
+\index{x\_\-CanConvert@{x\_\-CanConvert}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-CanConvert]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-CanConvert ({\bf MCD\_\-CSTR} {\em pszToEnc}, \/  {\bf MCD\_\-CSTR} {\em pszFromEnc})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_9db481bb33df7a9ef1e705f323e41ba8}
+
+
+\index{CMarkup@{CMarkup}!x\_\-ConvertEncoding@{x\_\-ConvertEncoding}}
+\index{x\_\-ConvertEncoding@{x\_\-ConvertEncoding}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-ConvertEncoding]{\setlength{\rightskip}{0pt plus 5cm}static int CMarkup::x\_\-ConvertEncoding ({\bf ConvertEncoding} \& {\em convert}, \/  void $\ast$ {\em pTo})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_5910cc7afd5ec31d3ac60e8a7979efa7}
+
+
+\index{CMarkup@{CMarkup}!x\_\-Open@{x\_\-Open}}
+\index{x\_\-Open@{x\_\-Open}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-Open]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-Open (MCD\_\-CSTR\_\-FILENAME {\em szFileName}, \/  {\bf FilePos} \& {\em file})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_93b3532501aec423a2ab6f21c0cd9737}
+
+
+\index{CMarkup@{CMarkup}!x\_\-Read@{x\_\-Read}}
+\index{x\_\-Read@{x\_\-Read}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-Read]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-Read (void $\ast$ {\em pBuffer}, \/  {\bf FilePos} \& {\em file})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_964ac1162ed011717ccafad4316b8d6f}
+
+
+\index{CMarkup@{CMarkup}!x\_\-ReadText@{x\_\-ReadText}}
+\index{x\_\-ReadText@{x\_\-ReadText}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-ReadText]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-ReadText (MCD\_\-STR \& {\em strDoc}, \/  {\bf FilePos} \& {\em file})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_afa2fa03d13b7be7b26dd310d61b690c}
+
+
+\index{CMarkup@{CMarkup}!x\_\-Write@{x\_\-Write}}
+\index{x\_\-Write@{x\_\-Write}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-Write]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-Write (void $\ast$ {\em pBuffer}, \/  {\bf FilePos} \& {\em file}, \/  const void $\ast$ {\em pConstBuffer} = {\tt NULL})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_01ba599cf9cc448581f2e8bcf994c253}
+
+
+\index{CMarkup@{CMarkup}!x\_\-WriteText@{x\_\-WriteText}}
+\index{x\_\-WriteText@{x\_\-WriteText}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-WriteText]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-WriteText (const MCD\_\-STR \& {\em strDoc}, \/  {\bf FilePos} \& {\em file})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_f3b30bc5314bbc8d157dca6d924f4852}
+
+
+\index{CMarkup@{CMarkup}!x\_\-Close@{x\_\-Close}}
+\index{x\_\-Close@{x\_\-Close}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-Close]{\setlength{\rightskip}{0pt plus 5cm}static bool CMarkup::x\_\-Close ({\bf FilePos} \& {\em file})\hspace{0.3cm}{\tt  [static, protected]}}\label{classCMarkup_e7a551c23d0d5c9aef4ef89ac81d6c83}
+
+
+\index{CMarkup@{CMarkup}!x\_\-IntToStr@{x\_\-IntToStr}}
+\index{x\_\-IntToStr@{x\_\-IntToStr}!CMarkup@{CMarkup}}
+\subsubsection[x\_\-IntToStr]{\setlength{\rightskip}{0pt plus 5cm}static MCD\_\-STR CMarkup::x\_\-IntToStr (int {\em n})\hspace{0.3cm}{\tt  [inline, static, protected]}}\label{classCMarkup_b4aa747f9324f96cbf41e80932723233}
+
+
+
+
+References MCD\_\-CHAR, MCD\_\-SPRINTF, MCD\_\-SSZ, MCD\_\-STR, and MCD\_\-T.
+
+\subsection{Member Data Documentation}
+\index{CMarkup@{CMarkup}!m\_\-strDoc@{m\_\-strDoc}}
+\index{m\_\-strDoc@{m\_\-strDoc}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-strDoc]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR {\bf CMarkup::m\_\-strDoc}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_ab2e01d57870e1c0e0493ab6e4446ad2}
+
+
+
+
+Referenced by GetDoc().\index{CMarkup@{CMarkup}!m\_\-strError@{m\_\-strError}}
+\index{m\_\-strError@{m\_\-strError}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-strError]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-STR {\bf CMarkup::m\_\-strError}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_8b30e55981f924a867972eceab142163}
+
+
+
+
+Referenced by GetError().\index{CMarkup@{CMarkup}!m\_\-iPosParent@{m\_\-iPosParent}}
+\index{m\_\-iPosParent@{m\_\-iPosParent}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-iPosParent]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::m\_\-iPosParent}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_f4be33a1bc8a5b2b5ca34ee59b11d702}
+
+
+
+
+Referenced by ResetChildPos(), ResetMainPos(), and x\_\-SetPos().\index{CMarkup@{CMarkup}!m\_\-iPos@{m\_\-iPos}}
+\index{m\_\-iPos@{m\_\-iPos}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-iPos]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::m\_\-iPos}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_1192dbba85b74f3346dfd042ed7f0b59}
+
+
+
+
+Referenced by AddAttrib(), GetAttrib(), GetData(), GetElemContent(), GetSubDoc(), ResetChildPos(), SetAttrib(), SetData(), and x\_\-SetPos().\index{CMarkup@{CMarkup}!m\_\-iPosChild@{m\_\-iPosChild}}
+\index{m\_\-iPosChild@{m\_\-iPosChild}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-iPosChild]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::m\_\-iPosChild}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_b9070540ecb1b4da5c30a680718cf73a}
+
+
+
+
+Referenced by AddChildAttrib(), GetChildAttrib(), GetChildData(), GetChildSubDoc(), GetChildTagName(), SetChildAttrib(), SetChildData(), and x\_\-SetPos().\index{CMarkup@{CMarkup}!m\_\-iPosFree@{m\_\-iPosFree}}
+\index{m\_\-iPosFree@{m\_\-iPosFree}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-iPosFree]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::m\_\-iPosFree}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_d81bcd568dabbf0798a61bb8439b2f35}
+
+
+
+
+Referenced by x\_\-GetFreePos().\index{CMarkup@{CMarkup}!m\_\-iPosDeleted@{m\_\-iPosDeleted}}
+\index{m\_\-iPosDeleted@{m\_\-iPosDeleted}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-iPosDeleted]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::m\_\-iPosDeleted}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_8a1c502479f990916d887093b4048de5}
+
+
+\index{CMarkup@{CMarkup}!m\_\-nNodeType@{m\_\-nNodeType}}
+\index{m\_\-nNodeType@{m\_\-nNodeType}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-nNodeType]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::m\_\-nNodeType}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_eab284b217377eb56252a35094872499}
+
+
+
+
+Referenced by GetNodeType(), and x\_\-SetPos().\index{CMarkup@{CMarkup}!m\_\-nNodeOffset@{m\_\-nNodeOffset}}
+\index{m\_\-nNodeOffset@{m\_\-nNodeOffset}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-nNodeOffset]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::m\_\-nNodeOffset}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_d77ce81fd0904864ab22102e77278d34}
+
+
+
+
+Referenced by x\_\-SetPos().\index{CMarkup@{CMarkup}!m\_\-nNodeLength@{m\_\-nNodeLength}}
+\index{m\_\-nNodeLength@{m\_\-nNodeLength}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-nNodeLength]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::m\_\-nNodeLength}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_7a44f2bbea27d673864a1b8ebe13da1b}
+
+
+
+
+Referenced by x\_\-SetPos().\index{CMarkup@{CMarkup}!m\_\-nDocFlags@{m\_\-nDocFlags}}
+\index{m\_\-nDocFlags@{m\_\-nDocFlags}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-nDocFlags]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::m\_\-nDocFlags}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_8afd7a85e8329a72bc58f9aa97626d74}
+
+
+
+
+Referenced by CMarkup(), GetDocFlags(), InitDocFlags(), and SetDocFlags().\index{CMarkup@{CMarkup}!m\_\-SavedPosMapArray@{m\_\-SavedPosMapArray}}
+\index{m\_\-SavedPosMapArray@{m\_\-SavedPosMapArray}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-SavedPosMapArray]{\setlength{\rightskip}{0pt plus 5cm}{\bf SavedPosMapArray} {\bf CMarkup::m\_\-SavedPosMapArray}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_985f2d24ba021221c567b4bfadf91692}
+
+
+\index{CMarkup@{CMarkup}!m\_\-aPos@{m\_\-aPos}}
+\index{m\_\-aPos@{m\_\-aPos}!CMarkup@{CMarkup}}
+\subsubsection[m\_\-aPos]{\setlength{\rightskip}{0pt plus 5cm}{\bf PosArray} {\bf CMarkup::m\_\-aPos}\hspace{0.3cm}{\tt  [protected]}}\label{classCMarkup_89aa5e4c38062a7e826a67695a8d8f37}
+
+
+
+
+Referenced by x\_\-GetFreePos().
+
+The documentation for this class was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf Markup.h}\end{CompactItemize}

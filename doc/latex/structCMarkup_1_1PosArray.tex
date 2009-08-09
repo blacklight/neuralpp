@@ -1,0 +1,152 @@
+\section{CMarkup::PosArray Struct Reference}
+\label{structCMarkup_1_1PosArray}\index{CMarkup::PosArray@{CMarkup::PosArray}}
+{\tt \#include $<$Markup.h$>$}
+
+\subsection*{Public Types}
+\begin{CompactItemize}
+\item 
+enum \{ {\bf PA\_\-SEGBITS} =  16, 
+{\bf PA\_\-SEGMASK} =  0xffff
+ \}
+\end{CompactItemize}
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf PosArray} ()
+\item 
+{\bf $\sim$PosArray} ()
+\item 
+void {\bf RemoveAll} ()
+\item 
+void {\bf Release} ()
+\item 
+void {\bf Clear} ()
+\item 
+int {\bf GetSize} () const 
+\item 
+int {\bf SegsUsed} () const 
+\item 
+{\bf ElemPos} \& {\bf operator[$\,$]} (int n) const 
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+{\bf ElemPos} $\ast$$\ast$ {\bf pSegs}
+\item 
+int {\bf nSize}
+\item 
+int {\bf nSegs}
+\end{CompactItemize}
+
+
+\subsection{Member Enumeration Documentation}
+\subsubsection["@1]{\setlength{\rightskip}{0pt plus 5cm}anonymous enum}\label{structCMarkup_1_1PosArray_af05e51d7ab82e581ed815b584e55b18}
+
+
+\begin{Desc}
+\item[Enumerator: ]\par
+\begin{description}
+\index{PA\_\-SEGBITS@{PA\_\-SEGBITS}!CMarkup::PosArray@{CMarkup::PosArray}}\index{CMarkup::PosArray@{CMarkup::PosArray}!PA\_\-SEGBITS@{PA\_\-SEGBITS}}\item[{\em 
+PA\_\-SEGBITS\label{structCMarkup_1_1PosArray_af05e51d7ab82e581ed815b584e55b18844e08ddf7ab861559a9b0096fb54a7e}
+}]\index{PA\_\-SEGMASK@{PA\_\-SEGMASK}!CMarkup::PosArray@{CMarkup::PosArray}}\index{CMarkup::PosArray@{CMarkup::PosArray}!PA\_\-SEGMASK@{PA\_\-SEGMASK}}\item[{\em 
+PA\_\-SEGMASK\label{structCMarkup_1_1PosArray_af05e51d7ab82e581ed815b584e55b186165b6a4471f37709d3f9b0a9e86c38b}
+}]\end{description}
+\end{Desc}
+
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{CMarkup::PosArray@{CMarkup::PosArray}!PosArray@{PosArray}}
+\index{PosArray@{PosArray}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[PosArray]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::PosArray::PosArray ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1PosArray_f207a1d7e582779e134ea06fd1084b23}
+
+
+
+
+References Clear().\index{CMarkup::PosArray@{CMarkup::PosArray}!$\sim$PosArray@{$\sim$PosArray}}
+\index{$\sim$PosArray@{$\sim$PosArray}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[$\sim$PosArray]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::PosArray::$\sim$PosArray ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1PosArray_9f26a70cee21e757fe372201c57fc117}
+
+
+
+
+References Release().
+
+\subsection{Member Function Documentation}
+\index{CMarkup::PosArray@{CMarkup::PosArray}!RemoveAll@{RemoveAll}}
+\index{RemoveAll@{RemoveAll}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[RemoveAll]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::PosArray::RemoveAll ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1PosArray_dad1d0185a26fad9bd391e3c85634103}
+
+
+
+
+References Clear(), and Release().\index{CMarkup::PosArray@{CMarkup::PosArray}!Release@{Release}}
+\index{Release@{Release}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[Release]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::PosArray::Release ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1PosArray_02ad3473569ecb5ba38b2327e30be38b}
+
+
+
+
+References pSegs, and SegsUsed().
+
+Referenced by RemoveAll(), and $\sim$PosArray().\index{CMarkup::PosArray@{CMarkup::PosArray}!Clear@{Clear}}
+\index{Clear@{Clear}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[Clear]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::PosArray::Clear ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1PosArray_b87a18a088c434843048b9d0ecca05aa}
+
+
+
+
+References nSegs, nSize, and pSegs.
+
+Referenced by PosArray(), and RemoveAll().\index{CMarkup::PosArray@{CMarkup::PosArray}!GetSize@{GetSize}}
+\index{GetSize@{GetSize}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[GetSize]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::PosArray::GetSize () const\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1PosArray_5da61b8563bfa2e82bf4c785bb166f62}
+
+
+
+
+References nSize.
+
+Referenced by CMarkup::x\_\-GetFreePos().\index{CMarkup::PosArray@{CMarkup::PosArray}!SegsUsed@{SegsUsed}}
+\index{SegsUsed@{SegsUsed}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[SegsUsed]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::PosArray::SegsUsed () const\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1PosArray_0310976aa8e777cb84ab02ddbae8864c}
+
+
+
+
+References nSize, and PA\_\-SEGBITS.
+
+Referenced by Release().\index{CMarkup::PosArray@{CMarkup::PosArray}!operator[]@{operator[]}}
+\index{operator[]@{operator[]}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[operator[]]{\setlength{\rightskip}{0pt plus 5cm}{\bf ElemPos}\& CMarkup::PosArray::operator[$\,$] (int {\em n}) const\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1PosArray_6317965f42dadc70f55c99b547e5d83d}
+
+
+
+
+\subsection{Member Data Documentation}
+\index{CMarkup::PosArray@{CMarkup::PosArray}!pSegs@{pSegs}}
+\index{pSegs@{pSegs}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[pSegs]{\setlength{\rightskip}{0pt plus 5cm}{\bf ElemPos}$\ast$$\ast$ {\bf CMarkup::PosArray::pSegs}}\label{structCMarkup_1_1PosArray_461f4252ee89f9cfd48d9e2c5ab64baf}
+
+
+
+
+Referenced by Clear(), and Release().\index{CMarkup::PosArray@{CMarkup::PosArray}!nSize@{nSize}}
+\index{nSize@{nSize}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[nSize]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::PosArray::nSize}}\label{structCMarkup_1_1PosArray_f7a261e70c4060b8ef5070c0a5e12092}
+
+
+
+
+Referenced by Clear(), GetSize(), and SegsUsed().\index{CMarkup::PosArray@{CMarkup::PosArray}!nSegs@{nSegs}}
+\index{nSegs@{nSegs}!CMarkup::PosArray@{CMarkup::PosArray}}
+\subsubsection[nSegs]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::PosArray::nSegs}}\label{structCMarkup_1_1PosArray_0994a05167565499a77d9d9d09711029}
+
+
+
+
+Referenced by Clear().
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf Markup.h}\end{CompactItemize}

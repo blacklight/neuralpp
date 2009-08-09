@@ -1,0 +1,132 @@
+\section{CMarkup::TokenPos Struct Reference}
+\label{structCMarkup_1_1TokenPos}\index{CMarkup::TokenPos@{CMarkup::TokenPos}}
+{\tt \#include $<$Markup.h$>$}
+
+\subsection*{Public Member Functions}
+\begin{CompactItemize}
+\item 
+{\bf TokenPos} ({\bf MCD\_\-CSTR} sz, int n)
+\item 
+void {\bf Clear} ()
+\item 
+int {\bf Length} () const 
+\item 
+int {\bf StrNIACmp} (MCD\_\-PCSZ p1, MCD\_\-PCSZ p2, int n)
+\item 
+bool {\bf Match} ({\bf MCD\_\-CSTR} szName)
+\end{CompactItemize}
+\subsection*{Public Attributes}
+\begin{CompactItemize}
+\item 
+int {\bf nL}
+\item 
+int {\bf nR}
+\item 
+int {\bf nNext}
+\item 
+MCD\_\-PCSZ {\bf pDoc}
+\item 
+int {\bf nTokenFlags}
+\item 
+int {\bf nPreSpaceStart}
+\item 
+int {\bf nPreSpaceLength}
+\end{CompactItemize}
+
+
+\subsection{Constructor \& Destructor Documentation}
+\index{CMarkup::TokenPos@{CMarkup::TokenPos}!TokenPos@{TokenPos}}
+\index{TokenPos@{TokenPos}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[TokenPos]{\setlength{\rightskip}{0pt plus 5cm}CMarkup::TokenPos::TokenPos ({\bf MCD\_\-CSTR} {\em sz}, \/  int {\em n})\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1TokenPos_797a3f5d9664c52971cf210166c3636a}
+
+
+
+
+References Clear(), nTokenFlags, and pDoc.
+
+\subsection{Member Function Documentation}
+\index{CMarkup::TokenPos@{CMarkup::TokenPos}!Clear@{Clear}}
+\index{Clear@{Clear}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[Clear]{\setlength{\rightskip}{0pt plus 5cm}void CMarkup::TokenPos::Clear ()\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1TokenPos_cb390ed8ab1226cbd8c9b9a19088d55c}
+
+
+
+
+References nL, nNext, and nR.
+
+Referenced by TokenPos().\index{CMarkup::TokenPos@{CMarkup::TokenPos}!Length@{Length}}
+\index{Length@{Length}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[Length]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::TokenPos::Length () const\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1TokenPos_b033dc8e88a8f83748ff6c44df05bb04}
+
+
+
+
+References nL, and nR.\index{CMarkup::TokenPos@{CMarkup::TokenPos}!StrNIACmp@{StrNIACmp}}
+\index{StrNIACmp@{StrNIACmp}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[StrNIACmp]{\setlength{\rightskip}{0pt plus 5cm}int CMarkup::TokenPos::StrNIACmp (MCD\_\-PCSZ {\em p1}, \/  MCD\_\-PCSZ {\em p2}, \/  int {\em n})\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1TokenPos_c3a37f7294cd763aed0f37749095d3db}
+
+
+
+
+References MCD\_\-CHAR.
+
+Referenced by Match().\index{CMarkup::TokenPos@{CMarkup::TokenPos}!Match@{Match}}
+\index{Match@{Match}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[Match]{\setlength{\rightskip}{0pt plus 5cm}bool CMarkup::TokenPos::Match ({\bf MCD\_\-CSTR} {\em szName})\hspace{0.3cm}{\tt  [inline]}}\label{structCMarkup_1_1TokenPos_199e0772dc846b95670797f0a32ec9ab}
+
+
+
+
+References MCD\_\-PSZCHR, MCD\_\-PSZNCMP, MCD\_\-T, CMarkup::MDF\_\-IGNORECASE, nL, nR, nTokenFlags, pDoc, and StrNIACmp().
+
+\subsection{Member Data Documentation}
+\index{CMarkup::TokenPos@{CMarkup::TokenPos}!nL@{nL}}
+\index{nL@{nL}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[nL]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::TokenPos::nL}}\label{structCMarkup_1_1TokenPos_c4c71680b3f09845b5346bf1285a214f}
+
+
+
+
+Referenced by Clear(), Length(), and Match().\index{CMarkup::TokenPos@{CMarkup::TokenPos}!nR@{nR}}
+\index{nR@{nR}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[nR]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::TokenPos::nR}}\label{structCMarkup_1_1TokenPos_fb58afc56664b9646fc79b9ec2a51b10}
+
+
+
+
+Referenced by Clear(), Length(), and Match().\index{CMarkup::TokenPos@{CMarkup::TokenPos}!nNext@{nNext}}
+\index{nNext@{nNext}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[nNext]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::TokenPos::nNext}}\label{structCMarkup_1_1TokenPos_72b20974f7b55aa5d804a769f8a3f985}
+
+
+
+
+Referenced by Clear().\index{CMarkup::TokenPos@{CMarkup::TokenPos}!pDoc@{pDoc}}
+\index{pDoc@{pDoc}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[pDoc]{\setlength{\rightskip}{0pt plus 5cm}MCD\_\-PCSZ {\bf CMarkup::TokenPos::pDoc}}\label{structCMarkup_1_1TokenPos_90a1052c162afcd07fc3974b95888a7e}
+
+
+
+
+Referenced by Match(), and TokenPos().\index{CMarkup::TokenPos@{CMarkup::TokenPos}!nTokenFlags@{nTokenFlags}}
+\index{nTokenFlags@{nTokenFlags}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[nTokenFlags]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::TokenPos::nTokenFlags}}\label{structCMarkup_1_1TokenPos_8eb640fe33ed145eb078e8214c0ea62b}
+
+
+
+
+Referenced by Match(), and TokenPos().\index{CMarkup::TokenPos@{CMarkup::TokenPos}!nPreSpaceStart@{nPreSpaceStart}}
+\index{nPreSpaceStart@{nPreSpaceStart}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[nPreSpaceStart]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::TokenPos::nPreSpaceStart}}\label{structCMarkup_1_1TokenPos_2d81fc5b589c491b450f73167ed9993d}
+
+
+\index{CMarkup::TokenPos@{CMarkup::TokenPos}!nPreSpaceLength@{nPreSpaceLength}}
+\index{nPreSpaceLength@{nPreSpaceLength}!CMarkup::TokenPos@{CMarkup::TokenPos}}
+\subsubsection[nPreSpaceLength]{\setlength{\rightskip}{0pt plus 5cm}int {\bf CMarkup::TokenPos::nPreSpaceLength}}\label{structCMarkup_1_1TokenPos_455b67b62cfd4d6f6ffafc7b8bbc9971}
+
+
+
+
+The documentation for this struct was generated from the following file:\begin{CompactItemize}
+\item 
+{\bf Markup.h}\end{CompactItemize}

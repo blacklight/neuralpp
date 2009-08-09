@@ -12,6 +12,6 @@ Released under GNU GPL licence v.3, copyright 2008-2009
 	# Take a look to the example in "example" directory to view it pratically.
 	
 	# Take a look to documentation in "doc" directory to see how to use it. You can
-	  also generate documentation on your own, moving to `src` directory and typing
+	  also generate documentation on your own, moving to `include` directory and typing
 	  `doxygen`
 
