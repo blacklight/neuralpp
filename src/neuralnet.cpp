@@ -465,10 +465,11 @@ namespace neuralpp {
 
 	string NeuralNet::XMLFromSet(int id, string set) {
 		string xml;
-		vector <double> in, out;
+		vector<double> in, out;
+		stringstream ss (stringstream::in | stringstream::out);
+
 		unsigned int delimPos = -1;
 		char delim = ';';
-		char tmp[1024];
 
 		for (delimPos = 0;
 		     delimPos < set.length() && set[delimPos] != delim;
@@ -483,27 +484,27 @@ namespace neuralpp {
 		in = split(',', inStr);
 		out = split(',', outStr);
 
-		snprintf(tmp, sizeof(tmp), "%d", id);
-		xml += "\t<TRAINING ID=\"" + string(tmp) + "\">\n";
+		ss << id;
+		xml += "\t<TRAINING ID=\"" + ss.str() + "\">\n";
 
 		for (unsigned int i = 0; i < in.size(); i++) {
-			memset(tmp, 0x0, sizeof(tmp));
-			snprintf(tmp, sizeof(tmp), "%d", i);
-			xml += "\t\t<INPUT ID=\"" + string(tmp) + "\">";
+			ss.str(string());
+			ss << i;
+			xml += "\t\t<INPUT ID=\"" + ss.str() + "\">";
 
-			memset(tmp, 0x0, sizeof(tmp));
-			snprintf(tmp, sizeof(tmp), "%f", in[i]);
-			xml += string(tmp) + "</INPUT>\n";
+			ss.str(string());
+			ss << in[i];
+			xml += ss.str() + "</INPUT>\n";
 		}
 
 		for (unsigned int i = 0; i < out.size(); i++) {
-			memset(tmp, 0x0, sizeof(tmp));
-			snprintf(tmp, sizeof(tmp), "%d", i);
-			xml += "\t\t<OUTPUT ID=\"" + string(tmp) + "\">";
+			ss.str(string());
+			ss << i;
+			xml += "\t\t<OUTPUT ID=\"" + ss.str() + "\">";
 
-			memset(tmp, 0x0, sizeof(tmp));
-			snprintf(tmp, sizeof(tmp), "%f", out[i]);
-			xml += string(tmp) + "</OUTPUT>\n";
+			ss.str(string());
+			ss << out[i];
+			xml += ss.str() + "</OUTPUT>\n";
 		}
 
 		xml += "\t</TRAINING>\n\n";
