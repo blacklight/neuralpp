@@ -26,10 +26,10 @@
 using namespace std;
 
 //! Default rand value: |sin(rand)|, always >= 0 and <= 1
-#define	RAND		( abs( sin(rand()) ) )
+#define 	RAND 	(double) ( (rand() / (RAND_MAX/2)) - 1)
 
 //! Initial value for the inertial momentum of the synapses
-#define 	BETA0 	0.7
+#define 	BETA0 	0.8
 
 /**
  * @namespace neuralpp
@@ -40,8 +40,6 @@ namespace neuralpp  {
 	class Neuron;
 	class Layer;
 	class NeuralNet;
-	class NetworkFileNotFoundException;
-	class InvalidXMLException;
 
 	/**
 	 * @class NeuralNet
@@ -67,11 +65,11 @@ namespace neuralpp  {
 		void commitChanges (Layer *l);
 
 		/**
-		 * @brief It get the error made on the expected result as |v-v'|/v
+		 * @brief Get the error made on the expected result as |v-v'|/v
 		 * @param ex Expected value
 		 * @return Mean error
 		 */
-		double error(double ex);
+		double error(double ex) const;
 		
 		/**
 		 * @brief Private pointer to function, containing the function to
@@ -117,7 +115,7 @@ namespace neuralpp  {
 		 * @param file Binary file containing a neural network previously saved by save() method
 		 * @throw NetworkFileNotFoundException
 		 */
-		NeuralNet (const char* file) throw(NetworkFileNotFoundException);
+		NeuralNet (const string file) throw(NetworkFileNotFoundException);
 		
 		
 		/**
@@ -140,7 +138,7 @@ namespace neuralpp  {
 		 * an only neuron)
 		 * @return The output value of the network
 		 */
-		double getOutput();
+		double getOutput() const;
 
 		/**
 		 * @brief It gets the output of the network in case the output layer contains more neurons
@@ -153,7 +151,7 @@ namespace neuralpp  {
 		 * build your network by using setExpected.
 		 * @return The expected output value for a certain training phase
 		 */
-		double expected();
+		double expected() const;
 
 		/**
 		 * @brief It sets the value you expect from your network
@@ -189,8 +187,10 @@ namespace neuralpp  {
 		/**
 		 * @brief Save a trained neural network to a binary file
 		 * @param fname Binary file where you're going to save your network
+		 * @throws NetworkFileWriteException When you get an error writing the network's information to
+		 * a file
 		 */
-		bool save(const char* fname);
+		void save(const char* fname) throw(NetworkFileWriteException);
 
 		/**
 		 * @brief Train a network using a training set loaded from an XML file. A sample XML file
@@ -296,14 +296,14 @@ namespace neuralpp  {
 		 * @brief Set the weight of the synapsis
 		 * @param w Weight to be set
 		 */
-		void setWeight(double w);
+		void setWeight(double w) throw(InvalidSynapticalWeightException);
 		
 		/**
 		 * @brief It sets the delta (how much to change the weight after an update) 
 		 * of the synapsis
 		 * @param d Delta to be set
 		 */
-		void setDelta(double d);
+		void setDelta(double d) throw(InvalidSynapticalWeightException);
 
 		/**
 		 * @brief Return the weight of the synapsis
@@ -476,7 +476,7 @@ namespace neuralpp  {
 		 * @param i Index of the neuron to get in the layer
 		 * @return Reference to the i-th neuron
 		 */
-		Neuron& operator[] (size_t i);
+		Neuron& operator[] (size_t i) throw(NetworkIndexOutOfBoundsException);
 
 		/**
 		 * @brief It links a layer to another
@@ -504,7 +504,7 @@ namespace neuralpp  {
 		/**
 		 * @return Number of neurons in the layer
 		 */
-		size_t size();
+		size_t size() const;
 	};
 
 	struct netrecord  {

@@ -19,7 +19,9 @@ namespace neuralpp {
 		for (size_t i = 0; i < sz; i++) {
 			Neuron n(a, d);
 			 elements.push_back(n);
-		} actv_f = a;
+		}
+		
+		actv_f = a;
 		deriv = d;
 	}
 
@@ -30,11 +32,14 @@ namespace neuralpp {
 		deriv = d;
 	}
 
-	size_t Layer::size() {
+	size_t Layer::size() const  {
 		return elements.size();
 	}
 
-	Neuron & Layer::operator[](size_t i) {
+	Neuron & Layer::operator[](size_t i) throw(NetworkIndexOutOfBoundsException)  {
+		if (i > size())
+			throw NetworkIndexOutOfBoundsException();
+
 		return elements[i];
 	}
 

@@ -72,14 +72,17 @@ namespace neuralpp {
 		return prev_delta;
 	}
 
-	void Synapsis::setWeight(double w) {
+	void Synapsis::setWeight(double w) throw(InvalidSynapticalWeightException)  {
 		if (weight > 1.0)
-			weight = 1.0;
-		else
-			weight = w;
+			throw InvalidSynapticalWeightException();
+
+		weight = w;
 	}
 
-	void Synapsis::setDelta(double d) {
+	void Synapsis::setDelta(double d) throw(InvalidSynapticalWeightException)  {
+		if (d > 1.0)
+			throw InvalidSynapticalWeightException();
+
 		prev_delta = delta;
 		delta = d;
 	}

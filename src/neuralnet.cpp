@@ -11,7 +11,9 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.                                      *
  **************************************************************************************************/
 
+#include <fstream>
 #include <sstream>
+
 #include "neural++.hpp"
 #include "Markup.h"
 
@@ -56,7 +58,7 @@ namespace neuralpp {
 		link();
 	}
 
-	double NeuralNet::getOutput() {
+	double NeuralNet::getOutput() const  {
 		return (*output)[0].getActv();
 	}
 
@@ -68,7 +70,7 @@ namespace neuralpp {
 		return v;
 	}
 
-	double NeuralNet::error(double expected) {
+	double NeuralNet::error(double expected) const  {
 		return abs((getOutput() - expected *
 			    deriv(getOutput())) / (abs(expected)));
 	}
@@ -92,7 +94,7 @@ namespace neuralpp {
 		ex = e;
 	}
 
-	double NeuralNet::expected() {
+	double NeuralNet::expected() const  {
 		return ex;
 	}
 
@@ -168,12 +170,12 @@ namespace neuralpp {
 		}
 	}
 
-	bool NeuralNet::save(const char *fname) {
-		FILE *fp;
+	void NeuralNet::save (const char *fname) throw(NetworkFileWriteException)  {
 		struct netrecord record;
+		ofstream out(fname);
 
-		if (!(fp = fopen(fname, "wb")))
-			return false;
+		if (!out)
+			throw NetworkFileWriteException();
 
 		record.input_size = input->size();
 		record.hidden_size = hidden->size();
@@ -183,96 +185,113 @@ namespace neuralpp {
 		record.l_rate = l_rate;
 		record.ex = ex;
 
-		if (fwrite(&record, sizeof(struct netrecord), 1, fp) <= 0)
-			return false;
+		if (out.write((char*) &record, sizeof(struct netrecord)) <= 0)
+			throw NetworkFileWriteException();
 
 		// Saving neurons' state
 		for (unsigned int i = 0; i < input->size(); i++) {
 			struct neuronrecord r;
 			r.prop = (*input)[i].getProp();
 			r.actv = (*input)[i].getActv();
-			fwrite(&r, sizeof(struct neuronrecord), 1, fp);
+
+			if (out.write((char*) &r, sizeof(struct neuronrecord)) <= 0)
+				throw NetworkFileWriteException();
 		}
 
 		for (unsigned int i = 0; i < hidden->size(); i++) {
 			struct neuronrecord r;
 			r.prop = (*hidden)[i].getProp();
 			r.actv = (*hidden)[i].getActv();
-			fwrite(&r, sizeof(struct neuronrecord), 1, fp);
+			
+			if (out.write((char*) &r, sizeof(struct neuronrecord)) <= 0)
+				throw NetworkFileWriteException();
 		}
 
 		for (unsigned int i = 0; i < output->size(); i++) {
 			struct neuronrecord r;
 			r.prop = (*output)[i].getProp();
 			r.actv = (*output)[i].getActv();
-			fwrite(&r, sizeof(struct neuronrecord), 1, fp);
+
+			if (out.write((char*) &r, sizeof(struct neuronrecord)) <= 0)
+				throw NetworkFileWriteException();
 		}
 
 		// Saving synapsis' state
 		for (unsigned int i = 0; i < input->size(); i++) {
 			int nout = (*input)[i].nOut();
-			fwrite(&nout, sizeof(int), 1, fp);
+
+			if (out.write((char*) &nout, sizeof(int)) <= 0)
+				throw NetworkFileWriteException();
 
 			for (int j = 0; j < nout; j++) {
 				struct synrecord r;
 				r.w = (*input)[i].synOut(j).getWeight();
 				r.d = (*input)[i].synOut(j).getDelta();
-				fwrite(&r, sizeof(struct synrecord), 1,
-				       fp);
+
+				if (out.write((char*) &r, sizeof(struct synrecord)) <= 0)
+					throw NetworkFileWriteException();
 			}
 		}
 
 		for (unsigned int i = 0; i < output->size(); i++) {
 			int nin = (*output)[i].nIn();
-			fwrite(&nin, sizeof(int), 1, fp);
 
+			if (out.write((char*) &nin, sizeof(int)) <= 0)
+				throw NetworkFileWriteException();
+			
 			for (int j = 0; j < nin; j++) {
 				struct synrecord r;
 				r.w = (*output)[i].synIn(j).getWeight();
 				r.d = (*output)[i].synIn(j).getDelta();
-				fwrite(&r, sizeof(struct synrecord), 1,
-				       fp);
+
+				if (out.write((char*) &r, sizeof(struct synrecord)) <= 0)
+					throw NetworkFileWriteException();
 			}
 		}
 
 		for (unsigned int i = 0; i < hidden->size(); i++) {
 			int nin = (*hidden)[i].nIn();
-			fwrite(&nin, sizeof(int), 1, fp);
+
+			if (out.write((char*) &nin, sizeof(int)) <= 0)
+				throw NetworkFileWriteException();
 
 			for (int j = 0; j < nin; j++) {
 				struct synrecord r;
 				r.w = (*hidden)[i].synIn(j).getWeight();
 				r.d = (*hidden)[i].synIn(j).getDelta();
-				fwrite(&r, sizeof(struct synrecord), 1,
-				       fp);
+
+				if (out.write((char*) &r, sizeof(struct synrecord)) <= 0)
+					throw NetworkFileWriteException();
 			}
 		}
 
 		for (unsigned int i = 0; i < hidden->size(); i++) {
 			int nout = (*hidden)[i].nOut();
-			fwrite(&nout, sizeof(int), 1, fp);
+
+			if (out.write((char*) &nout, sizeof(int)) <= 0)
+				throw NetworkFileWriteException();
 
 			for (int j = 0; j < nout; j++) {
 				struct synrecord r;
 				r.w = (*hidden)[i].synOut(j).getWeight();
 				r.d = (*hidden)[i].synOut(j).getDelta();
-				fwrite(&r, sizeof(struct synrecord), 1,
-				       fp);
+
+				if (out.write((char*) &r, sizeof(struct synrecord)) <= 0)
+					throw NetworkFileWriteException();
 			}
 		}
 
-		fclose(fp);
-		return true;
+		out.close();
 	}
 
-	NeuralNet::NeuralNet(const char *fname) throw(NetworkFileNotFoundException) {
+	NeuralNet::NeuralNet(const string fname) throw(NetworkFileNotFoundException) {
 		struct netrecord record;
-		FILE *fp;
+		ifstream in(fname.c_str());
 
-		if (!(fp = fopen(fname, "rb")))
+		if (!in)
 			throw NetworkFileNotFoundException();
 
-		if (fread(&record, sizeof(struct netrecord), 1, fp) <= 0)
+		if (in.read((char*) &record, sizeof(struct netrecord)) <= 0)
 			throw NetworkFileNotFoundException();
 
 		*this =
@@ -283,7 +302,9 @@ namespace neuralpp {
 		// Restore neurons
 		for (unsigned int i = 0; i < input->size(); i++) {
 			struct neuronrecord r;
-			fread(&r, sizeof(struct neuronrecord), 1, fp);
+
+			if (in.read((char*) &r, sizeof(struct neuronrecord)) <= 0)
+				throw NetworkFileNotFoundException();
 
 			(*input)[i].setProp(r.prop);
 			(*input)[i].setActv(r.actv);
@@ -292,7 +313,9 @@ namespace neuralpp {
 
 		for (unsigned int i = 0; i < hidden->size(); i++) {
 			struct neuronrecord r;
-			fread(&r, sizeof(struct neuronrecord), 1, fp);
+			
+			if (in.read((char*) &r, sizeof(struct neuronrecord)) <= 0)
+				throw NetworkFileNotFoundException();
 
 			(*hidden)[i].setProp(r.prop);
 			(*hidden)[i].setActv(r.actv);
@@ -301,7 +324,9 @@ namespace neuralpp {
 
 		for (unsigned int i = 0; i < output->size(); i++) {
 			struct neuronrecord r;
-			fread(&r, sizeof(struct neuronrecord), 1, fp);
+			
+			if (in.read((char*) &r, sizeof(struct neuronrecord)) <= 0)
+				throw NetworkFileNotFoundException();
 
 			(*output)[i].setProp(r.prop);
 			(*output)[i].setActv(r.actv);
@@ -323,12 +348,16 @@ namespace neuralpp {
 		// Restore synapsis
 		for (unsigned int i = 0; i < input->size(); i++) {
 			int nout;
-			fread(&nout, sizeof(int), 1, fp);
 
+			if (in.read((char*) &nout, sizeof(int)) <= 0 )
+				throw NetworkFileNotFoundException();
+			
 			for (int j = 0; j < nout; j++) {
 				struct synrecord r;
-				fread(&r, sizeof(struct synrecord), 1, fp);
 
+				if (in.read((char*) &r, sizeof(struct synrecord)) <= 0)
+					throw NetworkFileNotFoundException();
+				
 				(*input)[i].synOut(j).setWeight(r.w);
 				(*input)[i].synOut(j).setDelta(r.d);
 			}
@@ -336,11 +365,15 @@ namespace neuralpp {
 
 		for (unsigned int i = 0; i < output->size(); i++) {
 			int nin;
-			fread(&nin, sizeof(int), 1, fp);
+
+			if (in.read((char*) &nin, sizeof(int)) <= 0)
+				throw NetworkFileNotFoundException();
 
 			for (int j = 0; j < nin; j++) {
 				struct synrecord r;
-				fread(&r, sizeof(struct synrecord), 1, fp);
+				
+				if (in.read((char*) &r, sizeof(struct synrecord)) <= 0)
+					throw NetworkFileNotFoundException();
 
 				(*output)[i].synIn(j).setWeight(r.w);
 				(*output)[i].synIn(j).setDelta(r.d);
@@ -349,11 +382,15 @@ namespace neuralpp {
 
 		for (unsigned int i = 0; i < hidden->size(); i++) {
 			int nin;
-			fread(&nin, sizeof(int), 1, fp);
+			
+			if (in.read((char*) &nin, sizeof(int)) <= 0)
+				throw NetworkFileNotFoundException();
 
 			for (int j = 0; j < nin; j++) {
 				struct synrecord r;
-				fread(&r, sizeof(struct synrecord), 1, fp);
+				
+				if (in.read((char*) &r, sizeof(struct synrecord)) <= 0)
+					throw NetworkFileNotFoundException();
 
 				(*hidden)[i].synIn(j).setWeight(r.w);
 				(*hidden)[i].synIn(j).setDelta(r.d);
@@ -362,18 +399,22 @@ namespace neuralpp {
 
 		for (unsigned int i = 0; i < hidden->size(); i++) {
 			int nout;
-			fread(&nout, sizeof(int), 1, fp);
+			
+			if (in.read((char*) &nout, sizeof(int)) <= 0)
+				throw NetworkFileNotFoundException();
 
 			for (int j = 0; j < nout; j++) {
 				struct synrecord r;
-				fread(&r, sizeof(struct synrecord), 1, fp);
+				
+				if (in.read((char*) &r, sizeof(struct synrecord)) <= 0)
+					throw NetworkFileNotFoundException();
 
 				(*hidden)[i].synOut(j).setWeight(r.w);
 				(*hidden)[i].synOut(j).setDelta(r.d);
 			}
 		}
 
-		fclose(fp);
+		in.close();
 	}
 
 	void NeuralNet::train(string xmlsrc, NeuralNet::source src =
@@ -438,7 +479,7 @@ namespace neuralpp {
 		return;
 	}
 
-	void NeuralNet::initXML(string & xml) {
+	void NeuralNet::initXML(string& xml) {
 		xml.append
 		    ("<?xml version=\"1.0\" encoding=\"iso-8859-1\"?>\n"
 		     "<!DOCTYPE NETWORK SYSTEM \"http://blacklight.gotdns.org/prog/neuralpp/trainer.dtd\">\n"

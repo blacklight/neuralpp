@@ -32,6 +32,17 @@ namespace neuralpp  {
 	};
 
 	/**
+	 * @class NetworkFileWriteException
+	 * @brief Exception thrown when trying to write the network's information to a file that cannot
+	 * be written
+	 */
+	class NetworkFileWriteException : public std::exception  {
+	public:
+		NetworkFileWriteException()  {}
+		const char* what() const throw()  { return "There was an error while writing the network file"; }
+	};
+
+	/**
 	 * @class InvalidXMLException
 	 * @brief Exception thrown when trying parsing an invalid XML
 	 */
@@ -39,6 +50,28 @@ namespace neuralpp  {
 	public:
 		InvalidXMLException()  {}
 		const char* what() const throw() { return "Attempt to load an invalid XML file"; }
+	};
+
+	/**
+	 * @class NetworkIndexOutOfBoundsException
+	 * @brief Exception raised when trying to access a neuron whose index is larger than the number
+	 * of neurons in the network
+	 */
+	class NetworkIndexOutOfBoundsException : public std::exception  {
+	public:
+		NetworkIndexOutOfBoundsException()  {}
+		const char* what() const throw()  { return "Attempt to access a non-existing neuron"; }
+	};
+
+	/**
+	 * @class InvalidSynapticalWeightException
+	 * @brief Exception raised when, while trying the network or directly, the weight of a synapsis is
+	 * set to a value |w| > 1
+	 */
+	class InvalidSynapticalWeightException : public std::exception  {
+	public:
+		InvalidSynapticalWeightException()  {}
+		const char* what() const throw()  { return "Attempt to set an invalid weight for the synapsis"; }
 	};
 }
 
