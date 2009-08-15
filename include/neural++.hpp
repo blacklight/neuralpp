@@ -41,6 +41,8 @@ namespace neuralpp  {
 	class Layer;
 	class NeuralNet;
 
+	double df (double (*f)(double), double x);
+
 	/**
 	 * @class NeuralNet
 	 * @brief Main project's class. Use *ONLY* this class, unless you know what you're doing
@@ -76,12 +78,6 @@ namespace neuralpp  {
 		 * be used as activation function
 		 */
 		double (*actv_f)(double);
-
-		/**
-		 * @brief Private pointer to function, containing the function to
-		 * be used as derivate of the activation function
-		 */
-		double (*deriv)(double);
 
 	public:
 		Layer* input;
@@ -124,14 +120,13 @@ namespace neuralpp  {
 		 * @param hidden_size Size of the hidden layer
 		 * @param out_size Size of the output layer
 		 * @param actv Activation function to use (default: f(x)=x)
-		 * @param deriv Derivate for the activation function to use (default: f'(x)=1)
 		 * @param l learn rate (get it after doing some experiments, but generally try to
 		 *   keep its value quite low to be more accurate)
 		 * @param e Epochs (cycles) to execute (the most you execute, the most the network
 		 *   can be accurate for its purpose)
 		 */
 		NeuralNet (size_t in_size, size_t hidden_size, size_t out_size,
-				double(*actv)(double), double(*deriv)(double), double l, int e);
+				double(*actv)(double), double l, int e);
 
 		/**
 		 * @brief It gets the output of the network (note: the layer output should contain
@@ -199,7 +194,7 @@ namespace neuralpp  {
 		 * @param src Source type from which the XML will be loaded (from a file [default] or from a string)
 		 * @throw InvalidXMLException
 		 */
-		void train(string xml, source xrc) throw(InvalidXMLException);
+		void train (string xml, source src) throw(InvalidXMLException);
 
 		/**
 		 * @brief Initialize the training XML for the neural network
@@ -250,7 +245,6 @@ namespace neuralpp  {
 		Neuron *out;
 		
 		double (*actv_f)(double);
-		double (*deriv)(double);
 
 	public:
 		/**
@@ -267,9 +261,8 @@ namespace neuralpp  {
 		 * @param i Input neuron
 		 * @param o Output neuron
 		 * @param a Activation function
-		 * @param d Derivate for activation function
 		 */
-		Synapsis (Neuron* i, Neuron* o, double(*a)(double), double(*d)(double));
+		Synapsis (Neuron* i, Neuron* o, double(*a)(double));
 		
 		/**
 		 * @brief Constructor
@@ -277,10 +270,9 @@ namespace neuralpp  {
 		 * @param o Output neuron
 		 * @param w Weight for the synapsis (default: random)
 		 * @param a Activation function
-		 * @param d Derivate for activation function
 		 */
 		Synapsis (Neuron* i, Neuron* o,
-				double w, double(*a)(double), double(*d)(double));
+				double w, double(*a)(double));
 	
 		/**
 		 * @return Reference to input neuron of the synapsis
@@ -349,24 +341,22 @@ namespace neuralpp  {
 		vector< Synapsis > out;
 
 		double (*actv_f)(double);
-		double (*deriv)(double);
+	
 	public:
 		/**
 		 * @brief Constructor
 		 * @param a Activation function
-		 * @param d Its derivate
 		 */
-		Neuron (double (*a)(double), double(*d)(double));
+		Neuron (double (*a)(double));
 
 		/**
 		 * @brief Alternative constructor, that gets also the synapsis linked to the neuron
 		 * @param in Input synapses
 		 * @param out Output synapses
 		 * @param a Activation function
-		 * @param d Derivate of the activation function
 		 */
 		Neuron (vector<Synapsis> in, vector<Synapsis> out,
-				double (*a)(double), double(*d)(double));
+				double (*a)(double));
 
 		/**
 		 * @brief Get the i-th synapsis connected on the input of the neuron
@@ -451,25 +441,22 @@ namespace neuralpp  {
 
 		void (*update_weights)();
 		double (*actv_f)(double);
-		double (*deriv)(double);
 
 	public:
 		/**
 		 * @brief Constructor
 		 * @param sz Size of the layer
 		 * @param a Activation function
-		 * @param d Its derivate
 		 */
-		Layer (size_t sz, double (*a)(double), double(*d)(double));
+		Layer (size_t sz, double (*a)(double));
 
 		/**
 		 * @brief Alternative constructor. It directly gets a vector of neurons to build
 		 * the layer
 		 * @param neurons Vector of neurons to be included in the layer
 		 * @param a Activation function
-		 * @param d Its derivate
 		 */
-		Layer (vector<Neuron>& neurons, double(*a)(double), double(*d)(double));
+		Layer (vector<Neuron>& neurons, double(*a)(double));
 
 		/**
 		 * @brief Redefinition for operator []. It gets the neuron at <i>i</i>

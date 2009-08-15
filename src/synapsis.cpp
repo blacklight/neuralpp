@@ -23,9 +23,7 @@ namespace neuralpp {
 		prev_delta = 0;
 	}
 	
-	Synapsis::Synapsis(Neuron * i, Neuron * o, double (*a) (double),
-			     double (*d) (double)) {
-	
+	Synapsis::Synapsis(Neuron * i, Neuron * o, double (*a) (double)) {
 		srand((unsigned) time(NULL));
 
 		delta = 0;
@@ -35,12 +33,10 @@ namespace neuralpp {
 		out = o;
 
 		actv_f = a;
-		deriv = d;
 	}
 
 	Synapsis::Synapsis(Neuron * i, Neuron * o,
-			   double w, double (*a) (double),
-			   double (*d) (double)) {
+			   double w, double (*a) (double)) {
 		
 		delta = 0;
 		prev_delta = 0;
@@ -49,7 +45,6 @@ namespace neuralpp {
 		out = o;
 
 		actv_f = a;
-		deriv = d;
 	}
 
 	Neuron *Synapsis::getIn() {

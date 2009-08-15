@@ -34,12 +34,12 @@
 <a href="classneuralpp_1_1Neuron-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#c877424a295478e3464046ea43c2a7ad">Neuron</a> (double(*a)(double), double(*d)(double))</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#9863a08b73bc97c8b514aca6c580ff7b">Neuron</a> (double(*a)(double))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#c877424a295478e3464046ea43c2a7ad"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#e25546d4f7126f106c2f3b2d8ed2c792">Neuron</a> (vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#ead827210fa18c2baae03927b2c798ff">in</a>, vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#82a4297f84d6403e52a8386d26117b4f">out</a>, double(*a)(double), double(*d)(double))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#9863a08b73bc97c8b514aca6c580ff7b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#f1bf19ec93174f60b368ee4a91b03f46">Neuron</a> (vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#ead827210fa18c2baae03927b2c798ff">in</a>, vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#82a4297f84d6403e52a8386d26117b4f">out</a>, double(*a)(double))</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Alternative constructor, that gets also the synapsis linked to the neuron.  <a href="#e25546d4f7126f106c2f3b2d8ed2c792"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Alternative constructor, that gets also the synapsis linked to the neuron.  <a href="#f1bf19ec93174f60b368ee4a91b03f46"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#29f2d9dcc4ca34f224d4dc39bb2f180a">synIn</a> (size_t i)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the i-th synapsis connected on the input of the neuron.  <a href="#29f2d9dcc4ca34f224d4dc39bb2f180a"></a><br></td></tr>
@@ -87,14 +87,12 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#198ddd0d11a26d0052d52b787d6a0df0">actv_f</a> )(double)</td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#8b881889e40e9782c49b0efad2b1dde3">deriv</a> )(double)</td></tr>
-
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Class for managing neurons. 
 <p>
 Don't use this class directly unless you know what you're doing, use <a class="el" href="classneuralpp_1_1NeuralNet.html" title="Main project&#39;s class.">NeuralNet</a> instead <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="c877424a295478e3464046ea43c2a7ad"></a><!-- doxytag: member="neuralpp::Neuron::Neuron" ref="c877424a295478e3464046ea43c2a7ad" args="(double(*a)(double), double(*d)(double))" -->
+<a class="anchor" name="9863a08b73bc97c8b514aca6c580ff7b"></a><!-- doxytag: member="neuralpp::Neuron::Neuron" ref="9863a08b73bc97c8b514aca6c580ff7b" args="(double(*a)(double))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -102,18 +100,9 @@ Don't use this class directly unless you know what you're doing, use <a class="e
           <td class="memname">neuralpp::Neuron::Neuron           </td>
           <td>(</td>
           <td class="paramtype">double(*)(double)&nbsp;</td>
-          <td class="paramname"> <em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
+          <td class="paramname"> <em>a</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
           <td></td>
-          <td class="paramtype">double(*)(double)&nbsp;</td>
-          <td class="paramname"> <em>d</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
@@ -125,13 +114,12 @@ Constructor.
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>a</em>&nbsp;</td><td>Activation function </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>d</em>&nbsp;</td><td>Its derivate </td></tr>
   </table>
 </dl>
 
 </div>
 </div><p>
-<a class="anchor" name="e25546d4f7126f106c2f3b2d8ed2c792"></a><!-- doxytag: member="neuralpp::Neuron::Neuron" ref="e25546d4f7126f106c2f3b2d8ed2c792" args="(vector&lt; Synapsis &gt; in, vector&lt; Synapsis &gt; out, double(*a)(double), double(*d)(double))" -->
+<a class="anchor" name="f1bf19ec93174f60b368ee4a91b03f46"></a><!-- doxytag: member="neuralpp::Neuron::Neuron" ref="f1bf19ec93174f60b368ee4a91b03f46" args="(vector&lt; Synapsis &gt; in, vector&lt; Synapsis &gt; out, double(*a)(double))" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -151,13 +139,7 @@ Constructor.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double(*)(double)&nbsp;</td>
-          <td class="paramname"> <em>a</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double(*)(double)&nbsp;</td>
-          <td class="paramname"> <em>d</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>a</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -176,7 +158,6 @@ Alternative constructor, that gets also the synapsis linked to the neuron.
     <tr><td valign="top"></td><td valign="top"><em>in</em>&nbsp;</td><td>Input synapses </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>out</em>&nbsp;</td><td>Output synapses </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>a</em>&nbsp;</td><td>Activation function </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>d</em>&nbsp;</td><td>Derivate of the activation function </td></tr>
   </table>
 </dl>
 
@@ -553,25 +534,10 @@ Remove input and output synapsis from a neuron.
 
 </div>
 </div><p>
-<a class="anchor" name="8b881889e40e9782c49b0efad2b1dde3"></a><!-- doxytag: member="neuralpp::Neuron::deriv" ref="8b881889e40e9782c49b0efad2b1dde3" args=")(double)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double(* <a class="el" href="classneuralpp_1_1Neuron.html#8b881889e40e9782c49b0efad2b1dde3">neuralpp::Neuron::deriv</a>)(double)<code> [private]</code>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-</div>
-</div><p>
 <hr>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="neural_09_09_8hpp-source.html">neural++.hpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Aug 9 11:11:18 2009 for Neural++ by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Aug 15 02:56:02 2009 for Neural++ by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

@@ -3,7 +3,7 @@ INCLUDEDIR=include
 PREFIX=/usr
 LIB=neural++
 CC=g++
-CFLAGS=-Wall -pedantic -pedantic-errors
+CFLAGS=-Wall -pedantic -pedantic-errors -ansi
 
 all:
 	${CC} -I${INCLUDEDIR} ${CFLAGS} -fPIC -g -c ${SRCDIR}/neuralnet.cpp

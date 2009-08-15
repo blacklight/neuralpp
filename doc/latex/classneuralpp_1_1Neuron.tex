@@ -8,9 +8,9 @@ Class for managing neurons.
 \subsection*{Public Member Functions}
 \begin{CompactItemize}
 \item 
-{\bf Neuron} (double($\ast$a)(double), double($\ast$d)(double))
+{\bf Neuron} (double($\ast$a)(double))
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
-{\bf Neuron} (vector$<$ {\bf Synapsis} $>$ {\bf in}, vector$<$ {\bf Synapsis} $>$ {\bf out}, double($\ast$a)(double), double($\ast$d)(double))
+{\bf Neuron} (vector$<$ {\bf Synapsis} $>$ {\bf in}, vector$<$ {\bf Synapsis} $>$ {\bf out}, double($\ast$a)(double))
 \begin{CompactList}\small\item\em Alternative constructor, that gets also the synapsis linked to the neuron. \item\end{CompactList}\item 
 {\bf Synapsis} \& {\bf synIn} (size\_\-t i)
 \begin{CompactList}\small\item\em Get the i-th synapsis connected on the input of the neuron. \item\end{CompactList}\item 
@@ -48,8 +48,6 @@ vector$<$ {\bf Synapsis} $>$ {\bf in}
 vector$<$ {\bf Synapsis} $>$ {\bf out}
 \item 
 double($\ast$ {\bf actv\_\-f} )(double)
-\item 
-double($\ast$ {\bf deriv} )(double)
 \end{CompactItemize}
 
 
@@ -61,7 +59,7 @@ Don't use this class directly unless you know what you're doing, use \doxyref{Ne
 \subsection{Constructor \& Destructor Documentation}
 \index{neuralpp::Neuron@{neuralpp::Neuron}!Neuron@{Neuron}}
 \index{Neuron@{Neuron}!neuralpp::Neuron@{neuralpp::Neuron}}
-\subsubsection[Neuron]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Neuron::Neuron (double($\ast$)(double) {\em a}, \/  double($\ast$)(double) {\em d})}\label{classneuralpp_1_1Neuron_c877424a295478e3464046ea43c2a7ad}
+\subsubsection[Neuron]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Neuron::Neuron (double($\ast$)(double) {\em a})}\label{classneuralpp_1_1Neuron_9863a08b73bc97c8b514aca6c580ff7b}
 
 
 Constructor. 
@@ -69,11 +67,11 @@ Constructor.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em a}]Activation function \item[{\em d}]Its derivate \end{description}
+\item[{\em a}]Activation function \end{description}
 \end{Desc}
 \index{neuralpp::Neuron@{neuralpp::Neuron}!Neuron@{Neuron}}
 \index{Neuron@{Neuron}!neuralpp::Neuron@{neuralpp::Neuron}}
-\subsubsection[Neuron]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Neuron::Neuron (vector$<$ {\bf Synapsis} $>$ {\em in}, \/  vector$<$ {\bf Synapsis} $>$ {\em out}, \/  double($\ast$)(double) {\em a}, \/  double($\ast$)(double) {\em d})}\label{classneuralpp_1_1Neuron_e25546d4f7126f106c2f3b2d8ed2c792}
+\subsubsection[Neuron]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Neuron::Neuron (vector$<$ {\bf Synapsis} $>$ {\em in}, \/  vector$<$ {\bf Synapsis} $>$ {\em out}, \/  double($\ast$)(double) {\em a})}\label{classneuralpp_1_1Neuron_f1bf19ec93174f60b368ee4a91b03f46}
 
 
 Alternative constructor, that gets also the synapsis linked to the neuron. 
@@ -81,7 +79,7 @@ Alternative constructor, that gets also the synapsis linked to the neuron.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em in}]Input synapses \item[{\em out}]Output synapses \item[{\em a}]Activation function \item[{\em d}]Derivate of the activation function \end{description}
+\item[{\em in}]Input synapses \item[{\em out}]Output synapses \item[{\em a}]Activation function \end{description}
 \end{Desc}
 
 
@@ -238,11 +236,6 @@ Remove input and output synapsis from a neuron.
 \index{neuralpp::Neuron@{neuralpp::Neuron}!actv\_\-f@{actv\_\-f}}
 \index{actv\_\-f@{actv\_\-f}!neuralpp::Neuron@{neuralpp::Neuron}}
 \subsubsection[actv\_\-f]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf neuralpp::Neuron::actv\_\-f})(double)\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_198ddd0d11a26d0052d52b787d6a0df0}
-
-
-\index{neuralpp::Neuron@{neuralpp::Neuron}!deriv@{deriv}}
-\index{deriv@{deriv}!neuralpp::Neuron@{neuralpp::Neuron}}
-\subsubsection[deriv]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf neuralpp::Neuron::deriv})(double)\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_8b881889e40e9782c49b0efad2b1dde3}
 
 
 

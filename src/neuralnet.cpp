@@ -21,9 +21,10 @@ namespace neuralpp {
 	double __actv(double prop) {
 		return prop;
 	}
-	
-	double __deriv(double prop) {
-		return 1;
+
+	double df (double (*f)(double), double x)   {
+		double h = 0.000001;
+		return (f(x+h) - f(x)) / h;
 	}
 
 	NeuralNet::NeuralNet(size_t in_size, size_t hidden_size,
@@ -33,28 +34,26 @@ namespace neuralpp {
 		ref_epochs = epochs;
 		l_rate = l;
 		actv_f = __actv;
-		deriv = __deriv;
 
-		input = new Layer(in_size, __actv, __deriv);
-		hidden = new Layer(hidden_size, __actv, __deriv);
-		output = new Layer(out_size, __actv, __deriv);
+		input = new Layer(in_size, __actv);
+		hidden = new Layer(hidden_size, __actv);
+		output = new Layer(out_size, __actv);
 		link();
 	}
 
 	NeuralNet::NeuralNet(size_t in_size, size_t hidden_size,
 			     size_t out_size, double (*a) (double),
-			     double (*d) (double), double l, int e) {
+			     double l, int e) {
 
 		epochs = e;
 		ref_epochs = epochs;
 		l_rate = l;
 
 		actv_f = a;
-		deriv = d;
 
-		input = new Layer(in_size, a, d);
-		hidden = new Layer(hidden_size, a, d);
-		output = new Layer(out_size, a, d);
+		input = new Layer(in_size, a);
+		hidden = new Layer(hidden_size, a);
+		output = new Layer(out_size, a);
 		link();
 	}
 
@@ -71,8 +70,7 @@ namespace neuralpp {
 	}
 
 	double NeuralNet::error(double expected) const  {
-		return abs((getOutput() - expected *
-			    deriv(getOutput())) / (abs(expected)));
+		return 0.5*(getOutput()-expected)*(getOutput()-expected);
 	}
 
 	void NeuralNet::propagate() {
@@ -103,22 +101,24 @@ namespace neuralpp {
 
 		for (size_t i = 0; i < output->size(); i++) {
 			Neuron *n = &(*output)[i];
+			double prop = 0.0;
+
+			for (size_t j = 0; j < n->nIn(); j++)
+				prop += (n->synIn(j).getWeight() * n->synIn(j).getIn()->getActv());
 
 			for (size_t j = 0; j < n->nIn(); j++) {
 				Synapsis *s = &(n->synIn(j));
 
 				if (ref_epochs - epochs > 0)
 					out_delta =
-					    s->getIn()->getActv() *
-					    error(ex) * (-l_rate) +
-					    s->momentum(ref_epochs,
-							ref_epochs -
-							epochs) *
+					    (-l_rate) * (getOutput() - expected()) *
+					    df(actv_f, prop) * s->getIn()->getActv() +
+					    s->momentum(ref_epochs, ref_epochs - epochs) *
 					    s->getPrevDelta();
 				else
 					out_delta =
-					    s->getIn()->getActv() *
-					    error(ex) * (-l_rate);
+					    (-l_rate) * (getOutput() - expected()) *
+					    df(actv_f, prop) * s->getIn()->getActv();
 
 				s->setDelta(out_delta);
 			}
@@ -127,7 +127,7 @@ namespace neuralpp {
 		for (size_t i = 0; i < hidden->size(); i++) {
 			Neuron *n = &(*hidden)[i];
 			double d =
-			    deriv(n->getProp()) *
+			    df(actv_f, n->getProp()) *
 			    n->synOut(0).getWeight() * out_delta;
 
 			for (size_t j = 0; j < n->nIn(); j++) {
@@ -434,7 +434,7 @@ namespace neuralpp {
 
 		if (xml.FindElem("NETWORK")) {
 			while (xml.FindChildElem("TRAINING")) {
-				vector < double >input;
+				vector<double> input;
 				double output;
 				bool valid = false;
 
@@ -442,10 +442,9 @@ namespace neuralpp {
 
 				while (xml.FindChildElem("INPUT")) {
 					xml.IntoElem();
-					input.
-					    push_back(atof
-						      (xml.GetData().
-						       c_str()));
+					input.push_back(atof(
+								xml.GetData().c_str()));
+
 					xml.OutOfElem();
 				}
 

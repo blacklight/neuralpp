@@ -46,21 +46,21 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#c79534c7c0dfb20d1d03be2ad7569b78">NeuralNet</a> (size_t in_size, size_t hidden_size, size_t out_size, double l, int e)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#c79534c7c0dfb20d1d03be2ad7569b78"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#88380cb002edcccf11b59f6d3f6c94c9">NeuralNet</a> (const char *file)  throw (NetworkFileNotFoundException)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#7fc7fc3e3220c138ffa5356fef6b9757">NeuralNet</a> (const string file)  throw (NetworkFileNotFoundException)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#88380cb002edcccf11b59f6d3f6c94c9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#b4b261f7f7fa93c45855288fd66cfdca">NeuralNet</a> (size_t in_size, size_t hidden_size, size_t out_size, double(*actv)(double), double(*<a class="el" href="classneuralpp_1_1NeuralNet.html#df44689f4e6201ca1ddc67655cce3576">deriv</a>)(double), double l, int e)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#7fc7fc3e3220c138ffa5356fef6b9757"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#0c16df2e0701503052c63749930b238e">NeuralNet</a> (size_t in_size, size_t hidden_size, size_t out_size, double(*actv)(double), double l, int e)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#b4b261f7f7fa93c45855288fd66cfdca"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#7de7ee318eeb791d21a01e9e9e0e8c5a">getOutput</a> ()</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#0c16df2e0701503052c63749930b238e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#961dce8913264bf64c899dce4e25f810">getOutput</a> () const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It gets the output of the network (note: the layer output should contain an only neuron).  <a href="#7de7ee318eeb791d21a01e9e9e0e8c5a"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It gets the output of the network (note: the layer output should contain an only neuron).  <a href="#961dce8913264bf64c899dce4e25f810"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#a6b8bf3800b43b58843c65fc431207ae">getOutputs</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It gets the output of the network in case the output layer contains more neurons.  <a href="#a6b8bf3800b43b58843c65fc431207ae"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#423fd38a61d79905dcc12da84c805114">expected</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#562dfe9fb8d73bf25a23ce608451d3aa">expected</a> () const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It gets the value expected.  <a href="#423fd38a61d79905dcc12da84c805114"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It gets the value expected.  <a href="#562dfe9fb8d73bf25a23ce608451d3aa"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#b6475762b7e9eab086befdc511f7c236">setExpected</a> (double <a class="el" href="classneuralpp_1_1NeuralNet.html#261f5f68fcc5be54250cfa03945266dd">ex</a>)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It sets the value you expect from your network.  <a href="#b6475762b7e9eab086befdc511f7c236"></a><br></td></tr>
@@ -76,12 +76,12 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#46f23f462318a4ffc037a4e806364c3f">link</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It links the layers of the network (input, hidden, output).  <a href="#46f23f462318a4ffc037a4e806364c3f"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">bool&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#5db8d6ba4785f732da6e642b4f8f11a0">save</a> (const char *fname)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#fdf94c276720c25e565cac834fe8a407">save</a> (const char *fname)  throw (NetworkFileWriteException)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Save a trained neural network to a binary file.  <a href="#5db8d6ba4785f732da6e642b4f8f11a0"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#e8b8741d28bec1354db555eabe418cb6">train</a> (string xml, <a class="el" href="classneuralpp_1_1NeuralNet.html#94c36c94060e785ea67a0014c4182f8f">source</a> xrc)  throw (InvalidXMLException)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Save a trained neural network to a binary file.  <a href="#fdf94c276720c25e565cac834fe8a407"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#ead4bdef0602a5cadbe3beb685e01f5f">train</a> (string xml, <a class="el" href="classneuralpp_1_1NeuralNet.html#94c36c94060e785ea67a0014c4182f8f">source</a> src)  throw (InvalidXMLException)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Train a network using a training set loaded from an XML file.  <a href="#e8b8741d28bec1354db555eabe418cb6"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Train a network using a training set loaded from an XML file.  <a href="#ead4bdef0602a5cadbe3beb685e01f5f"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Static Public Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#45c7645d4affe65752d37cd230afba24">initXML</a> (string &amp;xml)</td></tr>
 
@@ -95,6 +95,13 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#28b9966c5f197b8e86d57dd104aa32a6">closeXML</a> (string &amp;xml)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Closes an open XML document generated by "initXML" and "XMLFromSet".  <a href="#28b9966c5f197b8e86d57dd104aa32a6"></a><br></td></tr>
+<tr><td colspan="2"><br><h2>Public Attributes</h2></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#e2b4e8405f9d25edab395d61502bdba9">input</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#bbdaa1b6c0a1a95d2b18cd25fda2a266">hidden</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#fa9b2dbcbb39d0fc70f790ac24069a74">output</a></td></tr>
+
 <tr><td colspan="2"><br><h2>Private Member Functions</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#94169c89a7cd47122ab5dbf1d5c5e108">updateWeights</a> ()</td></tr>
 
@@ -102,9 +109,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#62695a82dfb1df758a44150921aec8e0">commitChanges</a> (<a class="el" href="classneuralpp_1_1Layer.html">Layer</a> *l)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It commits the changes made by <a class="el" href="classneuralpp_1_1NeuralNet.html#94169c89a7cd47122ab5dbf1d5c5e108" title="It updates the weights of the net&#39;s synapsis through back-propagation.">updateWeights()</a> to the layer l.  <a href="#62695a82dfb1df758a44150921aec8e0"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#8a140d28e6dd4097470c7c138801ad01">error</a> (double <a class="el" href="classneuralpp_1_1NeuralNet.html#261f5f68fcc5be54250cfa03945266dd">ex</a>)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#0616c51404efaca2714e37dd7478997e">error</a> (double <a class="el" href="classneuralpp_1_1NeuralNet.html#261f5f68fcc5be54250cfa03945266dd">ex</a>) const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It get the error made on the expected result as |v-v'|/v.  <a href="#8a140d28e6dd4097470c7c138801ad01"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the error made on the expected result as |v-v'|/v.  <a href="#0616c51404efaca2714e37dd7478997e"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#4cb52dae7b43d03fac73afca7b9f3a51">epochs</a></td></tr>
 
@@ -114,18 +121,9 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#261f5f68fcc5be54250cfa03945266dd">ex</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#e2b4e8405f9d25edab395d61502bdba9">input</a></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#bbdaa1b6c0a1a95d2b18cd25fda2a266">hidden</a></td></tr>
-
-<tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a> *&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#fa9b2dbcbb39d0fc70f790ac24069a74">output</a></td></tr>
-
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#c1469e6afd87d85b82f14bc246f82457">actv_f</a> )(double)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Private pointer to function, containing the function to be used as activation function.  <a href="#c1469e6afd87d85b82f14bc246f82457"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#df44689f4e6201ca1ddc67655cce3576">deriv</a> )(double)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Private pointer to function, containing the function to be used as derivate of the activation function.  <a href="#df44689f4e6201ca1ddc67655cce3576"></a><br></td></tr>
 </table>
 <hr><a name="_details"></a><h2>Detailed Description</h2>
 Main project's class. 
@@ -236,14 +234,14 @@ Constructor.
 
 </div>
 </div><p>
-<a class="anchor" name="88380cb002edcccf11b59f6d3f6c94c9"></a><!-- doxytag: member="neuralpp::NeuralNet::NeuralNet" ref="88380cb002edcccf11b59f6d3f6c94c9" args="(const char *file)" -->
+<a class="anchor" name="7fc7fc3e3220c138ffa5356fef6b9757"></a><!-- doxytag: member="neuralpp::NeuralNet::NeuralNet" ref="7fc7fc3e3220c138ffa5356fef6b9757" args="(const string file)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">neuralpp::NeuralNet::NeuralNet           </td>
           <td>(</td>
-          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramtype">const string&nbsp;</td>
           <td class="paramname"> <em>file</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td>  throw (NetworkFileNotFoundException)</td>
@@ -257,7 +255,7 @@ Constructor.
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>file</em>&nbsp;</td><td>Binary file containing a neural network previously saved by <a class="el" href="classneuralpp_1_1NeuralNet.html#5db8d6ba4785f732da6e642b4f8f11a0" title="Save a trained neural network to a binary file.">save()</a> method </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>file</em>&nbsp;</td><td>Binary file containing a neural network previously saved by <a class="el" href="classneuralpp_1_1NeuralNet.html#fdf94c276720c25e565cac834fe8a407" title="Save a trained neural network to a binary file.">save()</a> method </td></tr>
   </table>
 </dl>
 <dl compact><dt><b>Exceptions:</b></dt><dd>
@@ -268,7 +266,7 @@ Constructor.
 
 </div>
 </div><p>
-<a class="anchor" name="b4b261f7f7fa93c45855288fd66cfdca"></a><!-- doxytag: member="neuralpp::NeuralNet::NeuralNet" ref="b4b261f7f7fa93c45855288fd66cfdca" args="(size_t in_size, size_t hidden_size, size_t out_size, double(*actv)(double), double(*deriv)(double), double l, int e)" -->
+<a class="anchor" name="0c16df2e0701503052c63749930b238e"></a><!-- doxytag: member="neuralpp::NeuralNet::NeuralNet" ref="0c16df2e0701503052c63749930b238e" args="(size_t in_size, size_t hidden_size, size_t out_size, double(*actv)(double), double l, int e)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -295,12 +293,6 @@ Constructor.
           <td></td>
           <td class="paramtype">double(*)(double)&nbsp;</td>
           <td class="paramname"> <em>actv</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">double(*)(double)&nbsp;</td>
-          <td class="paramname"> <em>deriv</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
@@ -332,7 +324,6 @@ Constructor.
     <tr><td valign="top"></td><td valign="top"><em>hidden_size</em>&nbsp;</td><td>Size of the hidden layer </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>out_size</em>&nbsp;</td><td>Size of the output layer </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>actv</em>&nbsp;</td><td>Activation function to use (default: f(x)=x) </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>deriv</em>&nbsp;</td><td>Derivate for the activation function to use (default: f'(x)=1) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>l</em>&nbsp;</td><td>learn rate (get it after doing some experiments, but generally try to keep its value quite low to be more accurate) </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>e</em>&nbsp;</td><td>Epochs (cycles) to execute (the most you execute, the most the network can be accurate for its purpose) </td></tr>
   </table>
@@ -389,7 +380,7 @@ In-class use only <dl compact><dt><b>Parameters:</b></dt><dd>
 
 </div>
 </div><p>
-<a class="anchor" name="8a140d28e6dd4097470c7c138801ad01"></a><!-- doxytag: member="neuralpp::NeuralNet::error" ref="8a140d28e6dd4097470c7c138801ad01" args="(double ex)" -->
+<a class="anchor" name="0616c51404efaca2714e37dd7478997e"></a><!-- doxytag: member="neuralpp::NeuralNet::error" ref="0616c51404efaca2714e37dd7478997e" args="(double ex) const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -399,14 +390,14 @@ In-class use only <dl compact><dt><b>Parameters:</b></dt><dd>
           <td class="paramtype">double&nbsp;</td>
           <td class="paramname"> <em>ex</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td><code> [private]</code></td>
+          <td> const<code> [private]</code></td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-It get the error made on the expected result as |v-v'|/v. 
+Get the error made on the expected result as |v-v'|/v. 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
@@ -417,7 +408,7 @@ It get the error made on the expected result as |v-v'|/v.
 
 </div>
 </div><p>
-<a class="anchor" name="7de7ee318eeb791d21a01e9e9e0e8c5a"></a><!-- doxytag: member="neuralpp::NeuralNet::getOutput" ref="7de7ee318eeb791d21a01e9e9e0e8c5a" args="()" -->
+<a class="anchor" name="961dce8913264bf64c899dce4e25f810"></a><!-- doxytag: member="neuralpp::NeuralNet::getOutput" ref="961dce8913264bf64c899dce4e25f810" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -426,7 +417,7 @@ It get the error made on the expected result as |v-v'|/v.
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -461,7 +452,7 @@ It gets the output of the network in case the output layer contains more neurons
 
 </div>
 </div><p>
-<a class="anchor" name="423fd38a61d79905dcc12da84c805114"></a><!-- doxytag: member="neuralpp::NeuralNet::expected" ref="423fd38a61d79905dcc12da84c805114" args="()" -->
+<a class="anchor" name="562dfe9fb8d73bf25a23ce608451d3aa"></a><!-- doxytag: member="neuralpp::NeuralNet::expected" ref="562dfe9fb8d73bf25a23ce608451d3aa" args="() const " -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -470,7 +461,7 @@ It gets the output of the network in case the output layer contains more neurons
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td> const</td>
         </tr>
       </table>
 </div>
@@ -600,17 +591,17 @@ It links the layers of the network (input, hidden, output).
 Don't use unless you exactly know what you're doing, it is already called by the constructor 
 </div>
 </div><p>
-<a class="anchor" name="5db8d6ba4785f732da6e642b4f8f11a0"></a><!-- doxytag: member="neuralpp::NeuralNet::save" ref="5db8d6ba4785f732da6e642b4f8f11a0" args="(const char *fname)" -->
+<a class="anchor" name="fdf94c276720c25e565cac834fe8a407"></a><!-- doxytag: member="neuralpp::NeuralNet::save" ref="fdf94c276720c25e565cac834fe8a407" args="(const char *fname)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">bool neuralpp::NeuralNet::save           </td>
+          <td class="memname">void neuralpp::NeuralNet::save           </td>
           <td>(</td>
           <td class="paramtype">const char *&nbsp;</td>
           <td class="paramname"> <em>fname</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td>  throw (NetworkFileWriteException)</td>
         </tr>
       </table>
 </div>
@@ -624,10 +615,15 @@ Save a trained neural network to a binary file.
     <tr><td valign="top"></td><td valign="top"><em>fname</em>&nbsp;</td><td>Binary file where you're going to save your network </td></tr>
   </table>
 </dl>
+<dl compact><dt><b>Exceptions:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>NetworkFileWriteException</em>&nbsp;</td><td>When you get an error writing the network's information to a file </td></tr>
+  </table>
+</dl>
 
 </div>
 </div><p>
-<a class="anchor" name="e8b8741d28bec1354db555eabe418cb6"></a><!-- doxytag: member="neuralpp::NeuralNet::train" ref="e8b8741d28bec1354db555eabe418cb6" args="(string xml, source xrc)" -->
+<a class="anchor" name="ead4bdef0602a5cadbe3beb685e01f5f"></a><!-- doxytag: member="neuralpp::NeuralNet::train" ref="ead4bdef0602a5cadbe3beb685e01f5f" args="(string xml, source src)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -641,7 +637,7 @@ Save a trained neural network to a binary file.
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype"><a class="el" href="classneuralpp_1_1NeuralNet.html#94c36c94060e785ea67a0014c4182f8f">source</a>&nbsp;</td>
-          <td class="paramname"> <em>xrc</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>src</em></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -860,51 +856,6 @@ Closes an open XML document generated by "initXML" and "XMLFromSet".
 
 </div>
 </div><p>
-<a class="anchor" name="e2b4e8405f9d25edab395d61502bdba9"></a><!-- doxytag: member="neuralpp::NeuralNet::input" ref="e2b4e8405f9d25edab395d61502bdba9" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a>* <a class="el" href="classneuralpp_1_1NeuralNet.html#e2b4e8405f9d25edab395d61502bdba9">neuralpp::NeuralNet::input</a><code> [private]</code>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-</div>
-</div><p>
-<a class="anchor" name="bbdaa1b6c0a1a95d2b18cd25fda2a266"></a><!-- doxytag: member="neuralpp::NeuralNet::hidden" ref="bbdaa1b6c0a1a95d2b18cd25fda2a266" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a>* <a class="el" href="classneuralpp_1_1NeuralNet.html#bbdaa1b6c0a1a95d2b18cd25fda2a266">neuralpp::NeuralNet::hidden</a><code> [private]</code>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-</div>
-</div><p>
-<a class="anchor" name="fa9b2dbcbb39d0fc70f790ac24069a74"></a><!-- doxytag: member="neuralpp::NeuralNet::output" ref="fa9b2dbcbb39d0fc70f790ac24069a74" args="" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a>* <a class="el" href="classneuralpp_1_1NeuralNet.html#fa9b2dbcbb39d0fc70f790ac24069a74">neuralpp::NeuralNet::output</a><code> [private]</code>          </td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-
-</div>
-</div><p>
 <a class="anchor" name="c1469e6afd87d85b82f14bc246f82457"></a><!-- doxytag: member="neuralpp::NeuralNet::actv_f" ref="c1469e6afd87d85b82f14bc246f82457" args=")(double)" -->
 <div class="memitem">
 <div class="memproto">
@@ -922,19 +873,47 @@ Private pointer to function, containing the function to be used as activation fu
 
 </div>
 </div><p>
-<a class="anchor" name="df44689f4e6201ca1ddc67655cce3576"></a><!-- doxytag: member="neuralpp::NeuralNet::deriv" ref="df44689f4e6201ca1ddc67655cce3576" args=")(double)" -->
+<a class="anchor" name="e2b4e8405f9d25edab395d61502bdba9"></a><!-- doxytag: member="neuralpp::NeuralNet::input" ref="e2b4e8405f9d25edab395d61502bdba9" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double(* <a class="el" href="classneuralpp_1_1NeuralNet.html#df44689f4e6201ca1ddc67655cce3576">neuralpp::NeuralNet::deriv</a>)(double)<code> [private]</code>          </td>
+          <td class="memname"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a>* <a class="el" href="classneuralpp_1_1NeuralNet.html#e2b4e8405f9d25edab395d61502bdba9">neuralpp::NeuralNet::input</a>          </td>
         </tr>
       </table>
 </div>
 <div class="memdoc">
 
 <p>
-Private pointer to function, containing the function to be used as derivate of the activation function. 
+
+</div>
+</div><p>
+<a class="anchor" name="bbdaa1b6c0a1a95d2b18cd25fda2a266"></a><!-- doxytag: member="neuralpp::NeuralNet::hidden" ref="bbdaa1b6c0a1a95d2b18cd25fda2a266" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a>* <a class="el" href="classneuralpp_1_1NeuralNet.html#bbdaa1b6c0a1a95d2b18cd25fda2a266">neuralpp::NeuralNet::hidden</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="fa9b2dbcbb39d0fc70f790ac24069a74"></a><!-- doxytag: member="neuralpp::NeuralNet::output" ref="fa9b2dbcbb39d0fc70f790ac24069a74" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a>* <a class="el" href="classneuralpp_1_1NeuralNet.html#fa9b2dbcbb39d0fc70f790ac24069a74">neuralpp::NeuralNet::output</a>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
 <p>
 
 </div>
@@ -942,7 +921,7 @@ Private pointer to function, containing the function to be used as derivate of t
 <hr>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="neural_09_09_8hpp-source.html">neural++.hpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Aug 9 11:11:18 2009 for Neural++ by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Aug 15 02:56:02 2009 for Neural++ by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

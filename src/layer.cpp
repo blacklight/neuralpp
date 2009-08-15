@@ -15,21 +15,18 @@
 #include "neural++.hpp"
 
 namespace neuralpp {
-	Layer::Layer(size_t sz, double (*a) (double), double (*d) (double)) {
+	Layer::Layer(size_t sz, double (*a) (double)) {
 		for (size_t i = 0; i < sz; i++) {
-			Neuron n(a, d);
+			Neuron n(a);
 			 elements.push_back(n);
 		}
 		
 		actv_f = a;
-		deriv = d;
 	}
 
-	Layer::Layer(vector < Neuron > &el, double (*a) (double),
-		     double (*d) (double)) {
+	Layer::Layer(vector < Neuron > &el, double (*a) (double)) {
 		elements = el;
 		actv_f = a;
-		deriv = d;
 	}
 
 	size_t Layer::size() const  {
@@ -51,7 +48,7 @@ namespace neuralpp {
 
 			for (size_t j = 0; j < size(); j++) {
 				Neuron *n2 = &(elements[j]);
-				Synapsis s(n1, n2, RAND, actv_f, deriv);
+				Synapsis s(n1, n2, RAND, actv_f);
 
 				n1->push_out(s);
 				n2->push_in(s);

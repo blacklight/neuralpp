@@ -43,18 +43,36 @@
 <a name="l00031"></a>00031                 <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to load a neural network from an invalid network file"</span>; }
 <a name="l00032"></a>00032         };
 <a name="l00033"></a>00033 
-<a name="l00038"></a>00038         <span class="keyword">class </span>InvalidXMLException : <span class="keyword">public</span> std::exception  {
-<a name="l00039"></a>00039         <span class="keyword">public</span>:
-<a name="l00040"></a>00040                 InvalidXMLException()  {}
-<a name="l00041"></a>00041                 <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to load an invalid XML file"</span>; }
-<a name="l00042"></a>00042         };
-<a name="l00043"></a>00043 }
+<a name="l00039"></a>00039         <span class="keyword">class </span>NetworkFileWriteException : <span class="keyword">public</span> std::exception  {
+<a name="l00040"></a>00040         <span class="keyword">public</span>:
+<a name="l00041"></a>00041                 NetworkFileWriteException()  {}
+<a name="l00042"></a>00042                 <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> throw()  { <span class="keywordflow">return</span> <span class="stringliteral">"There was an error while writing the network file"</span>; }
+<a name="l00043"></a>00043         };
 <a name="l00044"></a>00044 
-<a name="l00045"></a>00045 <span class="preprocessor">#endif</span>
-<a name="l00046"></a>00046 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
-<a name="l00047"></a>00047 <span class="preprocessor"></span>
+<a name="l00049"></a>00049         <span class="keyword">class </span>InvalidXMLException : <span class="keyword">public</span> std::exception  {
+<a name="l00050"></a>00050         <span class="keyword">public</span>:
+<a name="l00051"></a>00051                 InvalidXMLException()  {}
+<a name="l00052"></a>00052                 <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to load an invalid XML file"</span>; }
+<a name="l00053"></a>00053         };
+<a name="l00054"></a>00054 
+<a name="l00060"></a>00060         <span class="keyword">class </span>NetworkIndexOutOfBoundsException : <span class="keyword">public</span> std::exception  {
+<a name="l00061"></a>00061         <span class="keyword">public</span>:
+<a name="l00062"></a>00062                 NetworkIndexOutOfBoundsException()  {}
+<a name="l00063"></a>00063                 <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> throw()  { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to access a non-existing neuron"</span>; }
+<a name="l00064"></a>00064         };
+<a name="l00065"></a>00065 
+<a name="l00071"></a>00071         <span class="keyword">class </span>InvalidSynapticalWeightException : <span class="keyword">public</span> std::exception  {
+<a name="l00072"></a>00072         <span class="keyword">public</span>:
+<a name="l00073"></a>00073                 InvalidSynapticalWeightException()  {}
+<a name="l00074"></a>00074                 <span class="keyword">const</span> <span class="keywordtype">char</span>* what() <span class="keyword">const</span> throw()  { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to set an invalid weight for the synapsis"</span>; }
+<a name="l00075"></a>00075         };
+<a name="l00076"></a>00076 }
+<a name="l00077"></a>00077 
+<a name="l00078"></a>00078 <span class="preprocessor">#endif</span>
+<a name="l00079"></a>00079 <span class="preprocessor"></span><span class="preprocessor">#endif</span>
+<a name="l00080"></a>00080 <span class="preprocessor"></span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Aug 9 11:11:18 2009 for Neural++ by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sat Aug 15 02:56:02 2009 for Neural++ by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

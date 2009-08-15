@@ -8,11 +8,11 @@ Class for managing layers of neurons.
 \subsection*{Public Member Functions}
 \begin{CompactItemize}
 \item 
-{\bf Layer} (size\_\-t sz, double($\ast$a)(double), double($\ast$d)(double))
+{\bf Layer} (size\_\-t sz, double($\ast$a)(double))
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
-{\bf Layer} (vector$<$ {\bf Neuron} $>$ \&neurons, double($\ast$a)(double), double($\ast$d)(double))
+{\bf Layer} (vector$<$ {\bf Neuron} $>$ \&neurons, double($\ast$a)(double))
 \begin{CompactList}\small\item\em Alternative constructor. \item\end{CompactList}\item 
-{\bf Neuron} \& {\bf operator[$\,$]} (size\_\-t i)
+{\bf Neuron} \& {\bf operator[$\,$]} (size\_\-t i)  throw (NetworkIndexOutOfBoundsException)
 \begin{CompactList}\small\item\em Redefinition for operator []. \item\end{CompactList}\item 
 void {\bf link} ({\bf Layer} \&l)
 \begin{CompactList}\small\item\em It links a layer to another. \item\end{CompactList}\item 
@@ -22,7 +22,7 @@ void {\bf setActv} (vector$<$ double $>$ \&v)
 \begin{CompactList}\small\item\em It sets a vector of activation values to all its neurons. \item\end{CompactList}\item 
 void {\bf propagate} ()
 \begin{CompactList}\small\item\em It propagates its activation values to the output layers. \item\end{CompactList}\item 
-size\_\-t {\bf size} ()
+size\_\-t {\bf size} () const 
 \end{CompactItemize}
 \subsection*{Private Attributes}
 \begin{CompactItemize}
@@ -32,8 +32,6 @@ vector$<$ {\bf Neuron} $>$ {\bf elements}
 void($\ast$ {\bf update\_\-weights} )()
 \item 
 double($\ast$ {\bf actv\_\-f} )(double)
-\item 
-double($\ast$ {\bf deriv} )(double)
 \end{CompactItemize}
 
 
@@ -45,7 +43,7 @@ Don't use this class directly unless you know what you're doing, use \doxyref{Ne
 \subsection{Constructor \& Destructor Documentation}
 \index{neuralpp::Layer@{neuralpp::Layer}!Layer@{Layer}}
 \index{Layer@{Layer}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[Layer]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Layer::Layer (size\_\-t {\em sz}, \/  double($\ast$)(double) {\em a}, \/  double($\ast$)(double) {\em d})}\label{classneuralpp_1_1Layer_411a4dc8a1bb2fe44fe7a69fa50fd764}
+\subsubsection[Layer]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Layer::Layer (size\_\-t {\em sz}, \/  double($\ast$)(double) {\em a})}\label{classneuralpp_1_1Layer_fb08bddd85d36570dabfe915461f07c5}
 
 
 Constructor. 
@@ -53,11 +51,11 @@ Constructor.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em sz}]Size of the layer \item[{\em a}]Activation function \item[{\em d}]Its derivate \end{description}
+\item[{\em sz}]Size of the layer \item[{\em a}]Activation function \end{description}
 \end{Desc}
 \index{neuralpp::Layer@{neuralpp::Layer}!Layer@{Layer}}
 \index{Layer@{Layer}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[Layer]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Layer::Layer (vector$<$ {\bf Neuron} $>$ \& {\em neurons}, \/  double($\ast$)(double) {\em a}, \/  double($\ast$)(double) {\em d})}\label{classneuralpp_1_1Layer_117d1c3b481641816e80ea36826d2107}
+\subsubsection[Layer]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Layer::Layer (vector$<$ {\bf Neuron} $>$ \& {\em neurons}, \/  double($\ast$)(double) {\em a})}\label{classneuralpp_1_1Layer_609ed16b8d79dc384b01ba7d16b72bd1}
 
 
 Alternative constructor. 
@@ -65,14 +63,14 @@ Alternative constructor.
 It directly gets a vector of neurons to build the layer \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em neurons}]Vector of neurons to be included in the layer \item[{\em a}]Activation function \item[{\em d}]Its derivate \end{description}
+\item[{\em neurons}]Vector of neurons to be included in the layer \item[{\em a}]Activation function \end{description}
 \end{Desc}
 
 
 \subsection{Member Function Documentation}
 \index{neuralpp::Layer@{neuralpp::Layer}!operator[]@{operator[]}}
 \index{operator[]@{operator[]}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[operator[]]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}\& neuralpp::Layer::operator[$\,$] (size\_\-t {\em i})}\label{classneuralpp_1_1Layer_45ff7554830558155c6fbce3b6827122}
+\subsubsection[operator[]]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}\& neuralpp::Layer::operator[$\,$] (size\_\-t {\em i})  throw (NetworkIndexOutOfBoundsException)}\label{classneuralpp_1_1Layer_45ff7554830558155c6fbce3b6827122}
 
 
 Redefinition for operator []. 
@@ -129,7 +127,7 @@ It propagates its activation values to the output layers.
 
 \index{neuralpp::Layer@{neuralpp::Layer}!size@{size}}
 \index{size@{size}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[size]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t neuralpp::Layer::size ()}\label{classneuralpp_1_1Layer_c8d2f7513e5d40518f9dddfd1e3ddcc5}
+\subsubsection[size]{\setlength{\rightskip}{0pt plus 5cm}size\_\-t neuralpp::Layer::size () const}\label{classneuralpp_1_1Layer_7ca71ed62fbe9c1e9c0fb6a8dcaf76f0}
 
 
 \begin{Desc}
@@ -150,11 +148,6 @@ It propagates its activation values to the output layers.
 \index{neuralpp::Layer@{neuralpp::Layer}!actv\_\-f@{actv\_\-f}}
 \index{actv\_\-f@{actv\_\-f}!neuralpp::Layer@{neuralpp::Layer}}
 \subsubsection[actv\_\-f]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf neuralpp::Layer::actv\_\-f})(double)\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Layer_824367da29f92253a027a7c5b4a4405e}
-
-
-\index{neuralpp::Layer@{neuralpp::Layer}!deriv@{deriv}}
-\index{deriv@{deriv}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[deriv]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf neuralpp::Layer::deriv})(double)\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Layer_a0207b14ba80aaf03502749ecb7d23fa}
 
 
 

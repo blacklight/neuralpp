@@ -14,19 +14,17 @@
 #include "neural++.hpp"
 
 namespace neuralpp {
-	Neuron::Neuron(double (*a) (double), double (*d) (double)) {
+	Neuron::Neuron(double (*a) (double)) {
 		actv_f = a;
-		deriv = d;
 	}
 	
 	Neuron::Neuron(vector < Synapsis > i, vector < Synapsis > o,
-			 double (*a) (double), double (*d) (double)) {
+			 double (*a) (double)) {
 
 		in = i;
 		out = o;
 
 		actv_f = a;
-		deriv = d;
 	}
 
 	Synapsis & Neuron::synIn(size_t i) {

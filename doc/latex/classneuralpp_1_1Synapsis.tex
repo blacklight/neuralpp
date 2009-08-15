@@ -10,17 +10,17 @@ Class for managing synapsis.
 \item 
 {\bf Synapsis} ({\bf Neuron} $\ast$i, {\bf Neuron} $\ast$o, double w, double d)
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
-{\bf Synapsis} ({\bf Neuron} $\ast$i, {\bf Neuron} $\ast$o, double($\ast$a)(double), double($\ast$d)(double))
+{\bf Synapsis} ({\bf Neuron} $\ast$i, {\bf Neuron} $\ast$o, double($\ast$a)(double))
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
-{\bf Synapsis} ({\bf Neuron} $\ast$i, {\bf Neuron} $\ast$o, double w, double($\ast$a)(double), double($\ast$d)(double))
+{\bf Synapsis} ({\bf Neuron} $\ast$i, {\bf Neuron} $\ast$o, double w, double($\ast$a)(double))
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
 {\bf Neuron} $\ast$ {\bf getIn} ()
 \item 
 {\bf Neuron} $\ast$ {\bf getOut} ()
 \item 
-void {\bf setWeight} (double w)
+void {\bf setWeight} (double w)  throw (InvalidSynapticalWeightException)
 \begin{CompactList}\small\item\em Set the weight of the synapsis. \item\end{CompactList}\item 
-void {\bf setDelta} (double d)
+void {\bf setDelta} (double d)  throw (InvalidSynapticalWeightException)
 \begin{CompactList}\small\item\em It sets the delta (how much to change the weight after an update) of the synapsis. \item\end{CompactList}\item 
 double {\bf getWeight} ()
 \begin{CompactList}\small\item\em Return the weight of the synapsis. \item\end{CompactList}\item 
@@ -44,8 +44,6 @@ double {\bf weight}
 {\bf Neuron} $\ast$ {\bf out}
 \item 
 double($\ast$ {\bf actv\_\-f} )(double)
-\item 
-double($\ast$ {\bf deriv} )(double)
 \end{CompactItemize}
 
 
@@ -69,7 +67,7 @@ Constructor.
 \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!Synapsis@{Synapsis}}
 \index{Synapsis@{Synapsis}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[Synapsis]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Synapsis::Synapsis ({\bf Neuron} $\ast$ {\em i}, \/  {\bf Neuron} $\ast$ {\em o}, \/  double($\ast$)(double) {\em a}, \/  double($\ast$)(double) {\em d})}\label{classneuralpp_1_1Synapsis_a75e0de57380141973c46dd83d9985e2}
+\subsubsection[Synapsis]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Synapsis::Synapsis ({\bf Neuron} $\ast$ {\em i}, \/  {\bf Neuron} $\ast$ {\em o}, \/  double($\ast$)(double) {\em a})}\label{classneuralpp_1_1Synapsis_b767332fdce81af25486b8969e5d2fb3}
 
 
 Constructor. 
@@ -77,11 +75,11 @@ Constructor.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em i}]Input neuron \item[{\em o}]Output neuron \item[{\em a}]Activation function \item[{\em d}]Derivate for activation function \end{description}
+\item[{\em i}]Input neuron \item[{\em o}]Output neuron \item[{\em a}]Activation function \end{description}
 \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!Synapsis@{Synapsis}}
 \index{Synapsis@{Synapsis}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[Synapsis]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Synapsis::Synapsis ({\bf Neuron} $\ast$ {\em i}, \/  {\bf Neuron} $\ast$ {\em o}, \/  double {\em w}, \/  double($\ast$)(double) {\em a}, \/  double($\ast$)(double) {\em d})}\label{classneuralpp_1_1Synapsis_3b9714684c845beae5b3474428509663}
+\subsubsection[Synapsis]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Synapsis::Synapsis ({\bf Neuron} $\ast$ {\em i}, \/  {\bf Neuron} $\ast$ {\em o}, \/  double {\em w}, \/  double($\ast$)(double) {\em a})}\label{classneuralpp_1_1Synapsis_af6b80ab3203bccd2ee4a36f06537517}
 
 
 Constructor. 
@@ -89,7 +87,7 @@ Constructor.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em i}]Input neuron \item[{\em o}]Output neuron \item[{\em w}]Weight for the synapsis (default: random) \item[{\em a}]Activation function \item[{\em d}]Derivate for activation function \end{description}
+\item[{\em i}]Input neuron \item[{\em o}]Output neuron \item[{\em w}]Weight for the synapsis (default: random) \item[{\em a}]Activation function \end{description}
 \end{Desc}
 
 
@@ -110,7 +108,7 @@ Constructor.
 \item[Returns:]Reference to output neuron of the synapsis \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!setWeight@{setWeight}}
 \index{setWeight@{setWeight}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[setWeight]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Synapsis::setWeight (double {\em w})}\label{classneuralpp_1_1Synapsis_acee77d0fdf9889464ab5ed27beae0ff}
+\subsubsection[setWeight]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Synapsis::setWeight (double {\em w})  throw (InvalidSynapticalWeightException)}\label{classneuralpp_1_1Synapsis_acee77d0fdf9889464ab5ed27beae0ff}
 
 
 Set the weight of the synapsis. 
@@ -122,7 +120,7 @@ Set the weight of the synapsis.
 \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!setDelta@{setDelta}}
 \index{setDelta@{setDelta}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[setDelta]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Synapsis::setDelta (double {\em d})}\label{classneuralpp_1_1Synapsis_429ad5b25930faf436a9d725582802e1}
+\subsubsection[setDelta]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Synapsis::setDelta (double {\em d})  throw (InvalidSynapticalWeightException)}\label{classneuralpp_1_1Synapsis_429ad5b25930faf436a9d725582802e1}
 
 
 It sets the delta (how much to change the weight after an update) of the synapsis. 
@@ -204,11 +202,6 @@ This value is inversely proportional to the number of steps done in the learning
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!actv\_\-f@{actv\_\-f}}
 \index{actv\_\-f@{actv\_\-f}!neuralpp::Synapsis@{neuralpp::Synapsis}}
 \subsubsection[actv\_\-f]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf neuralpp::Synapsis::actv\_\-f})(double)\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Synapsis_2539b9eef2ff0f3522aea8d89e394f02}
-
-
-\index{neuralpp::Synapsis@{neuralpp::Synapsis}!deriv@{deriv}}
-\index{deriv@{deriv}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[deriv]{\setlength{\rightskip}{0pt plus 5cm}double($\ast$ {\bf neuralpp::Synapsis::deriv})(double)\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Synapsis_2940b370c283aa1b63890666942c26bf}
 
 
 

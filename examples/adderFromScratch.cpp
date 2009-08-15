@@ -21,7 +21,6 @@ int main()  {
 	xml += NeuralNet::XMLFromSet(1, "3,3,1;7");
 	xml += NeuralNet::XMLFromSet(2, "5,4,2;11");
 	NeuralNet::closeXML(xml);
-	cout << "xml:\n" << xml << endl;
 	
 	net.train(xml, NeuralNet::str);
 	vector<double> v;
