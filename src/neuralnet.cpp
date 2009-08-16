@@ -11,8 +11,10 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.                                      *
  **************************************************************************************************/
 
+#include <iostream>
 #include <fstream>
 #include <sstream>
+
 using namespace std;
 
 #include "neural++.hpp"
@@ -70,8 +72,14 @@ namespace neuralpp {
 		return v;
 	}
 
-	double NeuralNet::error(double expected) const  {
-		return 0.5*(getOutput()-expected)*(getOutput()-expected);
+	double NeuralNet::error(double expected)  {
+		double err = 0.0;
+		vector<double> out = getOutputs();
+
+		for (size_t i=0; i < output->size(); i++)
+			err += 0.5*(out[i] - expect[i]) * (out[i] - expect[i]);
+
+		return err;
 	}
 
 	void NeuralNet::propagate() {
@@ -89,58 +97,71 @@ namespace neuralpp {
 	}
 
 	void NeuralNet::setExpected(double e) {
-		ex.clear();
-		ex.push_back(e);
+		expect.clear();
+		expect.push_back(e);
+	}
+
+	void NeuralNet::setExpected(vector<double> e) {
+		expect.clear();
+		expect.assign(e.begin(), e.end());
 	}
 
 	double NeuralNet::expected() const  {
-		return ex[0];
+		return expect[0];
+	}
+
+	vector<double> NeuralNet::getExpected() const  {
+		return expect;
 	}
 
 	void NeuralNet::updateWeights() {
-		double out_delta;
+		double Dk = 0.0;
+		size_t k = output->size();
 
-		for (size_t i = 0; i < output->size(); i++) {
+		for (size_t i = 0; i < k; i++) {
 			Neuron *n = &(*output)[i];
+			double out_delta = 0.0,
+				  z = n->getActv(),
+				  d = expect[i],
+				  f = df(actv_f, n->getProp());
 	
 			for (size_t j = 0; j < n->nIn(); j++) {
 				Synapsis *s = &(n->synIn(j));
+				double y = s->getIn()->getActv(),
+					  beta = s->momentum(ref_epochs, ref_epochs - epochs);
 
 				if (ref_epochs - epochs > 0)
 					out_delta =
-					    (-l_rate) * (getOutput() - expected()) *
-					    df(actv_f, n->getProp()) * s->getIn()->getActv() +
-					    s->momentum(ref_epochs, ref_epochs - epochs) *
-					    s->getPrevDelta();
+					    (-l_rate) * (z-d) * f * y +
+					    beta * s->getPrevDelta();
 				else
 					out_delta =
-					    (-l_rate) * (getOutput() - expected()) *
-					    df(actv_f, n->getProp()) * s->getIn()->getActv();
+					    (-l_rate) * (z-d) * f * y;
 
+				Dk += ( (z-d) * f * s->getWeight() );
 				s->setDelta(out_delta);
 			}
 		}
 
 		for (size_t i = 0; i < hidden->size(); i++) {
 			Neuron *n = &(*hidden)[i];
-			double d =
-			    df(actv_f, n->getProp()) *
-			    n->synOut(0).getWeight() * out_delta;
+			double hidden_delta = 0.0,
+				  d = df(actv_f, n->getProp()) * Dk;
 
 			for (size_t j = 0; j < n->nIn(); j++) {
 				Synapsis *s = &(n->synIn(j));
+				double x = s->getIn()->getActv(),
+					  beta = s->momentum(ref_epochs, ref_epochs - epochs);
 
 				if (ref_epochs - epochs > 0)
-					s->setDelta((-l_rate) * d *
-						    s->getIn()->getActv() +
-						    s->momentum(ref_epochs,
-								ref_epochs
-								-
-								epochs) *
-						    s->getPrevDelta());
+					hidden_delta =
+						(-l_rate) * d * x +
+						beta * s->getPrevDelta();
 				else
-					s->setDelta((-l_rate) * d *
-						    s->getIn()->getActv());
+					hidden_delta =
+						(-l_rate) * d * x;
+
+				s->setDelta(hidden_delta);
 			}
 		}
 	}
@@ -153,7 +174,7 @@ namespace neuralpp {
 				Synapsis *s = &(n->synIn(j));
 				s->setWeight(s->getWeight() +
 					     s->getDelta());
-				s->setDelta(0);
+				s->setDelta(0.0);
 			}
 		}
 	}
@@ -180,7 +201,7 @@ namespace neuralpp {
 
 		record.epochs = ref_epochs;
 		record.l_rate = l_rate;
-		record.ex = ex[0];
+		record.ex = expect[0];
 
 		if (out.write((char*) &record, sizeof(struct netrecord)) <= 0)
 			throw NetworkFileWriteException();
@@ -416,7 +437,6 @@ namespace neuralpp {
 
 	void NeuralNet::train(string xmlsrc, NeuralNet::source src =
 			      file) throw(InvalidXMLException) {
-		double out;
 		CMarkup xml;
 
 		if (src == file)
@@ -432,8 +452,7 @@ namespace neuralpp {
 		if (xml.FindElem("NETWORK")) {
 			while (xml.FindChildElem("TRAINING")) {
 				vector<double> input;
-				double output;
-				bool valid = false;
+				vector<double> output;
 
 				xml.IntoElem();
 
@@ -445,34 +464,20 @@ namespace neuralpp {
 					xml.OutOfElem();
 				}
 
-				if (xml.FindChildElem("OUTPUT")) {
+				while (xml.FindChildElem("OUTPUT")) {
 					xml.IntoElem();
-					output =
-					    atof(xml.GetData().c_str());
+					output.push_back( atof(xml.GetData().c_str()) );
 					xml.OutOfElem();
 				}
 
 				xml.OutOfElem();
 
-				while (!valid) {
-					stringstream ss(stringstream::in | stringstream::out);
-
-					setInput(input);
-					propagate();
-					setExpected(output);
-					update();
-
-					out = getOutput();
-
-					ss << out;
-
-					if (ss.str().find("inf") == string::npos)
-						valid = true;
-				}
+				setInput(input);
+				propagate();
+				setExpected(output);
+				update();
 			}
 		}
-
-		return;
 	}
 
 	void NeuralNet::initXML(string& xml) {

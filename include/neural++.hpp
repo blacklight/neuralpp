@@ -50,8 +50,7 @@ namespace neuralpp  {
 		int epochs;
 		int ref_epochs;
 		double l_rate;
-		//double ex;
-		std::vector<double> ex;
+		std::vector<double> expect;
 
 		/**
 		 * @brief It updates the weights of the net's synapsis through back-propagation.
@@ -71,7 +70,7 @@ namespace neuralpp  {
 		 * @param ex Expected value
 		 * @return Mean error
 		 */
-		double error(double ex) const;
+		double error (double ex);
 		
 		/**
 		 * @brief Private pointer to function, containing the function to
