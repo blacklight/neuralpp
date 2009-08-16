@@ -14,6 +14,8 @@
 #include <cstdlib>
 #include "neural++.hpp"
 
+using std::vector;
+
 namespace neuralpp {
 	Layer::Layer(size_t sz, double (*a) (double)) {
 		for (size_t i = 0; i < sz; i++) {
@@ -24,7 +26,7 @@ namespace neuralpp {
 		actv_f = a;
 	}
 
-	Layer::Layer(vector < Neuron > &el, double (*a) (double)) {
+	Layer::Layer(vector<Neuron> &el, double (*a) (double)) {
 		elements = el;
 		actv_f = a;
 	}
@@ -40,7 +42,7 @@ namespace neuralpp {
 		return elements[i];
 	}
 
-	void Layer::link(Layer & l) {
+	void Layer::link(Layer& l) {
 		srand((unsigned) time(NULL));
 
 		for (size_t i = 0; i < l.size(); i++) {
@@ -56,23 +58,16 @@ namespace neuralpp {
 		}
 	}
 
-	void Layer::setProp(vector < double >&v) {
-		for (size_t i = 0; i < size(); i++)
+	void Layer::setInput (vector<double> v)  {
+		for (size_t i = 0; i < size(); i++)  {
 			elements[i].setProp(v[i]);
-	}
-
-	void Layer::setActv(vector < double >&v) {
-		for (size_t i = 0; i < size(); i++)
 			elements[i].setActv(v[i]);
+		}
 	}
 
 	void Layer::propagate() {
-		for (size_t i = 0; i < size(); i++) {
-			Neuron *n = &(elements[i]);
-
-			n->setProp(n->propagate());
-			n->setActv(actv_f(n->getProp()));
-		}
+		for (size_t i = 0; i < size(); i++)
+			elements[i].propagate();
 	}
 }
 

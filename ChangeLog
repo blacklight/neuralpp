@@ -1,5 +1,9 @@
 --- Release 0.4 ---
 
+2009-08-16 BlackLight <blacklight@autistici.org>
+
+	* neuron.cpp: Fixing propagate() function
+
 2009-08-15 BlackLight <blacklight@autistici.org>
 
 	* Makefile: Now you compile Neural++ with -Wall -pedantic

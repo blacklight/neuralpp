@@ -13,6 +13,7 @@
 
 #include <fstream>
 #include <sstream>
+using namespace std;
 
 #include "neural++.hpp"
 #include "Markup.h"
@@ -78,9 +79,8 @@ namespace neuralpp {
 		output->propagate();
 	}
 
-	void NeuralNet::setInput(vector <double>& v) {
-		input->setProp(v);
-		input->setActv(v);
+	void NeuralNet::setInput(vector <double> v) {
+		input->setInput(v);
 	}
 
 	void NeuralNet::link() {
@@ -89,11 +89,12 @@ namespace neuralpp {
 	}
 
 	void NeuralNet::setExpected(double e) {
-		ex = e;
+		ex.clear();
+		ex.push_back(e);
 	}
 
 	double NeuralNet::expected() const  {
-		return ex;
+		return ex[0];
 	}
 
 	void NeuralNet::updateWeights() {
@@ -101,24 +102,20 @@ namespace neuralpp {
 
 		for (size_t i = 0; i < output->size(); i++) {
 			Neuron *n = &(*output)[i];
-			double prop = 0.0;
-
-			for (size_t j = 0; j < n->nIn(); j++)
-				prop += (n->synIn(j).getWeight() * n->synIn(j).getIn()->getActv());
-
+	
 			for (size_t j = 0; j < n->nIn(); j++) {
 				Synapsis *s = &(n->synIn(j));
 
 				if (ref_epochs - epochs > 0)
 					out_delta =
 					    (-l_rate) * (getOutput() - expected()) *
-					    df(actv_f, prop) * s->getIn()->getActv() +
+					    df(actv_f, n->getProp()) * s->getIn()->getActv() +
 					    s->momentum(ref_epochs, ref_epochs - epochs) *
 					    s->getPrevDelta();
 				else
 					out_delta =
 					    (-l_rate) * (getOutput() - expected()) *
-					    df(actv_f, prop) * s->getIn()->getActv();
+					    df(actv_f, n->getProp()) * s->getIn()->getActv();
 
 				s->setDelta(out_delta);
 			}
@@ -148,9 +145,9 @@ namespace neuralpp {
 		}
 	}
 
-	void NeuralNet::commitChanges(Layer * l) {
-		for (size_t i = 0; i < l->size(); i++) {
-			Neuron *n = &(*l)[i];
+	void NeuralNet::commitChanges(Layer& l) {
+		for (size_t i = 0; i < l.size(); i++) {
+			Neuron *n = &(l[i]);
 
 			for (size_t j = 0; j < n->nIn(); j++) {
 				Synapsis *s = &(n->synIn(j));
@@ -164,8 +161,8 @@ namespace neuralpp {
 	void NeuralNet::update() {
 		while ((epochs--) > 0) {
 			updateWeights();
-			commitChanges(output);
-			commitChanges(hidden);
+			commitChanges(*output);
+			commitChanges(*hidden);
 			propagate();
 		}
 	}
@@ -183,7 +180,7 @@ namespace neuralpp {
 
 		record.epochs = ref_epochs;
 		record.l_rate = l_rate;
-		record.ex = ex;
+		record.ex = ex[0];
 
 		if (out.write((char*) &record, sizeof(struct netrecord)) <= 0)
 			throw NetworkFileWriteException();

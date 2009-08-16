@@ -7,6 +7,8 @@
 
 #include <iostream>
 #include <neural++.hpp>
+
+using namespace std;
 using namespace neuralpp;
 
 int main()  {

@@ -13,6 +13,8 @@
 
 #include "neural++.hpp"
 
+using std::vector;
+
 namespace neuralpp {
 	Neuron::Neuron(double (*a) (double)) {
 		actv_f = a;
@@ -35,11 +37,11 @@ namespace neuralpp {
 		return out[i];
 	}
 
-	void Neuron::push_in(Synapsis & s) {
+	void Neuron::push_in(Synapsis s) {
 		in.push_back(s);
 	}
 
-	void Neuron::push_out(Synapsis & s) {
+	void Neuron::push_out(Synapsis s) {
 		out.push_back(s);
 	}
 
@@ -67,13 +69,15 @@ namespace neuralpp {
 		return actv_val;
 	}
 
-	double Neuron::propagate() {
-		double aux = 0;
+	void Neuron::propagate() {
+		double aux = 0.0;
 
 		for (size_t i = 0; i < nIn(); i++)
 			aux +=
 			    (in[i].getWeight() * in[i].getIn()->actv_val);
-		return aux;
+
+		setProp(aux);
+		setActv( actv_f(getProp()) );
 	}
 
 	void Neuron::synClear()  {
