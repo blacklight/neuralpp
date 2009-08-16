@@ -11,14 +11,17 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.                                      *
  **************************************************************************************************/
 
-#include <iostream>
 #include <fstream>
 #include <sstream>
 
-using namespace std;
-
 #include "neural++.hpp"
 #include "Markup.h"
+
+using std::vector;
+using std::string;
+using std::ifstream;
+using std::ofstream;
+using std::stringstream;
 
 namespace neuralpp {
 	double __actv(double prop)  {
