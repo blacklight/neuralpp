@@ -13,7 +13,7 @@ using namespace std;
 using namespace neuralpp;
 
 int main()  {
-	NeuralNet net(2, 2, 1, 0.005, 1000);
+	NeuralNet net(2, 2, 2, 0.005, 1000);
 
 	cout << "Training in progress - This may take a while...\n";
 	net.train("adder.xml", NeuralNet::file);

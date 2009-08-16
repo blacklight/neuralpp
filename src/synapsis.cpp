@@ -47,23 +47,23 @@ namespace neuralpp {
 		actv_f = a;
 	}
 
-	Neuron *Synapsis::getIn() {
+	Neuron *Synapsis::getIn() const  {
 		return in;
 	}
 
-	Neuron *Synapsis::getOut() {
+	Neuron *Synapsis::getOut() const  {
 		return out;
 	}
 
-	double Synapsis::getWeight() {
+	double Synapsis::getWeight() const  {
 		return weight;
 	}
 
-	double Synapsis::getDelta() {
+	double Synapsis::getDelta() const  {
 		return delta;
 	}
 
-	double Synapsis::getPrevDelta() {
+	double Synapsis::getPrevDelta() const  {
 		return prev_delta;
 	}
 
@@ -82,7 +82,7 @@ namespace neuralpp {
 		delta = d;
 	}
 
-	double Synapsis::momentum(int N, int x) {
+	double Synapsis::momentum(int N, int x) const  {
 		return (BETA0 * N) / (20 * x + N);
 	}
 }

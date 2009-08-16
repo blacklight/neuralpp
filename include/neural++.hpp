@@ -289,12 +289,12 @@ namespace neuralpp  {
 		/**
 		 * @return Reference to input neuron of the synapsis
 		 */
-		Neuron* getIn();
+		Neuron* getIn() const;
 		
 		/**
 		 * @return Reference to output neuron of the synapsis
 		 */
-		Neuron* getOut();
+		Neuron* getOut() const;
 
 		/**
 		 * @brief Set the weight of the synapsis
@@ -313,19 +313,19 @@ namespace neuralpp  {
 		 * @brief Return the weight of the synapsis
 		 * @return Weight of the synapsis
 		 */
-		double getWeight();
+		double getWeight() const;
 		
 		/**
 		 * @brief Return the delta of the synapsis
 		 * @return Delta of the synapsis
 		 */
-		double getDelta();
+		double getDelta() const;
 		
 		/**
 		 * @brief Get the delta of the synapsis at the previous iteration
 		 * @return The previous delta
 		 */
-		double getPrevDelta();
+		double getPrevDelta() const;
 
 		/**
 		 * @brief Get the inertial momentum of a synapsis. This value is inversely proportional
@@ -337,7 +337,7 @@ namespace neuralpp  {
 		 * @param x The number of iterations already taken
 		 * @return The inertial momentum of the synapsis
 		 */
-		double momentum (int N, int x);
+		double momentum (int N, int x) const;
 	};
 
 	/**

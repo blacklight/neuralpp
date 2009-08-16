@@ -11,7 +11,6 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.                                      *
  **************************************************************************************************/
 
-#include <iostream>
 #include <fstream>
 #include <sstream>
 
@@ -87,7 +86,7 @@ namespace neuralpp {
 		output->propagate();
 	}
 
-	void NeuralNet::setInput(vector <double> v) {
+	void NeuralNet::setInput(vector<double> v) {
 		input->setInput(v);
 	}
 
@@ -473,8 +472,8 @@ namespace neuralpp {
 				xml.OutOfElem();
 
 				setInput(input);
-				propagate();
 				setExpected(output);
+				propagate();
 				update();
 			}
 		}

@@ -38,7 +38,7 @@ int main()  {
 
 	net.setInput(v);
 	net.propagate();
-	cout << "Neural net output: " << net.getOutput() << endl;
+	cout << "Neural net output: " << net.getOutputs()[0] << "; " << net.getOutputs()[1] << endl;
 
 	return 0;
 }
