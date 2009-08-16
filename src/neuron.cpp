@@ -16,17 +16,18 @@
 using std::vector;
 
 namespace neuralpp {
-	Neuron::Neuron(double (*a) (double)) {
+	Neuron::Neuron(double (*a) (double), double th) {
 		actv_f = a;
+		threshold = th;
 	}
 	
 	Neuron::Neuron(vector < Synapsis > i, vector < Synapsis > o,
-			 double (*a) (double)) {
+			 double (*a) (double), double th) {
 
 		in = i;
 		out = o;
-
 		actv_f = a;
+		threshold = th;
 	}
 
 	Synapsis & Neuron::synIn(size_t i) {
@@ -50,7 +51,8 @@ namespace neuralpp {
 	}
 
 	void Neuron::setActv(double val) {
-		actv_val = actv_f(val);
+		//actv_val = actv_f(val);
+		actv_val = val;
 	}
 
 	size_t Neuron::nIn() {
@@ -73,11 +75,10 @@ namespace neuralpp {
 		double aux = 0.0;
 
 		for (size_t i = 0; i < nIn(); i++)
-			aux +=
-			    (in[i].getWeight() * in[i].getIn()->actv_val);
+			aux += (in[i].getWeight() * in[i].getIn()->actv_val);
 
 		setProp(aux);
-		setActv( actv_f(getProp()) );
+		setActv( actv_f(aux) );
 	}
 
 	void Neuron::synClear()  {

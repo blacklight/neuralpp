@@ -8,3 +8,4 @@ clean:
 	rm doAdd
 	rm adderFromScratch
 	rm adder.net
+	rm adder.xml

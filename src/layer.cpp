@@ -17,18 +17,20 @@
 using std::vector;
 
 namespace neuralpp {
-	Layer::Layer(size_t sz, double (*a) (double)) {
+	Layer::Layer(size_t sz, double (*a) (double), double th) {
 		for (size_t i = 0; i < sz; i++) {
 			Neuron n(a);
 			 elements.push_back(n);
 		}
 		
+		threshold = th;
 		actv_f = a;
 	}
 
-	Layer::Layer(vector<Neuron> &el, double (*a) (double)) {
+	Layer::Layer(vector<Neuron> &el, double (*a) (double), double th) {
 		elements = el;
 		actv_f = a;
+		threshold = th;
 	}
 
 	size_t Layer::size() const  {

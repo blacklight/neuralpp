@@ -11,6 +11,7 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.                                      *
  **************************************************************************************************/
 
+#include <iostream>
 #include <fstream>
 #include <sstream>
 
@@ -20,7 +21,7 @@ using namespace std;
 #include "Markup.h"
 
 namespace neuralpp {
-	double __actv(double prop) {
+	double __actv(double prop)  {
 		return prop;
 	}
 
@@ -30,34 +31,35 @@ namespace neuralpp {
 	}
 
 	NeuralNet::NeuralNet(size_t in_size, size_t hidden_size,
-			     size_t out_size, double l, int e) {
+			     size_t out_size, double l, int e, double th, double (*a)(double)) {
 
 		epochs = e;
 		ref_epochs = epochs;
 		l_rate = l;
-		actv_f = __actv;
-
-		input = new Layer(in_size, __actv);
-		hidden = new Layer(hidden_size, __actv);
-		output = new Layer(out_size, __actv);
-		link();
-	}
-
-	NeuralNet::NeuralNet(size_t in_size, size_t hidden_size,
-			     size_t out_size, double (*a) (double),
-			     double l, int e) {
-
-		epochs = e;
-		ref_epochs = epochs;
-		l_rate = l;
-
 		actv_f = a;
+		threshold = th;
 
-		input = new Layer(in_size, a);
-		hidden = new Layer(hidden_size, a);
-		output = new Layer(out_size, a);
+		input = new Layer(in_size, __actv, th);
+		hidden = new Layer(hidden_size, __actv, th);
+		output = new Layer(out_size, __actv, th);
 		link();
 	}
+
+	/*NeuralNet::NeuralNet(size_t in_size, size_t hidden_size,
+			     size_t out_size, double (*a) (double),
+			     double l, int e, double th) {
+
+		epochs = e;
+		ref_epochs = epochs;
+		l_rate = l;
+		actv_f = a;
+		threshold = th;
+
+		input = new Layer(in_size, a, th);
+		hidden = new Layer(hidden_size, a, th);
+		output = new Layer(out_size, a, th);
+		link();
+	}*/
 
 	double NeuralNet::getOutput() const  {
 		return (*output)[0].getActv();
@@ -179,6 +181,8 @@ namespace neuralpp {
 	}
 
 	void NeuralNet::update() {
+		epochs = ref_epochs;
+
 		while ((epochs--) > 0) {
 			updateWeights();
 			commitChanges(*output);
@@ -452,7 +456,6 @@ namespace neuralpp {
 			while (xml.FindChildElem("TRAINING")) {
 				vector<double> input;
 				vector<double> output;
-
 				xml.IntoElem();
 
 				while (xml.FindChildElem("INPUT")) {
@@ -462,7 +465,7 @@ namespace neuralpp {
 
 					xml.OutOfElem();
 				}
-
+				
 				while (xml.FindChildElem("OUTPUT")) {
 					xml.IntoElem();
 					output.push_back( atof(xml.GetData().c_str()) );
@@ -504,7 +507,7 @@ namespace neuralpp {
 		return v;
 	}
 
-	string NeuralNet::XMLFromSet(int id, string set) {
+	string NeuralNet::XMLFromSet (int& id, string set) {
 		string xml;
 		vector<double> in, out;
 		stringstream ss (stringstream::in | stringstream::out);
@@ -525,12 +528,12 @@ namespace neuralpp {
 		in = split(',', inStr);
 		out = split(',', outStr);
 
-		ss << id;
+		ss << (id++);
 		xml += "\t<TRAINING ID=\"" + ss.str() + "\">\n";
 
-		for (unsigned int i = 0; i < in.size(); i++) {
+		for (unsigned int i = 0; i < in.size(); i++, id++) {
 			ss.str(string());
-			ss << i;
+			ss << id;
 			xml += "\t\t<INPUT ID=\"" + ss.str() + "\">";
 
 			ss.str(string());
@@ -538,9 +541,9 @@ namespace neuralpp {
 			xml += ss.str() + "</INPUT>\n";
 		}
 
-		for (unsigned int i = 0; i < out.size(); i++) {
+		for (unsigned int i = 0; i < out.size(); i++, id++) {
 			ss.str(string());
-			ss << i;
+			ss << id;
 			xml += "\t\t<OUTPUT ID=\"" + ss.str() + "\">";
 
 			ss.str(string());
