@@ -28,7 +28,7 @@
 #define 	RAND 	(double) ( (rand() / (RAND_MAX/2)) - 1)
 
 //! Initial value for the inertial momentum of the synapses
-#define 	BETA0 	0.8
+#define 	BETA0 	1.0
 
 /**
  * @namespace neuralpp
@@ -108,7 +108,8 @@ namespace neuralpp  {
 		 *   'sensitive' on variations of the input values
 		 * @param a Activation function to use (default: f(x)=x)
 		 */
-		NeuralNet (size_t in_size, size_t hidden_size, size_t out_size, double l, int e, double th = 0.0, double (*a)(double) = __actv);
+		NeuralNet (size_t in_size, size_t hidden_size, size_t out_size, double l,
+				int e, double th = 0.0, double (*a)(double) = __actv);
 
 		/**
 		 * @brief Constructor
@@ -117,23 +118,6 @@ namespace neuralpp  {
 		 */
 		NeuralNet (const std::string file) throw(NetworkFileNotFoundException);
 		
-		
-		/**
-		 * @brief Constructor
-		 * @param in_size Size of the input layer
-		 * @param hidden_size Size of the hidden layer
-		 * @param out_size Size of the output layer
-		 * @param actv Activation function to use (default: f(x)=x)
-		 * @param l learn rate (get it after doing some experiments, but generally try to
-		 *   keep its value quite low to be more accurate)
-		 * @param e Epochs (cycles) to execute (the most you execute, the most the network
-		 *   can be accurate for its purpose)
-		 * @param th Threshold, value in [0,1] that establishes how much a neuron must be
-		 *   'sensitive' on variations of the input values
-		 */
-		//NeuralNet (size_t in_size, size_t hidden_size, size_t out_size,
-		//		double(*actv)(double), double l, int e, double th);
-
 		/**
 		 * @brief It gets the output of the network (note: the layer output should contain
 		 * an only neuron)

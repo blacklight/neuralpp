@@ -17,10 +17,20 @@ all:
 install:
 	mkdir -p ${PREFIX}/lib
 	mkdir -p ${PREFIX}/${INCLUDEDIR}
+	mkdir -p ${PREFIX}/share
+	mkdir -p ${PREFIX}/share/${LIB}
+	install -m 0644 README ${PREFIX}/share/${LIB}/README
+	install -m 0644 INSTALL ${PREFIX}/share/${LIB}/INSTALL
+	install -m 0644 BUGS ${PREFIX}/share/${LIB}/BUGS
+	install -m 0644 VERSION ${PREFIX}/share/${LIB}/VERSION
+	install -m 0644 ChangeLog ${PREFIX}/share/${LIB}/ChangeLog
+	cp -r examples ${PREFIX}/share/${LIB}
+	cp -r doc ${PREFIX}/share/${LIB}
 	install -m 0755 lib${LIB}.so.0.0.0 ${PREFIX}/lib/lib${LIB}.so.0.0.0
 	install -m 0644 lib${LIB}.a ${PREFIX}/lib/lib${LIB}.a
 	install -m 0644 ${INCLUDEDIR}/${LIB}.hpp ${PREFIX}/${INCLUDEDIR}
 	install -m 0644 ${INCLUDEDIR}/${LIB}_exception.hpp ${PREFIX}/${INCLUDEDIR}
+	install -m 0644 ${PREFIX}/share/${LIB}/README
 	ln -sf ${PREFIX}/lib/lib${LIB}.so.0.0.0 ${PREFIX}/lib/lib${LIB}.so.0
 
 uninstall:
@@ -29,8 +39,17 @@ uninstall:
 	rm ${PREFIX}/${INCLUDEDIR}/${LIB}_exception.hpp
 	rm ${PREFIX}/lib/lib${LIB}.so.0.0.0
 	rm ${PREFIX}/lib/lib${LIB}.so.0
+	rm ${PREFIX}/share/${LIB}/README
+	rm ${PREFIX}/share/${LIB}/INSTALL
+	rm ${PREFIX}/share/${LIB}/BUGS
+	rm ${PREFIX}/share/${LIB}/VERSION
+	rm ${PREFIX}/share/${LIB}/ChangeLog
+	rm -r ${PREFIX}/share/${LIB}/doc
+	rm -r ${PREFIX}/share/${LIB}/examples
+	rmdir ${PREFIX}/share/${LIB}
 
 clean:
 	rm *.o
 	rm lib${LIB}.so.0.0.0
 	rm lib${LIB}.a
+

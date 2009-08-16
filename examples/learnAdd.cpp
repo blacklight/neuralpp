@@ -15,14 +15,14 @@ using namespace std;
 using namespace neuralpp;
 
 double f (double x)  {
-	return (1.0/(1.0 + pow(M_E,x)));
+	return (x <= 0) ? 1 : 0;
 }
 
 int main()  {
 	int id = 0;
 	string xml;
 	time_t t1, t2;
-	NeuralNet net(2, 2, 1, 0.005, 100);
+	NeuralNet net(2, 2, 1, 0.005, 1000, 0.1, f);
 
 	NeuralNet::initXML(xml);
 	xml += NeuralNet::XMLFromSet(id, "2,3;5");

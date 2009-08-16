@@ -77,6 +77,7 @@ namespace neuralpp {
 		for (size_t i = 0; i < nIn(); i++)
 			aux += (in[i].getWeight() * in[i].getIn()->actv_val);
 
+		aux -= threshold;
 		setProp(aux);
 		setActv( actv_f(aux) );
 	}

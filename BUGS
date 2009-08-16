@@ -1,0 +1,12 @@
+Sometimes the training phase of the network breaks in the middle. It happens
+because the synaptical weights are initialized with random values, and
+sometimes updating them causes those values to become >= 1. This makes the
+output values of the network diverge instead of converging to the desired,
+expected values. The library recognizes this behaviour, and when a weight
+become >= 1 throws an InvalidSynapticalWeightException. So far there's no
+way to prevent this odd, random behaviour. The network implements the usage
+of an inertial momentum coefficient to avoid strong oscillations in the
+training phase, in order to make this phenomenon rarer, but also using this
+mechanism there's a possibility ~ 10% of getting a diverging network, and
+so a training phase broken by an InvalidSynapticalWeightException.
+
