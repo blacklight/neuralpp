@@ -8,17 +8,17 @@ Class for managing neurons.
 \subsection*{Public Member Functions}
 \begin{CompactItemize}
 \item 
-{\bf Neuron} (double($\ast$a)(double))
+{\bf Neuron} (double($\ast$a)(double), double th=0.0)
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
-{\bf Neuron} (vector$<$ {\bf Synapsis} $>$ {\bf in}, vector$<$ {\bf Synapsis} $>$ {\bf out}, double($\ast$a)(double))
+{\bf Neuron} (std::vector$<$ {\bf Synapsis} $>$ {\bf in}, std::vector$<$ {\bf Synapsis} $>$ {\bf out}, double($\ast$a)(double), double th=0.0)
 \begin{CompactList}\small\item\em Alternative constructor, that gets also the synapsis linked to the neuron. \item\end{CompactList}\item 
 {\bf Synapsis} \& {\bf synIn} (size\_\-t i)
 \begin{CompactList}\small\item\em Get the i-th synapsis connected on the input of the neuron. \item\end{CompactList}\item 
 {\bf Synapsis} \& {\bf synOut} (size\_\-t i)
 \begin{CompactList}\small\item\em Get the i-th synapsis connected on the output of the neuron. \item\end{CompactList}\item 
-void {\bf push\_\-in} ({\bf Synapsis} \&s)
+void {\bf push\_\-in} ({\bf Synapsis} s)
 \begin{CompactList}\small\item\em It pushes a new input synapsis. \item\end{CompactList}\item 
-void {\bf push\_\-out} ({\bf Synapsis} \&s)
+void {\bf push\_\-out} ({\bf Synapsis} s)
 \begin{CompactList}\small\item\em It pushes a new output synapsis. \item\end{CompactList}\item 
 void {\bf setActv} (double a)
 \begin{CompactList}\small\item\em Change the activation value of the neuron. \item\end{CompactList}\item 
@@ -28,8 +28,8 @@ double {\bf getActv} ()
 \begin{CompactList}\small\item\em Get the activation value of the neuron. \item\end{CompactList}\item 
 double {\bf getProp} ()
 \begin{CompactList}\small\item\em Get the propagation value of the neuron. \item\end{CompactList}\item 
-double {\bf propagate} ()
-\begin{CompactList}\small\item\em It propagates its activation value to the connected neurons. \item\end{CompactList}\item 
+void {\bf propagate} ()
+\begin{CompactList}\small\item\em Compute the propagation value of the neuron and set it. \item\end{CompactList}\item 
 size\_\-t {\bf nIn} ()
 \begin{CompactList}\small\item\em Get the number of input synapsis for the neuron. \item\end{CompactList}\item 
 size\_\-t {\bf nOut} ()
@@ -43,9 +43,11 @@ double {\bf actv\_\-val}
 \item 
 double {\bf prop\_\-val}
 \item 
-vector$<$ {\bf Synapsis} $>$ {\bf in}
+double {\bf threshold}
 \item 
-vector$<$ {\bf Synapsis} $>$ {\bf out}
+std::vector$<$ {\bf Synapsis} $>$ {\bf in}
+\item 
+std::vector$<$ {\bf Synapsis} $>$ {\bf out}
 \item 
 double($\ast$ {\bf actv\_\-f} )(double)
 \end{CompactItemize}
@@ -59,7 +61,7 @@ Don't use this class directly unless you know what you're doing, use \doxyref{Ne
 \subsection{Constructor \& Destructor Documentation}
 \index{neuralpp::Neuron@{neuralpp::Neuron}!Neuron@{Neuron}}
 \index{Neuron@{Neuron}!neuralpp::Neuron@{neuralpp::Neuron}}
-\subsubsection[Neuron]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Neuron::Neuron (double($\ast$)(double) {\em a})}\label{classneuralpp_1_1Neuron_9863a08b73bc97c8b514aca6c580ff7b}
+\subsubsection[Neuron]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Neuron::Neuron (double($\ast$)(double) {\em a}, \/  double {\em th} = {\tt 0.0})}\label{classneuralpp_1_1Neuron_c9bd4f5f618fcf1adcebf1ab63ee0960}
 
 
 Constructor. 
@@ -67,11 +69,11 @@ Constructor.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em a}]Activation function \end{description}
+\item[{\em a}]Activation function \item[{\em th}]Threshold, value in [0,1] that establishes how much a neuron must be 'sensitive' on variations of the input values \end{description}
 \end{Desc}
 \index{neuralpp::Neuron@{neuralpp::Neuron}!Neuron@{Neuron}}
 \index{Neuron@{Neuron}!neuralpp::Neuron@{neuralpp::Neuron}}
-\subsubsection[Neuron]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Neuron::Neuron (vector$<$ {\bf Synapsis} $>$ {\em in}, \/  vector$<$ {\bf Synapsis} $>$ {\em out}, \/  double($\ast$)(double) {\em a})}\label{classneuralpp_1_1Neuron_f1bf19ec93174f60b368ee4a91b03f46}
+\subsubsection[Neuron]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Neuron::Neuron (std::vector$<$ {\bf Synapsis} $>$ {\em in}, \/  std::vector$<$ {\bf Synapsis} $>$ {\em out}, \/  double($\ast$)(double) {\em a}, \/  double {\em th} = {\tt 0.0})}\label{classneuralpp_1_1Neuron_d15e96b0316d880953288cc6e2550bec}
 
 
 Alternative constructor, that gets also the synapsis linked to the neuron. 
@@ -79,7 +81,7 @@ Alternative constructor, that gets also the synapsis linked to the neuron.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em in}]Input synapses \item[{\em out}]Output synapses \item[{\em a}]Activation function \end{description}
+\item[{\em in}]Input synapses \item[{\em out}]Output synapses \item[{\em a}]Activation function \item[{\em th}]Threshold, value in [0,1] that establishes how much a neuron must be 'sensitive' on variations of the input values \end{description}
 \end{Desc}
 
 
@@ -114,7 +116,7 @@ Get the i-th synapsis connected on the output of the neuron.
 \item[Returns:]Reference to the i-th synapsis \end{Desc}
 \index{neuralpp::Neuron@{neuralpp::Neuron}!push\_\-in@{push\_\-in}}
 \index{push\_\-in@{push\_\-in}!neuralpp::Neuron@{neuralpp::Neuron}}
-\subsubsection[push\_\-in]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Neuron::push\_\-in ({\bf Synapsis} \& {\em s})}\label{classneuralpp_1_1Neuron_583ada6e1dd3f2e113415b4d89196e62}
+\subsubsection[push\_\-in]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Neuron::push\_\-in ({\bf Synapsis} {\em s})}\label{classneuralpp_1_1Neuron_4d252151c35839975838539d846d70be}
 
 
 It pushes a new input synapsis. 
@@ -126,7 +128,7 @@ It pushes a new input synapsis.
 \end{Desc}
 \index{neuralpp::Neuron@{neuralpp::Neuron}!push\_\-out@{push\_\-out}}
 \index{push\_\-out@{push\_\-out}!neuralpp::Neuron@{neuralpp::Neuron}}
-\subsubsection[push\_\-out]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Neuron::push\_\-out ({\bf Synapsis} \& {\em s})}\label{classneuralpp_1_1Neuron_bca65db84f56f9d40694bfbcd25812cb}
+\subsubsection[push\_\-out]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Neuron::push\_\-out ({\bf Synapsis} {\em s})}\label{classneuralpp_1_1Neuron_2c0acb0e6d413c4e0fc9e7939da1a684}
 
 
 It pushes a new output synapsis. 
@@ -180,10 +182,10 @@ Get the propagation value of the neuron.
 \item[Returns:]Propagation value for the neuron \end{Desc}
 \index{neuralpp::Neuron@{neuralpp::Neuron}!propagate@{propagate}}
 \index{propagate@{propagate}!neuralpp::Neuron@{neuralpp::Neuron}}
-\subsubsection[propagate]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Neuron::propagate ()}\label{classneuralpp_1_1Neuron_8b0ca61cd0e047c8691ab39aae56dbda}
+\subsubsection[propagate]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Neuron::propagate ()}\label{classneuralpp_1_1Neuron_928d9bf5aed600119c640779e4034f30}
 
 
-It propagates its activation value to the connected neurons. 
+Compute the propagation value of the neuron and set it. 
 
 \index{neuralpp::Neuron@{neuralpp::Neuron}!nIn@{nIn}}
 \index{nIn@{nIn}!neuralpp::Neuron@{neuralpp::Neuron}}
@@ -223,14 +225,19 @@ Remove input and output synapsis from a neuron.
 \subsubsection[prop\_\-val]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::Neuron::prop\_\-val}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_da75259de98b1a893c736666af6bfdc3}
 
 
+\index{neuralpp::Neuron@{neuralpp::Neuron}!threshold@{threshold}}
+\index{threshold@{threshold}!neuralpp::Neuron@{neuralpp::Neuron}}
+\subsubsection[threshold]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::Neuron::threshold}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_7b16632868821d73dedcb8edaf6dbbef}
+
+
 \index{neuralpp::Neuron@{neuralpp::Neuron}!in@{in}}
 \index{in@{in}!neuralpp::Neuron@{neuralpp::Neuron}}
-\subsubsection[in]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Synapsis} $>$ {\bf neuralpp::Neuron::in}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_ead827210fa18c2baae03927b2c798ff}
+\subsubsection[in]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ {\bf Synapsis} $>$ {\bf neuralpp::Neuron::in}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_bd07357465bb7b29bb344400e9e08710}
 
 
 \index{neuralpp::Neuron@{neuralpp::Neuron}!out@{out}}
 \index{out@{out}!neuralpp::Neuron@{neuralpp::Neuron}}
-\subsubsection[out]{\setlength{\rightskip}{0pt plus 5cm}vector$<$ {\bf Synapsis} $>$ {\bf neuralpp::Neuron::out}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_82a4297f84d6403e52a8386d26117b4f}
+\subsubsection[out]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$ {\bf Synapsis} $>$ {\bf neuralpp::Neuron::out}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Neuron_982aceef324b7764e778d5949720bc55}
 
 
 \index{neuralpp::Neuron@{neuralpp::Neuron}!actv\_\-f@{actv\_\-f}}

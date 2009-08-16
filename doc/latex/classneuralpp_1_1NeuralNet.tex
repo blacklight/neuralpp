@@ -17,42 +17,46 @@ enum {\bf source} \{ {\bf file},
 \item 
 {\bf NeuralNet} ()
 \begin{CompactList}\small\item\em Empty constructor for the class - it just makes nothing. \item\end{CompactList}\item 
-{\bf NeuralNet} (size\_\-t in\_\-size, size\_\-t hidden\_\-size, size\_\-t out\_\-size, double l, int e)
+{\bf NeuralNet} (size\_\-t in\_\-size, size\_\-t hidden\_\-size, size\_\-t out\_\-size, double l, int e, double th=0.0, double($\ast$a)(double)=\_\-\_\-actv)
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
-{\bf NeuralNet} (const string file)  throw (NetworkFileNotFoundException)
-\begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
-{\bf NeuralNet} (size\_\-t in\_\-size, size\_\-t hidden\_\-size, size\_\-t out\_\-size, double($\ast$actv)(double), double l, int e)
+{\bf NeuralNet} (const std::string file)  throw (NetworkFileNotFoundException)
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
 double {\bf getOutput} () const 
 \begin{CompactList}\small\item\em It gets the output of the network (note: the layer output should contain an only neuron). \item\end{CompactList}\item 
-vector$<$ double $>$ {\bf getOutputs} ()
+double {\bf getThreshold} () const 
+\begin{CompactList}\small\item\em Get the threshold of the neurons in the network. \item\end{CompactList}\item 
+std::vector$<$ double $>$ {\bf getOutputs} ()
 \begin{CompactList}\small\item\em It gets the output of the network in case the output layer contains more neurons. \item\end{CompactList}\item 
 double {\bf expected} () const 
-\begin{CompactList}\small\item\em It gets the value expected. \item\end{CompactList}\item 
-void {\bf setExpected} (double {\bf ex})
-\begin{CompactList}\small\item\em It sets the value you expect from your network. \item\end{CompactList}\item 
+\begin{CompactList}\small\item\em Get the expected value (in case you have an only neuron in output layer). \item\end{CompactList}\item 
+std::vector$<$ double $>$ {\bf getExpected} () const 
+\begin{CompactList}\small\item\em Get the expected value (in case you have an only neuron in output layer). \item\end{CompactList}\item 
+void {\bf setExpected} (double ex)
+\begin{CompactList}\small\item\em It sets the value you expect from your network (in case the network has an only neuron in its output layer). \item\end{CompactList}\item 
+void {\bf setExpected} (std::vector$<$ double $>$ ex)
+\begin{CompactList}\small\item\em Set the values you expect from your network. \item\end{CompactList}\item 
 void {\bf update} ()
 \begin{CompactList}\small\item\em It updates through back-propagation the weights of the synapsis and computes again the output value for {\em epochs\/} times, calling back updateWeights and commitChanges functions. \item\end{CompactList}\item 
 void {\bf propagate} ()
 \begin{CompactList}\small\item\em It propagates values through the network. \item\end{CompactList}\item 
-void {\bf setInput} (vector$<$ double $>$ \&v)
+void {\bf setInput} (std::vector$<$ double $>$ v)
 \begin{CompactList}\small\item\em It sets the input for the network. \item\end{CompactList}\item 
 void {\bf link} ()
 \begin{CompactList}\small\item\em It links the layers of the network (input, hidden, output). \item\end{CompactList}\item 
 void {\bf save} (const char $\ast$fname)  throw (NetworkFileWriteException)
 \begin{CompactList}\small\item\em Save a trained neural network to a binary file. \item\end{CompactList}\item 
-void {\bf train} (string xml, {\bf source} src)  throw (InvalidXMLException)
+void {\bf train} (std::string xml, {\bf source} src)  throw (InvalidXMLException)
 \begin{CompactList}\small\item\em Train a network using a training set loaded from an XML file. \item\end{CompactList}\end{CompactItemize}
 \subsection*{Static Public Member Functions}
 \begin{CompactItemize}
 \item 
-static void {\bf initXML} (string \&xml)
+static void {\bf initXML} (std::string \&xml)
 \begin{CompactList}\small\item\em Initialize the training XML for the neural network. \item\end{CompactList}\item 
-static vector$<$ double $>$ {\bf split} (char delim, string str)
+static std::vector$<$ double $>$ {\bf split} (char delim, std::string str)
 \begin{CompactList}\small\item\em Splits a string into a vector of doubles, given a delimitator. \item\end{CompactList}\item 
-static string {\bf XMLFromSet} (int id, string set)
+static std::string {\bf XMLFromSet} (int \&id, std::string set)
 \begin{CompactList}\small\item\em Get a training set from a string and copies it to an XML For example, these strings could be training sets for making sums: \char`\"{}2,3;5\char`\"{} - \char`\"{}5,6;11\char`\"{} - \char`\"{}2,2;4\char`\"{} - \char`\"{}4,5:9\char`\"{} This method called on the first string will return an XML such this: '$<$training id=\char`\"{}0\char`\"{}$>$$<$input id=\char`\"{}0\char`\"{}$>$2$<$/input$>$$<$input id=\char`\"{}1\char`\"{}$>$3$<$/input$>$$<$output id=\char`\"{}0\char`\"{}$>$5$<$/output$>$ \&lt/training$>$'. \item\end{CompactList}\item 
-static void {\bf closeXML} (string \&xml)
+static void {\bf closeXML} (std::string \&xml)
 \begin{CompactList}\small\item\em Closes an open XML document generated by \char`\"{}initXML\char`\"{} and \char`\"{}XMLFromSet\char`\"{}. \item\end{CompactList}\end{CompactItemize}
 \subsection*{Public Attributes}
 \begin{CompactItemize}
@@ -68,10 +72,10 @@ static void {\bf closeXML} (string \&xml)
 \item 
 void {\bf updateWeights} ()
 \begin{CompactList}\small\item\em It updates the weights of the net's synapsis through back-propagation. \item\end{CompactList}\item 
-void {\bf commitChanges} ({\bf Layer} $\ast$l)
+void {\bf commitChanges} ({\bf Layer} \&l)
 \begin{CompactList}\small\item\em It commits the changes made by \doxyref{updateWeights()}{p.}{classneuralpp_1_1NeuralNet_94169c89a7cd47122ab5dbf1d5c5e108} to the layer l. \item\end{CompactList}\item 
-double {\bf error} (double {\bf ex}) const 
-\begin{CompactList}\small\item\em Get the error made on the expected result as $|$v-v'$|$/v. \item\end{CompactList}\end{CompactItemize}
+double {\bf error} (double ex)
+\begin{CompactList}\small\item\em Get the error made on the expected result as squared deviance. \item\end{CompactList}\end{CompactItemize}
 \subsection*{Private Attributes}
 \begin{CompactItemize}
 \item 
@@ -81,7 +85,9 @@ int {\bf ref\_\-epochs}
 \item 
 double {\bf l\_\-rate}
 \item 
-double {\bf ex}
+double {\bf threshold}
+\item 
+std::vector$<$ double $>$ {\bf expect}
 \item 
 double($\ast$ {\bf actv\_\-f} )(double)
 \begin{CompactList}\small\item\em Private pointer to function, containing the function to be used as activation function. \item\end{CompactList}\end{CompactItemize}
@@ -90,7 +96,12 @@ double($\ast$ {\bf actv\_\-f} )(double)
 \subsection{Detailed Description}
 Main project's class. 
 
-Use $\ast$ONLY$\ast$ this class, unless you know what you're doing 
+Use $\ast$ONLY$\ast$ this class, unless you know what you're doing \begin{Desc}
+\item[Examples: ]\par
+
+
+{\bf examples/adderFromScratch.cpp}, {\bf examples/doAdd.cpp}, and {\bf examples/learnAdd.cpp}.\end{Desc}
+
 
 \subsection{Member Enumeration Documentation}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!source@{source}}
@@ -122,7 +133,7 @@ Empty constructor for the class - it just makes nothing.
 
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!NeuralNet@{NeuralNet}}
 \index{NeuralNet@{NeuralNet}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[NeuralNet]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::NeuralNet::NeuralNet (size\_\-t {\em in\_\-size}, \/  size\_\-t {\em hidden\_\-size}, \/  size\_\-t {\em out\_\-size}, \/  double {\em l}, \/  int {\em e})}\label{classneuralpp_1_1NeuralNet_c79534c7c0dfb20d1d03be2ad7569b78}
+\subsubsection[NeuralNet]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::NeuralNet::NeuralNet (size\_\-t {\em in\_\-size}, \/  size\_\-t {\em hidden\_\-size}, \/  size\_\-t {\em out\_\-size}, \/  double {\em l}, \/  int {\em e}, \/  double {\em th} = {\tt 0.0}, \/  double($\ast$)(double) {\em a} = {\tt \_\-\_\-actv})}\label{classneuralpp_1_1NeuralNet_3d602f3988a9a3e2c77dc6955674f412}
 
 
 Constructor. 
@@ -130,11 +141,11 @@ Constructor.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em in\_\-size}]Size of the input layer \item[{\em hidden\_\-size}]Size of the hidden layer \item[{\em out\_\-size}]Size of the output layer \item[{\em l}]learn rate (get it after doing some experiments, but generally try to keep its value quite low to be more accurate) \item[{\em e}]Epochs (cycles) to execute (the most you execute, the most the network can be accurate for its purpose) \end{description}
+\item[{\em in\_\-size}]Size of the input layer \item[{\em hidden\_\-size}]Size of the hidden layer \item[{\em out\_\-size}]Size of the output layer \item[{\em l}]learn rate (get it after doing some experiments, but generally try to keep its value quite low to be more accurate) \item[{\em e}]Epochs (cycles) to execute (the most you execute, the most the network can be accurate for its purpose) \item[{\em th}]Threshold, value in [0,1] that establishes how much a neuron must be 'sensitive' on variations of the input values \item[{\em a}]Activation function to use (default: f(x)=x) \end{description}
 \end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!NeuralNet@{NeuralNet}}
 \index{NeuralNet@{NeuralNet}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[NeuralNet]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::NeuralNet::NeuralNet (const string {\em file})  throw (NetworkFileNotFoundException)}\label{classneuralpp_1_1NeuralNet_7fc7fc3e3220c138ffa5356fef6b9757}
+\subsubsection[NeuralNet]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::NeuralNet::NeuralNet (const std::string {\em file})  throw ({\bf NetworkFileNotFoundException})}\label{classneuralpp_1_1NeuralNet_b4bfa407d28bb17abf7f735a049987d9}
 
 
 Constructor. 
@@ -147,19 +158,7 @@ Constructor.
 \begin{Desc}
 \item[Exceptions:]
 \begin{description}
-\item[{\em NetworkFileNotFoundException}]\end{description}
-\end{Desc}
-\index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!NeuralNet@{NeuralNet}}
-\index{NeuralNet@{NeuralNet}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[NeuralNet]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::NeuralNet::NeuralNet (size\_\-t {\em in\_\-size}, \/  size\_\-t {\em hidden\_\-size}, \/  size\_\-t {\em out\_\-size}, \/  double($\ast$)(double) {\em actv}, \/  double {\em l}, \/  int {\em e})}\label{classneuralpp_1_1NeuralNet_0c16df2e0701503052c63749930b238e}
-
-
-Constructor. 
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[{\em in\_\-size}]Size of the input layer \item[{\em hidden\_\-size}]Size of the hidden layer \item[{\em out\_\-size}]Size of the output layer \item[{\em actv}]Activation function to use (default: f(x)=x) \item[{\em l}]learn rate (get it after doing some experiments, but generally try to keep its value quite low to be more accurate) \item[{\em e}]Epochs (cycles) to execute (the most you execute, the most the network can be accurate for its purpose) \end{description}
+\item[{\em \doxyref{NetworkFileNotFoundException}{p.}{classneuralpp_1_1NetworkFileNotFoundException}}]\end{description}
 \end{Desc}
 
 
@@ -173,7 +172,7 @@ It updates the weights of the net's synapsis through back-propagation.
 
 In-class use only \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!commitChanges@{commitChanges}}
 \index{commitChanges@{commitChanges}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[commitChanges]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::commitChanges ({\bf Layer} $\ast$ {\em l})\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1NeuralNet_62695a82dfb1df758a44150921aec8e0}
+\subsubsection[commitChanges]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::commitChanges ({\bf Layer} \& {\em l})\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1NeuralNet_f697a8d9967ad8f03e5a16a42cd110c5}
 
 
 It commits the changes made by \doxyref{updateWeights()}{p.}{classneuralpp_1_1NeuralNet_94169c89a7cd47122ab5dbf1d5c5e108} to the layer l. 
@@ -185,10 +184,10 @@ In-class use only \begin{Desc}
 \end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!error@{error}}
 \index{error@{error}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[error]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::NeuralNet::error (double {\em ex}) const\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1NeuralNet_0616c51404efaca2714e37dd7478997e}
+\subsubsection[error]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::NeuralNet::error (double {\em ex})\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1NeuralNet_8a140d28e6dd4097470c7c138801ad01}
 
 
-Get the error made on the expected result as $|$v-v'$|$/v. 
+Get the error made on the expected result as squared deviance. 
 
 \begin{Desc}
 \item[Parameters:]
@@ -206,21 +205,45 @@ It gets the output of the network (note: the layer output should contain an only
 
 \begin{Desc}
 \item[Returns:]The output value of the network \end{Desc}
+\begin{Desc}
+\item[Examples: ]\par
+{\bf examples/doAdd.cpp}.\end{Desc}
+\index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!getThreshold@{getThreshold}}
+\index{getThreshold@{getThreshold}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
+\subsubsection[getThreshold]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::NeuralNet::getThreshold () const}\label{classneuralpp_1_1NeuralNet_e08cdcf4b70f987700e553d9914f6179}
+
+
+Get the threshold of the neurons in the network. 
+
+\begin{Desc}
+\item[Returns:]The threshold of the neurons \end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!getOutputs@{getOutputs}}
 \index{getOutputs@{getOutputs}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[getOutputs]{\setlength{\rightskip}{0pt plus 5cm}vector$<$double$>$ neuralpp::NeuralNet::getOutputs ()}\label{classneuralpp_1_1NeuralNet_a6b8bf3800b43b58843c65fc431207ae}
+\subsubsection[getOutputs]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$double$>$ neuralpp::NeuralNet::getOutputs ()}\label{classneuralpp_1_1NeuralNet_e6d2215ecc8b560db2f6797db642191c}
 
 
 It gets the output of the network in case the output layer contains more neurons. 
 
 \begin{Desc}
 \item[Returns:]A vector containing the output values of the network \end{Desc}
+\begin{Desc}
+\item[Examples: ]\par
+{\bf examples/adderFromScratch.cpp}.\end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!expected@{expected}}
 \index{expected@{expected}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
 \subsubsection[expected]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::NeuralNet::expected () const}\label{classneuralpp_1_1NeuralNet_562dfe9fb8d73bf25a23ce608451d3aa}
 
 
-It gets the value expected. 
+Get the expected value (in case you have an only neuron in output layer). 
+
+Of course you should specify this when you build your network by using setExpected. \begin{Desc}
+\item[Returns:]The expected output value for a certain training phase \end{Desc}
+\index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!getExpected@{getExpected}}
+\index{getExpected@{getExpected}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
+\subsubsection[getExpected]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$double$>$ neuralpp::NeuralNet::getExpected () const}\label{classneuralpp_1_1NeuralNet_51a1851ed07b85bec091c9053ae99cf7}
+
+
+Get the expected value (in case you have an only neuron in output layer). 
 
 Of course you should specify this when you build your network by using setExpected. \begin{Desc}
 \item[Returns:]The expected output value for a certain training phase \end{Desc}
@@ -229,12 +252,24 @@ Of course you should specify this when you build your network by using setExpect
 \subsubsection[setExpected]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::setExpected (double {\em ex})}\label{classneuralpp_1_1NeuralNet_b6475762b7e9eab086befdc511f7c236}
 
 
-It sets the value you expect from your network. 
+It sets the value you expect from your network (in case the network has an only neuron in its output layer). 
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
 \item[{\em ex}]Expected output value \end{description}
+\end{Desc}
+\index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!setExpected@{setExpected}}
+\index{setExpected@{setExpected}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
+\subsubsection[setExpected]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::setExpected (std::vector$<$ double $>$ {\em ex})}\label{classneuralpp_1_1NeuralNet_e649edc3d86bec7c0e178d5c892b4fd7}
+
+
+Set the values you expect from your network. 
+
+\begin{Desc}
+\item[Parameters:]
+\begin{description}
+\item[{\em ex}]Expected output values \end{description}
 \end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!update@{update}}
 \index{update@{update}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
@@ -250,9 +285,12 @@ It updates through back-propagation the weights of the synapsis and computes aga
 
 It propagates values through the network. 
 
-Use this when you want to give an already trained network some new values the get to the output \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!setInput@{setInput}}
+Use this when you want to give an already trained network some new values the get to the output \begin{Desc}
+\item[Examples: ]\par
+{\bf examples/adderFromScratch.cpp}, and {\bf examples/doAdd.cpp}.\end{Desc}
+\index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!setInput@{setInput}}
 \index{setInput@{setInput}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[setInput]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::setInput (vector$<$ double $>$ \& {\em v})}\label{classneuralpp_1_1NeuralNet_0de170e8ab561ad63d0739b4c4b74f68}
+\subsubsection[setInput]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::setInput (std::vector$<$ double $>$ {\em v})}\label{classneuralpp_1_1NeuralNet_405b32d2928344314ecf0469070b0f17}
 
 
 It sets the input for the network. 
@@ -262,6 +300,9 @@ It sets the input for the network.
 \begin{description}
 \item[{\em v}]Vector of doubles, containing the values to give to your network \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Examples: ]\par
+{\bf examples/adderFromScratch.cpp}, and {\bf examples/doAdd.cpp}.\end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!link@{link}}
 \index{link@{link}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
 \subsubsection[link]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::link ()}\label{classneuralpp_1_1NeuralNet_46f23f462318a4ffc037a4e806364c3f}
@@ -271,7 +312,7 @@ It links the layers of the network (input, hidden, output).
 
 Don't use unless you exactly know what you're doing, it is already called by the constructor \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!save@{save}}
 \index{save@{save}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[save]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::save (const char $\ast$ {\em fname})  throw (NetworkFileWriteException)}\label{classneuralpp_1_1NeuralNet_fdf94c276720c25e565cac834fe8a407}
+\subsubsection[save]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::save (const char $\ast$ {\em fname})  throw ({\bf NetworkFileWriteException})}\label{classneuralpp_1_1NeuralNet_fdf94c276720c25e565cac834fe8a407}
 
 
 Save a trained neural network to a binary file. 
@@ -284,11 +325,14 @@ Save a trained neural network to a binary file.
 \begin{Desc}
 \item[Exceptions:]
 \begin{description}
-\item[{\em NetworkFileWriteException}]When you get an error writing the network's information to a file \end{description}
+\item[{\em \doxyref{NetworkFileWriteException}{p.}{classneuralpp_1_1NetworkFileWriteException}}]When you get an error writing the network's information to a file \end{description}
 \end{Desc}
+\begin{Desc}
+\item[Examples: ]\par
+{\bf examples/learnAdd.cpp}.\end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!train@{train}}
 \index{train@{train}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[train]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::train (string {\em xml}, \/  {\bf source} {\em src})  throw (InvalidXMLException)}\label{classneuralpp_1_1NeuralNet_ead4bdef0602a5cadbe3beb685e01f5f}
+\subsubsection[train]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::NeuralNet::train (std::string {\em xml}, \/  {\bf source} {\em src})  throw ({\bf InvalidXMLException})}\label{classneuralpp_1_1NeuralNet_1c9e17437d41a7048611e21a3cc1c7dd}
 
 
 Train a network using a training set loaded from an XML file. 
@@ -301,11 +345,14 @@ A sample XML file is available in examples/adder.xml \begin{Desc}
 \begin{Desc}
 \item[Exceptions:]
 \begin{description}
-\item[{\em InvalidXMLException}]\end{description}
+\item[{\em \doxyref{InvalidXMLException}{p.}{classneuralpp_1_1InvalidXMLException}}]\end{description}
 \end{Desc}
+\begin{Desc}
+\item[Examples: ]\par
+{\bf examples/adderFromScratch.cpp}, and {\bf examples/learnAdd.cpp}.\end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!initXML@{initXML}}
 \index{initXML@{initXML}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[initXML]{\setlength{\rightskip}{0pt plus 5cm}static void neuralpp::NeuralNet::initXML (string \& {\em xml})\hspace{0.3cm}{\tt  [static]}}\label{classneuralpp_1_1NeuralNet_45c7645d4affe65752d37cd230afba24}
+\subsubsection[initXML]{\setlength{\rightskip}{0pt plus 5cm}static void neuralpp::NeuralNet::initXML (std::string \& {\em xml})\hspace{0.3cm}{\tt  [static]}}\label{classneuralpp_1_1NeuralNet_96da6712a72051cf34ad961761ef6e08}
 
 
 Initialize the training XML for the neural network. 
@@ -317,7 +364,7 @@ Initialize the training XML for the neural network.
 \end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!split@{split}}
 \index{split@{split}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[split]{\setlength{\rightskip}{0pt plus 5cm}static vector$<$double$>$ neuralpp::NeuralNet::split (char {\em delim}, \/  string {\em str})\hspace{0.3cm}{\tt  [static]}}\label{classneuralpp_1_1NeuralNet_e07af23ceb8666518da0c035bf1e0376}
+\subsubsection[split]{\setlength{\rightskip}{0pt plus 5cm}static std::vector$<$double$>$ neuralpp::NeuralNet::split (char {\em delim}, \/  std::string {\em str})\hspace{0.3cm}{\tt  [static]}}\label{classneuralpp_1_1NeuralNet_83c6555520856d5867752904349ab6ca}
 
 
 Splits a string into a vector of doubles, given a delimitator. 
@@ -331,7 +378,7 @@ Splits a string into a vector of doubles, given a delimitator.
 \item[Returns:]Vector of doubles containing splitted values \end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!XMLFromSet@{XMLFromSet}}
 \index{XMLFromSet@{XMLFromSet}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[XMLFromSet]{\setlength{\rightskip}{0pt plus 5cm}static string neuralpp::NeuralNet::XMLFromSet (int {\em id}, \/  string {\em set})\hspace{0.3cm}{\tt  [static]}}\label{classneuralpp_1_1NeuralNet_4be31ecb0b543a192997bd83c6995ccb}
+\subsubsection[XMLFromSet]{\setlength{\rightskip}{0pt plus 5cm}static std::string neuralpp::NeuralNet::XMLFromSet (int \& {\em id}, \/  std::string {\em set})\hspace{0.3cm}{\tt  [static]}}\label{classneuralpp_1_1NeuralNet_0a2733037af912b3e6a10146e7b7172f}
 
 
 Get a training set from a string and copies it to an XML For example, these strings could be training sets for making sums: \char`\"{}2,3;5\char`\"{} - \char`\"{}5,6;11\char`\"{} - \char`\"{}2,2;4\char`\"{} - \char`\"{}4,5:9\char`\"{} This method called on the first string will return an XML such this: '$<$training id=\char`\"{}0\char`\"{}$>$$<$input id=\char`\"{}0\char`\"{}$>$2$<$/input$>$$<$input id=\char`\"{}1\char`\"{}$>$3$<$/input$>$$<$output id=\char`\"{}0\char`\"{}$>$5$<$/output$>$ \&lt/training$>$'. 
@@ -345,7 +392,7 @@ Get a training set from a string and copies it to an XML For example, these stri
 \item[Returns:]XML string \end{Desc}
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!closeXML@{closeXML}}
 \index{closeXML@{closeXML}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[closeXML]{\setlength{\rightskip}{0pt plus 5cm}static void neuralpp::NeuralNet::closeXML (string \& {\em xml})\hspace{0.3cm}{\tt  [static]}}\label{classneuralpp_1_1NeuralNet_28b9966c5f197b8e86d57dd104aa32a6}
+\subsubsection[closeXML]{\setlength{\rightskip}{0pt plus 5cm}static void neuralpp::NeuralNet::closeXML (std::string \& {\em xml})\hspace{0.3cm}{\tt  [static]}}\label{classneuralpp_1_1NeuralNet_e17732ed578bc4bd6032bfae58a5cf51}
 
 
 Closes an open XML document generated by \char`\"{}initXML\char`\"{} and \char`\"{}XMLFromSet\char`\"{}. 
@@ -373,9 +420,14 @@ Closes an open XML document generated by \char`\"{}initXML\char`\"{} and \char`\
 \subsubsection[l\_\-rate]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::NeuralNet::l\_\-rate}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1NeuralNet_6bd7be443e46b2fdbf1da2edb8e611ab}
 
 
-\index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!ex@{ex}}
-\index{ex@{ex}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
-\subsubsection[ex]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::NeuralNet::ex}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1NeuralNet_261f5f68fcc5be54250cfa03945266dd}
+\index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!threshold@{threshold}}
+\index{threshold@{threshold}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
+\subsubsection[threshold]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::NeuralNet::threshold}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1NeuralNet_327dbfdd72b0a74293f8f29630525aa3}
+
+
+\index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!expect@{expect}}
+\index{expect@{expect}!neuralpp::NeuralNet@{neuralpp::NeuralNet}}
+\subsubsection[expect]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<$double$>$ {\bf neuralpp::NeuralNet::expect}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1NeuralNet_a9e4ff43427f56663739c4c7450de8ee}
 
 
 \index{neuralpp::NeuralNet@{neuralpp::NeuralNet}!actv\_\-f@{actv\_\-f}}

@@ -30,7 +30,6 @@ install:
 	install -m 0644 lib${LIB}.a ${PREFIX}/lib/lib${LIB}.a
 	install -m 0644 ${INCLUDEDIR}/${LIB}.hpp ${PREFIX}/${INCLUDEDIR}
 	install -m 0644 ${INCLUDEDIR}/${LIB}_exception.hpp ${PREFIX}/${INCLUDEDIR}
-	install -m 0644 ${PREFIX}/share/${LIB}/README
 	ln -sf ${PREFIX}/lib/lib${LIB}.so.0.0.0 ${PREFIX}/lib/lib${LIB}.so.0
 
 uninstall:

@@ -12,6 +12,7 @@
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
     </ul>
   </div>
   <div class="tabs">
@@ -34,24 +35,24 @@
 <a href="classneuralpp_1_1Neuron-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#9863a08b73bc97c8b514aca6c580ff7b">Neuron</a> (double(*a)(double))</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#c9bd4f5f618fcf1adcebf1ab63ee0960">Neuron</a> (double(*a)(double), double th=0.0)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#9863a08b73bc97c8b514aca6c580ff7b"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#f1bf19ec93174f60b368ee4a91b03f46">Neuron</a> (vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#ead827210fa18c2baae03927b2c798ff">in</a>, vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#82a4297f84d6403e52a8386d26117b4f">out</a>, double(*a)(double))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#c9bd4f5f618fcf1adcebf1ab63ee0960"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#d15e96b0316d880953288cc6e2550bec">Neuron</a> (std::vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#bd07357465bb7b29bb344400e9e08710">in</a>, std::vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#982aceef324b7764e778d5949720bc55">out</a>, double(*a)(double), double th=0.0)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Alternative constructor, that gets also the synapsis linked to the neuron.  <a href="#f1bf19ec93174f60b368ee4a91b03f46"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Alternative constructor, that gets also the synapsis linked to the neuron.  <a href="#d15e96b0316d880953288cc6e2550bec"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#29f2d9dcc4ca34f224d4dc39bb2f180a">synIn</a> (size_t i)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the i-th synapsis connected on the input of the neuron.  <a href="#29f2d9dcc4ca34f224d4dc39bb2f180a"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#655f1637e1b754461413ac7fc2ffeebe">synOut</a> (size_t i)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the i-th synapsis connected on the output of the neuron.  <a href="#655f1637e1b754461413ac7fc2ffeebe"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#583ada6e1dd3f2e113415b4d89196e62">push_in</a> (<a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &amp;s)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#4d252151c35839975838539d846d70be">push_in</a> (<a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> s)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It pushes a new input synapsis.  <a href="#583ada6e1dd3f2e113415b4d89196e62"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#bca65db84f56f9d40694bfbcd25812cb">push_out</a> (<a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &amp;s)</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It pushes a new input synapsis.  <a href="#4d252151c35839975838539d846d70be"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#2c0acb0e6d413c4e0fc9e7939da1a684">push_out</a> (<a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> s)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It pushes a new output synapsis.  <a href="#bca65db84f56f9d40694bfbcd25812cb"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It pushes a new output synapsis.  <a href="#2c0acb0e6d413c4e0fc9e7939da1a684"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#ddf00ffef030b27ed11901aad08822bd">setActv</a> (double a)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Change the activation value of the neuron.  <a href="#ddf00ffef030b27ed11901aad08822bd"></a><br></td></tr>
@@ -64,9 +65,9 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#57c022f82213f662e2a263fc134a3fc9">getProp</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the propagation value of the neuron.  <a href="#57c022f82213f662e2a263fc134a3fc9"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#8b0ca61cd0e047c8691ab39aae56dbda">propagate</a> ()</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#928d9bf5aed600119c640779e4034f30">propagate</a> ()</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It propagates its activation value to the connected neurons.  <a href="#8b0ca61cd0e047c8691ab39aae56dbda"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Compute the propagation value of the neuron and set it.  <a href="#928d9bf5aed600119c640779e4034f30"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#ad97f1a082d5f969eb4c69ab454ecfbb">nIn</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the number of input synapsis for the neuron.  <a href="#ad97f1a082d5f969eb4c69ab454ecfbb"></a><br></td></tr>
@@ -81,9 +82,11 @@
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#da75259de98b1a893c736666af6bfdc3">prop_val</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#ead827210fa18c2baae03927b2c798ff">in</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#7b16632868821d73dedcb8edaf6dbbef">threshold</a></td></tr>
 
-<tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#82a4297f84d6403e52a8386d26117b4f">out</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#bd07357465bb7b29bb344400e9e08710">in</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#982aceef324b7764e778d5949720bc55">out</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Neuron.html#198ddd0d11a26d0052d52b787d6a0df0">actv_f</a> )(double)</td></tr>
 
@@ -92,7 +95,7 @@
 Class for managing neurons. 
 <p>
 Don't use this class directly unless you know what you're doing, use <a class="el" href="classneuralpp_1_1NeuralNet.html" title="Main project&#39;s class.">NeuralNet</a> instead <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="9863a08b73bc97c8b514aca6c580ff7b"></a><!-- doxytag: member="neuralpp::Neuron::Neuron" ref="9863a08b73bc97c8b514aca6c580ff7b" args="(double(*a)(double))" -->
+<a class="anchor" name="c9bd4f5f618fcf1adcebf1ab63ee0960"></a><!-- doxytag: member="neuralpp::Neuron::Neuron" ref="c9bd4f5f618fcf1adcebf1ab63ee0960" args="(double(*a)(double), double th=0.0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -100,9 +103,18 @@ Don't use this class directly unless you know what you're doing, use <a class="e
           <td class="memname">neuralpp::Neuron::Neuron           </td>
           <td>(</td>
           <td class="paramtype">double(*)(double)&nbsp;</td>
-          <td class="paramname"> <em>a</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
+          <td class="paramname"> <em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
           <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>th</em> = <code>0.0</code></td><td>&nbsp;</td>
+        </tr>
+        <tr>
+          <td></td>
+          <td>)</td>
+          <td></td><td></td><td></td>
         </tr>
       </table>
 </div>
@@ -114,32 +126,39 @@ Constructor.
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>a</em>&nbsp;</td><td>Activation function </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>th</em>&nbsp;</td><td>Threshold, value in [0,1] that establishes how much a neuron must be 'sensitive' on variations of the input values </td></tr>
   </table>
 </dl>
 
 </div>
 </div><p>
-<a class="anchor" name="f1bf19ec93174f60b368ee4a91b03f46"></a><!-- doxytag: member="neuralpp::Neuron::Neuron" ref="f1bf19ec93174f60b368ee4a91b03f46" args="(vector&lt; Synapsis &gt; in, vector&lt; Synapsis &gt; out, double(*a)(double))" -->
+<a class="anchor" name="d15e96b0316d880953288cc6e2550bec"></a><!-- doxytag: member="neuralpp::Neuron::Neuron" ref="d15e96b0316d880953288cc6e2550bec" args="(std::vector&lt; Synapsis &gt; in, std::vector&lt; Synapsis &gt; out, double(*a)(double), double th=0.0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">neuralpp::Neuron::Neuron           </td>
           <td>(</td>
-          <td class="paramtype">vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt;&nbsp;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt;&nbsp;</td>
           <td class="paramname"> <em>in</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
-          <td class="paramtype">vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt;&nbsp;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt;&nbsp;</td>
           <td class="paramname"> <em>out</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double(*)(double)&nbsp;</td>
-          <td class="paramname"> <em>a</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>th</em> = <code>0.0</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -158,6 +177,7 @@ Alternative constructor, that gets also the synapsis linked to the neuron.
     <tr><td valign="top"></td><td valign="top"><em>in</em>&nbsp;</td><td>Input synapses </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>out</em>&nbsp;</td><td>Output synapses </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>a</em>&nbsp;</td><td>Activation function </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>th</em>&nbsp;</td><td>Threshold, value in [0,1] that establishes how much a neuron must be 'sensitive' on variations of the input values </td></tr>
   </table>
 </dl>
 
@@ -220,14 +240,14 @@ Get the i-th synapsis connected on the output of the neuron.
 
 </div>
 </div><p>
-<a class="anchor" name="583ada6e1dd3f2e113415b4d89196e62"></a><!-- doxytag: member="neuralpp::Neuron::push_in" ref="583ada6e1dd3f2e113415b4d89196e62" args="(Synapsis &amp;s)" -->
+<a class="anchor" name="4d252151c35839975838539d846d70be"></a><!-- doxytag: member="neuralpp::Neuron::push_in" ref="4d252151c35839975838539d846d70be" args="(Synapsis s)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void neuralpp::Neuron::push_in           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &amp;&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a>&nbsp;</td>
           <td class="paramname"> <em>s</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -247,14 +267,14 @@ It pushes a new input synapsis.
 
 </div>
 </div><p>
-<a class="anchor" name="bca65db84f56f9d40694bfbcd25812cb"></a><!-- doxytag: member="neuralpp::Neuron::push_out" ref="bca65db84f56f9d40694bfbcd25812cb" args="(Synapsis &amp;s)" -->
+<a class="anchor" name="2c0acb0e6d413c4e0fc9e7939da1a684"></a><!-- doxytag: member="neuralpp::Neuron::push_out" ref="2c0acb0e6d413c4e0fc9e7939da1a684" args="(Synapsis s)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">void neuralpp::Neuron::push_out           </td>
           <td>(</td>
-          <td class="paramtype"><a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &amp;&nbsp;</td>
+          <td class="paramtype"><a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a>&nbsp;</td>
           <td class="paramname"> <em>s</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -372,12 +392,12 @@ Get the propagation value of the neuron.
 
 </div>
 </div><p>
-<a class="anchor" name="8b0ca61cd0e047c8691ab39aae56dbda"></a><!-- doxytag: member="neuralpp::Neuron::propagate" ref="8b0ca61cd0e047c8691ab39aae56dbda" args="()" -->
+<a class="anchor" name="928d9bf5aed600119c640779e4034f30"></a><!-- doxytag: member="neuralpp::Neuron::propagate" ref="928d9bf5aed600119c640779e4034f30" args="()" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">double neuralpp::Neuron::propagate           </td>
+          <td class="memname">void neuralpp::Neuron::propagate           </td>
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
@@ -388,7 +408,7 @@ Get the propagation value of the neuron.
 <div class="memdoc">
 
 <p>
-It propagates its activation value to the connected neurons. 
+Compute the propagation value of the neuron and set it. 
 <p>
 
 </div>
@@ -489,12 +509,12 @@ Remove input and output synapsis from a neuron.
 
 </div>
 </div><p>
-<a class="anchor" name="ead827210fa18c2baae03927b2c798ff"></a><!-- doxytag: member="neuralpp::Neuron::in" ref="ead827210fa18c2baae03927b2c798ff" args="" -->
+<a class="anchor" name="7b16632868821d73dedcb8edaf6dbbef"></a><!-- doxytag: member="neuralpp::Neuron::threshold" ref="7b16632868821d73dedcb8edaf6dbbef" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#ead827210fa18c2baae03927b2c798ff">neuralpp::Neuron::in</a><code> [private]</code>          </td>
+          <td class="memname">double <a class="el" href="classneuralpp_1_1Neuron.html#7b16632868821d73dedcb8edaf6dbbef">neuralpp::Neuron::threshold</a><code> [private]</code>          </td>
         </tr>
       </table>
 </div>
@@ -504,12 +524,27 @@ Remove input and output synapsis from a neuron.
 
 </div>
 </div><p>
-<a class="anchor" name="82a4297f84d6403e52a8386d26117b4f"></a><!-- doxytag: member="neuralpp::Neuron::out" ref="82a4297f84d6403e52a8386d26117b4f" args="" -->
+<a class="anchor" name="bd07357465bb7b29bb344400e9e08710"></a><!-- doxytag: member="neuralpp::Neuron::in" ref="bd07357465bb7b29bb344400e9e08710" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#82a4297f84d6403e52a8386d26117b4f">neuralpp::Neuron::out</a><code> [private]</code>          </td>
+          <td class="memname">std::vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#bd07357465bb7b29bb344400e9e08710">neuralpp::Neuron::in</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="982aceef324b7764e778d5949720bc55"></a><!-- doxytag: member="neuralpp::Neuron::out" ref="982aceef324b7764e778d5949720bc55" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt; <a class="el" href="classneuralpp_1_1Synapsis.html">Synapsis</a> &gt; <a class="el" href="classneuralpp_1_1Neuron.html#982aceef324b7764e778d5949720bc55">neuralpp::Neuron::out</a><code> [private]</code>          </td>
         </tr>
       </table>
 </div>
@@ -537,7 +572,7 @@ Remove input and output synapsis from a neuron.
 <hr>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="neural_09_09_8hpp-source.html">neural++.hpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Aug 15 02:56:02 2009 for Neural++ by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Aug 16 20:53:42 2009 for Neural++ by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

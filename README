@@ -1,17 +1,28 @@
+=======================================================
+  _ _ _     _   _                      _ 
+ | (_) |__ | \ | | ___ _   _ _ __ __ _| |   _      _
+ | | | '_ \|  \| |/ _ \ | | | '__/ _` | | _| |_  _| |_
+ | | | |_) | |\  |  __/ |_| | | | (_| | ||_   _||_   _|
+ |_|_|_.__/|_| \_|\___|\__,_|_|  \__,_|_|  |_|    |_|
+=======================================================
+                                           
+
 C++ class for managing neural networks, by BlackLight < blacklight@autistici.org >
 Released under GNU GPL licence v.3, copyright 2008-2009
 
 > To install:
-	$ make
-	# make install
+	-> goto INSTALL
 
 > To link programs with it:
 	g++ <options and files> -lneural++
 
 > HOWTO:
-	# Take a look to the example in "example" directory to view it pratically.
+	# Take a look to the example in "examples" directory in the source package, in
+	  $PREFIX/share/neural++ or at http://0x00.ath.cx/prog/neuralpp/examples .
 	
-	# Take a look to documentation in "doc" directory to see how to use it. You can
-	  also generate documentation on your own, moving to `include` directory and typing
-	  `doxygen`
+	# Take a look to the example in "doc" directory in the source package, in
+	  $PREFIX/share/neural++ or at http://0x00.ath.cx/prog/neuralpp/doc/index.html.
+	  You can also generate the documentation on your own moving to include/
+	  directory in the source package and typing `doxygen`, if you've got doxygen
+	  installed.
 

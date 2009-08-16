@@ -31,19 +31,21 @@ struct {\bf neuralpp::synrecord}
 \item 
 \#define {\bf RAND}~(double) ( (rand() / (RAND\_\-MAX/2)) - 1)
 \begin{CompactList}\small\item\em Default rand value: $|$sin(rand)$|$, always $>$= 0 and $<$= 1. \item\end{CompactList}\item 
-\#define {\bf BETA0}~0.8
+\#define {\bf BETA0}~1.0
 \begin{CompactList}\small\item\em Initial value for the inertial momentum of the synapses. \item\end{CompactList}\end{CompactItemize}
 \subsection*{Functions}
 \begin{CompactItemize}
 \item 
 double {\bf neuralpp::df} (double($\ast$f)(double), double x)
+\item 
+double {\bf neuralpp::\_\-\_\-actv} (double prop)
 \end{CompactItemize}
 
 
 \subsection{Define Documentation}
 \index{neural++.hpp@{neural++.hpp}!BETA0@{BETA0}}
 \index{BETA0@{BETA0}!neural++.hpp@{neural++.hpp}}
-\subsubsection[BETA0]{\setlength{\rightskip}{0pt plus 5cm}\#define BETA0~0.8}\label{neural_09_09_8hpp_05e2bb5b9fc32f0b6b4d84fe43177d72}
+\subsubsection[BETA0]{\setlength{\rightskip}{0pt plus 5cm}\#define BETA0~1.0}\label{neural_09_09_8hpp_05e2bb5b9fc32f0b6b4d84fe43177d72}
 
 
 Initial value for the inertial momentum of the synapses. 

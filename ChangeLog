@@ -6,6 +6,7 @@
 	neurons, in the output layer.
 	Oh, and I've fixed too that nasty bug that made training from sets
 	containing more than a single training set.
+	Added examples in the Doxygen documentation.
 	* neuron.cpp: Fixing propagate() function
 
 2009-08-15 BlackLight <blacklight@autistici.org>

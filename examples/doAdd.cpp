@@ -1,6 +1,7 @@
 /**
- * This source makes sums between two numbers using pre-trained neural network
- * saved on "adder.net"
+ * Show how to use a network already trained and saved to a
+ * binary file. In this case, a network trained to simply perform sums between two real
+ * numbers, that should have already been created using learnAdd.
  *
  * by BlackLight, 2009
  */
@@ -17,6 +18,7 @@ int main()  {
 	double a,b;
 	NeuralNet net;
 
+	// Load the pre-trained network from "adder.net" file
 	try  {
 		net = NeuralNet(NETFILE);
 	}
@@ -36,6 +38,8 @@ int main()  {
 	v.push_back(a);
 	v.push_back(b);
 
+	// Set the numbers just read as input values, propagate those values, and get
+	// the output
 	net.setInput(v);
 	net.propagate();
 	cout << "Neural net output: " << net.getOutput() << endl;

@@ -14,21 +14,21 @@ Class for managing synapsis.
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
 {\bf Synapsis} ({\bf Neuron} $\ast$i, {\bf Neuron} $\ast$o, double w, double($\ast$a)(double))
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
-{\bf Neuron} $\ast$ {\bf getIn} ()
+{\bf Neuron} $\ast$ {\bf getIn} () const 
 \item 
-{\bf Neuron} $\ast$ {\bf getOut} ()
+{\bf Neuron} $\ast$ {\bf getOut} () const 
 \item 
 void {\bf setWeight} (double w)  throw (InvalidSynapticalWeightException)
 \begin{CompactList}\small\item\em Set the weight of the synapsis. \item\end{CompactList}\item 
 void {\bf setDelta} (double d)  throw (InvalidSynapticalWeightException)
 \begin{CompactList}\small\item\em It sets the delta (how much to change the weight after an update) of the synapsis. \item\end{CompactList}\item 
-double {\bf getWeight} ()
+double {\bf getWeight} () const 
 \begin{CompactList}\small\item\em Return the weight of the synapsis. \item\end{CompactList}\item 
-double {\bf getDelta} ()
+double {\bf getDelta} () const 
 \begin{CompactList}\small\item\em Return the delta of the synapsis. \item\end{CompactList}\item 
-double {\bf getPrevDelta} ()
+double {\bf getPrevDelta} () const 
 \begin{CompactList}\small\item\em Get the delta of the synapsis at the previous iteration. \item\end{CompactList}\item 
-double {\bf momentum} (int N, int x)
+double {\bf momentum} (int N, int x) const 
 \begin{CompactList}\small\item\em Get the inertial momentum of a synapsis. \item\end{CompactList}\end{CompactItemize}
 \subsection*{Private Attributes}
 \begin{CompactItemize}
@@ -94,21 +94,21 @@ Constructor.
 \subsection{Member Function Documentation}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!getIn@{getIn}}
 \index{getIn@{getIn}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[getIn]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}$\ast$ neuralpp::Synapsis::getIn ()}\label{classneuralpp_1_1Synapsis_5ba8a93a5741f4855390eb8a46e99435}
+\subsubsection[getIn]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}$\ast$ neuralpp::Synapsis::getIn () const}\label{classneuralpp_1_1Synapsis_298fd3c7483ad572899fecec01ac8fdf}
 
 
 \begin{Desc}
 \item[Returns:]Reference to input neuron of the synapsis \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!getOut@{getOut}}
 \index{getOut@{getOut}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[getOut]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}$\ast$ neuralpp::Synapsis::getOut ()}\label{classneuralpp_1_1Synapsis_61c9a04e03291a01f44520cef143cbdd}
+\subsubsection[getOut]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}$\ast$ neuralpp::Synapsis::getOut () const}\label{classneuralpp_1_1Synapsis_b46d876761a73a24db87f5a144a0e899}
 
 
 \begin{Desc}
 \item[Returns:]Reference to output neuron of the synapsis \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!setWeight@{setWeight}}
 \index{setWeight@{setWeight}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[setWeight]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Synapsis::setWeight (double {\em w})  throw (InvalidSynapticalWeightException)}\label{classneuralpp_1_1Synapsis_acee77d0fdf9889464ab5ed27beae0ff}
+\subsubsection[setWeight]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Synapsis::setWeight (double {\em w})  throw ({\bf InvalidSynapticalWeightException})}\label{classneuralpp_1_1Synapsis_acee77d0fdf9889464ab5ed27beae0ff}
 
 
 Set the weight of the synapsis. 
@@ -120,7 +120,7 @@ Set the weight of the synapsis.
 \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!setDelta@{setDelta}}
 \index{setDelta@{setDelta}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[setDelta]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Synapsis::setDelta (double {\em d})  throw (InvalidSynapticalWeightException)}\label{classneuralpp_1_1Synapsis_429ad5b25930faf436a9d725582802e1}
+\subsubsection[setDelta]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Synapsis::setDelta (double {\em d})  throw ({\bf InvalidSynapticalWeightException})}\label{classneuralpp_1_1Synapsis_429ad5b25930faf436a9d725582802e1}
 
 
 It sets the delta (how much to change the weight after an update) of the synapsis. 
@@ -132,7 +132,7 @@ It sets the delta (how much to change the weight after an update) of the synapsi
 \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!getWeight@{getWeight}}
 \index{getWeight@{getWeight}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[getWeight]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::getWeight ()}\label{classneuralpp_1_1Synapsis_aa79c16ec6b59949e5d2f75a3f10d530}
+\subsubsection[getWeight]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::getWeight () const}\label{classneuralpp_1_1Synapsis_bcbf7228632ff4d6bbb67703323d2db0}
 
 
 Return the weight of the synapsis. 
@@ -141,7 +141,7 @@ Return the weight of the synapsis.
 \item[Returns:]Weight of the synapsis \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!getDelta@{getDelta}}
 \index{getDelta@{getDelta}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[getDelta]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::getDelta ()}\label{classneuralpp_1_1Synapsis_18f15b920609be8b818d43a0227aada5}
+\subsubsection[getDelta]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::getDelta () const}\label{classneuralpp_1_1Synapsis_00c8e9c0804662f2b3247d6dddb4ca6c}
 
 
 Return the delta of the synapsis. 
@@ -150,7 +150,7 @@ Return the delta of the synapsis.
 \item[Returns:]Delta of the synapsis \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!getPrevDelta@{getPrevDelta}}
 \index{getPrevDelta@{getPrevDelta}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[getPrevDelta]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::getPrevDelta ()}\label{classneuralpp_1_1Synapsis_2fe3e9ec97542f1476d8b9306aa09756}
+\subsubsection[getPrevDelta]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::getPrevDelta () const}\label{classneuralpp_1_1Synapsis_0148b9c8db870c928711168702ae51c5}
 
 
 Get the delta of the synapsis at the previous iteration. 
@@ -159,7 +159,7 @@ Get the delta of the synapsis at the previous iteration.
 \item[Returns:]The previous delta \end{Desc}
 \index{neuralpp::Synapsis@{neuralpp::Synapsis}!momentum@{momentum}}
 \index{momentum@{momentum}!neuralpp::Synapsis@{neuralpp::Synapsis}}
-\subsubsection[momentum]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::momentum (int {\em N}, \/  int {\em x})}\label{classneuralpp_1_1Synapsis_ecdb17182de791f7fdd417232e184350}
+\subsubsection[momentum]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::Synapsis::momentum (int {\em N}, \/  int {\em x}) const}\label{classneuralpp_1_1Synapsis_cff10a022d4c021688e4df944c05d8bd}
 
 
 Get the inertial momentum of a synapsis. 

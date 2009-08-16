@@ -8,18 +8,16 @@ Class for managing layers of neurons.
 \subsection*{Public Member Functions}
 \begin{CompactItemize}
 \item 
-{\bf Layer} (size\_\-t sz, double($\ast$a)(double))
+{\bf Layer} (size\_\-t sz, double($\ast$a)(double), double th=0.0)
 \begin{CompactList}\small\item\em Constructor. \item\end{CompactList}\item 
-{\bf Layer} (vector$<$ {\bf Neuron} $>$ \&neurons, double($\ast$a)(double))
+{\bf Layer} (std::vector$<$ {\bf Neuron} $>$ \&neurons, double($\ast$a)(double), double th=0.0)
 \begin{CompactList}\small\item\em Alternative constructor. \item\end{CompactList}\item 
 {\bf Neuron} \& {\bf operator[$\,$]} (size\_\-t i)  throw (NetworkIndexOutOfBoundsException)
 \begin{CompactList}\small\item\em Redefinition for operator []. \item\end{CompactList}\item 
 void {\bf link} ({\bf Layer} \&l)
 \begin{CompactList}\small\item\em It links a layer to another. \item\end{CompactList}\item 
-void {\bf setProp} (vector$<$ double $>$ \&v)
-\begin{CompactList}\small\item\em It sets a vector of propagation values to all its neurons. \item\end{CompactList}\item 
-void {\bf setActv} (vector$<$ double $>$ \&v)
-\begin{CompactList}\small\item\em It sets a vector of activation values to all its neurons. \item\end{CompactList}\item 
+void {\bf setInput} (std::vector$<$ double $>$ v)
+\begin{CompactList}\small\item\em Set the input values for the neurons of the layer (just use it for the input layer). \item\end{CompactList}\item 
 void {\bf propagate} ()
 \begin{CompactList}\small\item\em It propagates its activation values to the output layers. \item\end{CompactList}\item 
 size\_\-t {\bf size} () const 
@@ -27,7 +25,9 @@ size\_\-t {\bf size} () const
 \subsection*{Private Attributes}
 \begin{CompactItemize}
 \item 
-vector$<$ {\bf Neuron} $>$ {\bf elements}
+std::vector$<$ {\bf Neuron} $>$ {\bf elements}
+\item 
+double {\bf threshold}
 \item 
 void($\ast$ {\bf update\_\-weights} )()
 \item 
@@ -43,7 +43,7 @@ Don't use this class directly unless you know what you're doing, use \doxyref{Ne
 \subsection{Constructor \& Destructor Documentation}
 \index{neuralpp::Layer@{neuralpp::Layer}!Layer@{Layer}}
 \index{Layer@{Layer}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[Layer]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Layer::Layer (size\_\-t {\em sz}, \/  double($\ast$)(double) {\em a})}\label{classneuralpp_1_1Layer_fb08bddd85d36570dabfe915461f07c5}
+\subsubsection[Layer]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Layer::Layer (size\_\-t {\em sz}, \/  double($\ast$)(double) {\em a}, \/  double {\em th} = {\tt 0.0})}\label{classneuralpp_1_1Layer_a235767701b5e9dcf28c5e9e0d04cb0b}
 
 
 Constructor. 
@@ -51,11 +51,11 @@ Constructor.
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em sz}]Size of the layer \item[{\em a}]Activation function \end{description}
+\item[{\em sz}]Size of the layer \item[{\em a}]Activation function \item[{\em th}]Threshold, value in [0,1] that establishes how much a neuron must be 'sensitive' on variations of the input values \end{description}
 \end{Desc}
 \index{neuralpp::Layer@{neuralpp::Layer}!Layer@{Layer}}
 \index{Layer@{Layer}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[Layer]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Layer::Layer (vector$<$ {\bf Neuron} $>$ \& {\em neurons}, \/  double($\ast$)(double) {\em a})}\label{classneuralpp_1_1Layer_609ed16b8d79dc384b01ba7d16b72bd1}
+\subsubsection[Layer]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::Layer::Layer (std::vector$<$ {\bf Neuron} $>$ \& {\em neurons}, \/  double($\ast$)(double) {\em a}, \/  double {\em th} = {\tt 0.0})}\label{classneuralpp_1_1Layer_d79f684523f8a6e086b962c8eef37623}
 
 
 Alternative constructor. 
@@ -63,14 +63,14 @@ Alternative constructor.
 It directly gets a vector of neurons to build the layer \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em neurons}]Vector of neurons to be included in the layer \item[{\em a}]Activation function \end{description}
+\item[{\em neurons}]Vector of neurons to be included in the layer \item[{\em a}]Activation function \item[{\em th}]Threshold, value in [0,1] that establishes how much a neuron must be 'sensitive' on variations of the input values \end{description}
 \end{Desc}
 
 
 \subsection{Member Function Documentation}
 \index{neuralpp::Layer@{neuralpp::Layer}!operator[]@{operator[]}}
 \index{operator[]@{operator[]}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[operator[]]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}\& neuralpp::Layer::operator[$\,$] (size\_\-t {\em i})  throw (NetworkIndexOutOfBoundsException)}\label{classneuralpp_1_1Layer_45ff7554830558155c6fbce3b6827122}
+\subsubsection[operator[]]{\setlength{\rightskip}{0pt plus 5cm}{\bf Neuron}\& neuralpp::Layer::operator[$\,$] (size\_\-t {\em i})  throw ({\bf NetworkIndexOutOfBoundsException})}\label{classneuralpp_1_1Layer_45ff7554830558155c6fbce3b6827122}
 
 
 Redefinition for operator []. 
@@ -94,29 +94,17 @@ It links a layer to another.
 \begin{description}
 \item[{\em l}]\doxyref{Layer}{p.}{classneuralpp_1_1Layer} to connect to the current as input layer \end{description}
 \end{Desc}
-\index{neuralpp::Layer@{neuralpp::Layer}!setProp@{setProp}}
-\index{setProp@{setProp}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[setProp]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Layer::setProp (vector$<$ double $>$ \& {\em v})}\label{classneuralpp_1_1Layer_dbad95f635343a2998794113d7762cf7}
+\index{neuralpp::Layer@{neuralpp::Layer}!setInput@{setInput}}
+\index{setInput@{setInput}!neuralpp::Layer@{neuralpp::Layer}}
+\subsubsection[setInput]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Layer::setInput (std::vector$<$ double $>$ {\em v})}\label{classneuralpp_1_1Layer_88ceffc23f02a9dc24d4355767b7cca7}
 
 
-It sets a vector of propagation values to all its neurons. 
-
-\begin{Desc}
-\item[Parameters:]
-\begin{description}
-\item[{\em v}]Vector of values to write as propagation values \end{description}
-\end{Desc}
-\index{neuralpp::Layer@{neuralpp::Layer}!setActv@{setActv}}
-\index{setActv@{setActv}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[setActv]{\setlength{\rightskip}{0pt plus 5cm}void neuralpp::Layer::setActv (vector$<$ double $>$ \& {\em v})}\label{classneuralpp_1_1Layer_98f79281b680b1d18fd91fa5794c0899}
-
-
-It sets a vector of activation values to all its neurons. 
+Set the input values for the neurons of the layer (just use it for the input layer). 
 
 \begin{Desc}
 \item[Parameters:]
 \begin{description}
-\item[{\em v}]Vector of values to write as activation values \end{description}
+\item[{\em v}]Vector containing the input values \end{description}
 \end{Desc}
 \index{neuralpp::Layer@{neuralpp::Layer}!propagate@{propagate}}
 \index{propagate@{propagate}!neuralpp::Layer@{neuralpp::Layer}}
@@ -137,7 +125,12 @@ It propagates its activation values to the output layers.
 \subsection{Member Data Documentation}
 \index{neuralpp::Layer@{neuralpp::Layer}!elements@{elements}}
 \index{elements@{elements}!neuralpp::Layer@{neuralpp::Layer}}
-\subsubsection[elements]{\setlength{\rightskip}{0pt plus 5cm}vector$<${\bf Neuron}$>$ {\bf neuralpp::Layer::elements}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Layer_855685c9da56b06b629e13a2f8c719ce}
+\subsubsection[elements]{\setlength{\rightskip}{0pt plus 5cm}std::vector$<${\bf Neuron}$>$ {\bf neuralpp::Layer::elements}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Layer_8188cb5c264e6021cee9979b968a0305}
+
+
+\index{neuralpp::Layer@{neuralpp::Layer}!threshold@{threshold}}
+\index{threshold@{threshold}!neuralpp::Layer@{neuralpp::Layer}}
+\subsubsection[threshold]{\setlength{\rightskip}{0pt plus 5cm}double {\bf neuralpp::Layer::threshold}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1Layer_02cf4efe1da02a7404d25375c85ed71f}
 
 
 \index{neuralpp::Layer@{neuralpp::Layer}!update\_\-weights@{update\_\-weights}}

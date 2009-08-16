@@ -1,2 +1,21 @@
 \section{neural++\_\-exception.hpp File Reference}
 \label{neural_09_09__exception_8hpp}\index{neural++\_\-exception.hpp@{neural++\_\-exception.hpp}}
+{\tt \#include $<$exception$>$}\par
+\subsection*{Namespaces}
+\begin{CompactItemize}
+\item 
+namespace {\bf neuralpp}
+\end{CompactItemize}
+\subsection*{Classes}
+\begin{CompactItemize}
+\item 
+class {\bf neuralpp::NetworkFileNotFoundException}
+\begin{CompactList}\small\item\em Exception thrown when doing an attempt to load a network from an invalid file. \item\end{CompactList}\item 
+class {\bf neuralpp::NetworkFileWriteException}
+\begin{CompactList}\small\item\em Exception thrown when trying to write the network's information to a file that cannot be written. \item\end{CompactList}\item 
+class {\bf neuralpp::InvalidXMLException}
+\begin{CompactList}\small\item\em Exception thrown when trying parsing an invalid XML. \item\end{CompactList}\item 
+class {\bf neuralpp::NetworkIndexOutOfBoundsException}
+\begin{CompactList}\small\item\em Exception raised when trying to access a neuron whose index is larger than the number of neurons in the network. \item\end{CompactList}\item 
+class {\bf neuralpp::InvalidSynapticalWeightException}
+\begin{CompactList}\small\item\em Exception raised when, while trying the network or directly, the weight of a synapsis is set to a value $|$w$|$ $>$ 1. \item\end{CompactList}\end{CompactItemize}

@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * LibNeural++ v.0.2 - All-purpose library for managing neural networks                           *
+ * LibNeural++ v.0.4 - All-purpose library for managing neural networks                           *
  * Copyright (C) 2009, BlackLight                                                                 *
  *                                                                                                *
  * This program is free software: you can redistribute it and/or modify it under the terms of the *

@@ -1,5 +1,5 @@
 /**************************************************************************************************
- * LibNeural++ v.0.2 - All-purpose library for managing neural networks                           *
+ * LibNeural++ v.0.4 - All-purpose library for managing neural networks                           *
  * Copyright (C) 2009, BlackLight                                                                 *
  *                                                                                                *
  * This program is free software: you can redistribute it and/or modify it under the terms of the *
@@ -10,10 +10,6 @@
  * more details. You should have received a copy of the GNU General Public License along with     *
  * this program. If not, see <http://www.gnu.org/licenses/>.                                      *
  **************************************************************************************************/
-
-#ifndef __cplusplus
-#error "This is a C++ library, you know, so you'd better use a C++ compiler to compile it"
-#else
 
 #ifndef __NEURALPP_EXCEPTION
 #define __NEURALPP_EXCEPTION
@@ -75,6 +71,5 @@ namespace neuralpp  {
 	};
 }
 
-#endif
 #endif
 

@@ -19,11 +19,23 @@ struct {\bf netrecord}
 struct {\bf neuronrecord}
 \item 
 struct {\bf synrecord}
-\end{CompactItemize}
+\item 
+class {\bf NetworkFileNotFoundException}
+\begin{CompactList}\small\item\em Exception thrown when doing an attempt to load a network from an invalid file. \item\end{CompactList}\item 
+class {\bf NetworkFileWriteException}
+\begin{CompactList}\small\item\em Exception thrown when trying to write the network's information to a file that cannot be written. \item\end{CompactList}\item 
+class {\bf InvalidXMLException}
+\begin{CompactList}\small\item\em Exception thrown when trying parsing an invalid XML. \item\end{CompactList}\item 
+class {\bf NetworkIndexOutOfBoundsException}
+\begin{CompactList}\small\item\em Exception raised when trying to access a neuron whose index is larger than the number of neurons in the network. \item\end{CompactList}\item 
+class {\bf InvalidSynapticalWeightException}
+\begin{CompactList}\small\item\em Exception raised when, while trying the network or directly, the weight of a synapsis is set to a value $|$w$|$ $>$ 1. \item\end{CompactList}\end{CompactItemize}
 \subsection*{Functions}
 \begin{CompactItemize}
 \item 
 double {\bf df} (double($\ast$f)(double), double x)
+\item 
+double {\bf \_\-\_\-actv} (double prop)
 \end{CompactItemize}
 
 
@@ -31,6 +43,11 @@ double {\bf df} (double($\ast$f)(double), double x)
 Main namespace for the library. 
 
 \subsection{Function Documentation}
+\index{neuralpp@{neuralpp}!\_\-\_\-actv@{\_\-\_\-actv}}
+\index{\_\-\_\-actv@{\_\-\_\-actv}!neuralpp@{neuralpp}}
+\subsubsection[\_\-\_\-actv]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::\_\-\_\-actv (double {\em prop})}\label{namespaceneuralpp_7df3a0de999c7a635f2289749ed4f194}
+
+
 \index{neuralpp@{neuralpp}!df@{df}}
 \index{df@{df}!neuralpp@{neuralpp}}
 \subsubsection[df]{\setlength{\rightskip}{0pt plus 5cm}double neuralpp::df (double($\ast$)(double) {\em f}, \/  double {\em x})}\label{namespaceneuralpp_43c8197cc83f65fa9676386579671aec}

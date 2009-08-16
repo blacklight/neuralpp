@@ -11,10 +11,6 @@
  * this program. If not, see <http://www.gnu.org/licenses/>.                                      *
  **************************************************************************************************/
 
-#ifndef __cplusplus
-#error "This is a C++ library, you know, so you'd better use a C++ compiler to compile it"
-#else
-
 #ifndef __NEURALPP
 #define __NEURALPP
 
@@ -46,6 +42,24 @@ namespace neuralpp  {
 	/**
 	 * @class NeuralNet
 	 * @brief Main project's class. Use *ONLY* this class, unless you know what you're doing
+	 * @example examples/learnAdd.cpp Show how to train a network that performs sums between
+	 * two real numbers. The training XML is built from scratch, then saved to a file, then
+	 * the network is initialized using that XML file, trained, and the resulting trained
+	 * network is saved to adder.net. Then, you should take a look at doAdd.cpp to see how
+	 * to use that file to use the network.
+	 *
+	 * @example examples/doAdd.cpp Show how to use a network already trained and saved to a
+	 * binary file. In this case, a network trained to simply perform sums between two real
+	 * numbers, that should have already been created using learnAdd.
+	 *
+	 * @example examples/adderFromScratch.cpp Similar to learnAdd.cpp, but this time the
+	 * training XML is generated as a string and not saved to a file, and parsed by the
+	 * program itself to build the network. Then, the program asks two real numbers, and
+	 * performs both the sum and the difference between them, putting the sum's output on
+	 * the first output neuron and the difference's on the second output neuron. Anyway,
+	 * using more than one neuron in the output layer is strongly discouraged, as the network
+	 * usually won't set correctly the synaptical weights to give satisfying and accurate
+	 * answers for all of the operations.
 	 */
 	class NeuralNet  {
 		int epochs;
@@ -528,6 +542,5 @@ namespace neuralpp  {
 	};
 }
 
-#endif
 #endif
 

@@ -12,6 +12,7 @@
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
     </ul>
   </div>
   <div class="tabs">
@@ -24,18 +25,18 @@
 <div class="contents">
 <h1>neuralpp::Layer Member List</h1>This is the complete list of members for <a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a>, including all inherited members.<p><table>
   <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#824367da29f92253a027a7c5b4a4405e">actv_f</a></td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#855685c9da56b06b629e13a2f8c719ce">elements</a></td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td><code> [private]</code></td></tr>
-  <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#fb08bddd85d36570dabfe915461f07c5">Layer</a>(size_t sz, double(*a)(double))</td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#609ed16b8d79dc384b01ba7d16b72bd1">Layer</a>(vector&lt; Neuron &gt; &amp;neurons, double(*a)(double))</td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#8188cb5c264e6021cee9979b968a0305">elements</a></td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td><code> [private]</code></td></tr>
+  <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#a235767701b5e9dcf28c5e9e0d04cb0b">Layer</a>(size_t sz, double(*a)(double), double th=0.0)</td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#d79f684523f8a6e086b962c8eef37623">Layer</a>(std::vector&lt; Neuron &gt; &amp;neurons, double(*a)(double), double th=0.0)</td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#ac33444fde14633fa1ad4acb024ad150">link</a>(Layer &amp;l)</td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#45ff7554830558155c6fbce3b6827122">operator[]</a>(size_t i)</td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#fcfd306039dbaf91c9e2dcc8fc1f1ce1">propagate</a>()</td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#98f79281b680b1d18fd91fa5794c0899">setActv</a>(vector&lt; double &gt; &amp;v)</td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
-  <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#dbad95f635343a2998794113d7762cf7">setProp</a>(vector&lt; double &gt; &amp;v)</td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#88ceffc23f02a9dc24d4355767b7cca7">setInput</a>(std::vector&lt; double &gt; v)</td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
   <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#7ca71ed62fbe9c1e9c0fb6a8dcaf76f0">size</a>() const </td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td></td></tr>
+  <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#02cf4efe1da02a7404d25375c85ed71f">threshold</a></td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td><code> [private]</code></td></tr>
   <tr class="memlist"><td><a class="el" href="classneuralpp_1_1Layer.html#c023a15a16353d0b4f44060a159f550f">update_weights</a></td><td><a class="el" href="classneuralpp_1_1Layer.html">neuralpp::Layer</a></td><td><code> [private]</code></td></tr>
 </table></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Aug 15 02:56:02 2009 for Neural++ by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Aug 16 20:53:42 2009 for Neural++ by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

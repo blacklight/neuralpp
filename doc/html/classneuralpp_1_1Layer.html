@@ -12,6 +12,7 @@
       <li><a href="namespaces.html"><span>Namespaces</span></a></li>
       <li class="current"><a href="annotated.html"><span>Classes</span></a></li>
       <li><a href="files.html"><span>Files</span></a></li>
+      <li><a href="examples.html"><span>Examples</span></a></li>
     </ul>
   </div>
   <div class="tabs">
@@ -34,31 +35,30 @@
 <a href="classneuralpp_1_1Layer-members.html">List of all members.</a><table border="0" cellpadding="0" cellspacing="0">
 <tr><td></td></tr>
 <tr><td colspan="2"><br><h2>Public Member Functions</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#fb08bddd85d36570dabfe915461f07c5">Layer</a> (size_t sz, double(*a)(double))</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#a235767701b5e9dcf28c5e9e0d04cb0b">Layer</a> (size_t sz, double(*a)(double), double th=0.0)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#fb08bddd85d36570dabfe915461f07c5"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#609ed16b8d79dc384b01ba7d16b72bd1">Layer</a> (vector&lt; <a class="el" href="classneuralpp_1_1Neuron.html">Neuron</a> &gt; &amp;neurons, double(*a)(double))</td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Constructor.  <a href="#a235767701b5e9dcf28c5e9e0d04cb0b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#d79f684523f8a6e086b962c8eef37623">Layer</a> (std::vector&lt; <a class="el" href="classneuralpp_1_1Neuron.html">Neuron</a> &gt; &amp;neurons, double(*a)(double), double th=0.0)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Alternative constructor.  <a href="#609ed16b8d79dc384b01ba7d16b72bd1"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Alternative constructor.  <a href="#d79f684523f8a6e086b962c8eef37623"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top"><a class="el" href="classneuralpp_1_1Neuron.html">Neuron</a> &amp;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#45ff7554830558155c6fbce3b6827122">operator[]</a> (size_t i)  throw (NetworkIndexOutOfBoundsException)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Redefinition for operator [].  <a href="#45ff7554830558155c6fbce3b6827122"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#ac33444fde14633fa1ad4acb024ad150">link</a> (<a class="el" href="classneuralpp_1_1Layer.html">Layer</a> &amp;l)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It links a layer to another.  <a href="#ac33444fde14633fa1ad4acb024ad150"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#dbad95f635343a2998794113d7762cf7">setProp</a> (vector&lt; double &gt; &amp;v)</td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#88ceffc23f02a9dc24d4355767b7cca7">setInput</a> (std::vector&lt; double &gt; v)</td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It sets a vector of propagation values to all its neurons.  <a href="#dbad95f635343a2998794113d7762cf7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#98f79281b680b1d18fd91fa5794c0899">setActv</a> (vector&lt; double &gt; &amp;v)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It sets a vector of activation values to all its neurons.  <a href="#98f79281b680b1d18fd91fa5794c0899"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the input values for the neurons of the layer (just use it for the input layer).  <a href="#88ceffc23f02a9dc24d4355767b7cca7"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#fcfd306039dbaf91c9e2dcc8fc1f1ce1">propagate</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It propagates its activation values to the output layers.  <a href="#fcfd306039dbaf91c9e2dcc8fc1f1ce1"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">size_t&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#7ca71ed62fbe9c1e9c0fb6a8dcaf76f0">size</a> () const </td></tr>
 
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">vector&lt; <a class="el" href="classneuralpp_1_1Neuron.html">Neuron</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#855685c9da56b06b629e13a2f8c719ce">elements</a></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; <a class="el" href="classneuralpp_1_1Neuron.html">Neuron</a> &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#8188cb5c264e6021cee9979b968a0305">elements</a></td></tr>
+
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#02cf4efe1da02a7404d25375c85ed71f">threshold</a></td></tr>
 
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void(*&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1Layer.html#c023a15a16353d0b4f44060a159f550f">update_weights</a> )()</td></tr>
 
@@ -69,7 +69,7 @@
 Class for managing layers of neurons. 
 <p>
 Don't use this class directly unless you know what you're doing, use <a class="el" href="classneuralpp_1_1NeuralNet.html" title="Main project&#39;s class.">NeuralNet</a> instead <hr><h2>Constructor &amp; Destructor Documentation</h2>
-<a class="anchor" name="fb08bddd85d36570dabfe915461f07c5"></a><!-- doxytag: member="neuralpp::Layer::Layer" ref="fb08bddd85d36570dabfe915461f07c5" args="(size_t sz, double(*a)(double))" -->
+<a class="anchor" name="a235767701b5e9dcf28c5e9e0d04cb0b"></a><!-- doxytag: member="neuralpp::Layer::Layer" ref="a235767701b5e9dcf28c5e9e0d04cb0b" args="(size_t sz, double(*a)(double), double th=0.0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
@@ -83,7 +83,13 @@ Don't use this class directly unless you know what you're doing, use <a class="e
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double(*)(double)&nbsp;</td>
-          <td class="paramname"> <em>a</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>th</em> = <code>0.0</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -101,26 +107,33 @@ Constructor.
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>sz</em>&nbsp;</td><td>Size of the layer </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>a</em>&nbsp;</td><td>Activation function </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>th</em>&nbsp;</td><td>Threshold, value in [0,1] that establishes how much a neuron must be 'sensitive' on variations of the input values </td></tr>
   </table>
 </dl>
 
 </div>
 </div><p>
-<a class="anchor" name="609ed16b8d79dc384b01ba7d16b72bd1"></a><!-- doxytag: member="neuralpp::Layer::Layer" ref="609ed16b8d79dc384b01ba7d16b72bd1" args="(vector&lt; Neuron &gt; &amp;neurons, double(*a)(double))" -->
+<a class="anchor" name="d79f684523f8a6e086b962c8eef37623"></a><!-- doxytag: member="neuralpp::Layer::Layer" ref="d79f684523f8a6e086b962c8eef37623" args="(std::vector&lt; Neuron &gt; &amp;neurons, double(*a)(double), double th=0.0)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
           <td class="memname">neuralpp::Layer::Layer           </td>
           <td>(</td>
-          <td class="paramtype">vector&lt; <a class="el" href="classneuralpp_1_1Neuron.html">Neuron</a> &gt; &amp;&nbsp;</td>
+          <td class="paramtype">std::vector&lt; <a class="el" href="classneuralpp_1_1Neuron.html">Neuron</a> &gt; &amp;&nbsp;</td>
           <td class="paramname"> <em>neurons</em>, </td>
         </tr>
         <tr>
           <td class="paramkey"></td>
           <td></td>
           <td class="paramtype">double(*)(double)&nbsp;</td>
-          <td class="paramname"> <em>a</em></td><td>&nbsp;</td>
+          <td class="paramname"> <em>a</em>, </td>
+        </tr>
+        <tr>
+          <td class="paramkey"></td>
+          <td></td>
+          <td class="paramtype">double&nbsp;</td>
+          <td class="paramname"> <em>th</em> = <code>0.0</code></td><td>&nbsp;</td>
         </tr>
         <tr>
           <td></td>
@@ -138,6 +151,7 @@ It directly gets a vector of neurons to build the layer <dl compact><dt><b>Param
   <table border="0" cellspacing="2" cellpadding="0">
     <tr><td valign="top"></td><td valign="top"><em>neurons</em>&nbsp;</td><td>Vector of neurons to be included in the layer </td></tr>
     <tr><td valign="top"></td><td valign="top"><em>a</em>&nbsp;</td><td>Activation function </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>th</em>&nbsp;</td><td>Threshold, value in [0,1] that establishes how much a neuron must be 'sensitive' on variations of the input values </td></tr>
   </table>
 </dl>
 
@@ -154,7 +168,7 @@ It directly gets a vector of neurons to build the layer <dl compact><dt><b>Param
           <td class="paramtype">size_t&nbsp;</td>
           <td class="paramname"> <em>i</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td>  throw (NetworkIndexOutOfBoundsException)</td>
+          <td>  throw (<a class="el" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html">NetworkIndexOutOfBoundsException</a>)</td>
         </tr>
       </table>
 </div>
@@ -199,14 +213,14 @@ It links a layer to another.
 
 </div>
 </div><p>
-<a class="anchor" name="dbad95f635343a2998794113d7762cf7"></a><!-- doxytag: member="neuralpp::Layer::setProp" ref="dbad95f635343a2998794113d7762cf7" args="(vector&lt; double &gt; &amp;v)" -->
+<a class="anchor" name="88ceffc23f02a9dc24d4355767b7cca7"></a><!-- doxytag: member="neuralpp::Layer::setInput" ref="88ceffc23f02a9dc24d4355767b7cca7" args="(std::vector&lt; double &gt; v)" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">void neuralpp::Layer::setProp           </td>
+          <td class="memname">void neuralpp::Layer::setInput           </td>
           <td>(</td>
-          <td class="paramtype">vector&lt; double &gt; &amp;&nbsp;</td>
+          <td class="paramtype">std::vector&lt; double &gt;&nbsp;</td>
           <td class="paramname"> <em>v</em>          </td>
           <td>&nbsp;)&nbsp;</td>
           <td></td>
@@ -216,38 +230,11 @@ It links a layer to another.
 <div class="memdoc">
 
 <p>
-It sets a vector of propagation values to all its neurons. 
+Set the input values for the neurons of the layer (just use it for the input layer). 
 <p>
 <dl compact><dt><b>Parameters:</b></dt><dd>
   <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>Vector of values to write as propagation values </td></tr>
-  </table>
-</dl>
-
-</div>
-</div><p>
-<a class="anchor" name="98f79281b680b1d18fd91fa5794c0899"></a><!-- doxytag: member="neuralpp::Layer::setActv" ref="98f79281b680b1d18fd91fa5794c0899" args="(vector&lt; double &gt; &amp;v)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void neuralpp::Layer::setActv           </td>
-          <td>(</td>
-          <td class="paramtype">vector&lt; double &gt; &amp;&nbsp;</td>
-          <td class="paramname"> <em>v</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-It sets a vector of activation values to all its neurons. 
-<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>Vector of values to write as activation values </td></tr>
+    <tr><td valign="top"></td><td valign="top"><em>v</em>&nbsp;</td><td>Vector containing the input values </td></tr>
   </table>
 </dl>
 
@@ -295,12 +282,27 @@ It propagates its activation values to the output layers.
 </div>
 </div><p>
 <hr><h2>Member Data Documentation</h2>
-<a class="anchor" name="855685c9da56b06b629e13a2f8c719ce"></a><!-- doxytag: member="neuralpp::Layer::elements" ref="855685c9da56b06b629e13a2f8c719ce" args="" -->
+<a class="anchor" name="8188cb5c264e6021cee9979b968a0305"></a><!-- doxytag: member="neuralpp::Layer::elements" ref="8188cb5c264e6021cee9979b968a0305" args="" -->
 <div class="memitem">
 <div class="memproto">
       <table class="memname">
         <tr>
-          <td class="memname">vector&lt;<a class="el" href="classneuralpp_1_1Neuron.html">Neuron</a>&gt; <a class="el" href="classneuralpp_1_1Layer.html#855685c9da56b06b629e13a2f8c719ce">neuralpp::Layer::elements</a><code> [private]</code>          </td>
+          <td class="memname">std::vector&lt;<a class="el" href="classneuralpp_1_1Neuron.html">Neuron</a>&gt; <a class="el" href="classneuralpp_1_1Layer.html#8188cb5c264e6021cee9979b968a0305">neuralpp::Layer::elements</a><code> [private]</code>          </td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="02cf4efe1da02a7404d25375c85ed71f"></a><!-- doxytag: member="neuralpp::Layer::threshold" ref="02cf4efe1da02a7404d25375c85ed71f" args="" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double <a class="el" href="classneuralpp_1_1Layer.html#02cf4efe1da02a7404d25375c85ed71f">neuralpp::Layer::threshold</a><code> [private]</code>          </td>
         </tr>
       </table>
 </div>
@@ -343,7 +345,7 @@ It propagates its activation values to the output layers.
 <hr>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="neural_09_09_8hpp-source.html">neural++.hpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sat Aug 15 02:56:02 2009 for Neural++ by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Sun Aug 16 20:53:42 2009 for Neural++ by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>
