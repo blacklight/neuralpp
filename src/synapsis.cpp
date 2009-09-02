@@ -15,14 +15,6 @@
 #include "neural++.hpp"
 
 namespace neuralpp {
-	Synapsis::Synapsis(Neuron * i, Neuron * o, double w, double d) {
-		in = i;
-		out = o;
-		weight = w;
-		delta = d;
-		prev_delta = 0;
-	}
-	
 	Synapsis::Synapsis(Neuron * i, Neuron * o, double (*a) (double)) {
 		srand((unsigned) time(NULL));
 
@@ -75,9 +67,6 @@ namespace neuralpp {
 	}
 
 	void Synapsis::setDelta(double d) throw(InvalidSynapticalWeightException)  {
-		if (d > 1.0)
-			throw InvalidSynapticalWeightException();
-
 		prev_delta = delta;
 		delta = d;
 	}

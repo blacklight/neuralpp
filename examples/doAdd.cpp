@@ -12,7 +12,7 @@
 using namespace std;
 using namespace neuralpp;
 
-#define	NETFILE	"adder.net"
+#define	NETFILE	"network.xml"
 
 int main()  {
 	double a,b;

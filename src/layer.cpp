@@ -19,8 +19,8 @@ using std::vector;
 namespace neuralpp {
 	Layer::Layer(size_t sz, double (*a) (double), double th) {
 		for (size_t i = 0; i < sz; i++) {
-			Neuron n(a);
-			 elements.push_back(n);
+			Neuron n(a,th);
+			elements.push_back(n);
 		}
 		
 		threshold = th;
@@ -46,16 +46,18 @@ namespace neuralpp {
 
 	void Layer::link(Layer& l) {
 		srand((unsigned) time(NULL));
+		
+		for (size_t i = 0; i < l.size(); i++)
+			l.elements[i].setSynOut(size());
+		
+		for (size_t i = 0; i < size(); i++)
+			elements[i].setSynIn(l.size());
 
 		for (size_t i = 0; i < l.size(); i++) {
-			Neuron *n1 = &(l.elements[i]);
-
 			for (size_t j = 0; j < size(); j++) {
-				Neuron *n2 = &(elements[j]);
-				Synapsis s(n1, n2, RAND, actv_f);
-
-				n1->push_out(s);
-				n2->push_in(s);
+				Synapsis *s = new Synapsis( &(l.elements[i]), &(elements[i]), RAND, actv_f );
+				l.elements[i].synOut(j) = *s;
+				elements[j].synIn(i) = *s;
 			}
 		}
 	}

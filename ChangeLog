@@ -1,3 +1,25 @@
+--- Release 1.0 ---
+
+2009-09-02 BlackLight <blacklight@autistici.org>
+
+	* all: Most of the code has been rewritten. Now a trained network should
+	be saved, via save() method, to an XML file, and loaded from that using
+	the constructor. This way is much cleaner, and easily fixable and
+	customizable too. The old approach through binary files has been kept yet
+	through saveToBinary() and loadFromBinary() methods, for
+	back-compatibility purposes, though it's strongly deprecated. Moreover,
+	the XML formats (for training the network and for loading a trained
+	network's information) are fully compatible with the ones used by
+	NeuralPerl module, mostly a Perl version of this library, so you can use
+	the same XML files to train and load a neural network using C++ and Perl.
+	Moreover, a great step forward in the fixing of the dirty old
+	vulnerability (synaptical random weights overflow) has been made, keeping
+	the values of the weights very low and ~ 0. I've made tons of tests and
+	the network never overflowed. Anyway, if you should experience an
+	overflow (synaptical weights go > 1), just write me. I've also done a
+	deep re-design of library's classes, using as public methods only the
+	stuff you *REALLY* need to be public.
+
 --- Release 0.4 ---
 
 2009-08-16 BlackLight <blacklight@autistici.org>

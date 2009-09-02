@@ -24,8 +24,8 @@ namespace neuralpp {
 	Neuron::Neuron(vector < Synapsis > i, vector < Synapsis > o,
 			 double (*a) (double), double th) {
 
-		in = i;
-		out = o;
+		in.assign(i.begin(), i.end());
+		out.assign(o.begin(), o.end());
 		actv_f = a;
 		threshold = th;
 	}
@@ -38,11 +38,11 @@ namespace neuralpp {
 		return out[i];
 	}
 
-	void Neuron::push_in(Synapsis s) {
+	void Neuron::push_in(Synapsis s)  {
 		in.push_back(s);
 	}
 
-	void Neuron::push_out(Synapsis s) {
+	void Neuron::push_out(Synapsis s)  {
 		out.push_back(s);
 	}
 
@@ -51,8 +51,15 @@ namespace neuralpp {
 	}
 
 	void Neuron::setActv(double val) {
-		//actv_val = actv_f(val);
 		actv_val = val;
+	}
+
+	void Neuron::setSynIn (size_t n)  {
+		in = vector<Synapsis>(n);
+	}
+
+	void Neuron::setSynOut (size_t n)  {
+		out = vector<Synapsis>(n);
 	}
 
 	size_t Neuron::nIn() {

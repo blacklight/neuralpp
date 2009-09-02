@@ -20,11 +20,8 @@
 
 #include "neural++_exception.hpp"
 
-//! Default rand value: |sin(rand)|, always >= 0 and <= 1
-#define 	RAND 	(double) ( (rand() / (RAND_MAX/2)) - 1)
-
-//! Initial value for the inertial momentum of the synapses
-#define 	BETA0 	1.0
+#define 	RAND 	(double) ( (rand() / 10.0) / ((double) RAND_MAX) )
+#define 	BETA0 	0.8
 
 /**
  * @namespace neuralpp
@@ -75,13 +72,6 @@ namespace neuralpp  {
 		void updateWeights();
 
 		/**
-		 * @brief It commits the changes made by updateWeights() to the layer l.
-		 *   In-class use only
-		 * @param l Layer to commit the changes
-		 */
-		void commitChanges (Layer& l);
-
-		/**
 		 * @brief Get the error made on the expected result as squared deviance
 		 * @param ex Expected value
 		 * @return Mean error
@@ -93,6 +83,52 @@ namespace neuralpp  {
 		 * be used as activation function
 		 */
 		double (*actv_f)(double);
+
+		/**
+		 * @brief Get the expected value (in case you have an only neuron in output layer).  Of course you should specify this when you
+		 * build your network by using setExpected.
+		 * @return The expected output value for a certain training phase
+		 */
+		double expected() const;
+
+		/**
+		 * @brief Get the expected value (in case you have an only neuron in output layer).  Of course you should specify this when you
+		 * build your network by using setExpected.
+		 * @return The expected output value for a certain training phase
+		 */
+		std::vector<double> getExpected() const;
+
+		/**
+		 * @brief It sets the value you expect from your network (in case the network has an only neuron in its output layer)
+		 * @param ex Expected output value
+		 */
+		void setExpected(double ex);
+
+		/**
+		 * @brief Set the values you expect from your network
+		 * @param ex Expected output values
+		 */
+		void setExpected(std::vector<double> ex);
+
+		/**
+		 * @brief It updates through back-propagation the weights of the synapsis and
+		 * computes again the output value for <i>epochs</i> times, calling back
+		 * updateWeights and commitChanges functions
+		 */
+		void update();
+
+		/**
+		 * @brief It links the layers of the network (input, hidden, output)
+		 */
+		void link();
+		
+		/**
+		 * @brief Splits a string into a vector of doubles, given a delimitator
+		 * @param delim Delimitator
+		 * @param str String to be splitted
+		 * @return Vector of doubles containing splitted values
+		 */
+		static std::vector<double> split (char delim, std::string str);
 
 	public:
 		Layer* input;
@@ -140,49 +176,16 @@ namespace neuralpp  {
 		double getOutput() const;
 
 		/**
-		 * @brief Get the threshold of the neurons in the network
-		 * @return The threshold of the neurons
-		 */
-		double getThreshold() const;
-
-		/**
 		 * @brief It gets the output of the network in case the output layer contains more neurons
 		 * @return A vector containing the output values of the network
 		 */
 		std::vector<double> getOutputs();
 
 		/**
-		 * @brief Get the expected value (in case you have an only neuron in output layer).  Of course you should specify this when you
-		 * build your network by using setExpected.
-		 * @return The expected output value for a certain training phase
+		 * @brief Get the threshold of the neurons in the network
+		 * @return The threshold of the neurons
 		 */
-		double expected() const;
-
-		/**
-		 * @brief Get the expected value (in case you have an only neuron in output layer).  Of course you should specify this when you
-		 * build your network by using setExpected.
-		 * @return The expected output value for a certain training phase
-		 */
-		std::vector<double> getExpected() const;
-
-		/**
-		 * @brief It sets the value you expect from your network (in case the network has an only neuron in its output layer)
-		 * @param ex Expected output value
-		 */
-		void setExpected(double ex);
-
-		/**
-		 * @brief Set the values you expect from your network
-		 * @param ex Expected output values
-		 */
-		void setExpected(std::vector<double> ex);
-
-		/**
-		 * @brief It updates through back-propagation the weights of the synapsis and
-		 * computes again the output value for <i>epochs</i> times, calling back
-		 * updateWeights and commitChanges functions
-		 */
-		void update();
+		double getThreshold() const;
 
 		/**
 		 * @brief It propagates values through the network. Use this when you want to give
@@ -197,18 +200,36 @@ namespace neuralpp  {
 		void setInput (std::vector<double> v);
 
 		/**
-		 * @brief It links the layers of the network (input, hidden, output). Don't use unless
-		 * you exactly know what you're doing, it is already called by the constructor
-		 */
-		void link();
-
-		/**
 		 * @brief Save a trained neural network to a binary file
 		 * @param fname Binary file where you're going to save your network
 		 * @throws NetworkFileWriteException When you get an error writing the network's information to
 		 * a file
 		 */
 		void save (const char* fname) throw(NetworkFileWriteException);
+
+		/**
+		 * @brief DEPRECATED. Load a trained neural network from a binary file.
+		 *  This function is deprecated and kept for back-compatibility. Use
+		 *  the XML format instead to load and neural networks and, respectly,
+		 *  the NeuralNetwork(const std::string) constructor or the save(const char*)
+		 *  methods.
+		 * @param fname Name of the file to be loaded
+		 * @throws NetworkFileNotFoundException When you're trying to load
+		 *  an invalid network file
+		 */
+		void loadFromBinary (const std::string fname) throw(NetworkFileNotFoundException);
+
+		/**
+		 * @brief DEPRECATED. Save a trained neural network to a binary file.
+		 *  This function is deprecated and kept for back-compatibility. Use
+		 *  the XML format instead to load and neural networks and, respectly,
+		 *  the NeuralNetwork(const std::string) constructor or the save(const char*)
+		 *  methods.
+		 * @param fname Name of the file to be saved with the network information
+		 * @throws NetworkFileWriteException When you try to write the network
+		 *  information to an invalid file
+		 */
+		void saveToBinary (const char* fname) throw(NetworkFileWriteException);
 
 		/**
 		 * @brief Train a network using a training set loaded from an XML file. A sample XML file
@@ -224,14 +245,6 @@ namespace neuralpp  {
 		 * @param xml String that will contain the XML
 		 */
 		static void initXML (std::string& xml);
-
-		/**
-		 * @brief Splits a string into a vector of doubles, given a delimitator
-		 * @param delim Delimitator
-		 * @param str String to be splitted
-		 * @return Vector of doubles containing splitted values
-		 */
-		static std::vector<double> split (char delim, std::string str);
 
 		/**
 		 * @brief Get a training set from a string and copies it to an XML
@@ -271,13 +284,9 @@ namespace neuralpp  {
 
 	public:
 		/**
-		 * @brief Constructor
-		 * @param i Input neuron
-		 * @param o Output neuron
-		 * @param w Weight for the synapsis
-		 * @param d Delta for the synapsis
+		 * @brief Empty constructor (it does nothing)
 		 */
-		Synapsis(Neuron* i, Neuron* o, double w, double d);
+		Synapsis()  {}
 
 		/**
 		 * @brief Constructor
@@ -423,6 +432,9 @@ namespace neuralpp  {
 		 * @param p Propagation value
 		 */
 		void setProp (double p);
+
+		void setSynIn  (size_t n);
+		void setSynOut (size_t n);
 
 		/**
 		 * @brief Get the activation value of the neuron
