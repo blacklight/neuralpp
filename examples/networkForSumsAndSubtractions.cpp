@@ -1,0 +1,48 @@
+/**
+ * This program creates a neural network from scratch. Its purpose is to get
+ * two numbers and learn to compute their sum and difference (so the network
+ * provides two output values). The training set is auto-generated to an XML
+ * string, and then the network is trained.
+ *
+ * by BlackLight, 2009
+ */
+
+#include <iostream>
+#include <neural++.hpp>
+
+using namespace std;
+using namespace neuralpp;
+
+int main()  {
+	NeuralNet net(2, 2, 2, 0.002, 1000);
+	string xml;
+	double tmp;
+	int id = 0;
+
+	// XML initialization. Then, I say XML that 3+2=5, 3-2=1; 4+2=6, 4-2=2; 6+3=9, 6-3=3
+	// Strings' format is "input1,input2,...,inputn;output1,output2,...,outputm
+	NeuralNet::initXML(xml);
+	xml += NeuralNet::XMLFromSet(id, "3,2;5,1");
+	xml += NeuralNet::XMLFromSet(id, "4,2;6,2");
+	xml += NeuralNet::XMLFromSet(id, "6,3;9,3");
+	NeuralNet::closeXML(xml);
+	cout << xml << endl;
+	
+	net.train(xml, NeuralNet::str);
+	vector<double> v;
+	cout << "Network status: trained\n\n";
+
+	cout << "First number: ";
+	cin >> tmp;
+	v.push_back(tmp);
+
+	cout << "Second number: ";
+	cin >> tmp;
+	v.push_back(tmp);
+
+	net.setInput(v);
+	net.propagate();
+	cout << "Output: " << net.getOutputs()[0] << "; " << net.getOutputs()[1] << endl;
+	return 0;
+}
+

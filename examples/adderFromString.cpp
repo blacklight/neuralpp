@@ -18,7 +18,7 @@ using namespace std;
 using namespace neuralpp;
 
 int main()  {
-	NeuralNet net(2, 2, 2, 0.005, 100);
+	NeuralNet net(2, 2, 1, 0.002, 1000);
 	string xml;
 	double tmp;
 	int id = 0;
@@ -26,9 +26,10 @@ int main()  {
 	// XML initialization. Then, I say XML that 2+3=5, 3+3=6, 5+4=9
 	// Strings' format is "input1,input2,...,inputn;output1,output2,...,outputm
 	NeuralNet::initXML(xml);
-	xml += NeuralNet::XMLFromSet(id, "3,2;5,1");
-	xml += NeuralNet::XMLFromSet(id, "4,2;6,2");
-	xml += NeuralNet::XMLFromSet(id, "6,3;9,3");
+	xml += NeuralNet::XMLFromSet(id, "3,2;5");
+	xml += NeuralNet::XMLFromSet(id, "6,3;9");
+	xml += NeuralNet::XMLFromSet(id, "2,3;5");
+	xml += NeuralNet::XMLFromSet(id, "4,4;8");
 	NeuralNet::closeXML(xml);
 	cout << xml << endl;
 	
@@ -46,7 +47,7 @@ int main()  {
 
 	net.setInput(v);
 	net.propagate();
-	cout << "Output: " << net.getOutputs()[0] << "; " << net.getOutputs()[1] << endl;
+	cout << "Output: " << net.getOutput() << endl;
 	return 0;
 }
 

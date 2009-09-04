@@ -21,10 +21,10 @@ int main()  {
         // => 2 neurons for the input layer
         // => 2 neurons for the hidden layer
         // => 1 neuron  for the output layer
-        // => a learning rate == 0.005 (just get it doing some tests until satisfied)
+        // => a learning rate == 0.002 (just get it doing some tests until satisfied, but remember to keep its value quite low and ~ 0 to keep the network stable)
         // => 1000 learning steps (i.e. the network will be ready after 1000 training steps to adjust the synaptical weights
         // => 0.1 as neural threshold (the threshold above which a neuron activates)
-        NeuralNet net(2, 2, 1, 0.005, 1000, 0.1);
+        NeuralNet net(2, 2, 1, 0.002, 2000);
 
         // Initialize a training XML as a string in 'xml'
         NeuralNet::initXML(xml);
@@ -41,6 +41,12 @@ int main()  {
         xml += NeuralNet::XMLFromSet(id, "-1,-2;-3");
         xml += NeuralNet::XMLFromSet(id, "8,9;17");
         xml += NeuralNet::XMLFromSet(id, "10,10;20");
+        xml += NeuralNet::XMLFromSet(id, "4,1;5");
+        xml += NeuralNet::XMLFromSet(id, "2,6;8");
+        xml += NeuralNet::XMLFromSet(id, "2,7;9");
+        xml += NeuralNet::XMLFromSet(id, "8,9;17");
+        xml += NeuralNet::XMLFromSet(id, "4,7;11");
+        xml += NeuralNet::XMLFromSet(id, "5,2;7");
         NeuralNet::closeXML(xml);
 
         // Save the XML string just created to a file
@@ -57,7 +63,7 @@ int main()  {
 
         // Save the trained network to a binary file, that can be reloaded from any
         // application that is going to use that network
-        net.save("adder.net");
+        net.save("network.xml");
         cout << "Network trained in " << (t2-t1) << " seconds. You can use adder.net file now to load this network\n";
         return 0;
 }

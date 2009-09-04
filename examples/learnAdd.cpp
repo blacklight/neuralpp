@@ -49,6 +49,8 @@ int main()  {
 	xml += NeuralNet::XMLFromSet(id, "2,6;8");
 	xml += NeuralNet::XMLFromSet(id, "2,7;9");
 	xml += NeuralNet::XMLFromSet(id, "8,9;17");
+	xml += NeuralNet::XMLFromSet(id, "4,7;11");
+	xml += NeuralNet::XMLFromSet(id, "5,2;7");
 	NeuralNet::closeXML(xml);
 
 	// Save the XML string just created to a file

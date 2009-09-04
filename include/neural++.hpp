@@ -39,6 +39,7 @@ namespace neuralpp  {
 	/**
 	 * @class NeuralNet
 	 * @brief Main project's class. Use *ONLY* this class, unless you know what you're doing
+	 *
 	 * @example examples/learnAdd.cpp Show how to train a network that performs sums between
 	 * two real numbers. The training XML is built from scratch, then saved to a file, then
 	 * the network is initialized using that XML file, trained, and the resulting trained
@@ -49,7 +50,7 @@ namespace neuralpp  {
 	 * binary file. In this case, a network trained to simply perform sums between two real
 	 * numbers, that should have already been created using learnAdd.
 	 *
-	 * @example examples/adderFromScratch.cpp Similar to learnAdd.cpp, but this time the
+	 * @example examples/adderFromString.cpp Similar to learnAdd.cpp, but this time the
 	 * training XML is generated as a string and not saved to a file, and parsed by the
 	 * program itself to build the network. Then, the program asks two real numbers, and
 	 * performs both the sum and the difference between them, putting the sum's output on
@@ -57,6 +58,11 @@ namespace neuralpp  {
 	 * using more than one neuron in the output layer is strongly discouraged, as the network
 	 * usually won't set correctly the synaptical weights to give satisfying and accurate
 	 * answers for all of the operations.
+	 *
+	 * @example examples/networkForSumsAndSubtractions.cpp This program creates a neural
+	 * network from scratch. Its purpose is to get two numbers and learn to compute their
+	 * sum and difference (so the network provides two output values). The training set is
+	 * auto-generated to an XML string, and then the network is trained.
 	 */
 	class NeuralNet  {
 		int epochs;
@@ -122,14 +128,6 @@ namespace neuralpp  {
 		 */
 		void link();
 		
-		/**
-		 * @brief Splits a string into a vector of doubles, given a delimitator
-		 * @param delim Delimitator
-		 * @param str String to be splitted
-		 * @return Vector of doubles containing splitted values
-		 */
-		static std::vector<double> split (char delim, std::string str);
-
 	public:
 		Layer* input;
 		Layer* hidden;
@@ -552,6 +550,35 @@ namespace neuralpp  {
 		double w;
 		double d;
 	};
+
+	namespace neuralutils  {
+		/**
+		 * @brief Split a string into a vector of doubles, given a delimitator
+		 * @param delim Delimitator
+		 * @param str String to be splitted
+		 * @return Vector of doubles containing splitted value
+		 */
+		std::vector<double> split (char delim, std::string str);
+
+		/**
+		 * @brief Split the lines of a string
+		 * @param str String to be splitted
+		 * @return An array of strings containing the lines of the original string
+		 */
+		std::vector<std::string> splitLines (std::string str);
+
+		/**
+		 * @brief Convert the characters of a string to lower case
+		 * @param str String to be converted
+		 */
+		void toLower (std::string& str);
+
+		/**
+		 * @brief Convert the characters of a string to upper case
+		 * @param str String to be converted
+		 */
+		void toUpper (std::string& str);
+	}
 }
 
 #endif

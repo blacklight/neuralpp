@@ -36,10 +36,10 @@
         <span class="comment">// =&gt; 2 neurons for the input layer</span>
         <span class="comment">// =&gt; 2 neurons for the hidden layer</span>
         <span class="comment">// =&gt; 1 neuron  for the output layer</span>
-        <span class="comment">// =&gt; a learning rate == 0.005 (just get it doing some tests until satisfied)</span>
+        <span class="comment">// =&gt; a learning rate == 0.002 (just get it doing some tests until satisfied, but remember to keep its value quite low and ~ 0 to keep the network stable)</span>
         <span class="comment">// =&gt; 1000 learning steps (i.e. the network will be ready after 1000 training steps to adjust the synaptical weights</span>
         <span class="comment">// =&gt; 0.1 as neural threshold (the threshold above which a neuron activates)</span>
-        <a name="_a0"></a><a class="code" href="classneuralpp_1_1NeuralNet.html" title="Main project&amp;#39;s class.">NeuralNet</a> net(2, 2, 1, 0.005, 1000, 0.1);
+        <a name="_a0"></a><a class="code" href="classneuralpp_1_1NeuralNet.html" title="Main project&amp;#39;s class.">NeuralNet</a> net(2, 2, 1, 0.002, 2000);
 
         <span class="comment">// Initialize a training XML as a string in 'xml'</span>
         NeuralNet::initXML(xml);
@@ -56,6 +56,12 @@
         xml += NeuralNet::XMLFromSet(<span class="keywordtype">id</span>, <span class="stringliteral">"-1,-2;-3"</span>);
         xml += NeuralNet::XMLFromSet(<span class="keywordtype">id</span>, <span class="stringliteral">"8,9;17"</span>);
         xml += NeuralNet::XMLFromSet(<span class="keywordtype">id</span>, <span class="stringliteral">"10,10;20"</span>);
+        xml += NeuralNet::XMLFromSet(<span class="keywordtype">id</span>, <span class="stringliteral">"4,1;5"</span>);
+        xml += NeuralNet::XMLFromSet(<span class="keywordtype">id</span>, <span class="stringliteral">"2,6;8"</span>);
+        xml += NeuralNet::XMLFromSet(<span class="keywordtype">id</span>, <span class="stringliteral">"2,7;9"</span>);
+        xml += NeuralNet::XMLFromSet(<span class="keywordtype">id</span>, <span class="stringliteral">"8,9;17"</span>);
+        xml += NeuralNet::XMLFromSet(<span class="keywordtype">id</span>, <span class="stringliteral">"4,7;11"</span>);
+        xml += NeuralNet::XMLFromSet(<span class="keywordtype">id</span>, <span class="stringliteral">"5,2;7"</span>);
         NeuralNet::closeXML(xml);
 
         <span class="comment">// Save the XML string just created to a file</span>
@@ -72,13 +78,13 @@
 
         <span class="comment">// Save the trained network to a binary file, that can be reloaded from any</span>
         <span class="comment">// application that is going to use that network</span>
-        net.<a name="a2"></a><a class="code" href="classneuralpp_1_1NeuralNet.html#fdf94c276720c25e565cac834fe8a407" title="Save a trained neural network to a binary file.">save</a>(<span class="stringliteral">"adder.net"</span>);
+        net.<a name="a2"></a><a class="code" href="classneuralpp_1_1NeuralNet.html#fdf94c276720c25e565cac834fe8a407" title="Save a trained neural network to a binary file.">save</a>(<span class="stringliteral">"network.xml"</span>);
         cout &lt;&lt; <span class="stringliteral">"Network trained in "</span> &lt;&lt; (t2-t1) &lt;&lt; <span class="stringliteral">" seconds. You can use adder.net file now to load this network\n"</span>;
         <span class="keywordflow">return</span> 0;
 }
 
 </pre></div> </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Aug 16 20:53:42 2009 for Neural++ by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Sep 4 11:25:49 2009 for Neural++ by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

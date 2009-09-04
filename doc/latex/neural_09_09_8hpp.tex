@@ -8,6 +8,8 @@
 \begin{CompactItemize}
 \item 
 namespace {\bf neuralpp}
+\item 
+namespace {\bf neuralpp::neuralutils}
 \end{CompactItemize}
 \subsection*{Classes}
 \begin{CompactItemize}
@@ -29,31 +31,35 @@ struct {\bf neuralpp::synrecord}
 \subsection*{Defines}
 \begin{CompactItemize}
 \item 
-\#define {\bf RAND}~(double) ( (rand() / (RAND\_\-MAX/2)) - 1)
-\begin{CompactList}\small\item\em Default rand value: $|$sin(rand)$|$, always $>$= 0 and $<$= 1. \item\end{CompactList}\item 
-\#define {\bf BETA0}~1.0
-\begin{CompactList}\small\item\em Initial value for the inertial momentum of the synapses. \item\end{CompactList}\end{CompactItemize}
+\#define {\bf RAND}~(double) ( (rand() / 10.0) / ((double) RAND\_\-MAX) )
+\item 
+\#define {\bf BETA0}~0.8
+\end{CompactItemize}
 \subsection*{Functions}
 \begin{CompactItemize}
 \item 
 double {\bf neuralpp::df} (double($\ast$f)(double), double x)
 \item 
 double {\bf neuralpp::\_\-\_\-actv} (double prop)
-\end{CompactItemize}
+\item 
+std::vector$<$ double $>$ {\bf neuralpp::neuralutils::split} (char delim, std::string str)
+\begin{CompactList}\small\item\em Split a string into a vector of doubles, given a delimitator. \item\end{CompactList}\item 
+std::vector$<$ std::string $>$ {\bf neuralpp::neuralutils::splitLines} (std::string str)
+\begin{CompactList}\small\item\em Split the lines of a string. \item\end{CompactList}\item 
+void {\bf neuralpp::neuralutils::toLower} (std::string \&str)
+\begin{CompactList}\small\item\em Convert the characters of a string to lower case. \item\end{CompactList}\item 
+void {\bf neuralpp::neuralutils::toUpper} (std::string \&str)
+\begin{CompactList}\small\item\em Convert the characters of a string to upper case. \item\end{CompactList}\end{CompactItemize}
 
 
 \subsection{Define Documentation}
 \index{neural++.hpp@{neural++.hpp}!BETA0@{BETA0}}
 \index{BETA0@{BETA0}!neural++.hpp@{neural++.hpp}}
-\subsubsection[BETA0]{\setlength{\rightskip}{0pt plus 5cm}\#define BETA0~1.0}\label{neural_09_09_8hpp_05e2bb5b9fc32f0b6b4d84fe43177d72}
+\subsubsection[BETA0]{\setlength{\rightskip}{0pt plus 5cm}\#define BETA0~0.8}\label{neural_09_09_8hpp_05e2bb5b9fc32f0b6b4d84fe43177d72}
 
-
-Initial value for the inertial momentum of the synapses. 
 
 \index{neural++.hpp@{neural++.hpp}!RAND@{RAND}}
 \index{RAND@{RAND}!neural++.hpp@{neural++.hpp}}
-\subsubsection[RAND]{\setlength{\rightskip}{0pt plus 5cm}\#define RAND~(double) ( (rand() / (RAND\_\-MAX/2)) - 1)}\label{neural_09_09_8hpp_839a9222721835f53c5b248241f535f4}
+\subsubsection[RAND]{\setlength{\rightskip}{0pt plus 5cm}\#define RAND~(double) ( (rand() / 10.0) / ((double) RAND\_\-MAX) )}\label{neural_09_09_8hpp_839a9222721835f53c5b248241f535f4}
 
-
-Default rand value: $|$sin(rand)$|$, always $>$= 0 and $<$= 1. 
 

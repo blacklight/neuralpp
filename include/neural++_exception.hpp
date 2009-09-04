@@ -14,6 +14,8 @@
 #ifndef __NEURALPP_EXCEPTION
 #define __NEURALPP_EXCEPTION
 
+#include <cstdio>
+#include <cstring>
 #include <exception>
 
 namespace neuralpp  {
@@ -43,9 +45,15 @@ namespace neuralpp  {
 	 * @brief Exception thrown when trying parsing an invalid XML
 	 */
 	class InvalidXMLException : public std::exception  {
+		char *error;
+
 	public:
-		InvalidXMLException()  {}
-		const char* what() const throw() { return "Attempt to load an invalid XML file"; }
+		InvalidXMLException(const char *err = " ")  {
+			error = new char[strlen(err)+40];
+			sprintf (error, "Attempt to load an invalid XML file: %s", err);
+		}
+		
+		const char* what() const throw() { return error; }
 	};
 
 	/**

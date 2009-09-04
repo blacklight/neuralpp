@@ -53,39 +53,27 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#961dce8913264bf64c899dce4e25f810">getOutput</a> () const </td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It gets the output of the network (note: the layer output should contain an only neuron).  <a href="#961dce8913264bf64c899dce4e25f810"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#e08cdcf4b70f987700e553d9914f6179">getThreshold</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the threshold of the neurons in the network.  <a href="#e08cdcf4b70f987700e553d9914f6179"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#e6d2215ecc8b560db2f6797db642191c">getOutputs</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It gets the output of the network in case the output layer contains more neurons.  <a href="#e6d2215ecc8b560db2f6797db642191c"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#562dfe9fb8d73bf25a23ce608451d3aa">expected</a> () const </td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#e08cdcf4b70f987700e553d9914f6179">getThreshold</a> () const </td></tr>
 
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the expected value (in case you have an only neuron in output layer).  <a href="#562dfe9fb8d73bf25a23ce608451d3aa"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#51a1851ed07b85bec091c9053ae99cf7">getExpected</a> () const </td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the expected value (in case you have an only neuron in output layer).  <a href="#51a1851ed07b85bec091c9053ae99cf7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#b6475762b7e9eab086befdc511f7c236">setExpected</a> (double ex)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It sets the value you expect from your network (in case the network has an only neuron in its output layer).  <a href="#b6475762b7e9eab086befdc511f7c236"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#e649edc3d86bec7c0e178d5c892b4fd7">setExpected</a> (std::vector&lt; double &gt; ex)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the values you expect from your network.  <a href="#e649edc3d86bec7c0e178d5c892b4fd7"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#b0bd1daadb06980dff1f50d33a7c098e">update</a> ()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It updates through back-propagation the weights of the synapsis and computes again the output value for <em>epochs</em> times, calling back updateWeights and commitChanges functions.  <a href="#b0bd1daadb06980dff1f50d33a7c098e"></a><br></td></tr>
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the threshold of the neurons in the network.  <a href="#e08cdcf4b70f987700e553d9914f6179"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#c129c180647362da963758bfd1ba6890">propagate</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It propagates values through the network.  <a href="#c129c180647362da963758bfd1ba6890"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#405b32d2928344314ecf0469070b0f17">setInput</a> (std::vector&lt; double &gt; v)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It sets the input for the network.  <a href="#405b32d2928344314ecf0469070b0f17"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#46f23f462318a4ffc037a4e806364c3f">link</a> ()</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It links the layers of the network (input, hidden, output).  <a href="#46f23f462318a4ffc037a4e806364c3f"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#fdf94c276720c25e565cac834fe8a407">save</a> (const char *fname)  throw (NetworkFileWriteException)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Save a trained neural network to a binary file.  <a href="#fdf94c276720c25e565cac834fe8a407"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#a060e28b438613a6cc9e0895ddbc292b">loadFromBinary</a> (const std::string fname)  throw (NetworkFileNotFoundException)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">DEPRECATED.  <a href="#a060e28b438613a6cc9e0895ddbc292b"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#520147d9b47b69565567bd3fdcfd8897">saveToBinary</a> (const char *fname)  throw (NetworkFileWriteException)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">DEPRECATED.  <a href="#520147d9b47b69565567bd3fdcfd8897"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#1c9e17437d41a7048611e21a3cc1c7dd">train</a> (std::string xml, <a class="el" href="classneuralpp_1_1NeuralNet.html#94c36c94060e785ea67a0014c4182f8f">source</a> src)  throw (InvalidXMLException)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Train a network using a training set loaded from an XML file.  <a href="#1c9e17437d41a7048611e21a3cc1c7dd"></a><br></td></tr>
@@ -93,9 +81,6 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#96da6712a72051cf34ad961761ef6e08">initXML</a> (std::string &amp;xml)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Initialize the training XML for the neural network.  <a href="#96da6712a72051cf34ad961761ef6e08"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">static std::vector&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#83c6555520856d5867752904349ab6ca">split</a> (char delim, std::string str)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Splits a string into a vector of doubles, given a delimitator.  <a href="#83c6555520856d5867752904349ab6ca"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">static std::string&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#0a2733037af912b3e6a10146e7b7172f">XMLFromSet</a> (int &amp;id, std::string set)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get a training set from a string and copies it to an XML For example, these strings could be training sets for making sums: "2,3;5" - "5,6;11" - "2,2;4" - "4,5:9" This method called on the first string will return an XML such this: '&lt;training id="0"&gt;&lt;input id="0"&gt;2&lt;/input&gt;&lt;input id="1"&gt;3&lt;/input&gt;&lt;output id="0"&gt;5&lt;/output&gt; &amp;lt/training&gt;'.  <a href="#0a2733037af912b3e6a10146e7b7172f"></a><br></td></tr>
@@ -113,12 +98,27 @@
 <tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#94169c89a7cd47122ab5dbf1d5c5e108">updateWeights</a> ()</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It updates the weights of the net's synapsis through back-propagation.  <a href="#94169c89a7cd47122ab5dbf1d5c5e108"></a><br></td></tr>
-<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#f697a8d9967ad8f03e5a16a42cd110c5">commitChanges</a> (<a class="el" href="classneuralpp_1_1Layer.html">Layer</a> &amp;l)</td></tr>
-
-<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It commits the changes made by <a class="el" href="classneuralpp_1_1NeuralNet.html#94169c89a7cd47122ab5dbf1d5c5e108" title="It updates the weights of the net&#39;s synapsis through back-propagation.">updateWeights()</a> to the layer l.  <a href="#f697a8d9967ad8f03e5a16a42cd110c5"></a><br></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#8a140d28e6dd4097470c7c138801ad01">error</a> (double ex)</td></tr>
 
 <tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the error made on the expected result as squared deviance.  <a href="#8a140d28e6dd4097470c7c138801ad01"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">double&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#562dfe9fb8d73bf25a23ce608451d3aa">expected</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the expected value (in case you have an only neuron in output layer).  <a href="#562dfe9fb8d73bf25a23ce608451d3aa"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">std::vector&lt; double &gt;&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#51a1851ed07b85bec091c9053ae99cf7">getExpected</a> () const </td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Get the expected value (in case you have an only neuron in output layer).  <a href="#51a1851ed07b85bec091c9053ae99cf7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#b6475762b7e9eab086befdc511f7c236">setExpected</a> (double ex)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It sets the value you expect from your network (in case the network has an only neuron in its output layer).  <a href="#b6475762b7e9eab086befdc511f7c236"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#e649edc3d86bec7c0e178d5c892b4fd7">setExpected</a> (std::vector&lt; double &gt; ex)</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">Set the values you expect from your network.  <a href="#e649edc3d86bec7c0e178d5c892b4fd7"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#b0bd1daadb06980dff1f50d33a7c098e">update</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It updates through back-propagation the weights of the synapsis and computes again the output value for <em>epochs</em> times, calling back updateWeights and commitChanges functions.  <a href="#b0bd1daadb06980dff1f50d33a7c098e"></a><br></td></tr>
+<tr><td class="memItemLeft" nowrap align="right" valign="top">void&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#46f23f462318a4ffc037a4e806364c3f">link</a> ()</td></tr>
+
+<tr><td class="mdescLeft">&nbsp;</td><td class="mdescRight">It links the layers of the network (input, hidden, output).  <a href="#46f23f462318a4ffc037a4e806364c3f"></a><br></td></tr>
 <tr><td colspan="2"><br><h2>Private Attributes</h2></td></tr>
 <tr><td class="memItemLeft" nowrap align="right" valign="top">int&nbsp;</td><td class="memItemRight" valign="bottom"><a class="el" href="classneuralpp_1_1NeuralNet.html#4cb52dae7b43d03fac73afca7b9f3a51">epochs</a></td></tr>
 
@@ -140,7 +140,7 @@ Main project's class.
 Use *ONLY* this class, unless you know what you're doing <dl compact><dt><b>Examples: </b></dt><dd>
 
 <p>
-<a class="el" href="examples_2adderFromScratch_8cpp-example.html#_a0">examples/adderFromScratch.cpp</a>, <a class="el" href="examples_2doAdd_8cpp-example.html#_a0">examples/doAdd.cpp</a>, and <a class="el" href="examples_2learnAdd_8cpp-example.html#_a0">examples/learnAdd.cpp</a>.</dl><hr><h2>Member Enumeration Documentation</h2>
+<a class="el" href="examples_2adderFromString_8cpp-example.html#_a0">examples/adderFromString.cpp</a>, <a class="el" href="examples_2doAdd_8cpp-example.html#_a0">examples/doAdd.cpp</a>, <a class="el" href="examples_2learnAdd_8cpp-example.html#_a0">examples/learnAdd.cpp</a>, and <a class="el" href="examples_2networkForSumsAndSubtractions_8cpp-example.html#_a0">examples/networkForSumsAndSubtractions.cpp</a>.</dl><hr><h2>Member Enumeration Documentation</h2>
 <a class="anchor" name="94c36c94060e785ea67a0014c4182f8f"></a><!-- doxytag: member="neuralpp::NeuralNet::source" ref="94c36c94060e785ea67a0014c4182f8f" args="" -->
 <div class="memitem">
 <div class="memproto">
@@ -314,33 +314,6 @@ It updates the weights of the net's synapsis through back-propagation.
 In-class use only 
 </div>
 </div><p>
-<a class="anchor" name="f697a8d9967ad8f03e5a16a42cd110c5"></a><!-- doxytag: member="neuralpp::NeuralNet::commitChanges" ref="f697a8d9967ad8f03e5a16a42cd110c5" args="(Layer &amp;l)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void neuralpp::NeuralNet::commitChanges           </td>
-          <td>(</td>
-          <td class="paramtype"><a class="el" href="classneuralpp_1_1Layer.html">Layer</a> &amp;&nbsp;</td>
-          <td class="paramname"> <em>l</em>          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td><code> [private]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-It commits the changes made by <a class="el" href="classneuralpp_1_1NeuralNet.html#94169c89a7cd47122ab5dbf1d5c5e108" title="It updates the weights of the net&#39;s synapsis through back-propagation.">updateWeights()</a> to the layer l. 
-<p>
-In-class use only <dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>l</em>&nbsp;</td><td><a class="el" href="classneuralpp_1_1Layer.html" title="Class for managing layers of neurons.">Layer</a> to commit the changes </td></tr>
-  </table>
-</dl>
-
-</div>
-</div><p>
 <a class="anchor" name="8a140d28e6dd4097470c7c138801ad01"></a><!-- doxytag: member="neuralpp::NeuralNet::error" ref="8a140d28e6dd4097470c7c138801ad01" args="(double ex)" -->
 <div class="memitem">
 <div class="memproto">
@@ -369,74 +342,6 @@ Get the error made on the expected result as squared deviance.
 
 </div>
 </div><p>
-<a class="anchor" name="961dce8913264bf64c899dce4e25f810"></a><!-- doxytag: member="neuralpp::NeuralNet::getOutput" ref="961dce8913264bf64c899dce4e25f810" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double neuralpp::NeuralNet::getOutput           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-It gets the output of the network (note: the layer output should contain an only neuron). 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>The output value of the network </dd></dl>
-<dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="examples_2doAdd_8cpp-example.html#a5">examples/doAdd.cpp</a>.</dl>
-</div>
-</div><p>
-<a class="anchor" name="e08cdcf4b70f987700e553d9914f6179"></a><!-- doxytag: member="neuralpp::NeuralNet::getThreshold" ref="e08cdcf4b70f987700e553d9914f6179" args="() const " -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">double neuralpp::NeuralNet::getThreshold           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td> const</td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Get the threshold of the neurons in the network. 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>The threshold of the neurons </dd></dl>
-
-</div>
-</div><p>
-<a class="anchor" name="e6d2215ecc8b560db2f6797db642191c"></a><!-- doxytag: member="neuralpp::NeuralNet::getOutputs" ref="e6d2215ecc8b560db2f6797db642191c" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">std::vector&lt;double&gt; neuralpp::NeuralNet::getOutputs           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-It gets the output of the network in case the output layer contains more neurons. 
-<p>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>A vector containing the output values of the network </dd></dl>
-<dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="examples_2adderFromScratch_8cpp-example.html#a4">examples/adderFromScratch.cpp</a>.</dl>
-</div>
-</div><p>
 <a class="anchor" name="562dfe9fb8d73bf25a23ce608451d3aa"></a><!-- doxytag: member="neuralpp::NeuralNet::expected" ref="562dfe9fb8d73bf25a23ce608451d3aa" args="() const " -->
 <div class="memitem">
 <div class="memproto">
@@ -446,7 +351,7 @@ It gets the output of the network in case the output layer contains more neurons
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td> const</td>
+          <td> const<code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -468,7 +373,7 @@ Of course you should specify this when you build your network by using setExpect
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td> const</td>
+          <td> const<code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -491,7 +396,7 @@ Of course you should specify this when you build your network by using setExpect
           <td class="paramtype">double&nbsp;</td>
           <td class="paramname"> <em>ex</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -518,7 +423,7 @@ It sets the value you expect from your network (in case the network has an only 
           <td class="paramtype">std::vector&lt; double &gt;&nbsp;</td>
           <td class="paramname"> <em>ex</em>          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -544,7 +449,7 @@ Set the values you expect from your network.
           <td>(</td>
           <td class="paramname">          </td>
           <td>&nbsp;)&nbsp;</td>
-          <td></td>
+          <td><code> [private]</code></td>
         </tr>
       </table>
 </div>
@@ -553,6 +458,95 @@ Set the values you expect from your network.
 <p>
 It updates through back-propagation the weights of the synapsis and computes again the output value for <em>epochs</em> times, calling back updateWeights and commitChanges functions. 
 <p>
+
+</div>
+</div><p>
+<a class="anchor" name="46f23f462318a4ffc037a4e806364c3f"></a><!-- doxytag: member="neuralpp::NeuralNet::link" ref="46f23f462318a4ffc037a4e806364c3f" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void neuralpp::NeuralNet::link           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td><code> [private]</code></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+It links the layers of the network (input, hidden, output). 
+<p>
+
+</div>
+</div><p>
+<a class="anchor" name="961dce8913264bf64c899dce4e25f810"></a><!-- doxytag: member="neuralpp::NeuralNet::getOutput" ref="961dce8913264bf64c899dce4e25f810" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double neuralpp::NeuralNet::getOutput           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+It gets the output of the network (note: the layer output should contain an only neuron). 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>The output value of the network </dd></dl>
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="examples_2adderFromString_8cpp-example.html#a4">examples/adderFromString.cpp</a>, and <a class="el" href="examples_2doAdd_8cpp-example.html#a5">examples/doAdd.cpp</a>.</dl>
+</div>
+</div><p>
+<a class="anchor" name="e6d2215ecc8b560db2f6797db642191c"></a><!-- doxytag: member="neuralpp::NeuralNet::getOutputs" ref="e6d2215ecc8b560db2f6797db642191c" args="()" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">std::vector&lt;double&gt; neuralpp::NeuralNet::getOutputs           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td></td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+It gets the output of the network in case the output layer contains more neurons. 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>A vector containing the output values of the network </dd></dl>
+<dl compact><dt><b>Examples: </b></dt><dd>
+<a class="el" href="examples_2networkForSumsAndSubtractions_8cpp-example.html#a4">examples/networkForSumsAndSubtractions.cpp</a>.</dl>
+</div>
+</div><p>
+<a class="anchor" name="e08cdcf4b70f987700e553d9914f6179"></a><!-- doxytag: member="neuralpp::NeuralNet::getThreshold" ref="e08cdcf4b70f987700e553d9914f6179" args="() const " -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">double neuralpp::NeuralNet::getThreshold           </td>
+          <td>(</td>
+          <td class="paramname">          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+Get the threshold of the neurons in the network. 
+<p>
+<dl class="return" compact><dt><b>Returns:</b></dt><dd>The threshold of the neurons </dd></dl>
 
 </div>
 </div><p>
@@ -575,7 +569,7 @@ It updates through back-propagation the weights of the synapsis and computes aga
 It propagates values through the network. 
 <p>
 Use this when you want to give an already trained network some new values the get to the output <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="examples_2adderFromScratch_8cpp-example.html#a3">examples/adderFromScratch.cpp</a>, and <a class="el" href="examples_2doAdd_8cpp-example.html#a4">examples/doAdd.cpp</a>.</dl>
+<a class="el" href="examples_2adderFromString_8cpp-example.html#a3">examples/adderFromString.cpp</a>, <a class="el" href="examples_2doAdd_8cpp-example.html#a4">examples/doAdd.cpp</a>, and <a class="el" href="examples_2networkForSumsAndSubtractions_8cpp-example.html#a3">examples/networkForSumsAndSubtractions.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="405b32d2928344314ecf0469070b0f17"></a><!-- doxytag: member="neuralpp::NeuralNet::setInput" ref="405b32d2928344314ecf0469070b0f17" args="(std::vector&lt; double &gt; v)" -->
@@ -603,28 +597,7 @@ It sets the input for the network.
   </table>
 </dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="examples_2adderFromScratch_8cpp-example.html#a2">examples/adderFromScratch.cpp</a>, and <a class="el" href="examples_2doAdd_8cpp-example.html#a3">examples/doAdd.cpp</a>.</dl>
-</div>
-</div><p>
-<a class="anchor" name="46f23f462318a4ffc037a4e806364c3f"></a><!-- doxytag: member="neuralpp::NeuralNet::link" ref="46f23f462318a4ffc037a4e806364c3f" args="()" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">void neuralpp::NeuralNet::link           </td>
-          <td>(</td>
-          <td class="paramname">          </td>
-          <td>&nbsp;)&nbsp;</td>
-          <td></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-It links the layers of the network (input, hidden, output). 
-<p>
-Don't use unless you exactly know what you're doing, it is already called by the constructor 
+<a class="el" href="examples_2adderFromString_8cpp-example.html#a2">examples/adderFromString.cpp</a>, <a class="el" href="examples_2doAdd_8cpp-example.html#a3">examples/doAdd.cpp</a>, and <a class="el" href="examples_2networkForSumsAndSubtractions_8cpp-example.html#a2">examples/networkForSumsAndSubtractions.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="fdf94c276720c25e565cac834fe8a407"></a><!-- doxytag: member="neuralpp::NeuralNet::save" ref="fdf94c276720c25e565cac834fe8a407" args="(const char *fname)" -->
@@ -658,6 +631,70 @@ Save a trained neural network to a binary file.
 </dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
 <a class="el" href="examples_2learnAdd_8cpp-example.html#a2">examples/learnAdd.cpp</a>.</dl>
+</div>
+</div><p>
+<a class="anchor" name="a060e28b438613a6cc9e0895ddbc292b"></a><!-- doxytag: member="neuralpp::NeuralNet::loadFromBinary" ref="a060e28b438613a6cc9e0895ddbc292b" args="(const std::string fname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void neuralpp::NeuralNet::loadFromBinary           </td>
+          <td>(</td>
+          <td class="paramtype">const std::string&nbsp;</td>
+          <td class="paramname"> <em>fname</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>  throw (<a class="el" href="classneuralpp_1_1NetworkFileNotFoundException.html">NetworkFileNotFoundException</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+DEPRECATED. 
+<p>
+Load a trained neural network from a binary file. This function is deprecated and kept for back-compatibility. Use the XML format instead to load and neural networks and, respectly, the NeuralNetwork(const std::string) constructor or the <a class="el" href="classneuralpp_1_1NeuralNet.html#fdf94c276720c25e565cac834fe8a407" title="Save a trained neural network to a binary file.">save(const char*)</a> methods. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fname</em>&nbsp;</td><td>Name of the file to be loaded </td></tr>
+  </table>
+</dl>
+<dl compact><dt><b>Exceptions:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="classneuralpp_1_1NetworkFileNotFoundException.html" title="Exception thrown when doing an attempt to load a network from an invalid file.">NetworkFileNotFoundException</a></em>&nbsp;</td><td>When you're trying to load an invalid network file </td></tr>
+  </table>
+</dl>
+
+</div>
+</div><p>
+<a class="anchor" name="520147d9b47b69565567bd3fdcfd8897"></a><!-- doxytag: member="neuralpp::NeuralNet::saveToBinary" ref="520147d9b47b69565567bd3fdcfd8897" args="(const char *fname)" -->
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void neuralpp::NeuralNet::saveToBinary           </td>
+          <td>(</td>
+          <td class="paramtype">const char *&nbsp;</td>
+          <td class="paramname"> <em>fname</em>          </td>
+          <td>&nbsp;)&nbsp;</td>
+          <td>  throw (<a class="el" href="classneuralpp_1_1NetworkFileWriteException.html">NetworkFileWriteException</a>)</td>
+        </tr>
+      </table>
+</div>
+<div class="memdoc">
+
+<p>
+DEPRECATED. 
+<p>
+Save a trained neural network to a binary file. This function is deprecated and kept for back-compatibility. Use the XML format instead to load and neural networks and, respectly, the NeuralNetwork(const std::string) constructor or the <a class="el" href="classneuralpp_1_1NeuralNet.html#fdf94c276720c25e565cac834fe8a407" title="Save a trained neural network to a binary file.">save(const char*)</a> methods. <dl compact><dt><b>Parameters:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em>fname</em>&nbsp;</td><td>Name of the file to be saved with the network information </td></tr>
+  </table>
+</dl>
+<dl compact><dt><b>Exceptions:</b></dt><dd>
+  <table border="0" cellspacing="2" cellpadding="0">
+    <tr><td valign="top"></td><td valign="top"><em><a class="el" href="classneuralpp_1_1NetworkFileWriteException.html" title="Exception thrown when trying to write the network&#39;s information to a file that...">NetworkFileWriteException</a></em>&nbsp;</td><td>When you try to write the network information to an invalid file </td></tr>
+  </table>
+</dl>
+
 </div>
 </div><p>
 <a class="anchor" name="1c9e17437d41a7048611e21a3cc1c7dd"></a><!-- doxytag: member="neuralpp::NeuralNet::train" ref="1c9e17437d41a7048611e21a3cc1c7dd" args="(std::string xml, source src)" -->
@@ -700,7 +737,7 @@ A sample XML file is available in examples/adder.xml <dl compact><dt><b>Paramete
   </table>
 </dl>
 <dl compact><dt><b>Examples: </b></dt><dd>
-<a class="el" href="examples_2adderFromScratch_8cpp-example.html#a1">examples/adderFromScratch.cpp</a>, and <a class="el" href="examples_2learnAdd_8cpp-example.html#a1">examples/learnAdd.cpp</a>.</dl>
+<a class="el" href="examples_2adderFromString_8cpp-example.html#a1">examples/adderFromString.cpp</a>, <a class="el" href="examples_2learnAdd_8cpp-example.html#a1">examples/learnAdd.cpp</a>, and <a class="el" href="examples_2networkForSumsAndSubtractions_8cpp-example.html#a1">examples/networkForSumsAndSubtractions.cpp</a>.</dl>
 </div>
 </div><p>
 <a class="anchor" name="96da6712a72051cf34ad961761ef6e08"></a><!-- doxytag: member="neuralpp::NeuralNet::initXML" ref="96da6712a72051cf34ad961761ef6e08" args="(std::string &amp;xml)" -->
@@ -727,44 +764,6 @@ Initialize the training XML for the neural network.
     <tr><td valign="top"></td><td valign="top"><em>xml</em>&nbsp;</td><td>String that will contain the XML </td></tr>
   </table>
 </dl>
-
-</div>
-</div><p>
-<a class="anchor" name="83c6555520856d5867752904349ab6ca"></a><!-- doxytag: member="neuralpp::NeuralNet::split" ref="83c6555520856d5867752904349ab6ca" args="(char delim, std::string str)" -->
-<div class="memitem">
-<div class="memproto">
-      <table class="memname">
-        <tr>
-          <td class="memname">static std::vector&lt;double&gt; neuralpp::NeuralNet::split           </td>
-          <td>(</td>
-          <td class="paramtype">char&nbsp;</td>
-          <td class="paramname"> <em>delim</em>, </td>
-        </tr>
-        <tr>
-          <td class="paramkey"></td>
-          <td></td>
-          <td class="paramtype">std::string&nbsp;</td>
-          <td class="paramname"> <em>str</em></td><td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td></td>
-          <td>)</td>
-          <td></td><td></td><td><code> [static]</code></td>
-        </tr>
-      </table>
-</div>
-<div class="memdoc">
-
-<p>
-Splits a string into a vector of doubles, given a delimitator. 
-<p>
-<dl compact><dt><b>Parameters:</b></dt><dd>
-  <table border="0" cellspacing="2" cellpadding="0">
-    <tr><td valign="top"></td><td valign="top"><em>delim</em>&nbsp;</td><td>Delimitator </td></tr>
-    <tr><td valign="top"></td><td valign="top"><em>str</em>&nbsp;</td><td>String to be splitted </td></tr>
-  </table>
-</dl>
-<dl class="return" compact><dt><b>Returns:</b></dt><dd>Vector of doubles containing splitted values </dd></dl>
 
 </div>
 </div><p>
@@ -974,7 +973,7 @@ Private pointer to function, containing the function to be used as activation fu
 <hr>The documentation for this class was generated from the following file:<ul>
 <li><a class="el" href="neural_09_09_8hpp-source.html">neural++.hpp</a></ul>
 </div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Aug 16 20:53:42 2009 for Neural++ by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Sep 4 11:25:49 2009 for Neural++ by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

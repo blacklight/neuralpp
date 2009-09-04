@@ -31,44 +31,52 @@
 <a name="l00014"></a>00014 <span class="preprocessor">#ifndef __NEURALPP_EXCEPTION</span>
 <a name="l00015"></a>00015 <span class="preprocessor"></span><span class="preprocessor">#define __NEURALPP_EXCEPTION</span>
 <a name="l00016"></a>00016 <span class="preprocessor"></span>
-<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;exception&gt;</span>
-<a name="l00018"></a>00018 
-<a name="l00019"></a>00019 <span class="keyword">namespace </span>neuralpp  {
-<a name="l00024"></a><a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html">00024</a>         <span class="keyword">class </span><a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html" title="Exception thrown when doing an attempt to load a network from an invalid file.">NetworkFileNotFoundException</a> : <span class="keyword">public</span> std::exception  {
-<a name="l00025"></a>00025         <span class="keyword">public</span>:
-<a name="l00026"></a><a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html#9603eebdb841f06c9b1007e65cba60f6">00026</a>                 <a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html#9603eebdb841f06c9b1007e65cba60f6">NetworkFileNotFoundException</a>()  {}
-<a name="l00027"></a><a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html#24cde7729ab22d343f36e638cfc40702">00027</a>                 <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html#24cde7729ab22d343f36e638cfc40702">what</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to load a neural network from an invalid network file"</span>; }
-<a name="l00028"></a>00028         };
-<a name="l00029"></a>00029 
-<a name="l00035"></a><a class="code" href="classneuralpp_1_1NetworkFileWriteException.html">00035</a>         <span class="keyword">class </span><a class="code" href="classneuralpp_1_1NetworkFileWriteException.html" title="Exception thrown when trying to write the network&amp;#39;s information to a file that...">NetworkFileWriteException</a> : <span class="keyword">public</span> std::exception  {
-<a name="l00036"></a>00036         <span class="keyword">public</span>:
-<a name="l00037"></a><a class="code" href="classneuralpp_1_1NetworkFileWriteException.html#83bc897b0ea11a384e0839a39e9fdb48">00037</a>                 <a class="code" href="classneuralpp_1_1NetworkFileWriteException.html#83bc897b0ea11a384e0839a39e9fdb48">NetworkFileWriteException</a>()  {}
-<a name="l00038"></a><a class="code" href="classneuralpp_1_1NetworkFileWriteException.html#c8802852cb38d5edf6f490ff3acb6078">00038</a>                 <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classneuralpp_1_1NetworkFileWriteException.html#c8802852cb38d5edf6f490ff3acb6078">what</a>() <span class="keyword">const</span> throw()  { <span class="keywordflow">return</span> <span class="stringliteral">"There was an error while writing the network file"</span>; }
-<a name="l00039"></a>00039         };
-<a name="l00040"></a>00040 
-<a name="l00045"></a><a class="code" href="classneuralpp_1_1InvalidXMLException.html">00045</a>         <span class="keyword">class </span><a class="code" href="classneuralpp_1_1InvalidXMLException.html" title="Exception thrown when trying parsing an invalid XML.">InvalidXMLException</a> : <span class="keyword">public</span> std::exception  {
-<a name="l00046"></a>00046         <span class="keyword">public</span>:
-<a name="l00047"></a><a class="code" href="classneuralpp_1_1InvalidXMLException.html#10279e6f42a1ccb934afcfef2770c537">00047</a>                 <a class="code" href="classneuralpp_1_1InvalidXMLException.html#10279e6f42a1ccb934afcfef2770c537">InvalidXMLException</a>()  {}
-<a name="l00048"></a><a class="code" href="classneuralpp_1_1InvalidXMLException.html#4a8b81678ed0c319e1715ab5ef9112da">00048</a>                 <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classneuralpp_1_1InvalidXMLException.html#4a8b81678ed0c319e1715ab5ef9112da">what</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to load an invalid XML file"</span>; }
-<a name="l00049"></a>00049         };
-<a name="l00050"></a>00050 
-<a name="l00056"></a><a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html">00056</a>         <span class="keyword">class </span><a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html" title="Exception raised when trying to access a neuron whose index is larger than the number...">NetworkIndexOutOfBoundsException</a> : <span class="keyword">public</span> std::exception  {
-<a name="l00057"></a>00057         <span class="keyword">public</span>:
-<a name="l00058"></a><a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html#07141d2225ea9f2d486e755a3660d594">00058</a>                 <a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html#07141d2225ea9f2d486e755a3660d594">NetworkIndexOutOfBoundsException</a>()  {}
-<a name="l00059"></a><a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html#8b65d77cb375a0aa40d5a9ea692bd5c3">00059</a>                 <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html#8b65d77cb375a0aa40d5a9ea692bd5c3">what</a>() <span class="keyword">const</span> throw()  { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to access a non-existing neuron"</span>; }
-<a name="l00060"></a>00060         };
-<a name="l00061"></a>00061 
-<a name="l00067"></a><a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html">00067</a>         <span class="keyword">class </span><a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html" title="Exception raised when, while trying the network or directly, the weight of a synapsis...">InvalidSynapticalWeightException</a> : <span class="keyword">public</span> std::exception  {
-<a name="l00068"></a>00068         <span class="keyword">public</span>:
-<a name="l00069"></a><a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html#42e54de0ef9d9f711a483287f4f95916">00069</a>                 <a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html#42e54de0ef9d9f711a483287f4f95916">InvalidSynapticalWeightException</a>()  {}
-<a name="l00070"></a><a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html#8d374dd7e8363b2551ae6e306b11473a">00070</a>                 <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html#8d374dd7e8363b2551ae6e306b11473a">what</a>() <span class="keyword">const</span> throw()  { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to set an invalid weight for the synapsis"</span>; }
-<a name="l00071"></a>00071         };
-<a name="l00072"></a>00072 }
-<a name="l00073"></a>00073 
-<a name="l00074"></a>00074 <span class="preprocessor">#endif</span>
-<a name="l00075"></a>00075 <span class="preprocessor"></span>
+<a name="l00017"></a>00017 <span class="preprocessor">#include &lt;cstdio&gt;</span>
+<a name="l00018"></a>00018 <span class="preprocessor">#include &lt;cstring&gt;</span>
+<a name="l00019"></a>00019 <span class="preprocessor">#include &lt;exception&gt;</span>
+<a name="l00020"></a>00020 
+<a name="l00021"></a>00021 <span class="keyword">namespace </span>neuralpp  {
+<a name="l00026"></a><a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html">00026</a>         <span class="keyword">class </span><a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html" title="Exception thrown when doing an attempt to load a network from an invalid file.">NetworkFileNotFoundException</a> : <span class="keyword">public</span> std::exception  {
+<a name="l00027"></a>00027         <span class="keyword">public</span>:
+<a name="l00028"></a><a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html#9603eebdb841f06c9b1007e65cba60f6">00028</a>                 <a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html#9603eebdb841f06c9b1007e65cba60f6">NetworkFileNotFoundException</a>()  {}
+<a name="l00029"></a><a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html#24cde7729ab22d343f36e638cfc40702">00029</a>                 <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classneuralpp_1_1NetworkFileNotFoundException.html#24cde7729ab22d343f36e638cfc40702">what</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to load a neural network from an invalid network file"</span>; }
+<a name="l00030"></a>00030         };
+<a name="l00031"></a>00031 
+<a name="l00037"></a><a class="code" href="classneuralpp_1_1NetworkFileWriteException.html">00037</a>         <span class="keyword">class </span><a class="code" href="classneuralpp_1_1NetworkFileWriteException.html" title="Exception thrown when trying to write the network&amp;#39;s information to a file that...">NetworkFileWriteException</a> : <span class="keyword">public</span> std::exception  {
+<a name="l00038"></a>00038         <span class="keyword">public</span>:
+<a name="l00039"></a><a class="code" href="classneuralpp_1_1NetworkFileWriteException.html#83bc897b0ea11a384e0839a39e9fdb48">00039</a>                 <a class="code" href="classneuralpp_1_1NetworkFileWriteException.html#83bc897b0ea11a384e0839a39e9fdb48">NetworkFileWriteException</a>()  {}
+<a name="l00040"></a><a class="code" href="classneuralpp_1_1NetworkFileWriteException.html#c8802852cb38d5edf6f490ff3acb6078">00040</a>                 <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classneuralpp_1_1NetworkFileWriteException.html#c8802852cb38d5edf6f490ff3acb6078">what</a>() <span class="keyword">const</span> throw()  { <span class="keywordflow">return</span> <span class="stringliteral">"There was an error while writing the network file"</span>; }
+<a name="l00041"></a>00041         };
+<a name="l00042"></a>00042 
+<a name="l00047"></a><a class="code" href="classneuralpp_1_1InvalidXMLException.html">00047</a>         <span class="keyword">class </span><a class="code" href="classneuralpp_1_1InvalidXMLException.html" title="Exception thrown when trying parsing an invalid XML.">InvalidXMLException</a> : <span class="keyword">public</span> std::exception  {
+<a name="l00048"></a><a class="code" href="classneuralpp_1_1InvalidXMLException.html#e0c63b17f7b5b0df20d8361bc9ee92b4">00048</a>                 <span class="keywordtype">char</span> *<a class="code" href="classneuralpp_1_1InvalidXMLException.html#e0c63b17f7b5b0df20d8361bc9ee92b4">error</a>;
+<a name="l00049"></a>00049 
+<a name="l00050"></a>00050         <span class="keyword">public</span>:
+<a name="l00051"></a><a class="code" href="classneuralpp_1_1InvalidXMLException.html#793d311be88606908abf8c5be1348586">00051</a>                 <a class="code" href="classneuralpp_1_1InvalidXMLException.html#793d311be88606908abf8c5be1348586">InvalidXMLException</a>(<span class="keyword">const</span> <span class="keywordtype">char</span> *err = <span class="stringliteral">" "</span>)  {
+<a name="l00052"></a>00052                         <a class="code" href="classneuralpp_1_1InvalidXMLException.html#e0c63b17f7b5b0df20d8361bc9ee92b4">error</a> = <span class="keyword">new</span> <span class="keywordtype">char</span>[strlen(err)+40];
+<a name="l00053"></a>00053                         sprintf (<a class="code" href="classneuralpp_1_1InvalidXMLException.html#e0c63b17f7b5b0df20d8361bc9ee92b4">error</a>, <span class="stringliteral">"Attempt to load an invalid XML file: %s"</span>, err);
+<a name="l00054"></a>00054                 }
+<a name="l00055"></a>00055                 
+<a name="l00056"></a><a class="code" href="classneuralpp_1_1InvalidXMLException.html#4a8b81678ed0c319e1715ab5ef9112da">00056</a>                 <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classneuralpp_1_1InvalidXMLException.html#4a8b81678ed0c319e1715ab5ef9112da">what</a>() <span class="keyword">const</span> throw() { <span class="keywordflow">return</span> <a class="code" href="classneuralpp_1_1InvalidXMLException.html#e0c63b17f7b5b0df20d8361bc9ee92b4">error</a>; }
+<a name="l00057"></a>00057         };
+<a name="l00058"></a>00058 
+<a name="l00064"></a><a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html">00064</a>         <span class="keyword">class </span><a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html" title="Exception raised when trying to access a neuron whose index is larger than the number...">NetworkIndexOutOfBoundsException</a> : <span class="keyword">public</span> std::exception  {
+<a name="l00065"></a>00065         <span class="keyword">public</span>:
+<a name="l00066"></a><a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html#07141d2225ea9f2d486e755a3660d594">00066</a>                 <a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html#07141d2225ea9f2d486e755a3660d594">NetworkIndexOutOfBoundsException</a>()  {}
+<a name="l00067"></a><a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html#8b65d77cb375a0aa40d5a9ea692bd5c3">00067</a>                 <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classneuralpp_1_1NetworkIndexOutOfBoundsException.html#8b65d77cb375a0aa40d5a9ea692bd5c3">what</a>() <span class="keyword">const</span> throw()  { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to access a non-existing neuron"</span>; }
+<a name="l00068"></a>00068         };
+<a name="l00069"></a>00069 
+<a name="l00075"></a><a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html">00075</a>         <span class="keyword">class </span><a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html" title="Exception raised when, while trying the network or directly, the weight of a synapsis...">InvalidSynapticalWeightException</a> : <span class="keyword">public</span> std::exception  {
+<a name="l00076"></a>00076         <span class="keyword">public</span>:
+<a name="l00077"></a><a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html#42e54de0ef9d9f711a483287f4f95916">00077</a>                 <a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html#42e54de0ef9d9f711a483287f4f95916">InvalidSynapticalWeightException</a>()  {}
+<a name="l00078"></a><a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html#8d374dd7e8363b2551ae6e306b11473a">00078</a>                 <span class="keyword">const</span> <span class="keywordtype">char</span>* <a class="code" href="classneuralpp_1_1InvalidSynapticalWeightException.html#8d374dd7e8363b2551ae6e306b11473a">what</a>() <span class="keyword">const</span> throw()  { <span class="keywordflow">return</span> <span class="stringliteral">"Attempt to set an invalid weight for the synapsis"</span>; }
+<a name="l00079"></a>00079         };
+<a name="l00080"></a>00080 }
+<a name="l00081"></a>00081 
+<a name="l00082"></a>00082 <span class="preprocessor">#endif</span>
+<a name="l00083"></a>00083 <span class="preprocessor"></span>
 </pre></div></div>
-<hr size="1"><address style="text-align: right;"><small>Generated on Sun Aug 16 20:53:42 2009 for Neural++ by&nbsp;
+<hr size="1"><address style="text-align: right;"><small>Generated on Fri Sep 4 11:25:49 2009 for Neural++ by&nbsp;
 <a href="http://www.doxygen.org/index.html">
 <img src="doxygen.png" alt="doxygen" align="middle" border="0"></a> 1.5.6 </small></address>
 </body>

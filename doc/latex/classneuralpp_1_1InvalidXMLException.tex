@@ -8,9 +8,14 @@ Exception thrown when trying parsing an invalid XML.
 \subsection*{Public Member Functions}
 \begin{CompactItemize}
 \item 
-{\bf InvalidXMLException} ()
+{\bf InvalidXMLException} (const char $\ast$err=\char`\"{} \char`\"{})
 \item 
 const char $\ast$ {\bf what} () const   throw ()
+\end{CompactItemize}
+\subsection*{Private Attributes}
+\begin{CompactItemize}
+\item 
+char $\ast$ {\bf error}
 \end{CompactItemize}
 
 
@@ -20,10 +25,12 @@ Exception thrown when trying parsing an invalid XML.
 \subsection{Constructor \& Destructor Documentation}
 \index{neuralpp::InvalidXMLException@{neuralpp::InvalidXMLException}!InvalidXMLException@{InvalidXMLException}}
 \index{InvalidXMLException@{InvalidXMLException}!neuralpp::InvalidXMLException@{neuralpp::InvalidXMLException}}
-\subsubsection[InvalidXMLException]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::InvalidXMLException::InvalidXMLException ()\hspace{0.3cm}{\tt  [inline]}}\label{classneuralpp_1_1InvalidXMLException_10279e6f42a1ccb934afcfef2770c537}
+\subsubsection[InvalidXMLException]{\setlength{\rightskip}{0pt plus 5cm}neuralpp::InvalidXMLException::InvalidXMLException (const char $\ast$ {\em err} = {\tt \char`\"{}~\char`\"{}})\hspace{0.3cm}{\tt  [inline]}}\label{classneuralpp_1_1InvalidXMLException_793d311be88606908abf8c5be1348586}
 
 
 
+
+References error.
 
 \subsection{Member Function Documentation}
 \index{neuralpp::InvalidXMLException@{neuralpp::InvalidXMLException}!what@{what}}
@@ -32,6 +39,18 @@ Exception thrown when trying parsing an invalid XML.
 
 
 
+
+References error.
+
+\subsection{Member Data Documentation}
+\index{neuralpp::InvalidXMLException@{neuralpp::InvalidXMLException}!error@{error}}
+\index{error@{error}!neuralpp::InvalidXMLException@{neuralpp::InvalidXMLException}}
+\subsubsection[error]{\setlength{\rightskip}{0pt plus 5cm}char$\ast$ {\bf neuralpp::InvalidXMLException::error}\hspace{0.3cm}{\tt  [private]}}\label{classneuralpp_1_1InvalidXMLException_e0c63b17f7b5b0df20d8361bc9ee92b4}
+
+
+
+
+Referenced by InvalidXMLException(), and what().
 
 The documentation for this class was generated from the following file:\begin{CompactItemize}
 \item 
