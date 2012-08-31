@@ -18,10 +18,10 @@ Released under GNU GPL licence v.3, copyright 2008-2009
 
 > HOWTO:
 	# Take a look to the example in "examples" directory in the source package, in
-	  $PREFIX/share/neural++ or at http://0x00.ath.cx/prog/neuralpp/examples .
+	  $PREFIX/share/neural++ or at http://blacklight.gotdns.org/prog/neuralpp/examples .
 	
 	# Take a look to the example in "doc" directory in the source package, in
-	  $PREFIX/share/neural++ or at http://0x00.ath.cx/prog/neuralpp/doc/index.html.
+	  $PREFIX/share/neural++ or at http://blackligtht.gotdns.org/prog/neuralpp/doc/index.html.
 	  You can also generate the documentation on your own moving to include/
 	  directory in the source package and typing `doxygen`, if you've got doxygen
 	  installed.
