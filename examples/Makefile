@@ -1,11 +1,14 @@
+include ../Makefile.am
+LDLIBS+=-lneural++
+
 all:
-	g++ -Wall -o learnAdd learnAdd.cpp -lneural++
-	g++ -Wall -o doAdd doAdd.cpp -lneural++
-	g++ -Wall -o networkForSumsAndSubtractions networkForSumsAndSubtractions.cpp -lneural++
-	g++ -Wall -o adderFromString adderFromString.cpp -lneural++
+	g++ -Wall -o learnAdd learnAdd.cpp ${LDLIBS}
+	g++ -Wall -o doAdd doAdd.cpp ${LDLIBS}
+	g++ -Wall -o networkForSumsAndSubtractions networkForSumsAndSubtractions.cpp ${LDLIBS}
+	g++ -Wall -o adderFromString adderFromString.cpp ${LDLIBS}
 
 clean:
-	rm learnAdd
-	rm doAdd
-	rm networkForSumsAndSubtractions
-	rm adderFromString
+	rm -f learnAdd
+	rm -f doAdd
+	rm -f networkForSumsAndSubtractions
+	rm -f adderFromString
