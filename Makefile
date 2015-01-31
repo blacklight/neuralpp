@@ -4,6 +4,7 @@ PREFIX=/usr
 LIB=neural++
 CC=g++
 CFLAGS=-Wall -pedantic -pedantic-errors -ansi
+include Makefile.am
 
 all:
 	${CC} -I${INCLUDEDIR} ${CFLAGS} -fPIC -g -c ${SRCDIR}/neuralnet.cpp
@@ -11,9 +12,14 @@ all:
 	${CC} -I${INCLUDEDIR} ${CFLAGS} -fPIC -g -c ${SRCDIR}/neuron.cpp
 	${CC} -I${INCLUDEDIR} ${CFLAGS} -fPIC -g -c ${SRCDIR}/synapsis.cpp
 	${CC} -I${INCLUDEDIR} ${CFLAGS} -fPIC -g -c ${SRCDIR}/Markup.cpp
-	${CC} -shared -Wl,-soname,lib$(LIB).so.0 -o lib${LIB}.so.0.0.0 neuralnet.o layer.o neuron.o synapsis.o Markup.o
+ifeq ($(OSNAME),Darwin)
+	${CC} ${LDLIBS} -shared -Wl,-install_name,lib$(LIB).so.0 -o lib${LIB}.so.0.0.0 neuralnet.o layer.o neuron.o synapsis.o Markup.o
+else
+	${CC} ${LDLIBS} -shared -Wl,-soname,lib$(LIB).so.0 -o lib${LIB}.so.0.0.0 neuralnet.o layer.o neuron.o synapsis.o Markup.o
+endif
 	ar rcs lib${LIB}.a neuralnet.o layer.o neuron.o synapsis.o Markup.o
 
+.PHONY: install
 install:
 	mkdir -p ${PREFIX}/lib
 	mkdir -p ${PREFIX}/${INCLUDEDIR}
@@ -33,22 +39,14 @@ install:
 	ln -sf ${PREFIX}/lib/lib${LIB}.so.0.0.0 ${PREFIX}/lib/lib${LIB}.so.0
 
 uninstall:
-	rm ${PREFIX}/lib/lib${LIB}.a
-	rm ${PREFIX}/${INCLUDEDIR}/${LIB}.hpp
-	rm ${PREFIX}/${INCLUDEDIR}/${LIB}_exception.hpp
-	rm ${PREFIX}/lib/lib${LIB}.so.0.0.0
-	rm ${PREFIX}/lib/lib${LIB}.so.0
-	rm ${PREFIX}/share/${LIB}/README
-	rm ${PREFIX}/share/${LIB}/INSTALL
-	rm ${PREFIX}/share/${LIB}/BUGS
-	rm ${PREFIX}/share/${LIB}/VERSION
-	rm ${PREFIX}/share/${LIB}/ChangeLog
-	rm -r ${PREFIX}/share/${LIB}/doc
-	rm -r ${PREFIX}/share/${LIB}/examples
-	rmdir ${PREFIX}/share/${LIB}
+	rm -f ${PREFIX}/${INCLUDEDIR}/${LIB}.hpp
+	rm -f ${PREFIX}/lib/lib${LIB}.so.0.0.0
+	rm -f ${PREFIX}/lib/lib${LIB}.so.0
+	rm -rf ${PREFIX}/share/${LIB}
 
+.PHONY: clean
 clean:
-	rm *.o
-	rm lib${LIB}.so.0.0.0
-	rm lib${LIB}.a
+	rm -f *.o
+	rm -f lib${LIB}.so.0.0.0
+	rm -f lib${LIB}.a
 
